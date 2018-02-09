@@ -45,7 +45,8 @@ for j=1:Nv-1
         t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
 end
      
-options     = sdpsettings('verbose',0,'solver','ecos'); 
+%options     = sdpsettings('verbose',0,'solver','ecos','debug', 1); 
+options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
   
 %% post threat data

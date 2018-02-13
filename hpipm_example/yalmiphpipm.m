@@ -19,7 +19,7 @@ se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the
 entryangle=[0; 0.5; 1; 1.5;0;0]*pi; %[rad] angle at which the vehicles enter the critical zone
 exitangle=[0; 1; 1.5; 1.5; 0;0]*pi; %[rad] angle at which the vehicles exit the critical zone
 vref=[47; 48; 50; 49; 50; 50]/3.6;  %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
-
+%Nv innebär number of vehicles
 task.V(1:task.Nv)=standardcar;
 for j=1:task.Nv
     task.V(j).s=task.s;
@@ -31,3 +31,35 @@ for j=1:task.Nv
 end
 
 init;
+%ändra denna för att bestämma crossingorder
+if task.loopcrossorder
+    task.crossorderperm=perms(1:task.Nv);
+else
+    %permantent crossingorder
+    task.crossorderperm=crossingorder(1:task.Nv)';
+end
+
+%% optimering
+resopt=struct;
+ttot=0;
+resopt.cost=Inf;
+
+
+for j=1:size(task.crossorderperm,1)
+    task.crossingorder=task.crossorderperm(j,:);
+    %TODO gör om qpsolver till hpipm
+    %resY=QpsolveY(task);
+    resH=QPsolveH(task);
+    res = resH;
+    ttot=ttot+res.time(end);
+   
+    ax=diff(res.v)./diff(res.t); ax=[ax;ax(end,:)];
+    fprintf('%s: order=%s, cost=%1.4f, vx~[%1.0f,%1.0f]km/h, ax~[%1.1f,%1.1f]m/s2, t=%1.2f ms\n', ...
+        res.status, sprintf('%d',task.crossingorder), res.cost, min(res.v(:))*3.6, max(res.v(:))*3.6, ...
+        min(ax(:)), max(ax(:)), res.time(end)*1000);
+    
+    if res.cost < resopt.cost
+        resopt=res;
+        resopt.crossingorder=task.crossingorder;
+    end
+end

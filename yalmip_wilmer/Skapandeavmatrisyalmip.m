@@ -28,7 +28,14 @@ for i=1:Nv
     %3*i
     A(3*i-2:3*i,3*i-2:3*i)=Asub;
 end
-Xtest(:,k+1)=A*Xtest(:,k);
+for i=k
+    Xtest(:,i+1)=A*Xtest(:,i);
+end
+plot(Xtest(1,k),k);
+hold on
+plot(Xtest(4,k),k);
+plot(Xtest(7,k),k);
+%Xtest(:,k+1)=A*Xtest(:,k);
 %X(1,1)
 Xtest
 Xtest(2,2)

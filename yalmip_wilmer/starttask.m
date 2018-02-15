@@ -34,7 +34,7 @@ for j=1:task.Nv
 end
 
 init;
-
+%se över denna delen för att kunna bestämma crossing order
 if task.loopcrossorder
     task.crossorderperm=perms(1:task.Nv);
 else
@@ -47,7 +47,9 @@ ttot=0;
 resopt.cost=Inf;
 for j=1:size(task.crossorderperm,1)
     task.crossingorder=task.crossorderperm(j,:);
-    res=QPsolveY(task); ttot=ttot+res.time(end);
+    
+    res=QPsolveY2(task); ttot=ttot+res.time(end);
+    %res=QPsolveY(task); ttot=ttot+res.time(end);
     ax=diff(res.v)./diff(res.t); ax=[ax;ax(end,:)];
     fprintf('%s: order=%s, cost=%1.4f, vx~[%1.0f,%1.0f]km/h, ax~[%1.1f,%1.1f]m/s2, t=%1.2f ms\n', ...
         res.status, sprintf('%d',task.crossingorder), res.cost, min(res.v(:))*3.6, max(res.v(:))*3.6, ...

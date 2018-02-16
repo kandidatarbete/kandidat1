@@ -19,15 +19,15 @@ Asub=[1 h 0; 0 1 h; 0 0 1]; % submarix used to build global transfermatrix
 % give a few vehicles initial speed
 %Xtest=zeros(3*Nv,Ns);
 Xtest = sdpvar(3*Nv,Ns);
-Xtest(2,1)=2;
-Xtest(5,1)=3;
-Xtest(8,1)=4;
+%Xtest(2,1)=2;
+%Xtest(5,1)=3;
+%Xtest(8,1)=4;
 
 % constructing state vector
 % todo: document indexing
 % position is at 1,4,7...
 % speed is at 2,5,8... 
-% acceleration is at 3,69...
+% acceleration is at 3,6,9...
 for i=1:Nv
     X(1+(i-1)*3,:)=t(:,i);
     X(2+(i-1)*3,:)=z(:,i);
@@ -44,28 +44,20 @@ end
 
 % main rule
 for i=k
-    Xtest(:,i+1)=A*Xtest(:,i);
+    constr1 = (Xtest(:,i+1)==A*Xtest(:,i));
 end
-% X = value(Xtest)
-% % plot (unoptimized) trajectories
-%  figure(1);
-%  plot(X(1,k),k);
-%  hold on
-%  plot(X(4,k),k);
-%  plot(X(7,k),k); 
 
-constraints = [Xtest(:,:) <= test_bound]; 
-
-% try forbidding car1 going backwards
 for i = 1:Nv
-   Xtest(3*i -1,:) >= 0;  
+   constr2 = (Xtest(3*i -1,:) >= 0);  
 end
 
-% todo: add transfer function as constraint
 
+% all values are temporarily bounded by Xtest\in[0,10]
+constraints = [Xtest(:,:) > 0, Xtest(:,:) < test_bound, constr1,constr2]; 
+constraints = [constraints, -1 <= [t z dz] <= 1];
 
-%cost = [X(2,:) + X(1,:)]; 
-cost = [];
+cost = sum(X(3,:));
+%cost = []; 
 
 %constraints = [constraints, Xtest(8,:) <= 1]; % needs to be an sdpvar
 

@@ -3,6 +3,8 @@ Ns=100; % number of states
 Nv=3; % number of vehicles
 h=0.1; % timestep
 k=1:Ns-1;
+%sdpvar verkar vara ett yalmipverktyg, kanske att matriserna är variabler i
+%hpipm
 
 % testing out sdpvar
 t=sdpvar(Ns,Nv);
@@ -10,6 +12,9 @@ z=sdpvar(Ns,Nv);
 dz=sdpvar(Ns,Nv);
 ddz=sdpvar(Ns,Nv);
 %A=zeros(Nv,Nv)
+
+Asub=[1 h 0; 0 1 h; 0 0 1];
+%Xtest är en matris med värden för att testa A-matrisen
 
 Asub=[1 h 0; 0 1 h; 0 0 1]; % submarix used to build global transfermatrix
 
@@ -32,6 +37,14 @@ A=zeros(3*Nv,3*Nv);
 % global A matrix is built with Asub as diagonal elements
 for i=1:Nv
     A(3*i-2:3*i,3*i-2:3*i)=Asub;
+end
+B=zeros(3*Nv,1)
+u=zeros(3,Ns);
+u(1,1)=Xtest(2,1);
+u(2,1)=Xtest(5,1);
+u(3,1)=Xtest(8,1);
+for i =1:Nv
+    B(3*i,1)=h;
 end
 for i=k
     Xtest(:,i+1)=A*Xtest(:,i);

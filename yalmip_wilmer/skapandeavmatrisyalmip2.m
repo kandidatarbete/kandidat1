@@ -1,4 +1,5 @@
 clear all, clc
+close all; 
 Ns=100; % number of states
 Nv=3; % number of vehicles
 h=0.1; % timestep
@@ -45,15 +46,24 @@ end
 for i=k
     Xtest(:,i+1)=A*Xtest(:,i);
 end
-
-% plot (unoptimized) trajectories
-% figure(1);
-% plot(Xtest(1,k),k);
-% hold on
-% plot(Xtest(4,k),k);
-% plot(Xtest(7,k),k); 
+% X = value(Xtest)
+% % plot (unoptimized) trajectories
+%  figure(1);
+%  plot(X(1,k),k);
+%  hold on
+%  plot(X(4,k),k);
+%  plot(X(7,k),k); 
 
 constraints = [Xtest(:,:) <= test_bound]; 
+
+% try forbidding car1 going backwards
+for i = 1:Nv
+   Xtest(3*i -1,:) >= 0;  
+end
+
+% todo: add transfer function as constraint
+
+
 %cost = [X(2,:) + X(1,:)]; 
 cost = [];
 
@@ -65,22 +75,27 @@ options     = sdpsettings('verbose',0,'debug', 1);
 sol         = optimize(constraints, sum(cost), options); 
 
 
-% plot the optimized trajectories
-% figure(2);
-% plot(Xtest(1,k),k);
-% hold on
-% plot(Xtest(4,k),k);
-% plot(Xtest(7,k),k); 
 
 
 % Analyze error flags
 if sol.problem == 0
  % Extract and display value
- solution = value(Xtest)
+ solution = value(Xtest); 
+ display('succesful optimization run, type value(Xtest) for output values');
 else
  display('Hmm, something went wrong!');
  sol.info
  yalmiperror(sol.problem)
 end
-
+X = value(Xtest);
+%plot the optimized trajectories
+figure(2);
+%plot(X(1,k),k);
+plot(k, X(1,k),'r');
+hold on
+%plot(X(4,k),k);
+plot(k,X(4,k),'g'); 
+%plot(X(7,k),k); 
+plot(k,X(7,k),'b');
+legend('car1','car2', 'car3'); 
 

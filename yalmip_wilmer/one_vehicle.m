@@ -3,17 +3,27 @@ clear all, clc
 close all; 
 
 Ns = 100; % number of samples
+Nv = 1; 
 
-t = sdpvar(1,Ns); 
-p = sdpvar(1,Ns);
-v = sdpvar(1,Ns); 
-a = sdpvar(1,Ns); 
+% yalmip-specifikt, referera hädanefter uteslutande till X(i), index i 
+% specificerar fordon och variabel
+for i = 1:Nv 
+t(i,:) = sdpvar(1,Ns); 
+p(i,:) = sdpvar(1,Ns);
+v(i,:) = sdpvar(1,Ns); 
+a(i,:) = sdpvar(1,Ns); 
+end
+
 sdpvar u; % styrvariabeln
-
-X = [p; v; a]; % planeringsrapporten sidan 1
+X = [p(1,:); v(1,:); a(1,:)]; % planeringsrapporten sidan 1
 %A = [0 1 0; 0 0 1; 0 0 0];
 h = 0.1;
-A = [1 h 0; 0 1 h; 0 0 0]; 
+Asub = [1 h 0; 0 1 h; 0 0 0]; 
+
+% konstruera generaliserade A: 
+for i=1:Nv
+    A(3*i-2:3*i,3*i-2:3*i)=Asub;
+end
 
 % definera X(t=0)
 X(2) = 0.1; % initial speed
@@ -35,8 +45,6 @@ constraints = [constraints, (-5 <= a <= 5)];
 constraints = [constraints, (-5 <= u <= 5)]; 
 
 cost = [1/sum(X(1,:))]; % se till att dom kommer så långt som möjligt
-%cost = [sum(X(1,:))]; % se till att dom kommer så kort som möjligt
-%cost = [];
 
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 

@@ -1,6 +1,6 @@
 clear all, clc
 close all; 
-Ns=100; % number of states
+Ns=100; % number of sakples
 Nv=3; % number of vehicles
 h=0.1; % timestep
 k=1:Ns-1;

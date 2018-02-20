@@ -44,7 +44,7 @@ X(3) = 0; % initial acceleration
 % huvudregel
 % X_{k+1} = A*X_k \forall k, en constraint per sample
 constraints  = [];
-for k=1:Ns-1
+for k=
     constraints = [constraints, X(:,k+1) == A*X(:,k) + U(:,k)*h];  % Ax + h * u 
    
     
@@ -75,15 +75,7 @@ end
 value(X)
 
 % plot 
-
-
-for i=1:Nv
-    plot(1:Ns,value(X(3*i-2,:)));
-    hold on
-end
-%plot(1:Ns,value(X(1,:)));
-hold on
-%plot(1:Ns,value(X(4,:)));
+plot(1:Ns,value(X(1,:)));
 xlabel('sample no');
 ylabel('position'); 
 

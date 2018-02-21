@@ -161,12 +161,15 @@ for i=1:Nv
   end
 
 %cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt
-summa=0;
+summaZ=0;
+summaDdz=0;
 for i=1:Nv
-    summa=summa+sum(X(3*i-1,:));
+    summaZ=summaZ+Sz*sum(X(3*i-1,:));
+    summaDdz=summaDdz +Sddz*sum(U(3*i,:)); 
 end
-%cost=[1/summa];
-cost=[];
+cost=[1/summaZ+ 1/summaDdz];
+%cost = [1/summaDdz];
+%cost=[];
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
 

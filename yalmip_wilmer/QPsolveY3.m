@@ -62,7 +62,7 @@ Sz=task.Sz;
 Sdz=task.Sdz;
 Sddz=task.Sddz;
 Ns = 100; % number of samples
-Nv = 2; 
+Nv = 1; 
 k=1:Ns-1;
 % yalmip-specifikt, referera hädanefter uteslutande till X(i), index i 
 % specificerar fordon och variabel
@@ -116,26 +116,50 @@ end
 % X_{k+1} = A*X_k \forall k, en constraint per sample
 constraints  = [];
 
-constraints = [constraints, X(:,k+1) == A*X(:,k) + U(:,k)*h];  % Ax + h * u 
+  % Ax + h * u 
     
 
 
 % ett fordon kan inte gasa/bromsa hur hårt som helst
-constraints = [constraints, (-5 <= a <= 5)]; 
+%constraints = [constraints, (-5 <= a <= 5)]; 
 
-constraints = [constraints, (-5 <= U(:,k) <= 5)];
+%constraints = [constraints, (-5 <= U(:,k) <= 5)];
 %detta constraintet verkar ta tid
 %ger ekvationen f�r hur tiden varierar med stegen i position
-for i=1:Nv
-    constraints=[constraints, 
-    X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h*X(3*i-1,1:Ns-1)*Sz/St]
-end
+
+
 % 
+% 
+%     constraints =  [constraints, ...
+%         t(2:Ns+1,j) == t(1:Ns,j) + ds*z(1:Ns,j)*Sz/St, ...
+%         z(2:Ns,j) ==  z(1:Ns-1,j) + ds*dz(1:Ns-1,j)*Sdz/Sz, ...
+%         dz(2:Ns-1,j) == dz(1:Ns-2,j) + ds*ddz(1:Ns-2,j)*Sddz/Sdz, ...
+%         z(:,j) >= 1./V(j).vxmax/Sz, ...
+%         z(:,j) <= 1./V(j).vxmin/Sz, ...
+%         z(1,j) == 1./V(j).vref(1)/Sz, ...
+%         dz(1,j) == 0, ...
+%         -dz(:,j) >= V(j).axmin*(3*V(j).vref(1:Ns-1).*z(1:Ns-1,j)*Sz - 2)./V(j).vref(1:Ns-1).^3/Sdz, ...
+%         -dz(:,j) <= V(j).axmax*(3*V(j).vref(1:Ns-1).*z(1:Ns-1,j)*Sz - 2)./V(j).vref(1:Ns-1).^3/Sdz, ...
+%         t(1,j) == 0, ...
+%         ];
+% end  
+
+
+
+constraints = [constraints, X(:,k+1) == A*X(:,k) + U(:,k)*h]; % x_k+1 = Ax_k +\delta x
 for i=1:Nv
-     constraints=[constraints, X(3*i-1)>0];
+     constraints=[constraints, X(3*i-1,:)>0]; % lethargy > 0 
+     constraints=[constraints, 
+    X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h./X(3*i-1,1:Ns-1)*Sz/St]
+    constraints=[constraints, X(3*i-2,i)==0];
  end
 
-cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt
+%cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt
+summa=0;
+for i=1:Nv
+    summa=summa+sum(X(3*i-1,:));
+end
+cost=[1/summa];
 
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
@@ -165,6 +189,7 @@ end
 %plot(1:Ns,value(X(1,:)));
 hold on
 %plot(1:Ns,value(X(4,:)));
+plot(value(X(1,:)),value(X(2,:)));
 xlabel('sample no');
 ylabel('lethargy'); 
 

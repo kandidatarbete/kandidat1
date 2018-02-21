@@ -1,4 +1,5 @@
-%%
+
+clear all
 task = struct;
 task.ds=1;                          %[m] sampling interval
 task.s=[0:task.ds:110]';            %[m] vector of traversed distance
@@ -54,31 +55,34 @@ task.Scost=3*vrmean;
 task.Wv=1; task.Wdv=1; task.Wddv=0.5;
 
 
-%%
+
 clc,clf
 close all; 
 St=task.St;
 Sz=task.Sz;
 Sdz=task.Sdz;
 Sddz=task.Sddz;
+vmax=10;
+vmin=5;
 Ns = 100; % number of samples
 Nv = 1; 
 k=1:Ns-1;
 % yalmip-specifikt, referera hädanefter uteslutande till X(i), index i 
 % specificerar fordon och variabel
 for i=1:Nv
-t(i,:) = sdpvar(1,Ns); 
-z(i,:) = sdpvar(1,Ns);
-dz(i,:) = sdpvar(1,Ns); 
-ddz(i,:) = sdpvar(1,Ns); 
+t(i,:) = sdpvar(1,Ns,'full'); 
+z(i,:) = sdpvar(1,Ns,'full');
+dz(i,:) = sdpvar(1,Ns,'full'); 
+ddz(i,:) = sdpvar(1,Ns,'full'); 
     
 end
-for i = 1:Nv 
-t(i,:) = sdpvar(1,Ns); 
-p(i,:) = sdpvar(1,Ns);
-v(i,:) = sdpvar(1,Ns); 
-a(i,:) = sdpvar(1,Ns); 
-end
+% 
+% for i = 1:Nv 
+% t(i,:) = sdpvar(1,Ns); 
+% p(i,:) = sdpvar(1,Ns);
+% v(i,:) = sdpvar(1,Ns); 
+% a(i,:) = sdpvar(1,Ns); 
+% end
 for i=1:Nv
     %U(3*i-2)=0;
     %U(3*i-1)=0;
@@ -94,7 +98,7 @@ for i=1:Nv
 end
 %X = [p(1,:); v(1,:); a(1,:)]; % planeringsrapporten sidan 1
 %A = [0 1 0; 0 0 1; 0 0 0];
-h = 0.1;
+h = 0.4;
 Asub = [1 h 0; 0 1 h; 0 0 1]; 
 
 % konstruera generaliserade A: 
@@ -145,22 +149,24 @@ constraints  = [];
 % end  
 
 
-
+% 
+ 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + U(:,k)*h]; % x_k+1 = Ax_k +\delta x
 for i=1:Nv
-     constraints=[constraints, X(3*i-1,:)>0]; % lethargy > 0 
-     constraints=[constraints, 
-    X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h./X(3*i-1,1:Ns-1)*Sz/St]
-    constraints=[constraints, X(3*i-2,i)==0];
- end
+     %constraints=[constraints, X(3*i-1,:)>=0]; % lethargy > 0 
+      %constraints=[constraints, 
+      %X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h*X(3*i-1,1:Ns-1)*Sz/St];
+     constraints=[constraints, X(3*i-2,i)==0];
+     constraints=[constraints, 0 < X(3*i-1,:)< 10]
+  end
 
 %cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt
 summa=0;
 for i=1:Nv
     summa=summa+sum(X(3*i-1,:));
 end
-cost=[1/summa];
-
+%cost=[1/summa];
+cost=[];
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
 
@@ -181,16 +187,16 @@ value(X);
 % plot 
 
 
-for i=1:1
+for i=1:Nv
     %plot(value(X(3*i-2,:)),value(X(3*i-1)));
-    
+    plot(1:Ns,value(X(3*i-1,:)));
     hold on
 end
 %plot(1:Ns,value(X(1,:)));
 hold on
 %plot(1:Ns,value(X(4,:)));
-plot(value(X(1,:)),value(X(2,:)));
+
 xlabel('sample no');
 ylabel('lethargy'); 
 
-value(X(1,:))
+%value(X(1,:))

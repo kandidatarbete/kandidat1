@@ -69,7 +69,7 @@ vstart=6;
 amin=-5;
 amax=5;
 Ns = 100; % number of samples
-Nv = 1; 
+Nv = 2; 
 k=1:Ns-1;
 % yalmip-specifikt, referera hÃ¤danefter uteslutande till X(i), index i 
 % specificerar fordon och variabel
@@ -172,7 +172,8 @@ for i=1:Nv
      %TODO nedanstående verkar orsaka lite problem
      constraints=[constraints, X(3*i-1,:)<=1/vmin/Sz];
      constraints=[constraints, X(3*i,1)==0];
-     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz]
+     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
+     
      
   end
 

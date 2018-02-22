@@ -17,8 +17,8 @@ ss=[76; 78; 80; 75; 80; 80];        %[m] distance at which the vehicle enters th
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
 entryangle=[0; 0.5; 1; 1.5;0;0]*pi; %[rad] angle at which the vehicles enter the critical zone
 exitangle=[0; 1; 1.5; 1.5; 0;0]*pi; %[rad] angle at which the vehicles exit the critical zone
-vref=[47; 48; 50; 49; 50; 50]/3.6;  %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
-
+%vref=[47; 48; 50; 49; 50; 50]/3.6;  %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+vref=50;
 
 
 
@@ -31,7 +31,7 @@ for j=1:task.Nv
     task.V(j).se=se(j);
     task.V(j).entryangle=entryangle(j);
     task.V(j).exitangle=exitangle(j);
-    task.V(j).vref=vref(j)*ones(task.Ns,1);    
+   % task.V(j).vref=vref(j)*ones(task.Ns,1);    
 end
 
 
@@ -40,14 +40,15 @@ end
 for j=1:task.Nv
     task.V(j).Nzs=find(task.s <= task.V(j).ss,1,'last');    % number of samples until the vehicle enters the critical zone
     task.V(j).Nze=find(task.s >= task.V(j).se,1,'first');   % number of samples until the vehicle leaves the critical zone
-    task.V(j).vrmean=mean(task.V(j).vref);                  % mean reference speed
+   % task.V(j).vrmean=mean(task.V(j).vref);                  % mean reference speed
 end
 
 % Scaling factors
-vrmean=mean([task.V.vrmean]);
+%vrmean=mean([task.V.vrmean]);
+vrmean=vref;
 task.St=task.Ns*task.ds/vrmean; 
 task.Sz=1./vrmean; 
-task.Sdz=mean(-[task.V.axmin]./[task.V.vrmean].^3);
+task.Sdz=mean(-[task.V.axmin]./[vrmean].^3);
 task.Sddz=50/vrmean^5;
 task.Scost=3*vrmean; 
 
@@ -65,6 +66,8 @@ Sddz=task.Sddz;
 vmax=10;
 vmin=5;
 vstart=6;
+amin=-5;
+amax=5;
 Ns = 100; % number of samples
 Nv = 1; 
 k=1:Ns-1;
@@ -111,12 +114,7 @@ end
 %X(2) = 0.1; % initial speed
 %X(1) = 0; % initial position
 %X(3) = 0; % initial acceleration
-for i=1:Nv
-    % here's your problem 
-    %X(3*i-2,1)=0;%inital time
-    %X(3*i-1)=rand*10;
-    X(3*i)=0;
-end
+
 % huvudregel
 % X_{k+1} = A*X_k \forall k, en constraint per sample
 constraints  = [];
@@ -170,8 +168,11 @@ for i=1:Nv
       %X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h*X(3*i-1,1:Ns-1)*Sz/St];
      constraints=[constraints, X(3*i-2,1)==0];
      constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     %constraints=[constraints, X(3*i-1,:)> 1/vmax/Sz];
-     %constraints=[constraints, 1/vmin/Sz > X(3*i-1,:)];
+     constraints=[constraints, X(3*i-1,:)>= 1/vmax/Sz];
+     %TODO nedanstående verkar orsaka lite problem
+     constraints=[constraints, X(3*i-1,:)<=1/vmin/Sz];
+     constraints=[constraints, X(3*i,1)==0];
+     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz]
      
   end
 

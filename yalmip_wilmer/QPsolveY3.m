@@ -64,6 +64,7 @@ Sdz=task.Sdz;
 Sddz=task.Sddz;
 vmax=10;
 vmin=5;
+vstart=6;
 Ns = 100; % number of samples
 Nv = 1; 
 k=1:Ns-1;
@@ -168,7 +169,8 @@ for i=1:Nv
       %constraints=[constraints, 
       %X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h*X(3*i-1,1:Ns-1)*Sz/St];
      constraints=[constraints, X(3*i-2,i)==0];
-     constraints=[constraints, 0 < X(3*i-1,:)< 10]
+     %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
+     constraints=[constraints, 1/vmin/Sz < X(3*i-1,:)> 1/vmax/Sz];
   end
 
 %cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt

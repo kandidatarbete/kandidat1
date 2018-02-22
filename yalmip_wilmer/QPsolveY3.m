@@ -149,9 +149,20 @@ constraints  = [];
 % end  
 
 
-% 
+%
+Su=zeros(3*Nv);
+SuSub=eye(3);
+SuSub(1,1)=Sz/St;
+SuSub(2,2)=Sdz/Sz;
+SuSub(3,3)=Sddz/Sdz;
+for i=1:Nv
+
+    %A(3*i-2:3*i,3*i-2:3*i)=Asub;
+    Su(3*i-2:3*i,3*i-2:3*i)=SuSub;
+
+end
  
-constraints = [constraints, X(:,k+1) == A*X(:,k) + U(:,k)*h]; % x_k+1 = Ax_k +\delta x
+constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*h]; % x_k+1 = Ax_k +\delta x
 for i=1:Nv
      %constraints=[constraints, X(3*i-1,:)>=0]; % lethargy > 0 
       %constraints=[constraints, 

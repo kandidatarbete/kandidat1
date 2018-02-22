@@ -108,13 +108,13 @@ for i=1:Nv
 end
 
 % definera X(t=0)
-X(2) = 0.1; % initial speed
-X(1) = 0; % initial position
-X(3) = 0; % initial acceleration
+%X(2) = 0.1; % initial speed
+%X(1) = 0; % initial position
+%X(3) = 0; % initial acceleration
 for i=1:Nv
-    
-    X(3*i-2,1)=0;%inital time
-    X(3*i-1)=rand*10;
+    % here's your problem 
+    %X(3*i-2,1)=0;%inital time
+    %X(3*i-1)=rand*10;
     X(3*i)=0;
 end
 % huvudregel
@@ -168,9 +168,11 @@ for i=1:Nv
      %constraints=[constraints, X(3*i-1,:)>=0]; % lethargy > 0 
       %constraints=[constraints, 
       %X(3*i-2,2:Ns)==X(3*i-2,1:Ns-1)+ h*X(3*i-1,1:Ns-1)*Sz/St];
-     constraints=[constraints, X(3*i-2,i)==0];
-     %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     constraints=[constraints, 1/vmin/Sz < X(3*i-1,:)> 1/vmax/Sz];
+     constraints=[constraints, X(3*i-2,1)==0];
+     constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
+     %constraints=[constraints, X(3*i-1,:)> 1/vmax/Sz];
+     %constraints=[constraints, 1/vmin/Sz > X(3*i-1,:)];
+     
   end
 
 %cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt

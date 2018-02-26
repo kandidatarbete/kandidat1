@@ -127,9 +127,18 @@ for i=1:Nv
     summaZ=summaZ+Sz*sum(X(3*i-1,:));
     summaDdz=summaDdz +Sddz*sum(U(3*i,:)); 
 end
-cost=[1/summaZ+ 1/summaDdz];
+%cost=[1/summaZ+ 1/summaDdz];
 %cost = [1/summaDdz];
-%cost=[];
+% task.Wv=1; task.Wdv=1; task.Wddv=0.5;
+Wv = task.Wv;
+Wdv = task.Wdv; 
+Wddv = task.Wddv;
+cost=[];
+for i=1:Nv
+cost1 = Wv/vref^3.*sum((X(3*i-2) - 1/vref).^2); % equation 4a
+cost2 = Wdv/vref^5.*sum((X(3*i-1).^2)); % equation 4b
+cost2 = Wddv/vref^7.*sum((X(3*i).^2)); % equation 4c
+end
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
 

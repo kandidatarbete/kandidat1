@@ -59,7 +59,7 @@ vmin=5;
 vstart=6;
 amin=-5;
 amax=5;
-Ns = 100; % number of samples
+Ns = 400; % number of samples
 Nv = 2; 
 k=1:Ns-1;
 % yalmip-specifikt, referera hädanefter uteslutande till X(i), index i 
@@ -84,7 +84,7 @@ for i=1:Nv
     X(3*i,:)=dz(i,:);
 end
 
-h = 0.4; % step size
+h = 4; % step size
 Asub = [1 h 0; 0 1 h; 0 0 1]; % A matrix for 1 vehicle 
 
 % konstruera generaliserade A: 
@@ -164,8 +164,13 @@ value(X);
 
 
 for i=1:Nv
-    figure
+    subplot(1,Nv,i)
     plot(value(X(3*i-2,:)),1./value(X(3*i-1,:)));
+    
+    xlabel('time');
+    ylabel('velocity'); 
+
+    
     
     %plot(1:Ns,value(X(3*i-1,:)));
     hold on
@@ -174,7 +179,5 @@ end
 hold on
 %plot(1:Ns,value(X(4,:)));
 
-xlabel('sample no');
-ylabel('lethargy'); 
 
 %value(X(1,:))

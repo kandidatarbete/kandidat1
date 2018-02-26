@@ -6,7 +6,7 @@ task.Ns=numel(task.s);
 task.Nv=3;                          % number of vehicles (cheese within 2-4)
 task.I=intersection;
 
-% loop on al possible permutations of crossing orders. Note that Yalmip is not
+% loop on all possible permutations of crossing orders. Note that Yalmip is not
 % meant to be called iteratively, so you may want to replace it with
 % another algorithm that is better suited for this purpose. 
 task.loopcrossorder=true;           
@@ -134,11 +134,15 @@ Wv = task.Wv;
 Wdv = task.Wdv; 
 Wddv = task.Wddv;
 cost=[];
+cost1=[];
+cost2=[];
+cost3=[];
 for i=1:Nv
-cost1 = Wv/vref^3.*sum((X(3*i-2) - 1/vref).^2); % equation 4a
-cost2 = Wdv/vref^5.*sum((X(3*i-1).^2)); % equation 4b
-cost2 = Wddv/vref^7.*sum((X(3*i).^2)); % equation 4c
+cost1 = [cost1, Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
+cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
+cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
 end
+cost=[cost,cost1,cost2,cost3];
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 
 
@@ -160,8 +164,10 @@ value(X);
 
 
 for i=1:Nv
-    %plot(value(X(3*i-2,:)),value(X(3*i-1)));
-    plot(1:Ns,value(X(3*i-1,:)));
+    figure
+    plot(value(X(3*i-2,:)),1./value(X(3*i-1,:)));
+    
+    %plot(1:Ns,value(X(3*i-1,:)));
     hold on
 end
 %plot(1:Ns,value(X(1,:)));

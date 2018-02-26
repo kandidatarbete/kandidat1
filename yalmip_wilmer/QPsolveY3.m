@@ -205,6 +205,7 @@ hold on
 
 %%
 %some plots
+clf, close all
 
 
 f=figure; 
@@ -225,25 +226,37 @@ colors=get(gca,'DefaultAxesColorOrder');
 subplot(3,1,2); 
 %axmin=-repmat([task.V.axmax],task.Ns,1).*(3*[task.V.vref]./res.v-2).*(res.v./[task.V.vref]).^3;
 %axmax=-repmat([task.V.axmin],task.Ns,1).*(3*[task.V.vref]./res.v-2).*(res.v./[task.V.vref]).^3;
-p2=plot(h.*k,-acceleration); hold on; grid on;
-hacc=plot(task.s,axmax,'k-.','DisplayName','Acceleration limits');
-h(end+1)=hacc(1);
-plot(task.s,axmin,'k-.');
-legend(h,'Location','SouthEast');
+for i=1:Nv
+p2=plot(h.*k,-acceleration(i,:)); hold on; grid on;
+%TODO blir bara en legend fixa 
+legend(p2,'Location','NorthWest');
+end
+
 xlabel('Position (m)');
 ylabel('Acceleration (m/s^2)');
-%%
+% 
+% hacc=plot(task.s,axmax,'k-.','DisplayName','Acceleration limits');
+% h(end+1)=hacc(1);
+% plot(task.s,axmin,'k-.');
+% legend(h,'Location','SouthEast');
+% xlabel('Position (m)');
+% ylabel('Acceleration (m/s^2)');
+%
+
+
+
+
 % time
-subplot(3,1,3); 
-set(gca, 'ColorOrder', [0 0 0; colors], 'NextPlot', 'replacechildren');
-co=res.crossingorder(1:task.Nv); co=co(:);
-xix=[[task.V(co).Nzs]'; [task.V(flipud(co)).Nze]'; task.V(co(1)).Nzs]; 
-yix=[co; flipud(co); co(1)];
-x=[ss(co); se(flipud(co)); ss(co(1))]; y=res.t(sub2ind(size(res.t),xix,yix));
-h1=fill(x,y,0.8*[1 1 1],'EdgeColor',0.7*[1 1 1],'DisplayName','Critical zone');  hold on; grid on;
-h2=plot(task.s,res.t); hold on;
-legend([h1;h2],'Location','NorthWest');
-xlabel('Position (m)'); 
-ylabel('Time (s)');
+% subplot(3,1,3); 
+% set(gca, 'ColorOrder', [0 0 0; colors], 'NextPlot', 'replacechildren');
+% co=res.crossingorder(1:task.Nv); co=co(:);
+% xix=[[task.V(co).Nzs]'; [task.V(flipud(co)).Nze]'; task.V(co(1)).Nzs]; 
+% yix=[co; flipud(co); co(1)];
+% x=[ss(co); se(flipud(co)); ss(co(1))]; y=res.t(sub2ind(size(res.t),xix,yix));
+% h1=fill(x,y,0.8*[1 1 1],'EdgeColor',0.7*[1 1 1],'DisplayName','Critical zone');  hold on; grid on;
+% h2=plot(task.s,res.t); hold on;
+% legend([h1;h2],'Location','NorthWest');
+% xlabel('Position (m)'); 
+% ylabel('Time (s)');
 
 animate_res;

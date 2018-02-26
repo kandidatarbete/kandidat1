@@ -54,13 +54,16 @@ St=task.St;
 Sz=task.Sz;
 Sdz=task.Sdz;
 Sddz=task.Sddz;
+
 vmax=10;
 vmin=5;
 vstart=6;
 amin=-5;
 amax=5;
 Ns = 400; % number of samples
-Nv = 2; 
+Nv = 2;
+%crossingorder, beh�vs en funktion f�r att generera denna
+co=1:Nv;
 k=1:Ns-1;
 % yalmip-specifikt, referera hädanefter uteslutande till X(i), index i 
 % specificerar fordon och variabel
@@ -117,8 +120,13 @@ for i=1:Nv
      constraints=[constraints, X(3*i,1)==0];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
      
-     
-  end
+end
+% deltat=0.0001;
+% for i=1:Nv-1
+%      constraints=[constraints, X(3*co(i)-2,:)<=X(3*co(i+1)-2,:)-deltat];
+% end
+  
+
 
 %cost = [1/sum(X(2,:))+1/sum(X(5,:))]; % se till att dom kommer så långt som möjligt
 summaZ=0;
@@ -160,6 +168,19 @@ end
 
 value(X);
 
+for i=1:Nv
+
+position(i,:)=h.*k;    
+time(i,:)=value(X(3*i-2,:));
+%TODO skalfaktor?
+velocity(i,:)=value(X(3*i-1,:));
+acceleration(i,:)=diff(velocity(i,:))./diff(time(i,:));
+end
+%definiera acceleration
+for i=1:Nv
+   ax=-1./(diff(value(X(3*i-1,:))).*diff(value(X(3*i-2,:))));
+end
+ax(1)=0;
 % plot 
 
 
@@ -181,3 +202,48 @@ hold on
 
 
 %value(X(1,:))
+
+%%
+%some plots
+
+
+f=figure; 
+f.Position(4)=700; f.Position(2)=70;
+subplot(3,1,1);
+rov=1:Ns;
+for i=1:Nv
+    p1 = plot(rov.*h,3.6./value(X(3*i-1,:)));
+    hold on
+end
+
+legend(p1,'Location','NorthWest');
+xlabel('Position (m)');
+ylabel('Speed (km/h)');
+colors=get(gca,'DefaultAxesColorOrder');
+
+% acceleration
+subplot(3,1,2); 
+%axmin=-repmat([task.V.axmax],task.Ns,1).*(3*[task.V.vref]./res.v-2).*(res.v./[task.V.vref]).^3;
+%axmax=-repmat([task.V.axmin],task.Ns,1).*(3*[task.V.vref]./res.v-2).*(res.v./[task.V.vref]).^3;
+p2=plot(h.*k,-acceleration); hold on; grid on;
+hacc=plot(task.s,axmax,'k-.','DisplayName','Acceleration limits');
+h(end+1)=hacc(1);
+plot(task.s,axmin,'k-.');
+legend(h,'Location','SouthEast');
+xlabel('Position (m)');
+ylabel('Acceleration (m/s^2)');
+%%
+% time
+subplot(3,1,3); 
+set(gca, 'ColorOrder', [0 0 0; colors], 'NextPlot', 'replacechildren');
+co=res.crossingorder(1:task.Nv); co=co(:);
+xix=[[task.V(co).Nzs]'; [task.V(flipud(co)).Nze]'; task.V(co(1)).Nzs]; 
+yix=[co; flipud(co); co(1)];
+x=[ss(co); se(flipud(co)); ss(co(1))]; y=res.t(sub2ind(size(res.t),xix,yix));
+h1=fill(x,y,0.8*[1 1 1],'EdgeColor',0.7*[1 1 1],'DisplayName','Critical zone');  hold on; grid on;
+h2=plot(task.s,res.t); hold on;
+legend([h1;h2],'Location','NorthWest');
+xlabel('Position (m)'); 
+ylabel('Time (s)');
+
+animate_res;

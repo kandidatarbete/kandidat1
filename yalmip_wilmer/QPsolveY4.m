@@ -52,7 +52,7 @@ SuSub(3,3)=Sddz/Sdz;
 for i=1:Nv
     Su(3*i-2:3*i,3*i-2:3*i)=SuSub;
 end
-
+Su
 
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
@@ -68,7 +68,7 @@ for i=1:Nv
      constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
      constraints=[constraints, X(3*i,1)==0];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
-     
+     constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
 end
 
 cost=[];

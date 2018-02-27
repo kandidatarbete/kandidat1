@@ -91,8 +91,8 @@ if sol.problem == 0
     res.status='Solved';
     res.time=sol.solvertime;
     res.cost=sum(value(cost));
-    res.v=1./value(z)/Sz; 
-    res.t=value(t(:,1:Ns))*St;
+    res.v=1./value(z(:,1:Ns))'/Sz; 
+    res.t=value(t(:,1:Ns))'*St;
 else
     res.status=sol.info;
     display(sol.info);

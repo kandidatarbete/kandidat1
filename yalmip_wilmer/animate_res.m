@@ -69,7 +69,7 @@ drawnow; % the positioning of arrow heads does not work well without this line
 % road segment on the intersection. 
 
 % colors=get(gca,'DefaultAxesColorOrder');
-colors=[0 0 1; 0 1 0; 1 0 0; 0.5 0 0.5; 0.5 0.5 0; 0 0.5 0.5; ];
+colors=[0 0 1; 0 1 0; 1 0 0; 0.5 0 0.5; 0.5 0.5 0; 0 0.5 0.5; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1];
 for j=1:task.Nv
     % initial positions
     cosa=cos(V(j).entryangle); sina=sin(V(j).entryangle); 

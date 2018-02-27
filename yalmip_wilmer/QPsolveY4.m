@@ -52,7 +52,6 @@ SuSub(3,3)=Sddz/Sdz;
 for i=1:Nv
     Su(3*i-2:3*i,3*i-2:3*i)=SuSub;
 end
-Su
 
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
@@ -97,6 +96,20 @@ else
     res.status=sol.info;
     display(sol.info);
     display('naj');
+end
+
+
+for i=1:Nv
+    subplot(1,Nv,i)
+    plot(value(X(3*i-2,:)),1./value(X(3*i-1,:)));
+    
+    xlabel('time');
+    ylabel('velocity'); 
+
+    
+    
+    %plot(1:Ns,value(X(3*i-1,:)));
+    hold on
 end
 
 end

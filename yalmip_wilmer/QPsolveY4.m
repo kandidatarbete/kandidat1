@@ -68,7 +68,20 @@ for i=1:Nv
      constraints=[constraints, X(3*i,1)==0];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
      constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+     
 end
+% critical zone constraints
+% for j=1:Nv-1
+%     constraints =  [constraints, ...
+%         t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
+% end
+%critical zone constraint 
+for i = 1:Nv-1
+    %T(V(co(j)) = X(3*i-2);
+    constraints = [constraints, 
+    X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
+end
+
 
 cost=[];
 cost1=[];

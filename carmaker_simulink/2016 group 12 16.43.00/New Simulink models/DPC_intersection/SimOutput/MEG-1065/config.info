@@ -1,0 +1,296 @@
+#INFOFILE1.1 - Do not remove this line!
+TestRig.StartTime1970Str = 2016-07-08 14:19:22
+TestRig.StartTime1970 = 1467980362
+CarMaker.Library = win32 5.0.3 #323\n
+CarMaker.Compiled = fh@daniel.ipg 2016-01-12 20:31:16
+CarMaker.CompileFlags:
+	-O3 -march=i686 -DNDEBUG -DWIN32 -DCM_NUMVER=50003 -DCM50  -Wall -Wimplicit -Wmissing-prototypes -D__USE_MINGW_ANSI_STDIO -DCM_FMU
+CarMaker.Version = 5.0.3
+CarMaker.Version.MatSupp = 5.0.3
+CarMaker.Version.Apo = 1.23
+CarMaker.Version.Info = 1.8.1
+CarMaker.Version.MIO = unknown
+CarMaker.Version.Driver = 6.5.4
+CarMaker.Version.Road = 5.0.3
+CarMaker.Version.Tire = 5.0
+Driver.Version = 6.5.4
+Driver.ParamId = 6500000
+Driver.ErrorId = 5110000
+Driver.LearnPhaseId = 4051500
+Driver.Info = (@@)IPGDriver win32 6.5.4 2015-11-10
+Driver.CompileTime = 15/11/10 07:59:50
+Driver.CompileBy = uw
+Driver.CompileSystem = VMMICKEY1
+Driver.CompileFlags = gcc -ansi -pedantic -Wall -DWIN32 -DDLLEXP= -I../lock/win32 -O3 -march=i686 -DNDEBUG   -D_GNU_SOURCE
+Driver.BuiltVersion = 12744
+Driver.ThreadPolicy = 0
+Driver.ThreadPrio = 17
+Environment.Models:
+	MyEnvironment       	v1 (compat. v1)
+	Generic             	v1 (compat. v1)
+PTEngineCU.Models:
+	MyModel             	v1 (compat. v1)
+	Basic               	v1 (compat. v1)
+PTEngine.Models:
+	MyModel             	v1 (compat. v1)
+	Sherpa              	v1 (compat. v1)
+	DVA                 	v1 (compat. v1)
+	Mapping             	v1 (compat. v1)
+	Linear              	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+PTMotorCU.Models:
+	MyModel             	v1 (compat. v1)
+	Basic               	v1 (compat. v1)
+PTMotor.Models:
+	MyModel             	v1 (compat. v1)
+	Mapping             	v1 (compat. v1)
+	Starter             	v1 (compat. v1)
+PTTransmCU.Models:
+	MyModel             	v1 (compat. v1)
+	Auto_AMT            	v1 (compat. v1)
+	Auto_Conv           	v1 (compat. v1)
+	Automatic           	v1 (compat. v1)
+PTClutch.Models:
+	MyModel             	v1 (compat. v1)
+	Closed              	v1 (compat. v1)
+	Open                	v1 (compat. v1)
+	DMF                 	v1 (compat. v1)
+	DVA                 	v1 (compat. v1)
+	Converter           	v1 (compat. v1)
+	Manual              	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+PTGearBox.Models:
+	MyModel             	v1 (compat. v1)
+	NoGearBox           	v1 (compat. v1)
+	Auto_AMT            	v1 (compat. v1)
+	Auto_Conv           	v1 (compat. v1)
+	Automatic           	v1 (compat. v1)
+	DVA                 	v1 (compat. v1)
+	Manual              	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+PTDriveLine.Models:
+	MyModel             	v1 (compat. v1)
+	GenAxle             	v1 (compat. v1)
+	Gen4WD              	v1 (compat. v1)
+	Gen4x4              	v1 (compat. v1)
+	Gen2p2Rear          	v1 (compat. v1)
+	Gen2p2Front         	v1 (compat. v1)
+	GenRear             	v1 (compat. v1)
+	Gen4x2              	v1 (compat. v1)
+	GenFront            	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+PTDriveLineXWD.Models:
+	MyModel             	v1 (compat. v1)
+PowerTrain.Models:
+	MyModel             	v1 (compat. v1)
+	AVL_CRUISE          	v1 (compat. v1)
+	OpenXWD             	v1 (compat. v1)
+	HEV_PowerSplit      	v1 (compat. v1)
+	BEV                 	v1 (compat. v1)
+	HEV_Serial          	v1 (compat. v1)
+	HEV_AxleSplit       	v1 (compat. v1)
+	HEV_Parallel        	v1 (compat. v1)
+	Generic             	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+PowerTrainXWD.Models:
+	MyModel             	v1 (compat. v1)
+PTControl.Models:
+	MyModel             	v1 (compat. v1)
+	PowerSplit          	v1 (compat. v1)
+	Serial              	v1 (compat. v1)
+	Serial_Auto_AMT     	v1 (compat. v1)
+	BEV                 	v1 (compat. v1)
+	BEV_Auto_AMT        	v1 (compat. v1)
+	AxleSplit           	v1 (compat. v1)
+	AxleSplit_Auto_AMT  	v1 (compat. v1)
+	Parallel_P2         	v1 (compat. v1)
+	Parallel_P2_Auto_Conv	v1 (compat. v1)
+	Parallel_P1         	v1 (compat. v1)
+	Parallel_P1_Auto_Conv	v1 (compat. v1)
+	Micro               	v1 (compat. v1)
+	Generic             	v1 (compat. v1)
+PTControlOSM.Models:
+	MyModel             	v1 (compat. v1)
+	Generic             	v1 (compat. v1)
+PTGenCoupling.Models:
+	MyModel             	v1 (compat. v1)
+	TrqVec              	v1 (compat. v1)
+	DVA_Locked          	v1 (compat. v1)
+	TrqSensing          	v1 (compat. v1)
+	Locked              	v1 (compat. v1)
+	Visco               	v1 (compat. v1)
+PTBatteryCU.Models:
+	MyModel             	v1 (compat. v1)
+	LV_HV1              	v1 (compat. v1)
+	LV_HV1_HV2          	v1 (compat. v1)
+	LV                  	v1 (compat. v1)
+PTBattery.Models:
+	MyModel             	v1 (compat. v1)
+	Chen                	v1 (compat. v1)
+PTPowerSupply.Models:
+	MyModel             	v1 (compat. v1)
+	LV_HV1_HV2          	v1 (compat. v1)
+	LV_HV1              	v1 (compat. v1)
+	LV                  	v1 (compat. v1)
+Steering.Models:
+	MyModel             	v1 (compat. v1)
+	Pfeffer             	v1 (compat. v1)
+	GenTorque           	v1 (compat. v1)
+	GenAngle            	v1 (compat. v1)
+	Classic             	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+Tire.Models:
+	RTTireWrap          	v1 (compat. v1)
+	MyModelSTI          	v1 (compat. v1)
+	MyModelCPI          	v1 (compat. v1)
+	IPGTIRE             	v1 (compat. v1)
+	TameTire            	v1 (compat. v1)
+	TNO_MF61            	v1 (compat. v1)
+	MF61                	v1 (compat. v1)
+	MF52                	v3 (compat. v2)
+	RTTire              	v3 (compat. v3)
+	Dummy               	v1 (compat. v1)
+TireCPMod.Models:
+	MyModel             	v1 (compat. v1)
+Aero.Models:
+	MyModel             	v1 (compat. v1)
+	Coeff6x1            	v1 (compat. v1)
+	IPGCar              	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+SuspExtFrcs.Models:
+	MyModel             	v1 (compat. v1)
+	SuspComponent       	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+SuspEF_Spring.Models:
+	MyModel             	v1 (compat. v1)
+SuspEF_Damper.Models:
+	MyModel             	v1 (compat. v1)
+SuspEF_Buffer.Models:
+	MyModel             	v1 (compat. v1)
+SuspEF_Stabi.Models:
+	MyModel             	v1 (compat. v1)
+MCycleSuspFront.Models:
+MCycleSuspRear.Models:
+MCycleSuspFrcEl.Models:
+UserDriver.Models:
+VehicleControl.Models:
+	MyModel             	v1 (compat. v1)
+	GenLongCtrl         	v1 (compat. v1)
+	GenLatCtrl          	v1 (compat. v1)
+	AccelCtrl           	v1 (compat. v1)
+VhclOperator.Models:
+	MyModel             	v1 (compat. v1)
+	IPGOperator         	v1 (compat. v1)
+PTCruiseIF.Models:
+	CM-DVA              	v1 (compat. v1)
+	IPG_IF_CarMaker     	v1 (compat. v1)
+Brake.Models:
+	MyModel             	v1 (compat. v1)
+	OverrunFric         	v1 (compat. v1)
+	Overrun             	v1 (compat. v1)
+	Hyd                 	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+	NoBrake             	v1 (compat. v1)
+HydBrakeSystem.Models:
+	HydESPWrap          	v1 (compat. v1)
+	TrPresDistrib       	v1 (compat. v1)
+	HydESP              	v4 (compat. v3)
+	PresDistrib         	v1 (compat. v1)
+HydBrakeControl.Models:
+	MyModel             	v1 (compat. v1)
+	HydHIL              	v1 (compat. v1)
+	HydBasic            	v1 (compat. v1)
+AirBrakeSystem.Models:
+AirBrakeControl.Models:
+SuspKnC.Models:
+	MyModel_FLR         	v1 (compat. v1)
+	MyModel_F           	v1 (compat. v1)
+	DoubleWishboneExtend	v1 (compat. v1)
+	DoubleWishbone      	v1 (compat. v1)
+	TwistBeamExtend     	v1 (compat. v1)
+	TwistBeam           	v1 (compat. v1)
+	FourLinkExtend      	v1 (compat. v1)
+	FourLink            	v1 (compat. v1)
+	McPhersonExtend     	v1 (compat. v1)
+	McPherson           	v1 (compat. v1)
+SuspKnC_Kin.Models:
+	SemiTrailingArm     	v1 (compat. v1)
+	Crank               	v1 (compat. v1)
+	Sleeve              	v1 (compat. v1)
+	MapNL               	v4 (compat. v4)
+	Linear3D            	v1 (compat. v1)
+	Linear2D            	v1 (compat. v1)
+	Linear              	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+SuspKnC_Com.Models:
+	Displace2DFr2       	v1 (compat. v1)
+	Displace2DFr1       	v1 (compat. v1)
+	Displace1DFr2       	v1 (compat. v1)
+	DisplaceLinearFr2   	v1 (compat. v1)
+	DisplaceLinFr2      	v1 (compat. v1)
+	Displace1DFr1       	v1 (compat. v1)
+	DisplaceLinearFr1   	v1 (compat. v1)
+	DisplaceLinFr1      	v1 (compat. v1)
+	Coeff1DFr2          	v1 (compat. v1)
+	CoeffLinFr2         	v1 (compat. v1)
+	Coeff1DFr1          	v1 (compat. v1)
+	CoeffLinFr1         	v1 (compat. v1)
+	CoeffConstFr2       	v1 (compat. v1)
+	CoeffConstFr1       	v1 (compat. v1)
+	SetZero             	v1 (compat. v1)
+	Dummy               	v1 (compat. v1)
+Vehicle.Models:
+	MyCar               	v1 (compat. v1)
+Generic.Models:
+Application.Version = CarMaker 5.0.3 - Car_Generic
+Application.BuildVersion = 632
+Application.CompileTime = 2016-01-12 20:31:38
+Application.CompileUser = fh
+Application.CompileSystem = daniel.ipg
+Application.CompileFlags:
+	-O3 -march=i686 -DNDEBUG -DWIN32 -DCM_NUMVER=50003
+	-DMYMODELS -Wall -Wimplicit -Wmissing-prototypes
+	-D__USE_MINGW_ANSI_STDIO
+
+Application.Libs:
+	libcar.a	CarMaker-Car win32 5.0.3 2016-01-12
+	libcarmaker.a	CarMaker win32 5.0.3 2016-01-12
+	libipgdriver.a	IPGDriver win32 6.5.4 2015-11-10
+	libipgroad.a	IPGRoad win32 5.0.3 2015-12-17
+	libipgtire.a	IPGTire win32 5.0 2015-06-09
+	libtametire.a	TameTire win32 2.2.18.1 2013-04-10
+
+Application.Version.Driver = 6.5.4
+Application.Version.Road = 5.0.3
+
+IO.Configs:
+	none
+
+ErrorClass.0.Text = General
+ErrorClass.0.Action = abort
+ErrorClass.0.Save = 0
+ErrorClass.0.WarnLimit = 0 0
+ErrorClass.1.Text = Initialization
+ErrorClass.1.Action = abort
+ErrorClass.1.Save = 0
+ErrorClass.1.WarnLimit = 0 0
+ErrorClass.2.Text = Simulation
+ErrorClass.2.Action = abort
+ErrorClass.2.Save = 1
+ErrorClass.2.WarnLimit = 0 0
+ErrorClass.3.Text = CycleTime
+ErrorClass.3.Action = abort
+ErrorClass.3.Save = 0
+ErrorClass.3.WarnLimit = 0 0
+ErrorClass.4.Text = Engine stalled
+ErrorClass.4.Action = abort
+ErrorClass.4.Save = 0
+ErrorClass.4.WarnLimit = 0 0
+ErrorClass.5.Text = Trailer Articulation Angle
+ErrorClass.5.Action = abort
+ErrorClass.5.Save = 0
+ErrorClass.5.WarnLimit = 0 0
+ErrorClass.6.Text = Data Storage
+ErrorClass.6.Action = warn
+ErrorClass.6.Save = 0
+ErrorClass.6.WarnLimit = 0 0

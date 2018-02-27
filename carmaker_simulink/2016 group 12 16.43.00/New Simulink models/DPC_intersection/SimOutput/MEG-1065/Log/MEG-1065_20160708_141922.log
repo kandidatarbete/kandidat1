@@ -1,0 +1,14 @@
+APPLICATION	CarMaker 5.0.3 - Car_Generic #632 (5.0.3)
+COMPILED	fh@daniel.ipg 2016-01-12 20:31:38
+FIRST_INIT	(internal default used)	2016-07-08 14:19:22
+TIME	0.000
+IDLE	14:19:23
+SIM_START	Performance/Slalom_18m_DemoCar	2016-07-08 14:19:23
+TIME	0.000
+SIMULATE	Performance/Slalom_18m_DemoCar
+
+TIME	3.654
+SIM_END		Performance/Slalom_18m_DemoCar	3.645s	7.03411m
+TIME	600.984
+SHUTDOWN	CarMaker quick shutdown initiated
+

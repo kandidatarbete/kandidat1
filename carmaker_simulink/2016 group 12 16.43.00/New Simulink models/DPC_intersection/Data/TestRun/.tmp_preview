@@ -1,0 +1,97 @@
+#INFOFILE1.1 - Do not remove this line!
+TestRun.Name = DCP_Final
+Vehicle = Examples/Demo_Tesla_S
+Trailer =
+Trailer2 =
+Tire.0 =
+Tire.1 =
+Tire.2 =
+Tire.3 =
+Road.VhclStartPos = 130
+Road.Lane = right
+Road.DigSmooth = 0.2 0 0
+Road.DigOptions =
+Road.Country = DEU
+Road.RouteId = 0
+Road.GCS.RefPos_0 = 0 0 0
+Road.GCS.Projection =
+Road.2Movie.MStrip = 0.12 3 6
+Road.2Movie.SStrip = 0.12 0 0 0.1
+Road.2Movie.GStrip = 0 10
+Road.2Movie.MaxErrXY = 0.02
+Road.2Movie.GeoStepSize = 0.20
+Road.2Movie.GenBridges = 0
+Road.2Movie.BgGeoFName =
+Road.2Movie.BgGeoOptions =
+Road.2Movie.TerrainFName =
+Road.Definition:
+	FileIdent IPGRoad 4.5
+	Origin    0 0 0 0
+	Default 5 5 0.50 0.50 1.0 1.0 - 0 0 - 0 0
+	Straight  800 - - - -  0 0 0
+	+Marker RoadPainting 400 0 0 0 20 15 1 m area.png
+	TurnRight  400 270 - - - -  0 0 0
+	Straight  800 - - - -  0 0 0
+	+Marker RoadPainting 400 0 0 0 20 15 1 m area.png
+	TurnLeft  400 270 - - - -  0 0 0
+Traffic.N = 3
+Traffic.SpeedUnit = kmh
+Traffic.0.ObjectKind = Movable
+Traffic.0.Name = Cross
+Traffic.0.Info = Crossing Car
+Traffic.0.Movie.Geometry = Audi_R8_2006.mobj
+Traffic.0.Color = 1.0 1.0 1.0
+Traffic.0.Basics.Dimension = 4.1 1.7 1.2
+Traffic.0.Basics.Offset = 0.2 0.0
+Traffic.0.Init.Orientation = 0.0 0.0 0.0
+Traffic.0.Oncoming = 0
+Traffic.0.FreeMotion = 0
+Traffic.0.DetectMask = 1 1
+Traffic.0.Route = 0 0
+Traffic.0.Init.v = 48
+Traffic.0.Init.Road = 2800 -2.5
+Traffic.0.Man.TreatAtEnd = FreezePos
+Traffic.0.Man.N = 2
+Traffic.0.Man.0.Limit = t_abs 16
+Traffic.0.Man.0.LongDyn = aUser
+Traffic.0.Man.1.Limit = t 999
+Traffic.0.Man.1.LongDyn = aUser
+Traffic.1.ObjectKind = Movable
+Traffic.1.Name = Cross2
+Traffic.1.Info = Crossing Car 2
+Traffic.1.Movie.Geometry = Toyota_Camry_2006.mobj
+Traffic.1.Color = 1.0 1.0 1.0
+Traffic.1.Basics.Dimension = 4.1 1.7 1.2
+Traffic.1.Basics.Offset = 0.2 0.0
+Traffic.1.Init.Orientation = 0.0 0.0 0.0
+Traffic.1.Oncoming = 0
+Traffic.1.FreeMotion = 0
+Traffic.1.DetectMask = 1 1
+Traffic.1.Route = 1 0
+Traffic.1.Init.v = 50
+Traffic.1.Init.Road = 1970 -2.5
+Traffic.1.Man.TreatAtEnd = FreezePos
+Traffic.1.Man.N = 2
+Traffic.1.Man.0.Limit = t_abs 16
+Traffic.1.Man.0.LongDyn = aUser
+Traffic.1.Man.1.Limit = t 999
+Traffic.1.Man.1.LongDyn = aUser
+Traffic.2.ObjectKind = Movable
+Traffic.2.Name = T03
+Traffic.2.Info = UNNAMED Object 3
+Traffic.2.Movie.Geometry = Terrain/Nordschleife.roadgeo
+Traffic.2.Color = 1.0 1.0 1.0
+Traffic.2.Basics.Dimension = 0 0 0
+Traffic.2.Basics.Offset = 0 0.0
+Traffic.2.Init.Orientation = 0.0 0.0 0.0
+Traffic.2.Oncoming = 0
+Traffic.2.FreeMotion = 1
+Traffic.2.DetectMask = 0 0
+Traffic.2.Route = 0 0
+Traffic.2.Init.v = 0
+Traffic.2.Init.Road = 399.45 0
+Traffic.2.Man.TreatAtEnd = FreezePos
+Traffic.2.Man.N = 2
+Traffic.2.Man.0.Limit = t_abs 16
+Traffic.2.Man.0.LongDyn = v 46
+Traffic.2.Man.1.Limit = t 999

@@ -1,0 +1,86 @@
+**HEADER
+RELEASE   Release of TYDEX-Format                 1.3
+SUPPLIER  Data supplier                           Tire Data Set Generator
+DATE      Date                                    08/07/16
+CLCKTIME  Clocktime                               15:56
+
+**CONSTANTS
+NOMWIDTH  Nominal section width of tyre mm        195
+ASPRATIO  Nominal aspect ratio          %         65
+TYSTRUCT  Tyre structure                          R
+RIMDIAME  Nominal rim diameter          inch      15
+RIMWIDTH  Rim width                     inch      6
+RIMPROF   Rim profile                             J
+REFSIDEW  Reference sidewall                      DOT
+TYWHASSB  Tyre-wheel assembly                     REFSWLEFT
+AMBITEMP  Ambient temperature           deg C     25
+INFLPRES  Inflation pressure            bar       2.50
+TRCKCOND  Track condition                         DRY
+OVALLDIA  Overall diameter              mm        635
+NOMDIAME  nominal tire diameter         mm        635
+KROLRAD   kinematic roll radius         mm        308
+IDENTITY  Identity of the tyre                    Created with IPG Tire Data Set Generator Version 1.0 (2015-06-09)
+PARTNUM   Part number                             Generated - not validated - Tire data
+
+**MODELPARAMETERS
+ITVS      Vertikale Reifenfeder                   367240
+ITVD      Vertikaler Reifendaempfer               4509
+ITRLLO    Relaxationslaenge laengs                0.05
+ITRLLA    Relaxationsl. quer                      0.1
+ITSSCLO   StillStandskoeffizient long             0.01
+ITSSCLA   StillStandskoeffizient quer             0.01
+ITRORETL  roll resistance Trq/Load                0.0214
+
+**MEASURCHANNELS
+FZW       Vertical force                N         1         0
+SLIPANGL  Slip angle                    deg       1         0
+FYW       Lateral force                 N         1         0
+MZW       Aligning moment               Nm        1         0
+
+**MEASURDATA
+   1430.00     -12.00        1581.67          -3.03
+   1430.00      -9.00        1533.15          -2.56
+   1430.00      -6.00        1374.45          -2.70
+   1430.00      -3.00         928.36          -3.25
+   1430.00       0.00          -0.00           0.00
+   1430.00       3.00        -928.36           3.25
+   1430.00       6.00       -1374.45           2.70
+   1430.00       9.00       -1533.15           2.56
+   1430.00      12.00       -1581.67           3.03
+   2860.00     -12.00        2837.44           0.29
+   2860.00      -9.00        2921.46          -4.77
+   2860.00      -6.00        2836.70         -13.45
+   2860.00      -3.00        1933.83         -20.59
+   2860.00       0.00          -0.00           0.00
+   2860.00       3.00       -1933.83          20.59
+   2860.00       6.00       -2836.70          13.45
+   2860.00       9.00       -2921.46           4.77
+   2860.00      12.00       -2837.44          -0.29
+   4290.00     -12.00        4092.53           7.10
+   4290.00      -9.00        4241.32          -7.94
+   4290.00      -6.00        4167.14         -32.64
+   4290.00      -3.00        2816.44         -50.84
+   4290.00       0.00          -0.00           0.00
+   4290.00       3.00       -2816.44          50.84
+   4290.00       6.00       -4167.14          32.64
+   4290.00       9.00       -4241.32           7.94
+   4290.00      12.00       -4092.53          -7.10
+   5720.00     -12.00        5393.05          17.46
+   5720.00      -9.00        5584.93         -12.43
+   5720.00      -6.00        5428.25         -59.92
+   5720.00      -3.00        3539.83         -90.36
+   5720.00       0.00          -0.00           0.00
+   5720.00       3.00       -3539.83          90.36
+   5720.00       6.00       -5428.25          59.92
+   5720.00       9.00       -5584.93          12.43
+   5720.00      12.00       -5393.05         -17.46
+   7150.00     -12.00        6741.72          31.57
+   7150.00      -9.00        6945.68         -18.26
+   7150.00      -6.00        6585.04         -94.16
+   7150.00      -3.00        4086.75        -134.98
+   7150.00       0.00          -0.00           0.00
+   7150.00       3.00       -4086.75         134.98
+   7150.00       6.00       -6585.04          94.16
+   7150.00       9.00       -6945.68          18.26
+   7150.00      12.00       -6741.72         -31.57
+**END

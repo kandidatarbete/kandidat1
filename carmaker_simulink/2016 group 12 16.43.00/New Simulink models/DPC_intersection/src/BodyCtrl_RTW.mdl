@@ -1,0 +1,1812 @@
+Model {
+  Name			  "BodyCtrl_RTW"
+  Version		  7.5
+  MdlSubVersion		  0
+  GraphicalInterface {
+    NumRootInports	    2
+    Inport {
+      BusObject		      "cmSuspExtFrcsIn"
+      Name		      "FromCM"
+    }
+    Inport {
+      BusObject		      "cmSuspExtFrcsCfgIn"
+      Name		      "CfgInFromCM"
+    }
+    NumRootOutports	    1
+    Outport {
+      BusObject		      "cmSuspExtFrcsOut"
+      BusOutputAsStruct	      "off"
+      Name		      "ToCM"
+    }
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.6"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  Description		  "CarMaker Real-Time Target (generic)"
+  SavedCharacterEncoding  "ISO-8859-1"
+  PreLoadFcn		  "vehicle = 'Car'; if ~length(which('cmcmd')), cmenv; end\nBodyCtrl_RTW_bus\nBodyCtrl_RTW_params"
+  SaveDefaultBlockParams  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  MaxMDLFileLineLength	  120
+  InitFcn		  "vehicle = 'Car'; if ~length(which('cmcmd')), cmenv; end\nBodyCtrl_RTW_bus\nBodyCtrl_RTW_params"
+  Created		  "Tue May 26 08:11:24 2015"
+  Creator		  "ml"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "ml"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Wed Jul  1 08:22:54 2015"
+  RTWModifiedTimeStamp	  357639770
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  ConfigurationManager	  "None"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  TunableVars		  "BodyCtrl_k"
+  TunableVarsStorageClass "ExportedGlobal"
+  BufferReuse		  on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      1
+      Version		      "1.10.0"
+      Array {
+	Type			"Handle"
+	Dimension		8
+	Simulink.SolverCC {
+	  $ObjectID		  2
+	  Version		  "1.10.0"
+	  StartTime		  "0.0"
+	  StopTime		  "inf"
+	  AbsTol		  "auto"
+	  FixedStep		  "0.001"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "SingleTasking"
+	  Solver		  "ode1"
+	  SolverName		  "ode1"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  3
+	  Version		  "1.10.0"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  4
+	  Version		  "1.10.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    7
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  InlineParams		  on
+	  UseIntDivNetSlope	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  StrengthReduction	  off
+	  EnforceIntegerDowncast  on
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  ExpressionDepthLimit	  2147483647
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  off
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "Off"
+	  AccelVerboseBuild	  off
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  5
+	  Version		  "1.10.0"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"warning"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "UseLocalSettings"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  SolverPrmCheckMsg	  "none"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "error"
+	  MultiTaskCondExecSysMsg "error"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "Use local settings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  StrictBusMsg		  "ErrorLevel1"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
+	  BlockIODiagnostic	  "none"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  6
+	  Version		  "1.10.0"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "32-bit Generic"
+	  TargetUnknown		  off
+	  ProdEqTarget		  off
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  7
+	  Version		  "1.10.0"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  8
+	  Version		  "1.10.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
+	  SFSimEcho		  on
+	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimBuildMode		  "sf_incremental_build"
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  9
+	  Version		  "1.10.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    6
+	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "CarMaker.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  TemplateMakefile	  "CarMaker_unix.tmf"
+	  Description		  "CarMaker Real-Time Target (32-bit)"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ProcessScript		  "CarMaker_make_rtw_hook"
+	  ConfigAtBuild		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
+	  RTWCompilerOptimization "Off"
+	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      10
+	      Version		      "1.10.0"
+	      Array {
+		Type			"Cell"
+		Dimension		19
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		Cell			"ReqsInCode"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      63
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      SimulinkBlockComments   on
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.STFCustomTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      11
+	      Version		      "1.10.0"
+	      Array {
+		Type			"Cell"
+		Dimension		17
+		Cell			"GeneratePreprocessorConditionals"
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"GenerateTestInterfaces"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"CPPClassGenCompliant"
+		Cell			"MultiInstanceERTCode"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportNonFinite"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		Cell			"PortableWordSizes"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      TargetFunctionLibrary   "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      ERTCodeCoverageTool     "None"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant off
+	      ParMdlRefBuildCompliant off
+	      CompOptLevelCompliant   off
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      off
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
+	      ParenthesesLevel	      "Nominal"
+	      PortableWordSizes	      off
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    off
+	      AutosarCompliant	      off
+	      SystemTargetFile	      "CarMaker.tlc"
+	      DialogCategory	      0
+	      Array {
+		Type			"Handle"
+		Dimension		1
+		Simulink.GRTTargetCC {
+		  $BackupClass		  "Simulink.TargetCC"
+		  $ObjectID		  12
+		  Version		  "1.10.0"
+		  Array {
+		    Type		    "Cell"
+		    Dimension		    17
+		    Cell		    "GeneratePreprocessorConditionals"
+		    Cell		    "IncludeMdlTerminateFcn"
+		    Cell		    "CombineOutputUpdateFcns"
+		    Cell		    "SuppressErrorStatus"
+		    Cell		    "ERTCustomFileBanners"
+		    Cell		    "GenerateSampleERTMain"
+		    Cell		    "GenerateTestInterfaces"
+		    Cell		    "ModelStepFunctionPrototypeControlCompliant"
+		    Cell		    "CPPClassGenCompliant"
+		    Cell		    "MultiInstanceERTCode"
+		    Cell		    "PurelyIntegerCode"
+		    Cell		    "SupportNonFinite"
+		    Cell		    "SupportComplex"
+		    Cell		    "SupportAbsoluteTime"
+		    Cell		    "SupportContinuousTime"
+		    Cell		    "SupportNonInlinedSFcns"
+		    Cell		    "PortableWordSizes"
+		    PropName		    "DisabledProps"
+		  }
+		  TargetFcnLib		  "ansi_tfl_table_tmw.mat"
+		  TargetLibSuffix	  ""
+		  TargetPreCompLibLocation ""
+		  TargetFunctionLibrary	  "ANSI_C"
+		  UtilityFuncGeneration	  "Auto"
+		  ERTMultiwordTypeDef	  "System defined"
+		  ERTCodeCoverageTool	  "None"
+		  ERTMultiwordLength	  256
+		  MultiwordLength	  2048
+		  GenerateFullHeader	  on
+		  GenerateSampleERTMain	  off
+		  GenerateTestInterfaces  off
+		  IsPILTarget		  off
+		  ModelReferenceCompliant off
+		  ParMdlRefBuildCompliant off
+		  CompOptLevelCompliant	  off
+		  IncludeMdlTerminateFcn  on
+		  GeneratePreprocessorConditionals "Disable all"
+		  CombineOutputUpdateFcns off
+		  SuppressErrorStatus	  off
+		  ERTFirstTimeCompliant	  off
+		  IncludeFileDelimiter	  "Auto"
+		  ERTCustomFileBanners	  off
+		  SupportAbsoluteTime	  on
+		  LogVarNameModifier	  "rt_"
+		  MatFileLogging	  off
+		  MultiInstanceERTCode	  off
+		  SupportNonFinite	  on
+		  SupportComplex	  on
+		  PurelyIntegerCode	  off
+		  SupportContinuousTime	  on
+		  SupportNonInlinedSFcns  on
+		  SupportVariableSizeSignals off
+		  EnableShiftOperators	  on
+		  ParenthesesLevel	  "Nominal"
+		  PortableWordSizes	  off
+		  ModelStepFunctionPrototypeControlCompliant off
+		  CPPClassGenCompliant	  off
+		  AutosarCompliant	  off
+		  UseMalloc		  off
+		  ExtMode		  off
+		  ExtModeStaticAlloc	  off
+		  ExtModeTesting	  off
+		  ExtModeStaticAllocSize  1000000
+		  ExtModeTransport	  0
+		  ExtModeMexFile	  "noextcomm"
+		  ExtModeIntrfLevel	  "Level1"
+		  RTWCAPISignals	  on
+		  RTWCAPIParams		  on
+		  RTWCAPIStates		  off
+		  GenerateASAP2		  off
+		}
+		PropName		"Components"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"HilProjDir"
+		Value			".."
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilProjHookup"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilProjMake"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilVerboseMake"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType__fs_u3_CarMaker_workjaw_WorkDevel_5_0_fake_linux_Matlab_R2010a_CarMaker_1HilVehicleTy"
+		"pe"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Car"
+		  Value			  1
+		  String		  "Motorcycle"
+		  Value			  2
+		  String		  "Truck"
+		}
+		Name			"HilVehicleType"
+		Value			"Car"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType__fs_u3_CarMaker_workjaw_WorkDevel_5_0_fake_linux_Matlab_R2010a_CarMaker_1HilWrapperTy"
+		"pe"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Aero"
+		  Value			  1
+		  String		  "Brake"
+		  Value			  2
+		  String		  "Environment"
+		  Value			  3
+		  String		  "HydBrakeSystem"
+		  Value			  4
+		  String		  "HydBrakeControl"
+		  Value			  5
+		  String		  "AirBrakeSystem"
+		  Value			  6
+		  String		  "AirBrakeControl"
+		  Value			  7
+		  String		  "PowerTrain"
+		  Value			  8
+		  String		  "PowerTrainXWD"
+		  Value			  9
+		  String		  "PTBattery"
+		  Value			  10
+		  String		  "PTBatteryCU"
+		  Value			  11
+		  String		  "PTClutch"
+		  Value			  12
+		  String		  "PTControl"
+		  Value			  13
+		  String		  "PTControlOSM"
+		  Value			  14
+		  String		  "PTDriveLine"
+		  Value			  15
+		  String		  "PTDriveLineXWD"
+		  Value			  16
+		  String		  "PTEngine"
+		  Value			  17
+		  String		  "PTEngineCU"
+		  Value			  18
+		  String		  "PTGearBox"
+		  Value			  19
+		  String		  "PTGenCoupling"
+		  Value			  20
+		  String		  "PTMotor"
+		  Value			  21
+		  String		  "PTMotorCU"
+		  Value			  22
+		  String		  "PTPowerSupply"
+		  Value			  23
+		  String		  "PTTransmCU"
+		  Value			  24
+		  String		  "Steering"
+		  Value			  25
+		  String		  "SuspExtFrcs"
+		  Value			  26
+		  String		  "SuspEF_Spring"
+		  Value			  27
+		  String		  "SuspEF_Damper"
+		  Value			  28
+		  String		  "SuspEF_Buffer"
+		  Value			  29
+		  String		  "SuspEF_Stabi"
+		  Value			  30
+		  String		  "SuspKnC"
+		  Value			  31
+		  String		  "TireCPI"
+		  Value			  32
+		  String		  "TireCPMod"
+		  Value			  33
+		  String		  "TireSTI"
+		  Value			  34
+		  String		  "UserDriver"
+		  Value			  35
+		  String		  "Vehicle_Car"
+		  Value			  36
+		  String		  "VehicleControl"
+		  Value			  37
+		  String		  "VhclOperator"
+		  Value			  38
+		  String		  "Plain"
+		  Value			  39
+		  String		  "Generic"
+		}
+		Name			"HilWrapperType"
+		Value			"SuspExtFrcs"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"HilDescription"
+		Value			"BodyCtrl_RTW"
+	      }
+	      CustomProperty {
+		DataType		"int32"
+		Name			"HilParamId"
+		Value			1
+	      }
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
+      CurrentDlgPage	      "Real-Time Workshop/CarMaker"
+      ConfigPrmDlgPosition    " [ 508, 210, 1412, 927 ] "
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    1
+  }
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      BusCreator
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      BusSelector
+      OutputAsBus	      off
+    }
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Inherit from 'Constant value'"
+      OutDataType	      "fixdt(1,16,0)"
+      ConRadixGroup	      "Use specified scaling"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "fixdt(1,16,0)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      RateTransition
+      Integrity		      on
+      Deterministic	      on
+      X0		      "0"
+      OutPortSampleTimeOpt    "Specify"
+      OutPortSampleTimeMultiple	"1"
+      OutPortSampleTime	      "-1"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      TransferFcn
+      Numerator		      "[1]"
+      Denominator	      "[1 2 1]"
+      AbsoluteTolerance	      "auto"
+      ContinuousStateAttributes	"''"
+      Realization	      "auto"
+    }
+  }
+  System {
+    Name		    "BodyCtrl_RTW"
+    Location		    [108, 150, 908, 650]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    42
+    Block {
+      BlockType		      Inport
+      Name		      "FromCM"
+      SID		      1
+      Position		      [40, 55, 60, 65]
+      BackgroundColor	      "cyan"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmSuspExtFrcsIn"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "CfgInFromCM"
+      SID		      8
+      Position		      [40, 165, 60, 175]
+      BackgroundColor	      "cyan"
+      Port		      "2"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmSuspExtFrcsCfgIn"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "BodyCtrl Example"
+      SID		      32
+      Ports		      [0, 2]
+      Position		      [300, 19, 420, 101]
+      BackgroundColor	      "orange"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"BodyCtrl Example"
+	Location		[279, 677, 746, 860]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  33
+	  Position		  [140, 25, 170, 55]
+	  BackgroundColor	  "green"
+	  Gain			  "BodyCtrl_k"
+	  ParameterDataType	  "sfix(16)"
+	  ParameterScaling	  "2^0"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  34
+	  Position		  [325, 25, 355, 55]
+	  Gain			  "-1"
+	  ParameterDataTypeMode	  "Inherit via internal rule"
+	  ParameterDataType	  "sfix(16)"
+	  ParameterScaling	  "2^0"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeMode	  "Inherit via internal rule"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict"
+	  SID			  35
+	  Ports			  [0, 1]
+	  Position		  [40, 30, 110, 50]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.460"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.ay"
+	  xsync			  "off"
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "Transfer Fcn"
+	  SID			  36
+	  Position		  [210, 22, 270, 58]
+	  Denominator		  "[0.1 1]"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "FrcSpring FL"
+	  SID			  37
+	  Position		  [395, 33, 425, 47]
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "FrcSpring FR"
+	  SID			  38
+	  Position		  [395, 78, 425, 92]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Line {
+	  SrcBlock		  "Transfer Fcn"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    Points		    [0, 45]
+	    DstBlock		    "FrcSpring FR"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Gain1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "Transfer Fcn"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "FrcSpring FL"
+	  DstPort		  1
+	}
+	Annotation {
+	  Name			  "Run this example with the Examples/Simulink/BodyCtrl_RTW testrun."
+	  Position		  [233, 143]
+	}
+      }
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "CfgIF_In_Selector"
+      SID		      9
+      Ports		      [1, 1]
+      Position		      [100, 140, 110, 200]
+      BackgroundColor	      "cyan"
+      OutputSignals	      "VehicleClassId"
+      Port {
+	PortNumber		1
+	Name			"<VehicleClassId>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "CfgIF_In_Terminator"
+      SID		      10
+      Position		      [220, 160, 240, 180]
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "IF_In_Selector"
+      SID		      2
+      Ports		      [1, 2]
+      Position		      [100, 20, 110, 100]
+      BackgroundColor	      "cyan"
+      OutputSignals	      "lSpring.FL,lSpring.FR"
+      Port {
+	PortNumber		1
+	Name			"<FL>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+      Port {
+	PortNumber		2
+	Name			"<FR>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "IF_Out_Selector"
+      SID		      5
+      Ports		      [2, 1]
+      Position		      [500, 20, 690, 100]
+      BackgroundColor	      "cyan"
+      UserDataPersistent      on
+      UserData		      "DataTag0"
+      OpenFcn		      "cmSignalSelect('SignalSelection_CB',gcb)"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "Signal Selection"
+      MaskDescription	      "Signal Selection Block"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"IF_Out_Selector"
+	Location		[100, 100, 1300, 600]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "FrcSpring.FL"
+	  SID			  41
+	  Position		  [580, 20, 595, 30]
+	  BackgroundColor	  "red"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "FrcSpring.FR"
+	  SID			  42
+	  Position		  [580, 50, 595, 60]
+	  BackgroundColor	  "red"
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "FrcBuf"
+	  SID			  22
+	  Ports			  [4, 1]
+	  Position		  [800, 220, 815, 300]
+	  Port {
+	    PortNumber		    1
+	    Name		    "FrcBuf"
+	    PropagatedSignals	    "FL, FR, RL, RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcBuf.FL"
+	  SID			  23
+	  Position		  [580, 260, 595, 270]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcBuf.FR"
+	  SID			  24
+	  Position		  [580, 290, 595, 300]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcBuf.RL"
+	  SID			  25
+	  Position		  [580, 320, 595, 330]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcBuf.RR"
+	  SID			  26
+	  Position		  [580, 350, 595, 360]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "FrcDamp"
+	  SID			  17
+	  Ports			  [4, 1]
+	  Position		  [800, 120, 815, 200]
+	  Port {
+	    PortNumber		    1
+	    Name		    "FrcDamp"
+	    PropagatedSignals	    "FL, FR, RL, RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcDamp.FL"
+	  SID			  18
+	  Position		  [580, 140, 595, 150]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcDamp.FR"
+	  SID			  19
+	  Position		  [580, 170, 595, 180]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcDamp.RL"
+	  SID			  20
+	  Position		  [580, 200, 595, 210]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcDamp.RR"
+	  SID			  21
+	  Position		  [580, 230, 595, 240]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "FrcSpring"
+	  SID			  12
+	  Ports			  [4, 1]
+	  Position		  [800, 20, 815, 100]
+	  Port {
+	    PortNumber		    1
+	    Name		    "FrcSpring"
+	    PropagatedSignals	    "FL, FR, RL, RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcSpring.RL"
+	  SID			  15
+	  Position		  [580, 80, 595, 90]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcSpring.RR"
+	  SID			  16
+	  Position		  [580, 110, 595, 120]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "FrcStabi"
+	  SID			  27
+	  Ports			  [4, 1]
+	  Position		  [800, 320, 815, 400]
+	  Port {
+	    PortNumber		    1
+	    Name		    "FrcStabi"
+	    PropagatedSignals	    "FL, FR, RL, RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcStabi.FL"
+	  SID			  28
+	  Position		  [580, 380, 595, 390]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcStabi.FR"
+	  SID			  29
+	  Position		  [580, 410, 595, 420]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcStabi.RL"
+	  SID			  30
+	  Position		  [580, 440, 595, 450]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "FrcStabi.RR"
+	  SID			  31
+	  Position		  [580, 470, 595, 480]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  RateTransition
+	  Name			  "RateTransition"
+	  SID			  6
+	  Position		  [1080, 15, 1140, 35]
+	  OutPortSampleTime	  "str2num(get_param(gcs,'FixedStep'))"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "cmSuspExtFrcsOut"
+	  SID			  11
+	  Ports			  [4, 1]
+	  Position		  [1020, 20, 1035, 100]
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ToCM"
+	  SID			  7
+	  Position		  [1160, 20, 1180, 30]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "RateTransition"
+	  SrcPort		  1
+	  DstBlock		  "ToCM"
+	  DstPort		  1
+	}
+	Line {
+	  Labels		  [0, 0]
+	  SrcBlock		  "cmSuspExtFrcsOut"
+	  SrcPort		  1
+	  DstBlock		  "RateTransition"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FrcSpring"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcSpring"
+	  SrcPort		  1
+	  Points		  [0, -30]
+	  DstBlock		  "cmSuspExtFrcsOut"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcSpring.RL"
+	  SrcPort		  1
+	  DstBlock		  "FrcSpring"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcSpring.RR"
+	  SrcPort		  1
+	  DstBlock		  "FrcSpring"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FrcDamp"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcDamp"
+	  SrcPort		  1
+	  DstBlock		  "cmSuspExtFrcsOut"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcDamp.FL"
+	  SrcPort		  1
+	  DstBlock		  "FrcDamp"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcDamp.FR"
+	  SrcPort		  1
+	  DstBlock		  "FrcDamp"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcDamp.RL"
+	  SrcPort		  1
+	  DstBlock		  "FrcDamp"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcDamp.RR"
+	  SrcPort		  1
+	  DstBlock		  "FrcDamp"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FrcBuf"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcBuf"
+	  SrcPort		  1
+	  DstBlock		  "cmSuspExtFrcsOut"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcBuf.FL"
+	  SrcPort		  1
+	  DstBlock		  "FrcBuf"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcBuf.FR"
+	  SrcPort		  1
+	  DstBlock		  "FrcBuf"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcBuf.RL"
+	  SrcPort		  1
+	  DstBlock		  "FrcBuf"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcBuf.RR"
+	  SrcPort		  1
+	  DstBlock		  "FrcBuf"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FrcStabi"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcStabi"
+	  SrcPort		  1
+	  DstBlock		  "cmSuspExtFrcsOut"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcStabi.FL"
+	  SrcPort		  1
+	  DstBlock		  "FrcStabi"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcStabi.FR"
+	  SrcPort		  1
+	  DstBlock		  "FrcStabi"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcStabi.RL"
+	  SrcPort		  1
+	  DstBlock		  "FrcStabi"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcStabi.RR"
+	  SrcPort		  1
+	  DstBlock		  "FrcStabi"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcSpring.FL"
+	  SrcPort		  1
+	  DstBlock		  "FrcSpring"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "FrcSpring.FR"
+	  SrcPort		  1
+	  DstBlock		  "FrcSpring"
+	  DstPort		  2
+	}
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Terminator1"
+      SID		      39
+      Position		      [175, 72, 195, 88]
+      ShowName		      off
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "Terminator2"
+      SID		      40
+      Position		      [175, 32, 195, 48]
+      ShowName		      off
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "ToCM"
+      SID		      4
+      Position		      [710, 55, 730, 65]
+      BackgroundColor	      "cyan"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmSuspExtFrcsOut"
+    }
+    Line {
+      SrcBlock		      "FromCM"
+      SrcPort		      1
+      DstBlock		      "IF_In_Selector"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "IF_Out_Selector"
+      SrcPort		      1
+      DstBlock		      "ToCM"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CfgInFromCM"
+      SrcPort		      1
+      DstBlock		      "CfgIF_In_Selector"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<VehicleClassId>"
+      Labels		      [0, 0]
+      SrcBlock		      "CfgIF_In_Selector"
+      SrcPort		      1
+      DstBlock		      "CfgIF_In_Terminator"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "BodyCtrl Example"
+      SrcPort		      1
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "BodyCtrl Example"
+      SrcPort		      2
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      2
+    }
+    Line {
+      Name		      "<FL>"
+      Labels		      [0, 0]
+      SrcBlock		      "IF_In_Selector"
+      SrcPort		      1
+      DstBlock		      "Terminator2"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<FR>"
+      Labels		      [0, 0]
+      SrcBlock		      "IF_In_Selector"
+      SrcPort		      2
+      DstBlock		      "Terminator1"
+      DstPort		      1
+    }
+  }
+}
+MatData {
+  NumRecords		  1
+  DataRecord {
+    Tag			    DataTag0
+    Data		    "  %)30     .    R!(   8    (     @         %    \"     $    !     0         %  0 \"0    $    _    ;E-I9"
+    "P      <VEG3F%M90  8FQK3F%M90  =F%L=65S    =&]0;W)T    <V5L96-T960 <V5L261X      X    X    !@    @    &          4"
+    "    (     0    $    !          D    (            ,$ .    J ,   8    (     0         %    \"     $    0     0      "
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 1DP   X    P    !@    @    $          4 "
+    "   (     0    (    !         !   @!&4@  #@   #     &    \"     0         !0    @    !     @    $         $  \" %),"
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 4E(   X    P    !@    @    $          4 "
+    "   (     0    (    !         !   @!&3   #@   #     &    \"     0         !0    @    !     @    $         $  \" $92"
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 4DP   X    P    !@    @    $          4 "
+    "   (     0    (    !         !   @!24@  #@   #     &    \"     0         !0    @    !     @    $         $  \" $9,"
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 1E(   X    P    !@    @    $          4 "
+    "   (     0    (    !         !   @!23   #@   #     &    \"     0         !0    @    !     @    $         $  \" %)2"
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 1DP   X    P    !@    @    $          4 "
+    "   (     0    (    !         !   @!&4@  #@   #     &    \"     0         !0    @    !     @    $         $  \" %),"
+    "   .    ,     8    (    !          %    \"     $    \"     0         0  ( 4E(   X   \"H!   !@    @    !          4"
+    "    (     0   !     !          X   !     !@    @    $          4    (     0    P    !         !     ,    1G)C4W!R:"
+    "6YG+D9,      X   !     !@    @    $          4    (     0    P    !         !     ,    1G)C4W!R:6YG+D92      X   !"
+    "     !@    @    $          4    (     0    P    !         !     ,    1G)C4W!R:6YG+E),      X   !     !@    @    $ "
+    "         4    (     0    P    !         !     ,    1G)C4W!R:6YG+E)2      X   !     !@    @    $          4    (   "
+    "  0    H    !         !     *    1G)C1&%M<\"Y&3         X   !     !@    @    $          4    (     0    H    !    "
+    "     !     *    1G)C1&%M<\"Y&4@        X   !     !@    @    $          4    (     0    H    !         !     *    1"
+    "G)C1&%M<\"Y23         X   !     !@    @    $          4    (     0    H    !         !     *    1G)C1&%M<\"Y24@   "
+    "     X   !     !@    @    $          4    (     0    D    !         !     )    1G)C0G5F+D9,          X   !     !@ "
+    "   @    $          4    (     0    D    !         !     )    1G)C0G5F+D92          X   !     !@    @    $         "
+    " 4    (     0    D    !         !     )    1G)C0G5F+E),          X   !     !@    @    $          4    (     0    D"
+    "    !         !     )    1G)C0G5F+E)2          X   !     !@    @    $          4    (     0    L    !         !   "
+    "  +    1G)C4W1A8FDN1DP       X   !     !@    @    $          4    (     0    L    !         !     +    1G)C4W1A8FD"
+    "N1E(       X   !     !@    @    $          4    (     0    L    !         !     +    1G)C4W1A8FDN4DP       X   !  "
+    "   !@    @    $          4    (     0    L    !         !     +    1G)C4W1A8FDN4E(       X   \"H P  !@    @    !  "
+    "        4    (     0   !     !          X    P    !@    @    $          4    (     0    $    !         !   0 P    "
+    "#@   #     &    \"     0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \""
+    "     $    !     0         0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@ "
+    "  #     &    \"     0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"  "
+    "   $    !     0         0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   "
+    "#     &    \"     0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"    "
+    " $    !     0         0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   # "
+    "    &    \"     0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $"
+    "    !     0         0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #   "
+    "  &    \"     0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $  "
+    "  !     0         0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   (@$   "
+    "&    \"     $         !0    @    !    $     $         #@   $     &    \"     0         !0    @    !    \"P    $   "
+    "      $     L   !&<F-3<')I;F<O,0      #@   $     &    \"     0         !0    @    !    \"P    $         $     L   "
+    "!&<F-3<')I;F<O,@      #@   $     &    \"     0         !0    @    !    \"P    $         $     L   !&<F-3<')I;F<O,P"
+    "      #@   $     &    \"     0         !0    @    !    \"P    $         $     L   !&<F-3<')I;F<O-       #@   $    "
+    " &    \"     0         !0    @    !    \"0    $         $     D   !&<F-$86UP+S$         #@   $     &    \"     0  "
+    "       !0    @    !    \"0    $         $     D   !&<F-$86UP+S(         #@   $     &    \"     0         !0    @  "
+    "  !    \"0    $         $     D   !&<F-$86UP+S,         #@   $     &    \"     0         !0    @    !    \"0    $ "
+    "        $     D   !&<F-$86UP+S0         #@   #@    &    \"     0         !0    @    !    \"     $         $     @ "
+    "  !&<F-\"=68O,0X    X    !@    @    $          4    (     0    @    !         !     (    1G)C0G5F+S(.    .     8  "
+    "  (    !          %    \"     $    (     0         0    \"    $9R8T)U9B\\S#@   #@    &    \"     0         !0    @"
+    "    !    \"     $         $     @   !&<F-\"=68O- X   !     !@    @    $          4    (     0    H    !         ! "
+    "    *    1G)C4W1A8FDO,0        X   !     !@    @    $          4    (     0    H    !         !     *    1G)C4W1A8"
+    "FDO,@        X   !     !@    @    $          4    (     0    H    !         !     *    1G)C4W1A8FDO,P        X   !"
+    "     !@    @    $          4    (     0    H    !         !     *    1G)C4W1A8FDO-         X   \"X    !@    @    !"
+    "          4    (     @    $    !          X   !     !@    @    $          4    (     0    P    !         !     ,  "
+    "  1G)C4W!R:6YG+D9,      X   !     !@    @    $          4    (     0    P    !         !     ,    1G)C4W!R:6YG+D92"
+    "      X   \"H    !@    @    !          4    (     0    (    !          X    X    !@    @    &          4    (     "
+    "0    $    !          D    (            \\#\\.    .     8    (    !@         %    \"     $    !     0         )    "
+    "\"             ! "
+  }
+}

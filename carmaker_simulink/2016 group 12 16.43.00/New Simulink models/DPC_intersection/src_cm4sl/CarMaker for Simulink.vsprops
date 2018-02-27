@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="CarMaker for Simulink Project Settings"
+	OutputDirectory="./"
+	IntermediateDirectory="./.out-$(ARCH)/"
+	>
+	<UserMacro
+		Name="APP_VER"
+		Value="Car_Generic ?.?"
+	/>
+	<UserMacro
+		Name="APP_NAME"
+		Value="libcarmaker4sl.$(MAT_EXT)"
+	/>
+	<UserMacro
+		Name="MATSUPP_MATVER"
+		Value="R2010a"
+	/>
+	<UserMacro
+		Name="MAT_HOME"
+		Value="C:/Program Files/MATLAB/$(MATSUPP_MATVER)"
+	/>
+</VisualStudioPropertySheet>

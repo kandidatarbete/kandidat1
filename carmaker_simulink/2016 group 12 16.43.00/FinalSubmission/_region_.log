@@ -1,0 +1,2825 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=prv_intersection_paper_v6 2016.9.11)  11 SEP 2016 23:12
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**&prv_intersection_paper_v6 _region_.tex
+(./_region_.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+CUSTOMISED FORMAT. Preloaded files:
+        .
+ieeeconf.cls    2004/1/15 revision V1.6b by Pradeep Misra
+  ot1ptm.fd    2001/06/04 font definitions for OT1/ptm.
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+graphicx.sty    2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
+graphics.sty    2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+dvipsnam.def    2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
+ eurosym.sty    1998/08/06 v1.1 European currency symbol ``Euro''
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+ siunitx.sty    2015/01/21 v2.6e A comprehensive (SI) units package
+   expl3.sty    2015/03/01 v5547 L3 programming layer (loader) 
+expl3-code.tex    2015/03/01 v5547 L3 programming layer 
+l3unicode-data.def    2015/03/01 v5544 L3 Unicode data
+l3pdfmode.def    2015/03/01 v5544 L3 Experimental driver: PDF mode
+  xparse.sty    2014/11/25 v5471 L3 Experimental document command parser
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+l3keys2e.sty    2014/11/25 v5471 LaTeX2e option processing using LaTeX3 keys
+translator.sty    2010/06/12 ver 1.10
+translator-language-mappings.tex
+   units.sty    1998/08/04 v0.9b Typesetting units
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+nicefrac.sty    1998/08/04 v0.9b Nice fractions
+ comment.sty    
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  ot1pcr.fd    2001/06/04 font definitions for OT1/pcr.
+  ot1phv.fd    2001/06/04 scalable font definitions for OT1/phv.
+        .
+! Argument of ^^M has an extra }.
+<inserted text> 
+                \par 
+l.39 %}
+       
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+! Paragraph ended before ^^M was complete.
+<to be read again> 
+                   \par 
+l.39 %}
+       
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Too many }'s.
+<recently read> }
+                 
+l.39 %}
+       
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+
+(/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/
+latex/preview.sty
+Package: preview 2010/02/14 11.88 (AUCTeX/preview-latex)
+
+
+Package preview Warning: Your document class has a bad definition
+ of \endfigure, most likely
+ \let\endfigure=\end@float
+ which has now been changed to
+ \def\endfigure{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endfigure.
+ Please complain to your document class author.
+
+
+Package preview Warning: Your document class has a bad definition
+ of \endtable, most likely
+ \let\endtable=\end@float
+ which has now been changed to
+ \def\endtable{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endtable.
+ Please complain to your document class author.
+
+
+(/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/
+latex/prtightpage.def
+\PreviewBorder=\dimen173
+)
+(/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/
+latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count159
+\hfuzz=\dimen174
+
+(/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/
+latex/prauctex.cfg))
+(/Applications/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/auctex/
+latex/prfootnotes.def)
+\pr@snippet=\count160
+\pr@box=\box52
+\pr@output=\toks22
+
+Preview: Fontsize 10pt
+Preview: PDFoutput 1
+) (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count161
+\scratchdimen=\dimen175
+\scratchbox=\box53
+\nofMPsegments=\count162
+\nofMParguments=\count163
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count164
+\MPscratchDim=\dimen176
+\MPnumerator=\count165
+\makeMPintoPDFobject=\count166
+\everyMPtoPDFconversion=\toks24
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box54
+Package hyperref Info: Link coloring OFF on input line 47.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count167
+)
+LaTeX Info: Redefining \ref on input line 47.
+LaTeX Info: Redefining \pageref on input line 47.
+LaTeX Info: Redefining \nameref on input line 47.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/beamer/translator/dicts/translato
+r-basic-dictionary/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2015/01/21 v2.6e siunitx: Abbreviated units
+)  !name(intersection_paper_v6.tex) !offset(-3) 
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 54.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <11> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
+
+
+LaTeX Warning: Citation `nikolce' on page 2 undefined on input line 63.
+
+! Preview: Snippet 1 started.
+<-><->
+      
+l.77 \section
+             {Introduction}%from the planning report, we have to change that...
+
+Not a real error.
+
+Preview: Tightpage -32891 -32891 32891 32891
+! Preview: Snippet 1 ended.(435811+8188x16103382).
+<-><->
+      
+l.77 \section{Introduction}
+                           %from the planning report, we have to change that...
+
+Not a real error.
+
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+
+LaTeX Warning: Citation `molinero' on page 2 undefined on input line 79.
+
+
+LaTeX Warning: Citation `nhtsa' on page 2 undefined on input line 79.
+
+
+LaTeX Warning: Citation `sverige' on page 2 undefined on input line 79.
+
+
+LaTeX Warning: Citation `nhtsa' on page 2 undefined on input line 81.
+
+
+LaTeX Warning: Citation `eleven' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `twelve' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `thirteen' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `fourteen' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `fifteen' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `gillet' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `nikolce' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `thirteen' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `fourteen' on page 2 undefined on input line 83.
+
+
+LaTeX Warning: Citation `nikolce' on page 2 undefined on input line 86.
+
+
+LaTeX Warning: Citation `nikolce' on page 2 undefined on input line 94.
+
+
+LaTeX Warning: Reference `sec:problem_formulation' on page 2 undefined on input
+ line 111.
+
+
+LaTeX Warning: Reference `sec:MPC' on page 2 undefined on input line 111.
+
+
+LaTeX Warning: Reference `sec:simulation' on page 2 undefined on input line 111
+.
+
+
+LaTeX Warning: Reference `sec:casestudy' on page 2 undefined on input line 111.
+
+
+
+LaTeX Warning: Reference `sec:conclusions' on page 2 undefined on input line 11
+1.
+
+! Preview: Snippet 2 started.
+<-><->
+      
+l.113 \section
+              {Problem Formulation} \label{sec:problem_formulation}
+Not a real error.
+
+! Preview: Snippet 2 ended.(435811+8188x16103382).
+<-><->
+      
+l.113 \section{Problem Formulation}
+                                    \label{sec:problem_formulation}
+Not a real error.
+
+[2
+
+]
+
+LaTeX Warning: Citation `nikolce' on page 2 undefined on input line 114.
+
+! Preview: Snippet 3 started.
+<-><->
+      
+l.116 \subsection
+                 {Assumptions}
+Not a real error.
+
+! Preview: Snippet 3 ended.(439084+135328x16103382).
+<-><->
+      
+l.116 \subsection{Assumptions}
+                              
+Not a real error.
+
+[3
+
+]
+! Preview: Snippet 4 started.
+<-><->
+      
+l.117 Considering $
+                   N_v$ autonomous vehicles in a surrounding of an intersect...
+
+Not a real error.
+
+! Preview: Snippet 4 ended.(447828+98303x837937).
+<-><->
+      
+l.117 Considering $N_v$
+                        autonomous vehicles in a surrounding of an intersect...
+
+Not a real error.
+
+[4]
+! Preview: Snippet 5 started.
+<-><->
+      
+l.117 ...ow, it is assumed that for each vehicle $
+                                                  i=1,...N_v$, the accelerat...
+
+Not a real error.
+
+! Preview: Snippet 5 ended.(447828+127431x3102608).
+<-><->
+      
+l.117 ...ssumed that for each vehicle $i=1,...N_v$
+                                                  , the acceleration along i...
+
+Not a real error.
+
+[5]
+! Preview: Snippet 6 started.
+<-><->
+      
+l.121 \subsection
+                 {Problem statement}
+Not a real error.
+
+! Preview: Snippet 6 ended.(448587+9500x16103382).
+<-><->
+      
+l.121 \subsection{Problem statement}
+                                    
+Not a real error.
+
+[6
+
+]
+
+LaTeX Warning: Reference `fig:ProbState' on page 3 undefined on input line 123.
+
+
+
+LaTeX Warning: Reference `sec:extended_cost' on page 3 undefined on input line 
+123.
+
+! Preview: Snippet 7 started.
+<-><->
+      
+l.123 ...his region. The position, where vehicle $
+                                                  k$ enters respectively exi...
+
+Not a real error.
+
+! Preview: Snippet 7 ended.(455111+0x361814).
+<-><->
+      
+l.123 ...s region. The position, where vehicle $k$
+                                                   enters respectively exits...
+
+Not a real error.
+
+[7]
+! Preview: Snippet 8 started.
+<-><->
+      
+l.123 ...ively exits the critical set, is called $
+                                                  L_k$ respectively $H_k$. T...
+
+Not a real error.
+
+! Preview: Snippet 8 ended.(447828+98303x768458).
+<-><->
+      
+l.123 ...y exits the critical set, is called $L_k$
+                                                   respectively $H_k$. The o...
+
+Not a real error.
+
+[8]
+! Preview: Snippet 9 started.
+<-><->
+      
+l.123 ...tical set, is called $L_k$ respectively $
+                                                  H_k$. The order in which t...
+
+Not a real error.
+
+! Preview: Snippet 9 ended.(447828+98303x867216).
+<-><->
+      
+l.123 ...l set, is called $L_k$ respectively $H_k$
+                                                  . The order in which the v...
+
+Not a real error.
+
+[9]
+! Preview: Snippet 10 started.
+<-><->
+      
+l.123 ...sequences is called permutation matrix  $
+                                                  \Omega$.
+Not a real error.
+
+! Preview: Snippet 10 ended.(447828+0x473316).
+<-><->
+      
+l.123 ...es is called permutation matrix  $\Omega$
+                                                  .
+Not a real error.
+
+[10]
+! Preview: Snippet 11 started.
+<-><->
+      
+l.131 \begin{figure}
+                    
+Not a real error.
+
+<figures/czone.pdf, id=44, 510.40688pt x 542.025pt>
+File: figures/czone.pdf Graphic file (type pdf)
+ <use figures/czone.pdf>
+Package pdftex.def Info: figures/czone.pdf used on input line 133.
+(pdftex.def)             Requested size: 221.14479pt x 234.84439pt.
+
+! Preview: Snippet 11 ended.(16570410+703328x16103382).
+<-><->
+      
+l.136 \end{figure}
+                  
+Not a real error.
+
+[11
+
+
+ <./figures/czone.pdf>]
+! Preview: Snippet 12 started.
+<-><->
+      
+l.138 \subsection
+                 {Convex problem statement}
+Not a real error.
+
+! Preview: Snippet 12 ended.(448587+135328x16103382).
+<-><->
+      
+l.138 \subsection{Convex problem statement}
+                                           
+Not a real error.
+
+[12
+
+]
+
+LaTeX Warning: Citation `nikolce' on page 3 undefined on input line 139.
+
+! Preview: Snippet 13 started.
+<-><->
+      
+l.139 ...e{nikolce}. With the spatial coordinate $
+                                                  p$, the linear state space...
+
+Not a real error.
+
+! Preview: Snippet 13 ended.(282168+127431x329728).
+<-><->
+      
+l.139 ...nikolce}. With the spatial coordinate $p$
+                                                  , the linear state space m...
+
+Not a real error.
+
+[13]
+! Preview: Snippet 14 started.
+<-><->
+      
+l.140 \begin{align}
+                   \label{statesp}
+Not a real error.
+
+! Preview: Snippet 14 ended.(2532979+0x16103382).
+<-><->
+      
+l.149 \end{align}
+                 
+Not a real error.
+
+[14
+
+]
+! Preview: Snippet 15 started.
+<-><->
+      
+l.150 is used to model each vehicle $
+                                     i$, where $\kappa_i=\begin{pmatrix}t_i(...
+
+Not a real error.
+
+! Preview: Snippet 15 ended.(432226+0x225780).
+<-><->
+      
+l.150 is used to model each vehicle $i$
+                                       , where $\kappa_i=\begin{pmatrix}t_i(...
+
+Not a real error.
+
+[15]
+! Preview: Snippet 16 started.
+<-><->
+      
+l.150 is used to model each vehicle $i$, where $
+                                                \kappa_i=\begin{pmatrix}t_i(...
+
+Not a real error.
+
+! Preview: Snippet 16 ended.(708522+229380x5795266).
+<-><->
+      
+l.150 ...in{pmatrix}t_i(p)& z_i(p)\end{pmatrix}^T$
+                                                   is the state vector and $...
+
+Not a real error.
+
+[16]
+! Preview: Snippet 17 started.
+<-><->
+      
+l.150 ...end{pmatrix}^T$ is the state vector and $
+                                                  \kappa_i'=d\kappa/dp$ is t...
+
+Not a real error.
+
+! Preview: Snippet 17 ended.(492688+170585x3186797).
+<-><->
+      
+l.150 ...e state vector and $\kappa_i'=d\kappa/dp$
+                                                   is the derivative with re...
+
+Not a real error.
+
+[17]
+! Preview: Snippet 18 started.
+<-><->
+      
+l.150 ...ve with respect to the spatial distance $
+                                                  p$. The slowness of the sy...
+
+Not a real error.
+
+! Preview: Snippet 18 ended.(282168+127431x329728).
+<-><->
+      
+l.150 ... with respect to the spatial distance $p$
+                                                  . The slowness of the syst...
+
+Not a real error.
+
+[18]
+! Preview: Snippet 19 started.
+<-><->
+      
+l.150 ... indicated by the \emph{lethargy} \mbox{$
+                                                  z_i(p)=1/v_i(p)$}, where $...
+
+Not a real error.
+
+! Preview: Snippet 19 ended.(491520+163840x4266895).
+<-><->
+      
+l.150 ...e \emph{lethargy} \mbox{$z_i(p)=1/v_i(p)$
+                                                  }, where $v_i(p)$ is the v...
+
+Not a real error.
+
+[19]
+! Preview: Snippet 20 started.
+<-><->
+      
+l.150 ...thargy} \mbox{$z_i(p)=1/v_i(p)$}, where $
+                                                  v_i(p)$ is the vehicle vel...
+
+Not a real error.
+
+! Preview: Snippet 20 ended.(491520+163840x1375310).
+<-><->
+      
+l.150 ... \mbox{$z_i(p)=1/v_i(p)$}, where $v_i(p)$
+                                                   is the vehicle velocity. ...
+
+Not a real error.
+
+[20]
+! Preview: Snippet 21 started.
+<-><->
+      
+l.150 ...city. The time needed to reach position $
+                                                  p$ is $t_i(p)$. Input $u_i...
+
+Not a real error.
+
+! Preview: Snippet 21 ended.(282168+127431x329728).
+<-><->
+      
+l.150 ...ty. The time needed to reach position $p$
+                                                   is $t_i(p)$. Input $u_i(p...
+
+Not a real error.
+
+[21]
+! Preview: Snippet 22 started.
+<-><->
+      
+l.150 ...he time needed to reach position $p$ is $
+                                                  t_i(p)$. Input $u_i(p)=z_i...
+
+Not a real error.
+
+! Preview: Snippet 22 ended.(491520+163840x1294300).
+<-><->
+      
+l.150 ... needed to reach position $p$ is $t_i(p)$
+                                                  . Input $u_i(p)=z_i'(p)$ i...
+
+Not a real error.
+
+[22]
+! Preview: Snippet 23 started.
+<-><->
+      
+l.150 ...o reach position $p$ is $t_i(p)$. Input $
+                                                  u_i(p)=z_i'(p)$ is the spa...
+
+Not a real error.
+
+! Preview: Snippet 23 ended.(492688+170585x3669031).
+<-><->
+      
+l.150 ...n $p$ is $t_i(p)$. Input $u_i(p)=z_i'(p)$
+                                                   is the spatial derivative...
+
+Not a real error.
+
+[23]
+! Preview: Snippet 24 started.
+<-><->
+      
+l.150 ...)=z_i'(p)$ is the spatial derivative of $
+                                                  z_i(p)$.
+Not a real error.
+
+! Preview: Snippet 24 ended.(491520+163840x1362417).
+<-><->
+      
+l.150 ...p)$ is the spatial derivative of $z_i(p)$
+                                                  .
+Not a real error.
+
+[24]
+! Preview: Snippet 25 started.
+<-><->
+      
+l.152 \subsubsection
+                    {Cost function}
+Not a real error.
+
+! Preview: Snippet 25 ended.(448587+135328x5009990).
+<-><->
+      
+l.152 \subsubsection{Cost function}
+                                   
+Not a real error.
+
+[25
+
+]
+! Preview: Snippet 26 started.
+<-><->
+      
+l.153 ... sum of cost functions for each vehicle $
+                                                  i$
+Not a real error.
+
+! Preview: Snippet 26 ended.(432226+0x225780).
+<-><->
+      
+l.153 ...um of cost functions for each vehicle $i$
+                                                  
+Not a real error.
+
+[26]
+! Preview: Snippet 27 started.
+<-><->
+      
+l.154 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 27 ended.(2044275+0x16103382).
+<-><->
+      
+l.157 \end{align}
+                 
+Not a real error.
+
+[27
+
+]
+! Preview: Snippet 28 started.
+<-><->
+      
+l.158 where $
+             p_{if}$ is the final position after leaving the intersection. T...
+
+Not a real error.
+
+! Preview: Snippet 28 ended.(282168+187504x854892).
+<-><->
+      
+l.158 where $p_{if}$
+                     is the final position after leaving the intersection. T...
+
+Not a real error.
+
+[28]
+! Preview: Snippet 29 started.
+<-><->
+      
+l.158 ...ion. The cost function for each vehicle $
+                                                  i$
+Not a real error.
+
+! Preview: Snippet 29 ended.(432226+0x225780).
+<-><->
+      
+l.158 ...n. The cost function for each vehicle $i$
+                                                  
+Not a real error.
+
+[29]
+! Preview: Snippet 30 started.
+<-><->
+      
+l.159 \begin{equation}
+                      \label{eq:costfnc}
+Not a real error.
+
+! Preview: Snippet 30 ended.(564148+0x16103382).
+<-><->
+      
+l.161 \end{equation}
+                    
+Not a real error.
+
+[30
+
+]
+! Preview: Snippet 31 started.
+<-><->
+      
+l.164 \begin{equation}
+                      
+Not a real error.
+
+! Preview: Snippet 31 ended.(1706501+0x16103382).
+<-><->
+      
+l.167 \end{equation}
+                    
+Not a real error.
+
+[31
+
+]
+! Preview: Snippet 32 started.
+<-><->
+      
+l.168 ...tion from the reference velocity, where $
+                                                  w_{ij}$ [$j=1$ in \eqref{c...
+
+Not a real error.
+
+! Preview: Snippet 32 ended.(282168+187504x930743).
+<-><->
+      
+l.168 ...om the reference velocity, where $w_{ij}$
+                                                   [$j=1$ in \eqref{cost1}] ...
+
+Not a real error.
+
+[32]
+! Preview: Snippet 33 started.
+<-><->
+      
+l.168 ...the reference velocity, where $w_{ij}$ [$
+                                                  j=1$ in \eqref{cost1}] are...
+
+Not a real error.
+
+! Preview: Snippet 33 ended.(432226+127431x1508883).
+<-><->
+      
+l.168 ...reference velocity, where $w_{ij}$ [$j=1$
+                                                   in \eqref{cost1}] are wei...
+
+Not a real error.
+
+[33]
+
+LaTeX Warning: Reference `cost1' on page 3 undefined on input line 168.
+
+! Preview: Snippet 34 started.
+<-><->
+      
+l.168 ...ors. The mean of the reference velocity $
+                                                  v_{ir}(p)$ for each car $i...
+
+Not a real error.
+
+! Preview: Snippet 34 ended.(491520+163840x1632752).
+<-><->
+      
+l.168 ...ean of the reference velocity $v_{ir}(p)$
+                                                   for each car $i$ is $\bar...
+
+Not a real error.
+
+[34]
+! Preview: Snippet 35 started.
+<-><->
+      
+l.168 ...rence velocity $v_{ir}(p)$ for each car $
+                                                  i$ is $\bar{v}_{ir}$. The ...
+
+Not a real error.
+
+! Preview: Snippet 35 ended.(432226+0x225780).
+<-><->
+      
+l.168 ...nce velocity $v_{ir}(p)$ for each car $i$
+                                                   is $\bar{v}_{ir}$. The te...
+
+Not a real error.
+
+[35]
+! Preview: Snippet 36 started.
+<-><->
+      
+l.168 ...elocity $v_{ir}(p)$ for each car $i$ is $
+                                                  \bar{v}_{ir}$. The terms $...
+
+Not a real error.
+
+! Preview: Snippet 36 ended.(372098+98303x793298).
+<-><->
+      
+l.168 ...r}(p)$ for each car $i$ is $\bar{v}_{ir}$
+                                                  . The terms $J_{i2}, J_{i3...
+
+Not a real error.
+
+[36]
+! Preview: Snippet 37 started.
+<-><->
+      
+l.168 ...ch car $i$ is $\bar{v}_{ir}$. The terms $
+                                                  J_{i2}, J_{i3}$ with
+Not a real error.
+
+! Preview: Snippet 37 ended.(447828+127431x1976927).
+<-><->
+      
+l.168 ...\bar{v}_{ir}$. The terms $J_{i2}, J_{i3}$
+                                                   with
+Not a real error.
+
+[37]
+! Preview: Snippet 38 started.
+<-><->
+      
+l.169 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 38 ended.(3245884+0x16103382).
+<-><->
+      
+l.173 \end{align}
+                 
+Not a real error.
+
+[38]
+! Preview: Snippet 39 started.
+<-><->
+      
+l.175 ...age. The unconventionally appearance of $
+                                                  J_{i2}$ and $J_{i3}$ with ...
+
+Not a real error.
+
+! Preview: Snippet 39 ended.(447828+98303x842829).
+<-><->
+      
+l.175 ...e unconventionally appearance of $J_{i2}$
+                                                   and $J_{i3}$ with powers ...
+
+Not a real error.
+
+[39]
+! Preview: Snippet 40 started.
+<-><->
+      
+l.175 ...nventionally appearance of $J_{i2}$ and $
+                                                  J_{i3}$ with powers of the...
+
+Not a real error.
+
+! Preview: Snippet 40 ended.(447828+98303x842829).
+<-><->
+      
+l.175 ...nally appearance of $J_{i2}$ and $J_{i3}$
+                                                   with powers of the mean v...
+
+Not a real error.
+
+[40]
+
+LaTeX Warning: Citation `nikolce' on page 3 undefined on input line 175.
+
+! Preview: Snippet 41 started.
+<-><->
+      
+l.177 \subsubsection
+                    {Constraints}
+Not a real error.
+
+! Preview: Snippet 41 ended.(439084+118616x4479803).
+<-><->
+      
+l.177 \subsubsection{Constraints}
+                                 
+Not a real error.
+
+[41
+
+]
+
+LaTeX Warning: Reference `statesp' on page 3 undefined on input line 178.
+
+! Preview: Snippet 42 started.
+<-><->
+      
+l.178 ...es inequality constraints on the states $
+                                                  \kappa_i$ and the input $u...
+
+Not a real error.
+
+! Preview: Snippet 42 ended.(282168+98303x595779).
+<-><->
+      
+l.178 ...lity constraints on the states $\kappa_i$
+                                                   and the input $u_i$ as we...
+
+Not a real error.
+
+[42]
+! Preview: Snippet 43 started.
+<-><->
+      
+l.178 ... on the states $\kappa_i$ and the input $
+                                                  u_i$ as well as initial an...
+
+Not a real error.
+
+! Preview: Snippet 43 ended.(282168+98303x593354).
+<-><->
+      
+l.178 ...the states $\kappa_i$ and the input $u_i$
+                                                   as well as initial and fi...
+
+Not a real error.
+
+[43]
+! Preview: Snippet 44 started.
+<-><->
+      
+l.180 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 44 ended.(5034636+0x16103382).
+<-><->
+      
+l.187 \end{align}
+                 
+Not a real error.
+
+[44
+
+
+
+
+]
+
+LaTeX Warning: Reference `eq:ulim' on page 3 undefined on input line 188.
+
+! Preview: Snippet 45 started.
+<-><->
+      
+l.188 ...\eqref{eq:ulim} are linear functions of $
+                                                  z_i$ and represent a linea...
+
+Not a real error.
+
+! Preview: Snippet 45 ended.(282168+98303x522963).
+<-><->
+      
+l.188 ...ef{eq:ulim} are linear functions of $z_i$
+                                                   and represent a linearize...
+
+Not a real error.
+
+[45]
+
+LaTeX Warning: Citation `nikolce' on page 3 undefined on input line 188.
+
+! Preview: Snippet 46 started.
+<-><->
+      
+l.189 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 46 ended.(1769472+0x16103382).
+<-><->
+      
+l.194 \end{align}
+                 
+Not a real error.
+
+[46
+
+]
+! Preview: Snippet 47 started.
+<-><->
+      
+l.196 where $
+             k$ and $l$ are indices of consecutive vehicles in a given cross...
+
+Not a real error.
+
+! Preview: Snippet 47 ended.(455111+0x361814).
+<-><->
+      
+l.196 where $k$
+                and $l$ are indices of consecutive vehicles in a given cross...
+
+Not a real error.
+
+[47]
+! Preview: Snippet 48 started.
+<-><->
+      
+l.196 where $k$ and $
+                     l$ are indices of consecutive vehicles in a given cross...
+
+Not a real error.
+
+! Preview: Snippet 48 ended.(455111+0x208442).
+<-><->
+      
+l.196 where $k$ and $l$
+                        are indices of consecutive vehicles in a given cross...
+
+Not a real error.
+
+[48]
+! Preview: Snippet 49 started.
+<-><->
+      
+l.196 ...e vehicles in a given crossing sequence $
+                                                  m$ of the permutation matr...
+
+Not a real error.
+
+! Preview: Snippet 49 ended.(282168+0x575415).
+<-><->
+      
+l.196 ...vehicles in a given crossing sequence $m$
+                                                   of the permutation matrix...
+
+Not a real error.
+
+[49]
+! Preview: Snippet 50 started.
+<-><->
+      
+l.196 ... sequence $m$ of the permutation matrix $
+                                                  \Omega$, which contains al...
+
+Not a real error.
+
+! Preview: Snippet 50 ended.(447828+0x473316).
+<-><->
+      
+l.196 ...ce $m$ of the permutation matrix $\Omega$
+                                                  , which contains all possi...
+
+Not a real error.
+
+[50]
+! Preview: Snippet 51 started.
+<-><->
+      
+l.196 ...l possible crossing sequences. Position $
+                                                  H_k$ is the point where ve...
+
+Not a real error.
+
+! Preview: Snippet 51 ended.(447828+98303x867216).
+<-><->
+      
+l.196 ...ssible crossing sequences. Position $H_k$
+                                                   is the point where vehicl...
+
+Not a real error.
+
+[51]
+! Preview: Snippet 52 started.
+<-><->
+      
+l.196 ...sition $H_k$ is the point where vehicle $
+                                                  k$ exits the critical set ...
+
+Not a real error.
+
+! Preview: Snippet 52 ended.(455111+0x361814).
+<-><->
+      
+l.196 ...tion $H_k$ is the point where vehicle $k$
+                                                   exits the critical set an...
+
+Not a real error.
+
+[52]
+! Preview: Snippet 53 started.
+<-><->
+      
+l.196 ... vehicle $k$ exits the critical set and $
+                                                  L_l$ is the entry point fo...
+
+Not a real error.
+
+! Preview: Snippet 53 ended.(447828+98303x647170).
+<-><->
+      
+l.196 ...icle $k$ exits the critical set and $L_l$
+                                                   is the entry point for ve...
+
+Not a real error.
+
+[53]
+! Preview: Snippet 54 started.
+<-><->
+      
+l.196 ...nd $L_l$ is the entry point for vehicle $
+                                                  l$.
+Not a real error.
+
+! Preview: Snippet 54 ended.(455111+0x208442).
+<-><->
+      
+l.196 ... $L_l$ is the entry point for vehicle $l$
+                                                  .
+Not a real error.
+
+[54]
+
+LaTeX Warning: Citation `nikolce' on page 3 undefined on input line 199.
+
+! Preview: Snippet 55 started.
+<-><->
+      
+l.200 \section
+              {MPC Design} \label{sec:MPC}
+Not a real error.
+
+! Preview: Snippet 55 ended.(444988+8188x16103382).
+<-><->
+      
+l.200 \section{MPC Design}
+                           \label{sec:MPC}
+Not a real error.
+
+[55
+
+]
+! Preview: Snippet 56 started.
+<-><->
+      
+l.202 \subsection
+                 {Discrete state space model}
+Not a real error.
+
+! Preview: Snippet 56 ended.(448587+135328x16103382).
+<-><->
+      
+l.202 \subsection{Discrete state space model}
+                                             
+Not a real error.
+
+[56
+
+]
+
+LaTeX Warning: Reference `statesp' on page 3 undefined on input line 203.
+
+! Preview: Snippet 57 started.
+<-><->
+      
+l.203 ...eqref{statesp} with a sampling interval $
+                                                  d_s$ is derived with Forwa...
+
+Not a real error.
+
+! Preview: Snippet 57 ended.(455111+98303x621228).
+<-><->
+      
+l.203 ...f{statesp} with a sampling interval $d_s$
+                                                   is derived with Forward E...
+
+Not a real error.
+
+[57]
+! Preview: Snippet 58 started.
+<-><->
+      
+l.204 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 58 ended.(792988+0x16103382).
+<-><->
+      
+l.209 \end{align}
+                 
+Not a real error.
+
+[58
+
+]
+! Preview: Snippet 59 started.
+<-><->
+      
+l.211 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 59 ended.(3342366+0x16103382).
+<-><->
+      
+l.223 \end{align}
+                 
+Not a real error.
+
+[59
+
+]
+! Preview: Snippet 60 started.
+<-><->
+      
+l.225 $
+        |I_2 + d_s A| \leq 1$.
+Not a real error.
+
+! Preview: Snippet 60 ended.(491520+163840x4061405).
+<-><->
+      
+l.225 $ |I_2 + d_s A| \leq 1$
+                             .
+Not a real error.
+
+[60]
+! Preview: Snippet 61 started.
+<-><->
+      
+l.232 ...the discrete state space representation $
+                                                  \lambda_{1,2}=1$ are mappe...
+
+Not a real error.
+
+! Preview: Snippet 61 ended.(455111+187504x2294668).
+<-><->
+      
+l.232 ...te space representation $\lambda_{1,2}=1$
+                                                   are mapped on the border ...
+
+Not a real error.
+
+[61]
+! Preview: Snippet 62 started.
+<-><->
+      
+l.245 \subsection
+                 {Extended cost function to impose time gap} \label{sec:exte...
+
+Not a real error.
+
+! Preview: Snippet 62 ended.(448587+135328x16103382).
+<-><->
+      
+l.245 ...xtended cost function to impose time gap}
+                                                   \label{sec:extended_cost}
+Not a real error.
+
+[62
+
+]
+
+LaTeX Warning: Reference `eq:col' on page 3 undefined on input line 246.
+
+
+LaTeX Warning: Reference `eq:col' on page 3 undefined on input line 246.
+
+
+LaTeX Warning: Reference `eq:col' on page 3 undefined on input line 246.
+
+
+LaTeX Warning: Reference `eq:col' on page 3 undefined on input line 246.
+
+! Preview: Snippet 63 started.
+<-><->
+      
+l.246 ...is done by introducing a slack variable $
+                                                  s_j$ for each consecutive ...
+
+Not a real error.
+
+! Preview: Snippet 63 ended.(282168+187504x583340).
+<-><->
+      
+l.246 ...one by introducing a slack variable $s_j$
+                                                   for each consecutive vehi...
+
+Not a real error.
+
+[63]
+! Preview: Snippet 64 started.
+<-><->
+      
+l.246 ...inside the control region. The variable $
+                                                  s_j$ expresses the time di...
+
+Not a real error.
+
+! Preview: Snippet 64 ended.(282168+187504x583340).
+<-><->
+      
+l.246 ...de the control region. The variable $s_j$
+                                                   expresses the time differ...
+
+Not a real error.
+
+[64]
+! Preview: Snippet 65 started.
+<-><->
+      
+l.246 ... entering the intersection. By defining $
+                                                  \Delta t$ as the desired t...
+
+Not a real error.
+
+! Preview: Snippet 65 ended.(447828+0x782793).
+<-><->
+      
+l.246 ... the intersection. By defining $\Delta t$
+                                                   as the desired time diffe...
+
+Not a real error.
+
+[65]
+
+LaTeX Warning: Reference `costspace' on page 3 undefined on input line 246.
+
+! Preview: Snippet 66 started.
+<-><->
+      
+l.248 \begin{align}
+                   \label{eq:smin}
+Not a real error.
+
+! Preview: Snippet 66 ended.(2133476+0x16103382).
+<-><->
+      
+l.250 \end{align}
+                 
+Not a real error.
+
+[66
+
+]
+
+LaTeX Warning: Reference `eq:col' on page 3 undefined on input line 251.
+
+! Preview: Snippet 67 started.
+<-><->
+      
+l.252 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 67 ended.(786432+0x16103382).
+<-><->
+      
+l.255 \end{align}
+                 
+Not a real error.
+
+[67
+
+]
+
+LaTeX Warning: Reference `eq:smin' on page 3 undefined on input line 257.
+
+! Preview: Snippet 68 started.
+<-><->
+      
+l.257 ...\eqref{eq:smin} is a convex function of $
+                                                  s_j$ and $\Delta t$, where...
+
+Not a real error.
+
+! Preview: Snippet 68 ended.(282168+187504x583340).
+<-><->
+      
+l.257 ...ef{eq:smin} is a convex function of $s_j$
+                                                   and $\Delta t$, where $t_...
+
+Not a real error.
+
+[68]
+! Preview: Snippet 69 started.
+<-><->
+      
+l.257 ...smin} is a convex function of $s_j$ and $
+                                                  \Delta t$, where $t_l(L_l)...
+
+Not a real error.
+
+! Preview: Snippet 69 ended.(447828+0x782793).
+<-><->
+      
+l.257 ...a convex function of $s_j$ and $\Delta t$
+                                                  , where $t_l(L_l)-t_k(H_k)...
+
+Not a real error.
+
+[69]
+! Preview: Snippet 70 started.
+<-><->
+      
+l.257 ...function of $s_j$ and $\Delta t$, where $
+                                                  t_l(L_l)-t_k(H_k) < \Delta...
+
+Not a real error.
+
+! Preview: Snippet 70 ended.(491520+163840x5988351).
+<-><->
+      
+l.257 ... t$, where $t_l(L_l)-t_k(H_k) < \Delta t$
+                                                  . Vehicle pairs in which t...
+
+Not a real error.
+
+[70]
+
+LaTeX Warning: Reference `eq:smin' on page 3 undefined on input line 257.
+
+
+LaTeX Warning: Reference `eq:saeq' on page 3 undefined on input line 257.
+
+
+LaTeX Warning: Reference `fig:ProbState' on page 3 undefined on input line 257.
+
+
+
+LaTeX Warning: Reference `eq:smin' on page 4 undefined on input line 259.
+
+! Preview: Snippet 71 started.
+<-><->
+      
+l.261 \begin{align}
+                   \label{eq:qmin}
+Not a real error.
+
+! Preview: Snippet 71 ended.(2599145+0x16103382).
+<-><->
+      
+l.264 \end{align}
+                 
+Not a real error.
+
+[71
+
+]
+! Preview: Snippet 72 started.
+<-><->
+      
+l.266 where $
+             q_j$ are additional optimization variables.
+Not a real error.
+
+! Preview: Snippet 72 ended.(282168+187504x568701).
+<-><->
+      
+l.266 where $q_j$
+                  are additional optimization variables.
+Not a real error.
+
+[72]
+! Preview: Snippet 73 started.
+<-><->
+      
+l.267 \subsection
+                 {Transformation to a standard QP}
+Not a real error.
+
+! Preview: Snippet 73 ended.(448587+135328x16103382).
+<-><->
+      
+l.267 \subsection{Transformation to a standard QP}
+                                                  
+Not a real error.
+
+[73
+
+]
+! Preview: Snippet 74 started.
+<-><->
+      
+l.270 \begin{align}
+                   \label{eq:quad}
+Not a real error.
+
+! Preview: Snippet 74 ended.(3290531+0x16103382).
+<-><->
+      
+l.275 \end{align}
+                 
+Not a real error.
+
+[74
+
+
+
+]
+! Preview: Snippet 75 started.
+<-><->
+      
+l.277 where $
+             x$ is the vector of optimization variables, $H$ the Hessian mat...
+
+Not a real error.
+
+! Preview: Snippet 75 ended.(282168+0x374556).
+<-><->
+      
+l.277 where $x$
+                is the vector of optimization variables, $H$ the Hessian mat...
+
+Not a real error.
+
+[75]
+! Preview: Snippet 76 started.
+<-><->
+      
+l.277 ...s the vector of optimization variables, $
+                                                  H$ the Hessian matrix and ...
+
+Not a real error.
+
+! Preview: Snippet 76 ended.(447828+0x598014).
+<-><->
+      
+l.277 ...the vector of optimization variables, $H$
+                                                   the Hessian matrix and $f...
+
+Not a real error.
+
+[76]
+! Preview: Snippet 77 started.
+<-><->
+      
+l.277 ...n variables, $H$ the Hessian matrix and $
+                                                  f$ the remaining linear te...
+
+Not a real error.
+
+! Preview: Snippet 77 ended.(455111+127431x391398).
+<-><->
+      
+l.277 ...variables, $H$ the Hessian matrix and $f$
+                                                   the remaining linear term...
+
+Not a real error.
+
+[77]
+
+LaTeX Warning: Reference `eq:aeq' on page 4 undefined on input line 277.
+
+
+LaTeX Warning: Reference `eq:ain' on page 4 undefined on input line 277.
+
+! Preview: Snippet 78 started.
+<-><->
+      
+l.278 \subsubsection
+                    {Cost function}
+Not a real error.
+
+! Preview: Snippet 78 ended.(448587+135328x5009990).
+<-><->
+      
+l.278 \subsubsection{Cost function}
+                                   
+Not a real error.
+
+[78
+
+]
+
+LaTeX Warning: Reference `eq:costfnc' on page 4 undefined on input line 279.
+
+! Preview: Snippet 79 started.
+<-><->
+      
+l.279 ... form for the MPC by writing the vector $
+                                                  x=\begin{pmatrix}x_1&\dots...
+
+Not a real error.
+
+! Preview: Snippet 79 ended.(708522+229380x6109445).
+<-><->
+      
+l.279 ...atrix}x_1&\dots&x_{N_v}  \end{pmatrix}^T$
+                                                   in \eqref{eq:quad} as
+Not a real error.
+
+[79]
+
+LaTeX Warning: Reference `eq:quad' on page 4 undefined on input line 279.
+
+! Preview: Snippet 80 started.
+<-><->
+      
+l.280 \begin{equation}
+                      
+Not a real error.
+
+! Preview: Snippet 80 ended.(3932198+0x16103382).
+<-><->
+      
+l.284 \end{equation}
+                    
+Not a real error.
+
+[80]
+! Preview: Snippet 81 started.
+<-><->
+      
+l.285 where $
+             K_i=[\kappa_i(1),\ldots,\kappa_i(N)]^T$, $U_i=[u_i(0),\ldots,u_...
+
+Not a real error.
+
+! Preview: Snippet 81 ended.(551306+163840x7018589).
+<-><->
+      
+l.285 ... $K_i=[\kappa_i(1),\ldots,\kappa_i(N)]^T$
+                                                  , $U_i=[u_i(0),\ldots,u_i(...
+
+Not a real error.
+
+[81]
+! Preview: Snippet 82 started.
+<-><->
+      
+l.285 ..._i=[\kappa_i(1),\ldots,\kappa_i(N)]^T$, $
+                                                  U_i=[u_i(0),\ldots,u_i(N-1...
+
+Not a real error.
+
+! Preview: Snippet 82 ended.(551306+163840x8033274).
+<-><->
+      
+l.285 ...(N)]^T$, $U_i=[u_i(0),\ldots,u_i(N-1)]^T$
+                                                  , $U'_i=[u'_i(0),\ldots,u'...
+
+Not a real error.
+
+[82]
+! Preview: Snippet 83 started.
+<-><->
+      
+l.285 ...]^T$, $U_i=[u_i(0),\ldots,u_i(N-1)]^T$, $
+                                                  U'_i=[u'_i(0),\ldots,u'_i(...
+
+Not a real error.
+
+! Preview: Snippet 83 ended.(551306+170585x8070402).
+<-><->
+      
+l.285 ...]^T$, $U'_i=[u'_i(0),\ldots,u'_i(N-1)]^T$
+                                                  , $S_j=[s_j(1),\ldots,s_j(...
+
+Not a real error.
+
+[83]
+! Preview: Snippet 84 started.
+<-><->
+      
+l.285 ...$, $U'_i=[u'_i(0),\ldots,u'_i(N-1)]^T$, $
+                                                  S_j=[s_j(1),\ldots,s_j(N)]...
+
+Not a real error.
+
+! Preview: Snippet 84 ended.(551306+187504x6896925).
+<-><->
+      
+l.285 ...(N-1)]^T$, $S_j=[s_j(1),\ldots,s_j(N)]^T$
+                                                  , $Q_j=[q_j(1),\ldots,q_j(...
+
+Not a real error.
+
+[84]
+! Preview: Snippet 85 started.
+<-><->
+      
+l.285 ...1)]^T$, $S_j=[s_j(1),\ldots,s_j(N)]^T$, $
+                                                  Q_j=[q_j(1),\ldots,q_j(N)]...
+
+Not a real error.
+
+! Preview: Snippet 85 ended.(551306+187504x6983882).
+<-><->
+      
+l.285 ..._j(N)]^T$, $Q_j=[q_j(1),\ldots,q_j(N)]^T$
+                                                   for each vehicle $i$ and ...
+
+Not a real error.
+
+[85]
+! Preview: Snippet 86 started.
+<-><->
+      
+l.285 ...j(1),\ldots,q_j(N)]^T$ for each vehicle $
+                                                  i$ and vehicle pair $j$ in...
+
+Not a real error.
+
+! Preview: Snippet 86 ended.(432226+0x225780).
+<-><->
+      
+l.285 ...1),\ldots,q_j(N)]^T$ for each vehicle $i$
+                                                   and vehicle pair $j$ in t...
+
+Not a real error.
+
+[86]
+! Preview: Snippet 87 started.
+<-><->
+      
+l.285 ...$ for each vehicle $i$ and vehicle pair $
+                                                  j$ in the control region.
+Not a real error.
+
+! Preview: Snippet 87 ended.(432226+127431x307396).
+<-><->
+      
+l.285 ...for each vehicle $i$ and vehicle pair $j$
+                                                   in the control region.
+Not a real error.
+
+[87]
+! Preview: Snippet 88 started.
+<-><->
+      
+l.286 The vector $
+                  x_i$ involves the states, the control input, the derivativ...
+
+Not a real error.
+
+! Preview: Snippet 88 ended.(282168+98303x592744).
+<-><->
+      
+l.286 The vector $x_i$
+                       involves the states, the control input, the derivativ...
+
+Not a real error.
+
+[88]
+! Preview: Snippet 89 started.
+<-><->
+      
+l.286 ...are both equal to N. The Hessian matrix $
+                                                  H_i$ for each vehicle $i$ ...
+
+Not a real error.
+
+! Preview: Snippet 89 ended.(447828+98303x762956).
+<-><->
+      
+l.286 ...both equal to N. The Hessian matrix $H_i$
+                                                   for each vehicle $i$ resu...
+
+Not a real error.
+
+[89]
+! Preview: Snippet 90 started.
+<-><->
+      
+l.286 ...e Hessian matrix $H_i$ for each vehicle $
+                                                  i$ results in
+Not a real error.
+
+! Preview: Snippet 90 ended.(432226+0x225780).
+<-><->
+      
+l.286 ...Hessian matrix $H_i$ for each vehicle $i$
+                                                   results in
+Not a real error.
+
+[90]
+! Preview: Snippet 91 started.
+<-><->
+      
+l.287 \begin{equation}
+                      \label{eq:hessian}
+Not a real error.
+
+! Preview: Snippet 91 ended.(3932198+0x16103382).
+<-><->
+      
+l.296 \end{equation}
+                    
+Not a real error.
+
+[91
+
+]
+! Preview: Snippet 92 started.
+<-><->
+      
+l.297 where the matrices $
+                          Q_{i1}, Q_{i2}$, $Q_{i3}$ and the scalar $Q_{i4}$ ...
+
+Not a real error.
+
+! Preview: Snippet 92 ended.(447828+127431x2286311).
+<-><->
+      
+l.297 where the matrices $Q_{i1}, Q_{i2}$
+                                         , $Q_{i3}$ and the scalar $Q_{i4}$ ...
+
+Not a real error.
+
+[92]
+! Preview: Snippet 93 started.
+<-><->
+      
+l.297 where the matrices $Q_{i1}, Q_{i2}$, $
+                                            Q_{i3}$ and the scalar $Q_{i4}$ ...
+
+Not a real error.
+
+! Preview: Snippet 93 ended.(447828+127431x997521).
+<-><->
+      
+l.297 ...e the matrices $Q_{i1}, Q_{i2}$, $Q_{i3}$
+                                                   and the scalar $Q_{i4}$ a...
+
+Not a real error.
+
+[93]
+! Preview: Snippet 94 started.
+<-><->
+      
+l.297 ..._{i1}, Q_{i2}$, $Q_{i3}$ and the scalar $
+                                                  Q_{i4}$ are equal to
+Not a real error.
+
+! Preview: Snippet 94 ended.(447828+127431x997521).
+<-><->
+      
+l.297 ...Q_{i2}$, $Q_{i3}$ and the scalar $Q_{i4}$
+                                                   are equal to
+Not a real error.
+
+[94]
+! Preview: Snippet 95 started.
+<-><->
+      
+l.299 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 95 ended.(3800592+0x16103382).
+<-><->
+      
+l.304 \end{align}
+                 
+Not a real error.
+
+[95]
+! Preview: Snippet 96 started.
+<-><->
+      
+l.306 where $
+             I_N$ is the identity matrix with $N$ rows and $C=[0 \;\; 1]$.
+Not a real error.
+
+! Preview: Snippet 96 ended.(447828+98303x785159).
+<-><->
+      
+l.306 where $I_N$
+                  is the identity matrix with $N$ rows and $C=[0 \;\; 1]$.
+Not a real error.
+
+[96]
+! Preview: Snippet 97 started.
+<-><->
+      
+l.306 where $I_N$ is the identity matrix with $
+                                               N$ rows and $C=[0 \;\; 1]$.
+Not a real error.
+
+! Preview: Snippet 97 ended.(447828+0x598014).
+<-><->
+      
+l.306 where $I_N$ is the identity matrix with $N$
+                                                  rows and $C=[0 \;\; 1]$.
+Not a real error.
+
+[97]
+! Preview: Snippet 98 started.
+<-><->
+      
+l.306 ...s the identity matrix with $N$ rows and $
+                                                  C=[0 \;\; 1]$.
+Not a real error.
+
+! Preview: Snippet 98 ended.(491520+163840x2772614).
+<-><->
+      
+l.306 ...y matrix with $N$ rows and $C=[0 \;\; 1]$
+                                                  .
+Not a real error.
+
+[98]
+! Preview: Snippet 99 started.
+<-><->
+      
+l.307 The $
+           f_i$ vector containing the remaining non-quadratic terms for each...
+
+Not a real error.
+
+! Preview: Snippet 99 ended.(455111+127431x539043).
+<-><->
+      
+l.307 The $f_i$
+                vector containing the remaining non-quadratic terms for each...
+
+Not a real error.
+
+[99]
+! Preview: Snippet 100 started.
+<-><->
+      
+l.307 ...ng non-quadratic terms for each vehicle $
+                                                  i$ is
+Not a real error.
+
+! Preview: Snippet 100 ended.(432226+0x225780).
+<-><->
+      
+l.307 ... non-quadratic terms for each vehicle $i$
+                                                   is
+Not a real error.
+
+[100]
+! Preview: Snippet 101 started.
+<-><->
+      
+l.315 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 101 ended.(1479084+0x16103382).
+<-><->
+      
+l.317 \end{align}
+                 
+Not a real error.
+
+[101]
+! Preview: Snippet 102 started.
+<-><->
+      
+l.320 \subsubsection
+                    {Constraints}
+Not a real error.
+
+! Preview: Snippet 102 ended.(439084+118616x4479803).
+<-><->
+      
+l.320 \subsubsection{Constraints}
+                                 
+Not a real error.
+
+[102
+
+]
+
+LaTeX Warning: Reference `eq:spm' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:aeq' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:model2' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:vlim' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:ulim' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:col' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:ain' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:vlim' on page 4 undefined on input line 322.
+
+
+LaTeX Warning: Reference `eq:ulim' on page 4 undefined on input line 322.
+
+! Preview: Snippet 103 started.
+<-><->
+      
+l.324 In order to control $
+                           N_v$ vehicles, the cost function \eqref{eq:quad} ...
+
+Not a real error.
+
+! Preview: Snippet 103 ended.(447828+98303x837937).
+<-><->
+      
+l.324 In order to control $N_v$
+                                vehicles, the cost function \eqref{eq:quad} ...
+
+Not a real error.
+
+[103]
+
+LaTeX Warning: Reference `eq:quad' on page 4 undefined on input line 324.
+
+! Preview: Snippet 104 started.
+<-><->
+      
+l.324 ...d} needs to be extended. The new vector $
+                                                  x$ and Hessian matrix for ...
+
+Not a real error.
+
+! Preview: Snippet 104 ended.(282168+0x374556).
+<-><->
+      
+l.324 ... needs to be extended. The new vector $x$
+                                                   and Hessian matrix for $N...
+
+Not a real error.
+
+[104]
+! Preview: Snippet 105 started.
+<-><->
+      
+l.324 ...e new vector $x$ and Hessian matrix for $
+                                                  N_v$ cars are then accordi...
+
+Not a real error.
+
+! Preview: Snippet 105 ended.(447828+98303x837937).
+<-><->
+      
+l.324 ...w vector $x$ and Hessian matrix for $N_v$
+                                                   cars are then according t...
+
+Not a real error.
+
+[105]
+
+LaTeX Warning: Reference `eq:quad' on page 4 undefined on input line 324.
+
+! Preview: Snippet 106 started.
+<-><->
+      
+l.326 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 106 ended.(1939509+0x16103382).
+<-><->
+      
+l.331 \end{align}
+                 
+Not a real error.
+
+[106
+
+]
+! Preview: Snippet 107 started.
+<-><->
+      
+l.332 and the vector $
+                      f$ is changed to
+Not a real error.
+
+! Preview: Snippet 107 ended.(455111+127431x391398).
+<-><->
+      
+l.332 and the vector $f$
+                         is changed to
+Not a real error.
+
+[107]
+! Preview: Snippet 108 started.
+<-><->
+      
+l.334 \begin{equation}
+                      
+Not a real error.
+
+! Preview: Snippet 108 ended.(818909+0x16103382).
+<-><->
+      
+l.339 \end{equation}
+                    
+Not a real error.
+
+[108]
+! Preview: Snippet 109 started.
+<-><->
+      
+l.341 ...ge in the same manner. Using the vector $
+                                                  x$ \eqref{xvec}, the equal...
+
+Not a real error.
+
+! Preview: Snippet 109 ended.(282168+0x374556).
+<-><->
+      
+l.341 ... in the same manner. Using the vector $x$
+                                                   \eqref{xvec}, the equalit...
+
+Not a real error.
+
+[109]
+
+LaTeX Warning: Reference `xvec' on page 4 undefined on input line 341.
+
+! Preview: Snippet 110 started.
+<-><->
+      
+l.341 ...lity and inequality constraints for all $
+                                                  N_v$ vehicles can be writt...
+
+Not a real error.
+
+! Preview: Snippet 110 ended.(447828+98303x837937).
+<-><->
+      
+l.341 ... and inequality constraints for all $N_v$
+                                                   vehicles can be written as
+Not a real error.
+
+[110]
+! Preview: Snippet 111 started.
+<-><->
+      
+l.343 \begin{align}
+                   
+Not a real error.
+
+! Preview: Snippet 111 ended.(3921888+0x16103382).
+<-><->
+      
+l.358 \end{align}
+                 
+Not a real error.
+
+[111]
+! Preview: Snippet 112 started.
+<-><->
+      
+l.359 \subsection
+                 {Control area and optimization horizon}
+Not a real error.
+
+! Preview: Snippet 112 ended.(448587+135328x16103382).
+<-><->
+      
+l.359 ...on{Control area and optimization horizon}
+                                                  
+Not a real error.
+
+[112
+
+]
+! Preview: Snippet 113 started.
+<-><->
+      
+l.363 ... control area, the optimization horizon $
+                                                  N_i$ for each vehicle $i =...
+
+Not a real error.
+
+! Preview: Snippet 113 ended.(447828+98303x744751).
+<-><->
+      
+l.363 ...trol area, the optimization horizon $N_i$
+                                                   for each vehicle $i = 1,\...
+
+Not a real error.
+
+[113]
+! Preview: Snippet 114 started.
+<-><->
+      
+l.363 ...mization horizon $N_i$ for each vehicle $
+                                                  i = 1,\ldots,N_v$, is not ...
+
+Not a real error.
+
+! Preview: Snippet 114 ended.(447828+127431x3721549).
+<-><->
+      
+l.363 ...$N_i$ for each vehicle $i = 1,\ldots,N_v$
+                                                  , is not moving along the ...
+
+Not a real error.
+
+[114]
+! Preview: Snippet 115 started.
+<-><->
+      
+l.364 \section
+              {Simulation} \label{sec:simulation}
+Not a real error.
+
+! Preview: Snippet 115 ended.(444988+8188x16103382).
+<-><->
+      
+l.364 \section{Simulation}
+                           \label{sec:simulation}
+Not a real error.
+
+[115
+
+]
+! Preview: Snippet 116 started.
+<-><->
+      
+l.365 \begin{figure*}
+                     []
+Not a real error.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 365.
+
+<figures/CarMaker_Implement2.png, id=438, 1082.54437pt x 526.21594pt>
+File: figures/CarMaker_Implement2.png Graphic file (type png)
+
+<use figures/CarMaker_Implement2.png>
+Package pdftex.def Info: figures/CarMaker_Implement2.png used on input line 367
+.
+(pdftex.def)             Requested size: 442.29333pt x 214.99516pt.
+
+! Preview: Snippet 116 ended.(15269571+1293152x33154007).
+<-><->
+      
+l.370 \end{figure*}
+                   
+Not a real error.
+
+[116
+
+
+ <./figures/CarMaker_Implement2.png>]
+
+LaTeX Warning: Reference `fig:CM_Implement' on page 4 undefined on input line 3
+74.
+
+! Preview: Snippet 117 started.
+<-><->
+      
+l.377 \subsection
+                 {Restrictions of CarMaker 5.0.2}
+Not a real error.
+
+! Preview: Snippet 117 ended.(448587+135328x16103382).
+<-><->
+      
+l.377 \subsection{Restrictions of CarMaker 5.0.2}
+                                                 
+Not a real error.
+
+[117
+
+] Excluding 'comment' comment. Excluding 'comment' comment.
+! Preview: Snippet 118 started.
+<-><->
+      
+l.397 \subsection
+                 {Simulation environment design}
+Not a real error.
+
+! Preview: Snippet 118 ended.(448587+135328x16103382).
+<-><->
+      
+l.397 \subsection{Simulation environment design}
+                                                
+Not a real error.
+
+[118
+
+]
+
+LaTeX Warning: Citation `guide' on page 4 undefined on input line 398.
+
+
+LaTeX Warning: Reference `fig:CarM' on page 4 undefined on input line 398.
+
+! Preview: Snippet 119 started.
+<-><->
+      
+l.400 \subsection
+                 {Including the MPC into CarMaker}
+Not a real error.
+
+! Preview: Snippet 119 ended.(448587+135328x16103382).
+<-><->
+      
+l.400 \subsection{Including the MPC into CarMaker}
+                                                  
+Not a real error.
+
+[119
+
+]
+
+LaTeX Warning: Reference `fig:CM_Implement' on page 4 undefined on input line 4
+04.
+
+Excluding 'comment' comment.
+! Preview: Snippet 120 started.
+<-><->
+      
+l.413 \section
+              {Simulation evaluation with three vehicles} \label{sec:casestudy}
+
+Not a real error.
+
+! Preview: Snippet 120 ended.(444988+8188x16103382).
+<-><->
+      
+l.413 ...imulation evaluation with three vehicles}
+                                                   \label{sec:casestudy}
+Not a real error.
+
+[120
+
+]
+
+LaTeX Warning: Reference `fig:CarM' on page 4 undefined on input line 415.
+
+! Preview: Snippet 121 started.
+<-><->
+      
+l.418 \begin{figure}
+                    
+Not a real error.
+
+<figures/New_SimPic.png, id=460, 1927.2pt x 1084.05pt>
+File: figures/New_SimPic.png Graphic file (type png)
+
+<use figures/New_SimPic.png>
+Package pdftex.def Info: figures/New_SimPic.png used on input line 420.
+(pdftex.def)             Requested size: 221.14479pt x 124.3902pt.
+
+! Preview: Snippet 121 ended.(9331684+703328x16103382).
+<-><->
+      
+l.423 \end{figure}
+                  
+Not a real error.
+
+[121
+
+
+ <./figures/New_SimPic.png>]
+! Preview: Snippet 122 started.
+<-><->
+      
+l.427 \begin{table}
+                   [ht!]
+Not a real error.
+
+! Preview: Snippet 122 ended.(5137645+2945863x16103382).
+<-><->
+      
+l.445 \end{table}
+                 
+Not a real error.
+
+[122
+
+
+]
+
+LaTeX Warning: Reference `data' on page 4 undefined on input line 446.
+
+! Preview: Snippet 123 started.
+<-><->
+      
+l.446 ...\ref{data}, the parameters for the cars $
+                                                  i=1,2,3$ can be
+Not a real error.
+
+! Preview: Snippet 123 ended.(432226+127431x2665167).
+<-><->
+      
+l.446 ...a}, the parameters for the cars $i=1,2,3$
+                                                   can be
+Not a real error.
+
+[123]
+! Preview: Snippet 124 started.
+<-><->
+      
+l.449 desired crossing sequence is chosen to $
+                                              1,2,3$. This means, for space ...
+
+Not a real error.
+
+! Preview: Snippet 124 ended.(422343+127431x1565581).
+<-><->
+      
+l.449 ...ed crossing sequence is chosen to $1,2,3$
+                                                  . This means, for space re...
+
+Not a real error.
+
+[124]
+! Preview: Snippet 125 started.
+<-><->
+      
+l.453 controller, car $
+                       1$ and $2$ would collide in the
+Not a real error.
+
+! Preview: Snippet 125 ended.(422343+0x327681).
+<-><->
+      
+l.453 controller, car $1$
+                          and $2$ would collide in the
+Not a real error.
+
+[125]
+! Preview: Snippet 126 started.
+<-><->
+      
+l.453 controller, car $1$ and $
+                               2$ would collide in the
+Not a real error.
+
+! Preview: Snippet 126 ended.(422343+0x327681).
+<-><->
+      
+l.453 controller, car $1$ and $2$
+                                  would collide in the
+Not a real error.
+
+[126]
+! Preview: Snippet 127 started.
+<-><->
+      
+l.454 intersection\footnote
+                           {A video animation showing that vehicles would
+Not a real error.
+
+! Preview: Snippet 127 ended.(550688+0x262144).
+<-><->
+      
+l.456   \url{https://youtu.be/LKcXflY6Mtw}.}
+                                            . The MPC takes control over a
+Not a real error.
+
+[127]
+! Preview: Snippet 128 started.
+<-><->
+      
+l.458 which is $
+                60$. The critical set, where no collisions are allowed, is
+Not a real error.
+
+! Preview: Snippet 128 ended.(422343+0x655362).
+<-><->
+      
+l.458 which is $60$
+                   . The critical set, where no collisions are allowed, is
+Not a real error.
+
+[128]
+! Preview: Snippet 129 started.
+<-><->
+      
+l.459 the $
+           15\cdot15$ m$^2$ intersection crossing area. The vehicles do not
+Not a real error.
+
+! Preview: Snippet 129 ended.(422343+0x1784033).
+<-><->
+      
+l.459 the $15\cdot15$
+                      m$^2$ intersection crossing area. The vehicles do not
+Not a real error.
+
+[129]
+! Preview: Snippet 130 started.
+<-><->
+      
+l.459 the $15\cdot15$ m$
+                        ^2$ intersection crossing area. The vehicles do not
+Not a real error.
+
+! Preview: Snippet 130 ended.(533465+0x294003).
+<-><->
+      
+l.459 the $15\cdot15$ m$^2$
+                            intersection crossing area. The vehicles do not
+Not a real error.
+
+[130]
+
+LaTeX Warning: Reference `fig:sim_results' on page 4 undefined on input line 46
+3.
+
+! Preview: Snippet 131 started.
+<-><->
+      
+l.463 ...ig. \ref{fig:sim_results}. When vehicle $
+                                                  1$ comes closer to the int...
+
+Not a real error.
+
+! Preview: Snippet 131 ended.(422343+0x327681).
+<-><->
+      
+l.463 .... \ref{fig:sim_results}. When vehicle $1$
+                                                   comes closer to the inter...
+
+Not a real error.
+
+[131]
+! Preview: Snippet 132 started.
+<-><->
+      
+l.463 ...hat it starts to accelerate and vehicle $
+                                                  2$ starts to decelerate in...
+
+Not a real error.
+
+! Preview: Snippet 132 ended.(422343+0x327681).
+<-><->
+      
+l.463 ...t it starts to accelerate and vehicle $2$
+                                                   starts to decelerate in o...
+
+Not a real error.
+
+[132]
+! Preview: Snippet 133 started.
+<-><->
+      
+l.465 ... collisions between the vehicles\footnote
+                                                  {A video animation showing...
+
+Not a real error.
+
+! Preview: Snippet 133 ended.(550688+0x262144).
+<-><->
+      
+l.465 ...r more than one car in the intersection.}
+                                                  . An upward-pointing trian...
+
+Not a real error.
+
+[133]
+! Preview: Snippet 134 started.
+<-><->
+      
+l.467 \begin{figure}
+                    [ht!]
+Not a real error.
+
+Package epstopdf Info: Source file: <figures/New_Result_ds4.eps>
+(epstopdf)                    date: 2016-06-05 23:32:55
+(epstopdf)                    size: 54200 bytes
+(epstopdf)             Output file: <figures/New_Result_ds4-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-06-06 00:17:46
+(epstopdf)                    size: 17519 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/New_Result_ds4-eps
+-converted-to.pdf figures/New_Result_ds4.eps>
+(epstopdf)             \includegraphics on input line 469.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/New_Result_ds4-eps-converted-to.pdf, id=519, 488.82625pt x 632.3625pt>
+File: figures/New_Result_ds4-eps-converted-to.pdf Graphic file (type pdf)
+<use figures/New_Result_ds4-eps-converted-to.pdf>
+Package pdftex.def Info: figures/New_Result_ds4-eps-converted-to.pdf used on in
+put line 469.
+(pdftex.def)             Requested size: 263.06496pt x 340.31277pt.
+
+! Preview: Snippet 134 ended.(23482386+1293152x16103382).
+<-><->
+      
+l.472 \end{figure}
+                  
+Not a real error.
+
+[134
+
+
+ <./figures/New_Result_ds4-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation `nikolce' on page 5 undefined on input line 474.
+
+
+LaTeX Warning: Reference `fig:sim_results' on page 5 undefined on input line 47
+4.
+
+! Preview: Snippet 135 started.
+<-><->
+      
+l.474 ...solved in less than 0.05 seconds\footnote
+                                                  {The Simulation was prefor...
+
+Not a real error.
+
+! Preview: Snippet 135 ended.(550688+0x262144).
+<-><->
+      
+l.474 ...re(TM) i7-3520M) processor and 8 GB RAM.}
+                                                  . The figure also shows th...
+
+Not a real error.
+
+[135]
+! Preview: Snippet 136 started.
+<-><->
+      
+l.476 \section
+              {Conclusions} \label{sec:conclusions}
+Not a real error.
+
+! Preview: Snippet 136 ended.(444988+8188x16103382).
+<-><->
+      
+l.476 \section{Conclusions}
+                            \label{sec:conclusions}
+Not a real error.
+
+[136
+
+]
+No file _region_.bbl.
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the US letter (8.5in X 11in) paper size.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 516.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 516.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 516.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 516.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 516.
+ ) 
+Here is how much of TeX's memory you used:
+ 1249 strings out of 478249
+ 20736 string characters out of 5843874
+ 356934 words of memory out of 5000000
+ 19342 multiletter control sequences out of 15000+600000
+ 39374 words of font info for 88 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 28i,28n,31p,1275b,773s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
+/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
+ri8a.pfb>
+Output written on _region_.pdf (136 pages, 1614533 bytes).
+PDF statistics:
+ 619 PDF objects out of 1000 (max. 8388607)
+ 448 compressed objects within 5 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+

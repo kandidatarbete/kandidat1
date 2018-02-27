@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Problem Formulation}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Assumptions}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Problem statement}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Convex problem statement}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Cost function}{subsection.2.3}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Constraints}{subsection.2.3}% 7
+\BOOKMARK [1][-]{section.3}{MPC Design}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Discrete state space model}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Extended cost function to impose time gap}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Transformation to a standard QP}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Cost function}{subsection.3.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Constraints}{subsection.3.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Control area and optimization horizon}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Simulation}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Restrictions of CarMaker 5.0.2}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Simulation environment design}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Including the MPC into CarMaker}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Simulation evaluation with three vehicles}{}% 19
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 20
+\BOOKMARK [1][-]{section*.1}{References}{}% 21

@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: intersection_paper_v6.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: database.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 11 entries,
+            4087 wiz_defined-function locations,
+            878 strings with 9304 characters,
+and the built_in function-call counts, 7412 in all, are:
+= -- 546
+> -- 150
+< -- 56
++ -- 90
+- -- 24
+* -- 324
+:= -- 1079
+add.period$ -- 22
+call.type$ -- 11
+change.case$ -- 10
+chr.to.int$ -- 144
+cite$ -- 11
+duplicate$ -- 530
+empty$ -- 683
+format.name$ -- 30
+if$ -- 1750
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 97
+newline$ -- 62
+num.names$ -- 11
+pop$ -- 267
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 574
+stack$ -- 0
+substring$ -- 343
+swap$ -- 398
+text.length$ -- 8
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 11
+warning$ -- 0
+while$ -- 29
+width$ -- 13
+write$ -- 120

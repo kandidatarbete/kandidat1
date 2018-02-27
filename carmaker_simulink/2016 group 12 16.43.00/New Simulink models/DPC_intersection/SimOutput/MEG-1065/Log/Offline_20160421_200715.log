@@ -1,0 +1,7 @@
+APPLICATION	CarMaker 5.0.3 - Car_Generic #111 (5.0.3)
+COMPILED	fh@daniel.ipg 2016-01-12 20:34:29
+SIM_START	DCP_Final	2016-04-21 20:19:04
+TIME	0.001
+ERROR		Evaluation of CM4SL.ActivateFcn/StartFcn failed: No Simulink model selected
+ERROR		CM_Main.c: Initialization failed (CM_Main_Begin()=-3)
+SIM_ABORT	DCP_Final	0s	0m

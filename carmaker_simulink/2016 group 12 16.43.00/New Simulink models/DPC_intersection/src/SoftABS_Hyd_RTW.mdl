@@ -1,0 +1,4980 @@
+Model {
+  Name			  "SoftABS_Hyd_RTW"
+  Version		  7.5
+  MdlSubVersion		  0
+  GraphicalInterface {
+    NumRootInports	    2
+    Inport {
+      BusObject		      "cmHydBrakeCtrlIn"
+      Name		      "FromCM"
+    }
+    Inport {
+      BusObject		      "cmHydBrakeCtrlCfgIn"
+      Name		      "CfgInFromCM"
+    }
+    NumRootOutports	    1
+    Outport {
+      BusObject		      "cmHydBrakeCtrlOut"
+      BusOutputAsStruct	      "off"
+      Name		      "ToCM"
+    }
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.9"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  Description		  "CarMaker Real-Time Target (generic)"
+  SavedCharacterEncoding  "ISO-8859-1"
+  PreLoadFcn		  "vehicle = 'Car'; if ~length(which('cmcmd')), cmenv; end\nSoftABS_Hyd_RTW_bus\nSoftABS_Hyd_RTW_params"
+  SaveDefaultBlockParams  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  MaxMDLFileLineLength	  120
+  InitFcn		  "vehicle = 'Car'; if ~length(which('cmcmd')), cmenv; end\nSoftABS_Hyd_RTW_bus\nSoftABS_Hyd_RTW_params"
+  Created		  "Wed Jun  3 10:32:31 2015"
+  Creator		  "ml"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "ml"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Mon Aug 17 09:30:26 2015"
+  RTWModifiedTimeStamp	  361704616
+  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  ConfigurationManager	  "None"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      1
+      Version		      "1.10.0"
+      Array {
+	Type			"Handle"
+	Dimension		8
+	Simulink.SolverCC {
+	  $ObjectID		  2
+	  Version		  "1.10.0"
+	  StartTime		  "0.0"
+	  StopTime		  "inf"
+	  AbsTol		  "auto"
+	  FixedStep		  "0.001"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "SingleTasking"
+	  Solver		  "ode1"
+	  SolverName		  "ode1"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  3
+	  Version		  "1.10.0"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  4
+	  Version		  "1.10.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    7
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  InlineParams		  off
+	  UseIntDivNetSlope	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  StrengthReduction	  off
+	  EnforceIntegerDowncast  on
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  ExpressionDepthLimit	  2147483647
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  off
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "Off"
+	  AccelVerboseBuild	  off
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  5
+	  Version		  "1.10.0"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"warning"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "UseLocalSettings"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  SolverPrmCheckMsg	  "none"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "error"
+	  MultiTaskCondExecSysMsg "error"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "Use local settings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  StrictBusMsg		  "ErrorLevel1"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
+	  BlockIODiagnostic	  "none"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  6
+	  Version		  "1.10.0"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "32-bit Generic"
+	  TargetUnknown		  off
+	  ProdEqTarget		  off
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  7
+	  Version		  "1.10.0"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  8
+	  Version		  "1.10.0"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
+	  SFSimEcho		  on
+	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimBuildMode		  "sf_incremental_build"
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  9
+	  Version		  "1.10.0"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    6
+	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "CarMaker.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  TemplateMakefile	  "CarMaker_unix.tmf"
+	  Description		  "CarMaker Real-Time Target (32-bit)"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ProcessScript		  "CarMaker_make_rtw_hook"
+	  ConfigAtBuild		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
+	  RTWCompilerOptimization "Off"
+	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      10
+	      Version		      "1.10.0"
+	      Array {
+		Type			"Cell"
+		Dimension		19
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		Cell			"ReqsInCode"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      63
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      SimulinkBlockComments   on
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.STFCustomTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      11
+	      Version		      "1.10.0"
+	      Array {
+		Type			"Cell"
+		Dimension		17
+		Cell			"GeneratePreprocessorConditionals"
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"GenerateTestInterfaces"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"CPPClassGenCompliant"
+		Cell			"MultiInstanceERTCode"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportNonFinite"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		Cell			"PortableWordSizes"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      TargetFunctionLibrary   "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      ERTCodeCoverageTool     "None"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant off
+	      ParMdlRefBuildCompliant off
+	      CompOptLevelCompliant   off
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      off
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
+	      ParenthesesLevel	      "Nominal"
+	      PortableWordSizes	      off
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    off
+	      AutosarCompliant	      off
+	      SystemTargetFile	      "CarMaker.tlc"
+	      DialogCategory	      0
+	      Array {
+		Type			"Handle"
+		Dimension		1
+		Simulink.GRTTargetCC {
+		  $BackupClass		  "Simulink.TargetCC"
+		  $ObjectID		  12
+		  Version		  "1.10.0"
+		  Array {
+		    Type		    "Cell"
+		    Dimension		    17
+		    Cell		    "GeneratePreprocessorConditionals"
+		    Cell		    "IncludeMdlTerminateFcn"
+		    Cell		    "CombineOutputUpdateFcns"
+		    Cell		    "SuppressErrorStatus"
+		    Cell		    "ERTCustomFileBanners"
+		    Cell		    "GenerateSampleERTMain"
+		    Cell		    "GenerateTestInterfaces"
+		    Cell		    "ModelStepFunctionPrototypeControlCompliant"
+		    Cell		    "CPPClassGenCompliant"
+		    Cell		    "MultiInstanceERTCode"
+		    Cell		    "PurelyIntegerCode"
+		    Cell		    "SupportNonFinite"
+		    Cell		    "SupportComplex"
+		    Cell		    "SupportAbsoluteTime"
+		    Cell		    "SupportContinuousTime"
+		    Cell		    "SupportNonInlinedSFcns"
+		    Cell		    "PortableWordSizes"
+		    PropName		    "DisabledProps"
+		  }
+		  TargetFcnLib		  "ansi_tfl_table_tmw.mat"
+		  TargetLibSuffix	  ""
+		  TargetPreCompLibLocation ""
+		  TargetFunctionLibrary	  "ANSI_C"
+		  UtilityFuncGeneration	  "Auto"
+		  ERTMultiwordTypeDef	  "System defined"
+		  ERTCodeCoverageTool	  "None"
+		  ERTMultiwordLength	  256
+		  MultiwordLength	  2048
+		  GenerateFullHeader	  on
+		  GenerateSampleERTMain	  off
+		  GenerateTestInterfaces  off
+		  IsPILTarget		  off
+		  ModelReferenceCompliant off
+		  ParMdlRefBuildCompliant off
+		  CompOptLevelCompliant	  off
+		  IncludeMdlTerminateFcn  on
+		  GeneratePreprocessorConditionals "Disable all"
+		  CombineOutputUpdateFcns off
+		  SuppressErrorStatus	  off
+		  ERTFirstTimeCompliant	  off
+		  IncludeFileDelimiter	  "Auto"
+		  ERTCustomFileBanners	  off
+		  SupportAbsoluteTime	  on
+		  LogVarNameModifier	  "rt_"
+		  MatFileLogging	  off
+		  MultiInstanceERTCode	  off
+		  SupportNonFinite	  on
+		  SupportComplex	  on
+		  PurelyIntegerCode	  off
+		  SupportContinuousTime	  on
+		  SupportNonInlinedSFcns  on
+		  SupportVariableSizeSignals off
+		  EnableShiftOperators	  on
+		  ParenthesesLevel	  "Nominal"
+		  PortableWordSizes	  off
+		  ModelStepFunctionPrototypeControlCompliant off
+		  CPPClassGenCompliant	  off
+		  AutosarCompliant	  off
+		  UseMalloc		  off
+		  ExtMode		  off
+		  ExtModeStaticAlloc	  off
+		  ExtModeTesting	  off
+		  ExtModeStaticAllocSize  1000000
+		  ExtModeTransport	  0
+		  ExtModeMexFile	  "noextcomm"
+		  ExtModeIntrfLevel	  "Level1"
+		  RTWCAPISignals	  off
+		  RTWCAPIParams		  off
+		  RTWCAPIStates		  off
+		  GenerateASAP2		  off
+		}
+		PropName		"Components"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"HilProjDir"
+		Value			".."
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilProjHookup"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilProjMake"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"HilVerboseMake"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType__fs_u3_CarMaker_workjaw_WorkDevel_5_0_fake_linux_Matlab_R2010a_CarMaker_1HilVehicleTy"
+		"pe"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Car"
+		  Value			  1
+		  String		  "Motorcycle"
+		  Value			  2
+		  String		  "Truck"
+		}
+		Name			"HilVehicleType"
+		Value			"Car"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType__fs_u3_CarMaker_workjaw_WorkDevel_5_0_fake_linux_Matlab_R2010a_CarMaker_1HilWrapperTy"
+		"pe"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Aero"
+		  Value			  1
+		  String		  "Brake"
+		  Value			  2
+		  String		  "Environment"
+		  Value			  3
+		  String		  "HydBrakeSystem"
+		  Value			  4
+		  String		  "HydBrakeControl"
+		  Value			  5
+		  String		  "AirBrakeSystem"
+		  Value			  6
+		  String		  "AirBrakeControl"
+		  Value			  7
+		  String		  "PowerTrain"
+		  Value			  8
+		  String		  "PowerTrainXWD"
+		  Value			  9
+		  String		  "PTBattery"
+		  Value			  10
+		  String		  "PTBatteryCU"
+		  Value			  11
+		  String		  "PTClutch"
+		  Value			  12
+		  String		  "PTControl"
+		  Value			  13
+		  String		  "PTControlOSM"
+		  Value			  14
+		  String		  "PTDriveLine"
+		  Value			  15
+		  String		  "PTDriveLineXWD"
+		  Value			  16
+		  String		  "PTEngine"
+		  Value			  17
+		  String		  "PTEngineCU"
+		  Value			  18
+		  String		  "PTGearBox"
+		  Value			  19
+		  String		  "PTGenCoupling"
+		  Value			  20
+		  String		  "PTMotor"
+		  Value			  21
+		  String		  "PTMotorCU"
+		  Value			  22
+		  String		  "PTPowerSupply"
+		  Value			  23
+		  String		  "PTTransmCU"
+		  Value			  24
+		  String		  "Steering"
+		  Value			  25
+		  String		  "SuspExtFrcs"
+		  Value			  26
+		  String		  "SuspEF_Spring"
+		  Value			  27
+		  String		  "SuspEF_Damper"
+		  Value			  28
+		  String		  "SuspEF_Buffer"
+		  Value			  29
+		  String		  "SuspEF_Stabi"
+		  Value			  30
+		  String		  "SuspKnC"
+		  Value			  31
+		  String		  "TireCPI"
+		  Value			  32
+		  String		  "TireCPMod"
+		  Value			  33
+		  String		  "TireSTI"
+		  Value			  34
+		  String		  "UserDriver"
+		  Value			  35
+		  String		  "Vehicle_Car"
+		  Value			  36
+		  String		  "VehicleControl"
+		  Value			  37
+		  String		  "VhclOperator"
+		  Value			  38
+		  String		  "Plain"
+		  Value			  39
+		  String		  "Generic"
+		}
+		Name			"HilWrapperType"
+		Value			"HydBrakeControl"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"HilDescription"
+		Value			"SoftABS Hyd RTW"
+	      }
+	      CustomProperty {
+		DataType		"int32"
+		Name			"HilParamId"
+		Value			1
+	      }
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
+      CurrentDlgPage	      "Real-Time Workshop/CarMaker"
+      ConfigPrmDlgPosition    " [ 82, 196, 984, 912 ] "
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    1
+  }
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      BusCreator
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      BusSelector
+      OutputAsBus	      off
+    }
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Inherit from 'Constant value'"
+      OutDataType	      "fixdt(1,16,0)"
+      ConRadixGroup	      "Use specified scaling"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Inherit via back propagation"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Derivative
+      LinearizePole	      "inf"
+    }
+    Block {
+      BlockType		      DiscretePulseGenerator
+      PulseType		      "Sample based"
+      TimeSource	      "Use simulation time"
+      VectorParams1D	      on
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "fixdt(1,16,0)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Integrator
+      ExternalReset	      "none"
+      InitialConditionSource  "internal"
+      InitialCondition	      "0"
+      LimitOutput	      off
+      UpperSaturationLimit    "inf"
+      LowerSaturationLimit    "-inf"
+      ShowSaturationPort      off
+      ShowStatePort	      off
+      AbsoluteTolerance	      "auto"
+      IgnoreLimit	      off
+      ZeroCross		      on
+      ContinuousStateAttributes	"''"
+    }
+    Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeMode	      "Logical (see Configuration Parameters: Optimization)"
+      LogicDataType	      "uint(8)"
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Lookup
+      Table		      " rand(1,10)-0.5"
+      LookUpMeth	      "Interpolation-Extrapolation"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+      LUTDesignTableMode      "Redesign Table"
+      LUTDesignDataSource     "Block Dialog"
+      LUTDesignFunctionName   "sqrt(x)"
+      LUTDesignUseExistingBP  on
+      LUTDesignRelError	      "0.01"
+      LUTDesignAbsError	      "1e-6"
+    }
+    Block {
+      BlockType		      MinMax
+      Function		      "min"
+      Inputs		      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Inherit via internal rule"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      DataType		      "auto"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      RateTransition
+      Integrity		      on
+      Deterministic	      on
+      X0		      "0"
+      OutPortSampleTimeOpt    "Specify"
+      OutPortSampleTimeMultiple	"1"
+      OutPortSampleTime	      "-1"
+    }
+    Block {
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      InputSameDT	      on
+      LogicOutDataTypeMode    "Logical (see Configuration Parameters: Optimization)"
+      LogicDataType	      "uint(8)"
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Relay
+      OnSwitchValue	      "eps"
+      OffSwitchValue	      "eps"
+      OnOutputValue	      "1"
+      OffOutputValue	      "0"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "All ports same datatype"
+      OutDataType	      "fixdt(1,16,0)"
+      ConRadixGroup	      "Use specified scaling"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: All ports same datatype"
+      LockScale		      off
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "fixdt(1,16,0)"
+      OutScaling	      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      SampleTime	      "1"
+    }
+  }
+  System {
+    Name		    "SoftABS_Hyd_RTW"
+    Location		    [126, 285, 926, 637]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    369
+    Block {
+      BlockType		      Inport
+      Name		      "FromCM"
+      SID		      1
+      Position		      [40, 55, 60, 65]
+      BackgroundColor	      "cyan"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmHydBrakeCtrlIn"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "CfgInFromCM"
+      SID		      8
+      Position		      [40, 165, 60, 175]
+      BackgroundColor	      "cyan"
+      Port		      "2"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmHydBrakeCtrlCfgIn"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "ABS_ECU"
+      SID		      222
+      Ports		      [0, 9]
+      Position		      [320, 81, 450, 299]
+      BackgroundColor	      "magenta"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"ABS_ECU"
+	Location		[205, 213, 1119, 1148]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "ABS_ValveCtrl_FL"
+	  SID			  223
+	  Ports			  [3, 4]
+	  Position		  [195, 175, 390, 310]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Brake Valve_In_FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Brake Valve_Out_FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "ABS_ValveCtrl_FL"
+	    Location		    [106, 291, 1173, 761]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "slip"
+	      SID		      224
+	      Position		      [100, 273, 130, 287]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wheelspeed"
+	      SID		      225
+	      Position		      [100, 343, 130, 357]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "rstat"
+	      SID		      226
+	      Position		      [100, 383, 130, 397]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      227
+	      Position		      [765, 310, 795, 340]
+	      ShowName		      off
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      228
+	      Position		      [165, 414, 195, 446]
+	      ShowName		      off
+	      Value		      "f_ax"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Derivative
+	      Name		      "Derivative"
+	      SID		      229
+	      Position		      [165, 335, 195, 365]
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Duty"
+	      SID		      230
+	      Ports		      [0, 1]
+	      Position		      [650, 69, 700, 121]
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"Duty"
+		Location		[354, 457, 758, 718]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  231
+		  Position		  [50, 80, 115, 110]
+		  ShowName		  off
+		  Value			  "1/t_Sensor"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Gain
+		  Name			  "Gain"
+		  SID			  367
+		  Position		  [135, 80, 165, 110]
+		  ShowName		  off
+		  ParameterDataTypeMode	  "Inherit via internal rule"
+		  ParameterDataType	  "fixdt(1, 16)"
+		  ParameterScaling	  "2^0"
+		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+		  OutDataTypeMode	  "Inherit via internal rule"
+		  OutDataType		  "fixdt(1, 16)"
+		  OutScaling		  "2^0"
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Integrator
+		  Name			  "Integrator"
+		  SID			  232
+		  Ports			  [2, 1]
+		  Position		  [190, 84, 245, 131]
+		  ExternalReset		  "either"
+		}
+		Block {
+		  BlockType		  DiscretePulseGenerator
+		  Name			  "Pulse\nGenerator"
+		  SID			  233
+		  Ports			  [0, 1]
+		  Position		  [60, 138, 105, 172]
+		  PulseType		  "Time based"
+		  Amplitude		  "1"
+		  Period		  "t_Sensor*2"
+		  PulseWidth		  "50"
+		  PhaseDelay		  "0"
+		  SampleTime		  "1"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "SZ"
+		  SID			  234
+		  Position		  [300, 103, 330, 117]
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Gain"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Pulse\nGenerator"
+		  SrcPort		  1
+		  Points		  [40, 0; 0, -35]
+		  DstBlock		  "Integrator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Integrator"
+		  SrcPort		  1
+		  DstBlock		  "SZ"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Gain"
+		  SrcPort		  1
+		  DstBlock		  "Integrator"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      235
+	      Position		      [165, 262, 220, 298]
+	      ShowName		      off
+	      Gain		      "f_slip"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Lookup
+	      Name		      "Look-Up\nTable1"
+	      SID		      236
+	      Position		      [650, 139, 700, 191]
+	      InputValues	      "Valve_LUTin_VA"
+	      Table		      "ValveIn_LUTout_VA"
+	      LookUpMeth	      "Interpolation-Use End Values"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Lookup
+	      Name		      "Look-Up\nTable2"
+	      SID		      237
+	      Position		      [650, 219, 700, 271]
+	      InputValues	      "Valve_LUTin_VA"
+	      Table		      "ValveOut_LUTout_VA"
+	      LookUpMeth	      "Interpolation-Use End Values"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product"
+	      SID		      238
+	      Ports		      [2, 1]
+	      Position		      [535, 226, 580, 259]
+	      InputSameDT	      off
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product1"
+	      SID		      239
+	      Ports		      [3, 1]
+	      Position		      [260, 343, 305, 377]
+	      Inputs		      "3"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator"
+	      SID		      240
+	      Ports		      [2, 1]
+	      Position		      [765, 142, 795, 173]
+	      Operator		      "<"
+	      InputSameDT	      off
+	      SampleTime	      "0.001"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator1"
+	      SID		      241
+	      Ports		      [2, 1]
+	      Position		      [765, 222, 795, 253]
+	      Operator		      "<"
+	      InputSameDT	      off
+	      SampleTime	      "0.001"
+	    }
+	    Block {
+	      BlockType		      Relay
+	      Name		      "Relay"
+	      SID		      242
+	      Position		      [450, 265, 480, 295]
+	      OnSwitchValue	      "sku_VA"
+	      OffSwitchValue	      "sku_off_VA"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      243
+	      Ports		      [2, 1]
+	      Position		      [320, 270, 340, 290]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|--"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      SID		      244
+	      Ports		      [3, 1]
+	      Position		      [850, 285, 870, 335]
+	      ShowName		      off
+	      Inputs		      "--+"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	    }
+	    Block {
+	      BlockType		      ZeroOrderHold
+	      Name		      "Zero-Order\nHold"
+	      SID		      245
+	      Position		      [375, 261, 410, 299]
+	      SampleTime	      "t_Sensor"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.Valve.In"
+	      SID		      246
+	      Position		      [920, 153, 950, 167]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.Valve.Out"
+	      SID		      247
+	      Position		      [920, 233, 950, 247]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.status"
+	      SID		      248
+	      Position		      [920, 303, 950, 317]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.on/off"
+	      SID		      249
+	      Position		      [920, 373, 950, 387]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      SrcBlock		      "Derivative"
+	      SrcPort		      1
+	      DstBlock		      "Product1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product1"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "slip"
+	      SrcPort		      1
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wheelspeed"
+	      SrcPort		      1
+	      DstBlock		      "Derivative"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "rstat"
+	      SrcPort		      1
+	      Points		      [85, 0; 0, -30]
+	      DstBlock		      "Product1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      Points		      [45, 0]
+	      DstBlock		      "Product1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator"
+	      SrcPort		      1
+	      Points		      [0, 0; 25, 0]
+	      Branch {
+		Points			[75, 0]
+		DstBlock		"Brake.Valve.In"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 135]
+		DstBlock		"Sum1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator1"
+	      SrcPort		      1
+	      Points		      [-5, 0; 20, 0]
+	      Branch {
+		DstBlock		"Brake.Valve.Out"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 70]
+		DstBlock		"Sum1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "Brake.ABS.status"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Zero-Order\nHold"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, -80]
+		DstBlock		"Look-Up\nTable1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Look-Up\nTable2"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Duty"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, 55]
+	      Branch {
+		Points			[0, 80]
+		DstBlock		"Relational\nOperator1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Relational\nOperator"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Look-Up\nTable1"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Look-Up\nTable2"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Labels		      [0, 0]
+	      SrcBlock		      "Relay"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, -30]
+		DstBlock		"Product"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 100]
+		DstBlock		"Brake.ABS.on/off"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Zero-Order\nHold"
+	      SrcPort		      1
+	      Points		      [0, 0; 10, 0]
+	      Branch {
+		DstBlock		"Relay"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -45]
+		DstBlock		"Product"
+		DstPort			1
+	      }
+	    }
+	    Annotation {
+	      Name		      "\nEITHER ABS is switched on and  S_K is put through\n when S_K is becomming bigger the s_{ku} \nOR"
+	      " output is 0 when S_K is smaller than {sku}_{off}\n"
+	      Position		      [487, 62]
+	      DropShadow	      on
+	      Interpreter	      "tex"
+	    }
+	    Annotation {
+	      Name		      "\nControl strategy: Trigger criterion S_K\nS_K combines wheel decceleration control with slip cont"
+	      "rol \nusing weighting factors  K_z and K_\\lambda\nS_K=K_z*z_R + K_\\lambda * \\lambda_{rel}\n(see p.127 in M. "
+	      "Burckhardt \nFahrwerktechnik:Radschlupfregelsysteme)\n"
+	      Position		      [187, 82]
+	      DropShadow	      on
+	      Interpreter	      "tex"
+	    }
+	    Annotation {
+	      Name		      "\nValve Control:\nValves are open for a predefined time window. \nThe driving time depends on a tr"
+	      "igger criterion (LUT).\nThe treshold change for the valve driving time is \ncontinously modified by a repeating"
+	      " sequence.\n"
+	      Position		      [875, 73]
+	      DropShadow	      on
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "ABS_ValveCtrl_FR"
+	  SID			  250
+	  Ports			  [3, 4]
+	  Position		  [195, 335, 390, 470]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Brake Valve_In_FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Brake Valve_Out_FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "ABS_ValveCtrl_FR"
+	    Location		    [78, 229, 1145, 699]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "slip"
+	      SID		      251
+	      Position		      [100, 273, 130, 287]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wheelspeed"
+	      SID		      252
+	      Position		      [100, 343, 130, 357]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "rstat"
+	      SID		      253
+	      Position		      [100, 383, 130, 397]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      254
+	      Position		      [765, 310, 795, 340]
+	      ShowName		      off
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      255
+	      Position		      [165, 414, 195, 446]
+	      ShowName		      off
+	      Value		      "f_ax"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Derivative
+	      Name		      "Derivative"
+	      SID		      256
+	      Position		      [165, 335, 195, 365]
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "Duty"
+	      SID		      257
+	      Ports		      [0, 1]
+	      Position		      [650, 69, 700, 121]
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      System {
+		Name			"Duty"
+		Location		[345, 382, 749, 643]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant1"
+		  SID			  258
+		  Position		  [50, 80, 115, 110]
+		  ShowName		  off
+		  Value			  "1/t_Sensor"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Gain
+		  Name			  "Gain"
+		  SID			  368
+		  Position		  [135, 80, 165, 110]
+		  ShowName		  off
+		  ParameterDataTypeMode	  "Inherit via internal rule"
+		  ParameterDataType	  "fixdt(1, 16)"
+		  ParameterScaling	  "2^0"
+		  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+		  OutDataTypeMode	  "Inherit via internal rule"
+		  OutDataType		  "fixdt(1, 16)"
+		  OutScaling		  "2^0"
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		  SaturateOnIntegerOverflow off
+		}
+		Block {
+		  BlockType		  Integrator
+		  Name			  "Integrator"
+		  SID			  259
+		  Ports			  [2, 1]
+		  Position		  [190, 84, 245, 131]
+		  ExternalReset		  "either"
+		}
+		Block {
+		  BlockType		  DiscretePulseGenerator
+		  Name			  "Pulse\nGenerator"
+		  SID			  260
+		  Ports			  [0, 1]
+		  Position		  [60, 138, 105, 172]
+		  PulseType		  "Time based"
+		  Amplitude		  "1"
+		  Period		  "t_Sensor*2"
+		  PulseWidth		  "50"
+		  PhaseDelay		  "0"
+		  SampleTime		  "1"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "SZ"
+		  SID			  261
+		  Position		  [300, 103, 330, 117]
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Line {
+		  SrcBlock		  "Constant1"
+		  SrcPort		  1
+		  DstBlock		  "Gain"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Pulse\nGenerator"
+		  SrcPort		  1
+		  Points		  [40, 0; 0, -35]
+		  DstBlock		  "Integrator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Integrator"
+		  SrcPort		  1
+		  DstBlock		  "SZ"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Gain"
+		  SrcPort		  1
+		  DstBlock		  "Integrator"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      262
+	      Position		      [165, 262, 220, 298]
+	      ShowName		      off
+	      Gain		      "f_slip"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Lookup
+	      Name		      "Look-Up\nTable1"
+	      SID		      263
+	      Position		      [650, 139, 700, 191]
+	      InputValues	      "Valve_LUTin_VA"
+	      Table		      "ValveIn_LUTout_VA"
+	      LookUpMeth	      "Interpolation-Use End Values"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Lookup
+	      Name		      "Look-Up\nTable2"
+	      SID		      264
+	      Position		      [650, 219, 700, 271]
+	      InputValues	      "Valve_LUTin_VA"
+	      Table		      "ValveOut_LUTout_VA"
+	      LookUpMeth	      "Interpolation-Use End Values"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product"
+	      SID		      265
+	      Ports		      [2, 1]
+	      Position		      [535, 226, 580, 259]
+	      InputSameDT	      off
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product1"
+	      SID		      266
+	      Ports		      [3, 1]
+	      Position		      [260, 343, 305, 377]
+	      Inputs		      "3"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator"
+	      SID		      267
+	      Ports		      [2, 1]
+	      Position		      [765, 142, 795, 173]
+	      Operator		      "<"
+	      InputSameDT	      off
+	      SampleTime	      "0.001"
+	    }
+	    Block {
+	      BlockType		      RelationalOperator
+	      Name		      "Relational\nOperator1"
+	      SID		      268
+	      Ports		      [2, 1]
+	      Position		      [765, 222, 795, 253]
+	      Operator		      "<"
+	      InputSameDT	      off
+	      SampleTime	      "0.001"
+	    }
+	    Block {
+	      BlockType		      Relay
+	      Name		      "Relay"
+	      SID		      269
+	      Position		      [450, 265, 480, 295]
+	      OnSwitchValue	      "sku_VA"
+	      OffSwitchValue	      "sku_off_VA"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      270
+	      Ports		      [2, 1]
+	      Position		      [320, 270, 340, 290]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|--"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      SID		      271
+	      Ports		      [3, 1]
+	      Position		      [850, 285, 870, 335]
+	      ShowName		      off
+	      Inputs		      "--+"
+	      InputSameDT	      off
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	    }
+	    Block {
+	      BlockType		      ZeroOrderHold
+	      Name		      "Zero-Order\nHold"
+	      SID		      272
+	      Position		      [375, 261, 410, 299]
+	      SampleTime	      "t_Sensor"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.Valve.In"
+	      SID		      273
+	      Position		      [920, 153, 950, 167]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.Valve.Out"
+	      SID		      274
+	      Position		      [920, 233, 950, 247]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.status"
+	      SID		      275
+	      Position		      [920, 303, 950, 317]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.on/off"
+	      SID		      276
+	      Position		      [920, 373, 950, 387]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      SrcBlock		      "Derivative"
+	      SrcPort		      1
+	      DstBlock		      "Product1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product1"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "slip"
+	      SrcPort		      1
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wheelspeed"
+	      SrcPort		      1
+	      DstBlock		      "Derivative"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "rstat"
+	      SrcPort		      1
+	      Points		      [85, 0; 0, -30]
+	      DstBlock		      "Product1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      Points		      [45, 0]
+	      DstBlock		      "Product1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator"
+	      SrcPort		      1
+	      Points		      [0, 0; 25, 0]
+	      Branch {
+		Points			[75, 0]
+		DstBlock		"Brake.Valve.In"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 135]
+		DstBlock		"Sum1"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Relational\nOperator1"
+	      SrcPort		      1
+	      Points		      [-5, 0; 20, 0]
+	      Branch {
+		DstBlock		"Brake.Valve.Out"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 70]
+		DstBlock		"Sum1"
+		DstPort			2
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      DstBlock		      "Brake.ABS.status"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      DstBlock		      "Zero-Order\nHold"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, -80]
+		DstBlock		"Look-Up\nTable1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Look-Up\nTable2"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Duty"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, 55]
+	      Branch {
+		Points			[0, 80]
+		DstBlock		"Relational\nOperator1"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"Relational\nOperator"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Look-Up\nTable1"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Look-Up\nTable2"
+	      SrcPort		      1
+	      DstBlock		      "Relational\nOperator1"
+	      DstPort		      2
+	    }
+	    Line {
+	      Labels		      [0, 0]
+	      SrcBlock		      "Relay"
+	      SrcPort		      1
+	      Points		      [0, 0; 20, 0]
+	      Branch {
+		Points			[0, -30]
+		DstBlock		"Product"
+		DstPort			2
+	      }
+	      Branch {
+		Points			[0, 100]
+		DstBlock		"Brake.ABS.on/off"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Zero-Order\nHold"
+	      SrcPort		      1
+	      Points		      [0, 0; 10, 0]
+	      Branch {
+		DstBlock		"Relay"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -45]
+		DstBlock		"Product"
+		DstPort			1
+	      }
+	    }
+	    Annotation {
+	      Name		      "\nEITHER ABS is switched on and  S_K is put through\n when S_K is becomming bigger the s_{ku} \nOR"
+	      " output is 0 when S_K is smaller than {sku}_{off}\n"
+	      Position		      [487, 62]
+	      DropShadow	      on
+	      Interpreter	      "tex"
+	    }
+	    Annotation {
+	      Name		      "\nControl strategy: Trigger criterion S_K\nS_K combines wheel decceleration control with slip cont"
+	      "rol \nusing weighting factors  K_z and K_\\lambda\nS_K=K_z*z_R + K_\\lambda * \\lambda_{rel}\n(see p.127 in M. "
+	      "Burckhardt \nFahrwerktechnik:Radschlupfregelsysteme)\n"
+	      Position		      [187, 82]
+	      DropShadow	      on
+	      Interpreter	      "tex"
+	    }
+	    Annotation {
+	      Name		      "\nValve Control:\nValves are open for a predefined time window. \nThe driving time depends on a tr"
+	      "igger criterion (LUT).\nThe treshold change for the valve driving time is \ncontinously modified by a repeating"
+	      " sequence.\n"
+	      Position		      [875, 73]
+	      DropShadow	      on
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  277
+	  Position		  [65, 123, 145, 157]
+	  ShowName		  off
+	  Value			  "v_min/3.6"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  366
+	  Position		  [575, 806, 615, 844]
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "fixdt(1, 16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Define CM Dict"
+	  SID			  278
+	  Ports			  []
+	  Position		  [790, 815, 889, 835]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Define CM Dict"
+	  SourceType		  "Define CarMaker Dictionary Variable"
+	  xname			  "ABS.actv"
+	  xmono			  off
+	  xtype			  "UChar"
+	  xdvaplace		  "None"
+	  xnstates		  "2"
+	  xfirststate		  "0"
+	  xinitial		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Define CM Dict1"
+	  SID			  279
+	  Ports			  []
+	  Position		  [715, 249, 825, 270]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Define CM Dict"
+	  SourceType		  "Define CarMaker Dictionary Variable"
+	  xname			  "ABS.Status_FL"
+	  xmono			  off
+	  xtype			  "Char"
+	  xdvaplace		  "None"
+	  xnstates		  "4"
+	  xfirststate		  "0"
+	  xinitial		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Define CM Dict2"
+	  SID			  280
+	  Ports			  []
+	  Position		  [720, 411, 826, 432]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Define CM Dict"
+	  SourceType		  "Define CarMaker Dictionary Variable"
+	  xname			  "ABS.Status_FR"
+	  xmono			  off
+	  xtype			  "Char"
+	  xdvaplace		  "None"
+	  xnstates		  "4"
+	  xfirststate		  "0"
+	  xinitial		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Define CM Dict3"
+	  SID			  281
+	  Ports			  []
+	  Position		  [720, 585, 825, 605]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Define CM Dict"
+	  SourceType		  "Define CarMaker Dictionary Variable"
+	  xname			  "ABS.Status_RL"
+	  xmono			  off
+	  xtype			  "Char"
+	  xdvaplace		  "None"
+	  xnstates		  "4"
+	  xfirststate		  "0"
+	  xinitial		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Define CM Dict4"
+	  SID			  282
+	  Ports			  []
+	  Position		  [720, 746, 827, 765]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Define CM Dict"
+	  SourceType		  "Define CarMaker Dictionary Variable"
+	  xname			  "ABS.Status_RR"
+	  xmono			  off
+	  xtype			  "Char"
+	  xdvaplace		  "None"
+	  xnstates		  "4"
+	  xfirststate		  "0"
+	  xinitial		  "0"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  283
+	  Ports			  [4, 1]
+	  Position		  [530, 783, 550, 867]
+	  Operator		  "OR"
+	  Inputs		  "4"
+	  AllPortsSameDT	  off
+	  OutDataTypeMode	  "Specify via dialog"
+	  LogicDataType		  "fixdt(1,16)"
+	  OutDataTypeStr	  "fixdt(1,16)"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product"
+	  SID			  284
+	  Ports			  [2, 1]
+	  Position		  [595, 166, 640, 199]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product1"
+	  SID			  285
+	  Ports			  [2, 1]
+	  Position		  [655, 201, 700, 234]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product2"
+	  SID			  286
+	  Ports			  [2, 1]
+	  Position		  [595, 326, 640, 359]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product3"
+	  SID			  287
+	  Ports			  [2, 1]
+	  Position		  [660, 361, 705, 394]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product4"
+	  SID			  288
+	  Ports			  [2, 1]
+	  Position		  [595, 491, 640, 524]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product5"
+	  SID			  289
+	  Ports			  [2, 1]
+	  Position		  [660, 531, 705, 564]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product6"
+	  SID			  290
+	  Ports			  [2, 1]
+	  Position		  [595, 651, 640, 684]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "Product7"
+	  SID			  291
+	  Ports			  [2, 1]
+	  Position		  [660, 691, 705, 724]
+	  InputSameDT		  off
+	  OutDataTypeMode	  "double"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	  OutDataTypeStr	  "double"
+	  RndMeth		  "Floor"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict"
+	  SID			  292
+	  Ports			  [0, 1]
+	  Position		  [55, 191, 155, 209]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.LongSlipFL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict1"
+	  SID			  293
+	  Ports			  [0, 1]
+	  Position		  [55, 236, 155, 254]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WheelSpd_FL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict10"
+	  SID			  294
+	  Ports			  [0, 1]
+	  Position		  [55, 731, 155, 749]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WheelSpd_RR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict11"
+	  SID			  295
+	  Ports			  [0, 1]
+	  Position		  [55, 786, 155, 804]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WRR.Radius"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict12"
+	  SID			  296
+	  Ports			  [0, 1]
+	  Position		  [55, 86, 155, 104]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.v"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict2"
+	  SID			  297
+	  Ports			  [0, 1]
+	  Position		  [55, 281, 155, 299]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WFL.Radius"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict3"
+	  SID			  298
+	  Ports			  [0, 1]
+	  Position		  [55, 351, 155, 369]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.LongSlipFR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict4"
+	  SID			  299
+	  Ports			  [0, 1]
+	  Position		  [55, 396, 155, 414]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WheelSpd_FR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict5"
+	  SID			  300
+	  Ports			  [0, 1]
+	  Position		  [55, 441, 155, 459]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WFR.Radius"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict6"
+	  SID			  301
+	  Ports			  [0, 1]
+	  Position		  [55, 511, 155, 529]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.LongSlipRL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict7"
+	  SID			  302
+	  Ports			  [0, 1]
+	  Position		  [55, 566, 155, 584]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WheelSpd_RL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict8"
+	  SID			  303
+	  Ports			  [0, 1]
+	  Position		  [55, 621, 155, 639]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.WRL.Radius"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Read CM Dict9"
+	  SID			  304
+	  Ports			  [0, 1]
+	  Position		  [55, 676, 155, 694]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Read CM Dict"
+	  SourceType		  "Read CarMaker Dictionary Variable(s)"
+	  xname			  "Car.LongSlipRR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "Relational\nOperator"
+	  SID			  305
+	  Ports			  [2, 1]
+	  Position		  [220, 87, 250, 118]
+	  Operator		  ">"
+	  InputSameDT		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Write CM Dict"
+	  SID			  306
+	  Ports			  [1]
+	  Position		  [665, 815, 770, 835]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Write CM Dict"
+	  SourceType		  "Write CarMaker Dictionary Variable(s)"
+	  xname			  "ABS.actv"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Write CM Dict1"
+	  SID			  307
+	  Ports			  [1]
+	  Position		  [595, 250, 700, 270]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Write CM Dict"
+	  SourceType		  "Write CarMaker Dictionary Variable(s)"
+	  xname			  "ABS.Status_FL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Write CM Dict2"
+	  SID			  308
+	  Ports			  [1]
+	  Position		  [600, 410, 705, 430]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Write CM Dict"
+	  SourceType		  "Write CarMaker Dictionary Variable(s)"
+	  xname			  "ABS.Status_FR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Write CM Dict3"
+	  SID			  309
+	  Ports			  [1]
+	  Position		  [600, 586, 705, 604]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Write CM Dict"
+	  SourceType		  "Write CarMaker Dictionary Variable(s)"
+	  xname			  "ABS.Status_RL"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Write CM Dict4"
+	  SID			  310
+	  Ports			  [1]
+	  Position		  [600, 745, 705, 765]
+	  BackgroundColor	  "orange"
+	  LibraryVersion	  "1.468"
+	  SourceBlock		  "CarMaker4SL/Write CM Dict"
+	  SourceType		  "Write CarMaker Dictionary Variable(s)"
+	  xname			  "ABS.Status_RR"
+	  xsync			  off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "select_low"
+	  SID			  311
+	  Ports			  [6, 8]
+	  Position		  [195, 494, 390, 816]
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Brake Valve_In_RL"
+	    PropagatedSignals	    "Brake Valve_In_RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "Brake Valve_Out_RL"
+	    PropagatedSignals	    "Brake Valve_Out_RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    5
+	    Name		    "Brake Valve_In_RR"
+	    PropagatedSignals	    "Brake Valve_In_RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    6
+	    Name		    "Brake Valve_Out_RR"
+	    PropagatedSignals	    "Brake Valve_Out_RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    7
+	    Name		    "Brake Valve_Out_RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  System {
+	    Name		    "select_low"
+	    Location		    [68, 315, 951, 824]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "slip_RL"
+	      SID		      312
+	      Position		      [65, 153, 95, 167]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wheelspeed_RL"
+	      SID		      313
+	      Position		      [65, 193, 95, 207]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "rstat_RL"
+	      SID		      314
+	      Position		      [65, 233, 95, 247]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "slip_RR"
+	      SID		      315
+	      Position		      [65, 328, 95, 342]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "wheelspeed_RR"
+	      SID		      316
+	      Position		      [65, 368, 95, 382]
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "rstat_RR"
+	      SID		      317
+	      Position		      [65, 408, 95, 422]
+	      Port		      "6"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      SubSystem
+	      Name		      "ABS_ValveCtrl_rear"
+	      SID		      318
+	      Ports		      [1, 4]
+	      Position		      [465, 65, 585, 435]
+	      MinAlgLoopOccurrences   off
+	      PropExecContextOutsideSubsystem off
+	      RTWSystemCode	      "Auto"
+	      FunctionWithSeparateData off
+	      Opaque		      off
+	      RequestExecContextInheritance off
+	      MaskHideContents	      off
+	      Port {
+		PortNumber		1
+		Name			"Brake Valve_In_RL"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"Brake Valve_Out_RL"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      System {
+		Name			"ABS_ValveCtrl_rear"
+		Location		[257, 411, 1040, 867]
+		Open			off
+		ModelBrowserVisibility	off
+		ModelBrowserWidth	200
+		ScreenColor		"white"
+		PaperOrientation	"landscape"
+		PaperPositionMode	"auto"
+		PaperType		"usletter"
+		PaperUnits		"inches"
+		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+		TiledPageScale		1
+		ShowPageBoundaries	off
+		ZoomFactor		"100"
+		Block {
+		  BlockType		  Inport
+		  Name			  "Sk"
+		  SID			  319
+		  Position		  [45, 283, 75, 297]
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Constant
+		  Name			  "Constant"
+		  SID			  320
+		  Position		  [525, 330, 555, 360]
+		  ShowName		  off
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  SubSystem
+		  Name			  "Duty"
+		  SID			  321
+		  Ports			  [0, 1]
+		  Position		  [360, 79, 410, 131]
+		  MinAlgLoopOccurrences	  off
+		  PropExecContextOutsideSubsystem off
+		  RTWSystemCode		  "Auto"
+		  FunctionWithSeparateData off
+		  Opaque		  off
+		  RequestExecContextInheritance	off
+		  MaskHideContents	  off
+		  System {
+		    Name		    "Duty"
+		    Location		    [360, 507, 764, 768]
+		    Open		    off
+		    ModelBrowserVisibility  off
+		    ModelBrowserWidth	    200
+		    ScreenColor		    "white"
+		    PaperOrientation	    "landscape"
+		    PaperPositionMode	    "auto"
+		    PaperType		    "usletter"
+		    PaperUnits		    "inches"
+		    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+		    TiledPageScale	    1
+		    ShowPageBoundaries	    off
+		    ZoomFactor		    "100"
+		    Block {
+		    BlockType		    Constant
+		    Name		    "Constant1"
+		    SID			    322
+		    Position		    [50, 80, 115, 110]
+		    ShowName		    off
+		    Value		    "1/t_Sensor"
+		    OutDataType		    "sfix(16)"
+		    OutScaling		    "2^0"
+		    }
+		    Block {
+		    BlockType		    Gain
+		    Name		    "Gain"
+		    SID			    369
+		    Position		    [135, 80, 165, 110]
+		    ShowName		    off
+		    ParameterDataTypeMode   "Inherit via internal rule"
+		    ParameterDataType	    "fixdt(1, 16)"
+		    ParameterScaling	    "2^0"
+		    ParamDataTypeStr	    "Inherit: Inherit via internal rule"
+		    OutDataTypeMode	    "Inherit via internal rule"
+		    OutDataType		    "fixdt(1, 16)"
+		    OutScaling		    "2^0"
+		    OutDataTypeStr	    "Inherit: Inherit via internal rule"
+		    SaturateOnIntegerOverflow off
+		    }
+		    Block {
+		    BlockType		    Integrator
+		    Name		    "Integrator"
+		    SID			    323
+		    Ports		    [2, 1]
+		    Position		    [190, 84, 245, 131]
+		    ExternalReset	    "either"
+		    }
+		    Block {
+		    BlockType		    DiscretePulseGenerator
+		    Name		    "Pulse\nGenerator"
+		    SID			    324
+		    Ports		    [0, 1]
+		    Position		    [60, 138, 105, 172]
+		    PulseType		    "Time based"
+		    Amplitude		    "1"
+		    Period		    "t_Sensor*2"
+		    PulseWidth		    "50"
+		    PhaseDelay		    "0"
+		    SampleTime		    "1"
+		    }
+		    Block {
+		    BlockType		    Outport
+		    Name		    "SZ"
+		    SID			    325
+		    Position		    [300, 103, 330, 117]
+		    IconDisplay		    "Port number"
+		    OutDataType		    "sfix(16)"
+		    OutScaling		    "2^0"
+		    }
+		    Line {
+		    SrcBlock		    "Constant1"
+		    SrcPort		    1
+		    DstBlock		    "Gain"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Pulse\nGenerator"
+		    SrcPort		    1
+		    Points		    [40, 0; 0, -35]
+		    DstBlock		    "Integrator"
+		    DstPort		    2
+		    }
+		    Line {
+		    SrcBlock		    "Integrator"
+		    SrcPort		    1
+		    DstBlock		    "SZ"
+		    DstPort		    1
+		    }
+		    Line {
+		    SrcBlock		    "Gain"
+		    SrcPort		    1
+		    DstBlock		    "Integrator"
+		    DstPort		    1
+		    }
+		  }
+		}
+		Block {
+		  BlockType		  Lookup
+		  Name			  "Look-Up\nTable1"
+		  SID			  326
+		  Position		  [360, 149, 410, 201]
+		  InputValues		  "Valve_LUTin_HA"
+		  Table			  "ValveIn_LUTout_HA"
+		  LookUpMeth		  "Interpolation-Use End Values"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Lookup
+		  Name			  "Look-Up\nTable2"
+		  SID			  327
+		  Position		  [360, 229, 410, 281]
+		  InputValues		  "Valve_LUTin_HA"
+		  Table			  "ValveOut_LUTout_HA"
+		  LookUpMeth		  "Interpolation-Use End Values"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Product
+		  Name			  "Product"
+		  SID			  328
+		  Ports			  [2, 1]
+		  Position		  [270, 236, 315, 269]
+		  InputSameDT		  off
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		  RndMeth		  "Floor"
+		}
+		Block {
+		  BlockType		  RelationalOperator
+		  Name			  "Relational\nOperator"
+		  SID			  329
+		  Ports			  [2, 1]
+		  Position		  [480, 152, 510, 183]
+		  Operator		  "<"
+		  InputSameDT		  off
+		  SampleTime		  "0.001"
+		}
+		Block {
+		  BlockType		  RelationalOperator
+		  Name			  "Relational\nOperator1"
+		  SID			  330
+		  Ports			  [2, 1]
+		  Position		  [480, 232, 510, 263]
+		  Operator		  "<"
+		  InputSameDT		  off
+		  SampleTime		  "0.001"
+		}
+		Block {
+		  BlockType		  Relay
+		  Name			  "Relay"
+		  SID			  331
+		  Position		  [200, 275, 230, 305]
+		  OnSwitchValue		  "sku_HA"
+		  OffSwitchValue	  "sku_off_HA"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Sum
+		  Name			  "Sum1"
+		  SID			  332
+		  Ports			  [3, 1]
+		  Position		  [610, 305, 630, 355]
+		  ShowName		  off
+		  Inputs		  "--+"
+		  InputSameDT		  off
+		  OutDataTypeMode	  "Inherit via internal rule"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+		}
+		Block {
+		  BlockType		  ZeroOrderHold
+		  Name			  "Zero-Order\nHold"
+		  SID			  333
+		  Position		  [110, 271, 145, 309]
+		  SampleTime		  "t_Sensor"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Brake.Valve.In"
+		  SID			  334
+		  Position		  [665, 163, 695, 177]
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Brake.Valve.Out"
+		  SID			  335
+		  Position		  [665, 243, 695, 257]
+		  Port			  "2"
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Brake.ABS.status"
+		  SID			  336
+		  Position		  [665, 323, 695, 337]
+		  Port			  "3"
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Block {
+		  BlockType		  Outport
+		  Name			  "Brake.ABS.on/off"
+		  SID			  337
+		  Position		  [665, 393, 695, 407]
+		  Port			  "4"
+		  IconDisplay		  "Port number"
+		  OutDataType		  "sfix(16)"
+		  OutScaling		  "2^0"
+		}
+		Line {
+		  SrcBlock		  "Relational\nOperator"
+		  SrcPort		  1
+		  Points		  [0, 0; 75, 0]
+		  Branch {
+		    DstBlock		    "Brake.Valve.In"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 145]
+		    DstBlock		    "Sum1"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  SrcBlock		  "Relational\nOperator1"
+		  SrcPort		  1
+		  Points		  [0, 0; 60, 0]
+		  Branch {
+		    DstBlock		    "Brake.Valve.Out"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 80]
+		    DstBlock		    "Sum1"
+		    DstPort		    2
+		  }
+		}
+		Line {
+		  SrcBlock		  "Constant"
+		  SrcPort		  1
+		  DstBlock		  "Sum1"
+		  DstPort		  3
+		}
+		Line {
+		  SrcBlock		  "Sum1"
+		  SrcPort		  1
+		  DstBlock		  "Brake.ABS.status"
+		  DstPort		  1
+		}
+		Line {
+		  SrcBlock		  "Duty"
+		  SrcPort		  1
+		  Points		  [30, 0; 0, 55]
+		  Branch {
+		    DstBlock		    "Relational\nOperator"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 80]
+		    DstBlock		    "Relational\nOperator1"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  SrcBlock		  "Look-Up\nTable1"
+		  SrcPort		  1
+		  DstBlock		  "Relational\nOperator"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Look-Up\nTable2"
+		  SrcPort		  1
+		  DstBlock		  "Relational\nOperator1"
+		  DstPort		  2
+		}
+		Line {
+		  SrcBlock		  "Zero-Order\nHold"
+		  SrcPort		  1
+		  Points		  [-5, 0; 25, 0]
+		  Branch {
+		    DstBlock		    "Relay"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, -45]
+		    DstBlock		    "Product"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  Labels		  [0, 0]
+		  SrcBlock		  "Relay"
+		  SrcPort		  1
+		  Points		  [5, 0; 10, 0]
+		  Branch {
+		    Points		    [0, -30]
+		    DstBlock		    "Product"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, 110]
+		    DstBlock		    "Brake.ABS.on/off"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  SrcBlock		  "Product"
+		  SrcPort		  1
+		  Points		  [0, 0; 15, 0]
+		  Branch {
+		    Points		    [0, -80]
+		    DstBlock		    "Look-Up\nTable1"
+		    DstPort		    1
+		  }
+		  Branch {
+		    DstBlock		    "Look-Up\nTable2"
+		    DstPort		    1
+		  }
+		}
+		Line {
+		  SrcBlock		  "Sk"
+		  SrcPort		  1
+		  DstBlock		  "Zero-Order\nHold"
+		  DstPort		  1
+		}
+		Annotation {
+		  Name			  "\nEITHER ABS is switched on and  S_K is put through\n when S_K is becomming bigger the s_{ku} \nOR outpu"
+		  "t is 0 when S_K is smaller than {sku}_{off}\n"
+		  Position		  [187, 62]
+		  DropShadow		  on
+		  Interpreter		  "tex"
+		}
+		Annotation {
+		  Name			  "\nValve Control:\nValves are open for a predefined time window. \nThe driving time depends on a trigger "
+		  "criterion (LUT).\nThe treshold change for the valve driving time is \ncontinously modified by a repeating sequence"
+		  ".\n"
+		  Position		  [610, 73]
+		  DropShadow		  on
+		}
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      338
+	      Position		      [155, 250, 195, 280]
+	      ShowName		      off
+	      Value		      "f_ax"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      339
+	      Position		      [155, 430, 195, 460]
+	      ShowName		      off
+	      Value		      "f_ax"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Derivative
+	      Name		      "Derivative"
+	      SID		      340
+	      Position		      [155, 360, 185, 390]
+	    }
+	    Block {
+	      BlockType		      Derivative
+	      Name		      "Derivative1"
+	      SID		      341
+	      Position		      [155, 185, 185, 215]
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain"
+	      SID		      342
+	      Position		      [155, 317, 210, 353]
+	      ShowName		      off
+	      Gain		      "f_slip"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Gain
+	      Name		      "Gain1"
+	      SID		      343
+	      Position		      [155, 142, 210, 178]
+	      ShowName		      off
+	      Gain		      "f_slip"
+	      ParameterDataType	      "sfix(16)"
+	      ParameterScaling	      "2^0"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      MinMax
+	      Name		      "MinMax"
+	      SID		      344
+	      Ports		      [2, 1]
+	      Position		      [385, 232, 415, 263]
+	      Function		      "max"
+	      Inputs		      "2"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product1"
+	      SID		      345
+	      Ports		      [3, 1]
+	      Position		      [245, 368, 290, 402]
+	      Inputs		      "3"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      Product
+	      Name		      "Product2"
+	      SID		      346
+	      Ports		      [3, 1]
+	      Position		      [245, 223, 290, 257]
+	      Inputs		      "3"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	      RndMeth		      "Floor"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum"
+	      SID		      347
+	      Ports		      [2, 1]
+	      Position		      [305, 325, 325, 345]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|--"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Sum
+	      Name		      "Sum1"
+	      SID		      348
+	      Ports		      [2, 1]
+	      Position		      [305, 150, 325, 170]
+	      ShowName		      off
+	      IconShape		      "round"
+	      Inputs		      "|--"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake Valve_In_RL"
+	      SID		      349
+	      Position		      [750, 108, 780, 122]
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake Valve_Out_RL"
+	      SID		      350
+	      Position		      [750, 198, 780, 212]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.status_RL"
+	      SID		      351
+	      Position		      [750, 288, 780, 302]
+	      Port		      "3"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.on/off_RL"
+	      SID		      352
+	      Position		      [750, 378, 780, 392]
+	      Port		      "4"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake Valve_In_RR"
+	      SID		      353
+	      Position		      [750, 148, 780, 162]
+	      Port		      "5"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake Valve_Out_RR"
+	      SID		      354
+	      Position		      [750, 238, 780, 252]
+	      Port		      "6"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.status_RR"
+	      SID		      355
+	      Position		      [750, 328, 780, 342]
+	      Port		      "7"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Brake.ABS.on/off_RR"
+	      SID		      356
+	      Position		      [750, 418, 780, 432]
+	      Port		      "8"
+	      IconDisplay	      "Port number"
+	      OutDataType	      "sfix(16)"
+	      OutScaling	      "2^0"
+	    }
+	    Line {
+	      SrcBlock		      "rstat_RR"
+	      SrcPort		      1
+	      Points		      [110, 0; 0, -30]
+	      DstBlock		      "Product1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "wheelspeed_RR"
+	      SrcPort		      1
+	      DstBlock		      "Derivative"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "slip_RR"
+	      SrcPort		      1
+	      DstBlock		      "Gain"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "ABS_ValveCtrl_rear"
+	      SrcPort		      4
+	      Points		      [110, 0]
+	      Branch {
+		DstBlock		"Brake.ABS.on/off_RL"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 40]
+		DstBlock		"Brake.ABS.on/off_RR"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "ABS_ValveCtrl_rear"
+	      SrcPort		      3
+	      Points		      [110, 0]
+	      Branch {
+		DstBlock		"Brake.ABS.status_RL"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 40]
+		DstBlock		"Brake.ABS.status_RR"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      Name		      "Brake Valve_Out_RL"
+	      Labels		      [0, 0]
+	      SrcBlock		      "ABS_ValveCtrl_rear"
+	      SrcPort		      2
+	      Points		      [115, 0]
+	      Branch {
+		DstBlock		"Brake Valve_Out_RL"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 40]
+		DstBlock		"Brake Valve_Out_RR"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      Name		      "Brake Valve_In_RL"
+	      Labels		      [0, 0]
+	      SrcBlock		      "ABS_ValveCtrl_rear"
+	      SrcPort		      1
+	      Points		      [110, 0]
+	      Branch {
+		DstBlock		"Brake Valve_In_RL"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 40]
+		DstBlock		"Brake Valve_In_RR"
+		DstPort			1
+	      }
+	    }
+	    Line {
+	      SrcBlock		      "Derivative"
+	      SrcPort		      1
+	      DstBlock		      "Product1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain"
+	      SrcPort		      1
+	      DstBlock		      "Sum"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product1"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Sum"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      Points		      [30, 0]
+	      DstBlock		      "Product1"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "Derivative1"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, 30]
+	      DstBlock		      "Product2"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Gain1"
+	      SrcPort		      1
+	      DstBlock		      "Sum1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Product2"
+	      SrcPort		      1
+	      Points		      [20, 0]
+	      DstBlock		      "Sum1"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      Points		      [15, 0; 0, -15]
+	      DstBlock		      "Product2"
+	      DstPort		      3
+	    }
+	    Line {
+	      SrcBlock		      "slip_RL"
+	      SrcPort		      1
+	      DstBlock		      "Gain1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "wheelspeed_RL"
+	      SrcPort		      1
+	      DstBlock		      "Derivative1"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "rstat_RL"
+	      SrcPort		      1
+	      DstBlock		      "Product2"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "Sum1"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, 80]
+	      DstBlock		      "MinMax"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Sum"
+	      SrcPort		      1
+	      Points		      [25, 0; 0, -80]
+	      DstBlock		      "MinMax"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "MinMax"
+	      SrcPort		      1
+	      Points		      [0, 0]
+	      DstBlock		      "ABS_ValveCtrl_rear"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      Name		      "\nControl strategy: Trigger criterion S_K\nS_K combines wheel decceleration control with slip cont"
+	      "rol \nusing weighting factors  K_z and K_\\lambda\nS_K=K_z*z_R + K_\\lambda * \\lambda_{rel}\n(see p.127 in M. "
+	      "Burckhardt \nFahrwerktechnik:Radschlupfregelsysteme)\n"
+	      Position		      [257, 67]
+	      DropShadow	      on
+	      Interpreter	      "tex"
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Pump Ctrl"
+	  SID			  357
+	  Position		  [770, 873, 800, 887]
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_In_FL"
+	  SID			  358
+	  Position		  [770, 178, 800, 192]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_In_FR"
+	  SID			  359
+	  Position		  [770, 338, 800, 352]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_In_RL"
+	  SID			  360
+	  Position		  [770, 503, 800, 517]
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_In_RR"
+	  SID			  361
+	  Position		  [770, 663, 800, 677]
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_Out_FL"
+	  SID			  362
+	  Position		  [770, 213, 800, 227]
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_Out_FR"
+	  SID			  363
+	  Position		  [770, 373, 800, 387]
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_Out_RL"
+	  SID			  364
+	  Position		  [770, 543, 800, 557]
+	  Port			  "8"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Brake Valve_Out_RR"
+	  SID			  365
+	  Position		  [770, 703, 800, 717]
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	  OutDataType		  "sfix(16)"
+	  OutScaling		  "2^0"
+	}
+	Line {
+	  SrcBlock		  "Product"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_In_FL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product1"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_Out_FL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product2"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_In_FR"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product3"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_Out_FR"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product4"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_In_RL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product5"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_Out_RL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product6"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_In_RR"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Product7"
+	  SrcPort		  1
+	  DstBlock		  "Brake Valve_Out_RR"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Brake Valve_Out_RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  6
+	  DstBlock		  "Product7"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_In_RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  5
+	  DstBlock		  "Product6"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_Out_RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  2
+	  DstBlock		  "Product5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_In_RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  1
+	  DstBlock		  "Product4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_Out_FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FR"
+	  SrcPort		  2
+	  DstBlock		  "Product3"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_In_FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FR"
+	  SrcPort		  1
+	  DstBlock		  "Product2"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_Out_FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FL"
+	  SrcPort		  2
+	  DstBlock		  "Product1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Brake Valve_In_FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FL"
+	  SrcPort		  1
+	  DstBlock		  "Product"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Relational\nOperator"
+	  SrcPort		  1
+	  Points		  [315, 0; 0, 70]
+	  Branch {
+	    Points		    [0, 35]
+	    Branch {
+	      DstBlock		      "Product1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 125]
+	      Branch {
+		DstBlock		"Product2"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 35]
+		Branch {
+		  DstBlock		  "Product3"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 130]
+		  Branch {
+		    DstBlock		    "Product4"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [0, 40]
+		    Branch {
+		    DstBlock		    "Product5"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 120]
+		    Branch {
+		    DstBlock		    "Product6"
+		    DstPort		    1
+		    }
+		    Branch {
+		    Points		    [0, 40]
+		    DstBlock		    "Product7"
+		    DstPort		    1
+		    }
+		    }
+		  }
+		}
+	      }
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "Product"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  Points		  [50, 0; 0, -30]
+	  DstBlock		  "Relational\nOperator"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict12"
+	  SrcPort		  1
+	  DstBlock		  "Relational\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "select_low"
+	  SrcPort		  8
+	  Points		  [95, 0; 0, 60]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  4
+	}
+	Line {
+	  Labels		  [2, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  4
+	  Points		  [100, 0; 0, 200]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  3
+	}
+	Line {
+	  Labels		  [2, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FR"
+	  SrcPort		  4
+	  Points		  [105, 0; 0, 360]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "ABS_ValveCtrl_FL"
+	  SrcPort		  4
+	  Points		  [110, 0; 0, 500]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ABS_ValveCtrl_FR"
+	  SrcPort		  3
+	  DstBlock		  "Write CM Dict2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "select_low"
+	  SrcPort		  3
+	  DstBlock		  "Write CM Dict3"
+	  DstPort		  1
+	}
+	Line {
+	  Labels		  [0, 0]
+	  SrcBlock		  "ABS_ValveCtrl_FL"
+	  SrcPort		  3
+	  DstBlock		  "Write CM Dict1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Brake Valve_Out_RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "select_low"
+	  SrcPort		  7
+	  DstBlock		  "Write CM Dict4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict11"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict10"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict9"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict8"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict7"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict6"
+	  SrcPort		  1
+	  DstBlock		  "select_low"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict5"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FR"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict4"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FR"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict3"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FR"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict2"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FL"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict1"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FL"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Read CM Dict"
+	  SrcPort		  1
+	  DstBlock		  "ABS_ValveCtrl_FL"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    DstBlock		    "Write CM Dict"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 55]
+	    DstBlock		    "Brake Pump Ctrl"
+	    DstPort		    1
+	  }
+	}
+	Annotation {
+	  Name			  "\nABS disabled  when slower than v_min\n"
+	  Position		  [237, 39]
+	  DropShadow		  on
+	}
+      }
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "CfgIF_In_Selector"
+      SID		      9
+      Ports		      [1, 1]
+      Position		      [100, 140, 110, 200]
+      BackgroundColor	      "cyan"
+      OutputSignals	      "VehicleClassId"
+      Port {
+	PortNumber		1
+	Name			"<VehicleClassId>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "CfgIF_In_Terminator"
+      SID		      10
+      Position		      [220, 160, 240, 180]
+    }
+    Block {
+      BlockType		      BusSelector
+      Name		      "IF_In_Selector"
+      SID		      2
+      Ports		      [1, 2]
+      Position		      [100, 20, 110, 100]
+      BackgroundColor	      "cyan"
+      OutputSignals	      "Pedal,Park"
+      Port {
+	PortNumber		1
+	Name			"<Pedal>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+      Port {
+	PortNumber		2
+	Name			"<Park>"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "IF_Out_Selector"
+      SID		      5
+      Ports		      [11, 1]
+      Position		      [500, 19, 690, 311]
+      BackgroundColor	      "cyan"
+      UserDataPersistent      on
+      UserData		      "DataTag0"
+      OpenFcn		      "cmSignalSelect('SignalSelection_CB',gcb)"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      MaskType		      "Signal Selection"
+      MaskDescription	      "Signal Selection Block"
+      MaskIconFrame	      on
+      MaskIconOpaque	      on
+      MaskIconRotate	      "none"
+      MaskPortRotate	      "default"
+      MaskIconUnits	      "autoscale"
+      System {
+	Name			"IF_Out_Selector"
+	Location		[432, 641, 1632, 1141]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Pedal"
+	  SID			  211
+	  Position		  [800, 20, 815, 30]
+	  BackgroundColor	  "red"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Pedal"
+	    PropagatedSignals	    "Pedal"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Park"
+	  SID			  212
+	  Position		  [800, 50, 815, 60]
+	  BackgroundColor	  "red"
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Park"
+	    PropagatedSignals	    "Park"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PumpCtrl"
+	  SID			  213
+	  Position		  [800, 520, 815, 530]
+	  BackgroundColor	  "red"
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "PumpCtrl"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.FL_Inlet"
+	  SID			  214
+	  Position		  [580, 200, 595, 210]
+	  BackgroundColor	  "red"
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL_Inlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.FR_Inlet"
+	  SID			  215
+	  Position		  [580, 230, 595, 240]
+	  BackgroundColor	  "red"
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR_Inlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.RL_Inlet"
+	  SID			  216
+	  Position		  [580, 260, 595, 270]
+	  BackgroundColor	  "red"
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL_Inlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.RR_Inlet"
+	  SID			  217
+	  Position		  [580, 290, 595, 300]
+	  BackgroundColor	  "red"
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR_Inlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.FL_Outlet"
+	  SID			  218
+	  Position		  [580, 320, 595, 330]
+	  BackgroundColor	  "red"
+	  Port			  "8"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL_Outlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.FR_Outlet"
+	  SID			  219
+	  Position		  [580, 350, 595, 360]
+	  BackgroundColor	  "red"
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR_Outlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.RL_Outlet"
+	  SID			  220
+	  Position		  [580, 380, 595, 390]
+	  BackgroundColor	  "red"
+	  Port			  "10"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL_Outlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Valve.RR_Outlet"
+	  SID			  221
+	  Position		  [580, 410, 595, 420]
+	  BackgroundColor	  "red"
+	  Port			  "11"
+	  IconDisplay		  "Port number"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR_Outlet"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "BooSignal"
+	  SID			  37
+	  Position		  [800, 550, 815, 560]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "BooSignal"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  RateTransition
+	  Name			  "RateTransition"
+	  SID			  6
+	  Position		  [1080, 15, 1140, 35]
+	  OutPortSampleTime	  "str2num(get_param(gcs,'FixedStep'))"
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Trq_BrakeReg_trg"
+	  SID			  14
+	  Ports			  [4, 1]
+	  Position		  [800, 80, 815, 160]
+	  Port {
+	    PortNumber		    1
+	    Name		    "Trq_BrakeReg_trg"
+	    PropagatedSignals	    "FL, FR, RL, RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Trq_BrakeReg_trg.FL"
+	  SID			  15
+	  Position		  [580, 80, 595, 90]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Trq_BrakeReg_trg.FR"
+	  SID			  16
+	  Position		  [580, 110, 595, 120]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "FR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Trq_BrakeReg_trg.RL"
+	  SID			  17
+	  Position		  [580, 140, 595, 150]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RL"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Trq_BrakeReg_trg.RR"
+	  SID			  18
+	  Position		  [580, 170, 595, 180]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "RR"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "Valve"
+	  SID			  19
+	  Ports			  [16, 1]
+	  Position		  [800, 180, 815, 500]
+	  Inputs		  "16"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Valve"
+	    PropagatedSignals	    "FL_Inlet, FR_Inlet, RL_Inlet, RR_Inlet, FL_Outlet, FR_Outlet, RL_Outlet, RR_Outlet, PV_1, "
+	    "PV_2, SV_1, SV_2, V_1, V_2, V_3, V_4"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.PV_1"
+	  SID			  28
+	  Position		  [580, 440, 595, 450]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "PV_1"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.PV_2"
+	  SID			  29
+	  Position		  [580, 470, 595, 480]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "PV_2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.SV_1"
+	  SID			  30
+	  Position		  [580, 500, 595, 510]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "SV_1"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.SV_2"
+	  SID			  31
+	  Position		  [580, 530, 595, 540]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "SV_2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.V_1"
+	  SID			  32
+	  Position		  [580, 560, 595, 570]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_1"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.V_2"
+	  SID			  33
+	  Position		  [580, 590, 595, 600]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_2"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.V_3"
+	  SID			  34
+	  Position		  [580, 620, 595, 630]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_3"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Valve.V_4"
+	  SID			  35
+	  Position		  [580, 650, 595, 660]
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "V_4"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  BusCreator
+	  Name			  "cmHydBrakeCtrlOut"
+	  SID			  11
+	  Ports			  [6, 1]
+	  Position		  [1020, 20, 1035, 140]
+	  Inputs		  "6"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ToCM"
+	  SID			  7
+	  Position		  [1160, 20, 1180, 30]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "RateTransition"
+	  SrcPort		  1
+	  DstBlock		  "ToCM"
+	  DstPort		  1
+	}
+	Line {
+	  Labels		  [0, 0]
+	  SrcBlock		  "cmHydBrakeCtrlOut"
+	  SrcPort		  1
+	  DstBlock		  "RateTransition"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Trq_BrakeReg_trg"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Trq_BrakeReg_trg"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "FL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Trq_BrakeReg_trg.FL"
+	  SrcPort		  1
+	  DstBlock		  "Trq_BrakeReg_trg"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Trq_BrakeReg_trg.FR"
+	  SrcPort		  1
+	  DstBlock		  "Trq_BrakeReg_trg"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "RL"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Trq_BrakeReg_trg.RL"
+	  SrcPort		  1
+	  DstBlock		  "Trq_BrakeReg_trg"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Trq_BrakeReg_trg.RR"
+	  SrcPort		  1
+	  DstBlock		  "Trq_BrakeReg_trg"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "Valve"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "PV_1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.PV_1"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  9
+	}
+	Line {
+	  Name			  "PV_2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.PV_2"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  10
+	}
+	Line {
+	  Name			  "SV_1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.SV_1"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  11
+	}
+	Line {
+	  Name			  "SV_2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.SV_2"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  12
+	}
+	Line {
+	  Name			  "V_1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.V_1"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  13
+	}
+	Line {
+	  Name			  "V_2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.V_2"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  14
+	}
+	Line {
+	  Name			  "V_3"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.V_3"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  15
+	}
+	Line {
+	  Name			  "V_4"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.V_4"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  16
+	}
+	Line {
+	  Name			  "BooSignal"
+	  Labels		  [0, 0]
+	  SrcBlock		  "BooSignal"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "Pedal"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Pedal"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Park"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Park"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "PumpCtrl"
+	  Labels		  [0, 0]
+	  SrcBlock		  "PumpCtrl"
+	  SrcPort		  1
+	  DstBlock		  "cmHydBrakeCtrlOut"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "FL_Inlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.FL_Inlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FR_Inlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.FR_Inlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "RL_Inlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.RL_Inlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "RR_Inlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.RR_Inlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "FL_Outlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.FL_Outlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  5
+	}
+	Line {
+	  Name			  "FR_Outlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.FR_Outlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  6
+	}
+	Line {
+	  Name			  "RL_Outlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.RL_Outlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  7
+	}
+	Line {
+	  Name			  "RR_Outlet"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Valve.RR_Outlet"
+	  SrcPort		  1
+	  DstBlock		  "Valve"
+	  DstPort		  8
+	}
+      }
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "ToCM"
+      SID		      4
+      Position		      [710, 160, 730, 170]
+      BackgroundColor	      "cyan"
+      IconDisplay	      "Port number"
+      UseBusObject	      on
+      BusObject		      "cmHydBrakeCtrlOut"
+    }
+    Line {
+      SrcBlock		      "FromCM"
+      SrcPort		      1
+      DstBlock		      "IF_In_Selector"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "IF_Out_Selector"
+      SrcPort		      1
+      DstBlock		      "ToCM"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CfgInFromCM"
+      SrcPort		      1
+      DstBlock		      "CfgIF_In_Selector"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<VehicleClassId>"
+      Labels		      [0, 0]
+      SrcBlock		      "CfgIF_In_Selector"
+      SrcPort		      1
+      DstBlock		      "CfgIF_In_Terminator"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<Pedal>"
+      Labels		      [0, 0]
+      SrcBlock		      "IF_In_Selector"
+      SrcPort		      1
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      1
+    }
+    Line {
+      Name		      "<Park>"
+      Labels		      [0, 0]
+      SrcBlock		      "IF_In_Selector"
+      SrcPort		      2
+      Points		      [190, 0; 0, -15]
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      9
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      11
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      8
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      10
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      7
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      9
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      6
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      8
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      5
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      4
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      3
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      2
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "ABS_ECU"
+      SrcPort		      1
+      DstBlock		      "IF_Out_Selector"
+      DstPort		      3
+    }
+  }
+}
+MatData {
+  NumRecords		  1
+  DataRecord {
+    Tag			    DataTag0
+    Data		    "  %)30     .    T!\\   8    (     @         %    \"     $    !     0         %  0 \"0    $    _    ;E-I"
+    "9P      <VEG3F%M90  8FQK3F%M90  =F%L=65S    =&]0;W)T    <V5L96-T960 <V5L261X      X    X    !@    @    &          "
+    "4    (     0    $    !          D    (            .$ .    Z 4   8    (     0         %    \"     $    8     0     "
+    "    .    .     8    (    !          %    \"     $    %     0         0    !0   %!E9&%L    #@   #     &    \"     0"
+    "         !0    @    !    !     $         $  $ %!A<FL.    ,     8    (    !          %    \"     $    \"     0     "
+    "    0  ( 1DP   X    P    !@    @    $          4    (     0    (    !         !   @!&4@  #@   #     &    \"     0 "
+    "        !0    @    !     @    $         $  \" %),   .    ,     8    (    !          %    \"     $    \"     0     "
+    "    0  ( 4E(   X    X    !@    @    $          4    (     0    @    !         !     (    1DQ?26YL970.    .     8  "
+    "  (    !          %    \"     $    (     0         0    \"    $927TEN;&5T#@   #@    &    \"     0         !0    @ "
+    "   !    \"     $         $     @   !23%]);FQE= X    X    !@    @    $          4    (     0    @    !         !   "
+    "  (    4E)?26YL970.    0     8    (    !          %    \"     $    )     0         0    \"0   $9,7T]U=&QE=        "
+    "  .    0     8    (    !          %    \"     $    )     0         0    \"0   $927T]U=&QE=          .    0     8  "
+    "  (    !          %    \"     $    )     0         0    \"0   %),7T]U=&QE=          .    0     8    (    !        "
+    "  %    \"     $    )     0         0    \"0   %)27T]U=&QE=          .    ,     8    (    !          %    \"     $ "
+    "   $     0         0  0 4%9?,0X    P    !@    @    $          4    (     0    0    !         !  ! !05E\\R#@   #   "
+    "  &    \"     0         !0    @    !    !     $         $  $ %-67S$.    ,     8    (    !          %    \"     $  "
+    "  $     0         0  0 4U9?,@X    P    !@    @    $          4    (     0    ,    !         !   P!67S$ #@   #     "
+    "&    \"     0         !0    @    !     P    $         $  # %9?,@ .    ,     8    (    !          %    \"     $    "
+    "#     0         0  , 5E\\S  X    P    !@    @    $          4    (     0    ,    !         !   P!67S0 #@   #@    &"
+    "    \"     0         !0    @    !    \"     $         $     @   !0=6UP0W1R; X   !     !@    @    $          4    ("
+    "     0    D    !         !     )    0F]O4VEG;F%L          X   #H!@  !@    @    !          4    (     0   !@    !  "
+    "        X    X    !@    @    $          4    (     0    4    !         !     %    4&5D86P    .    ,     8    (    "
+    "!          %    \"     $    $     0         0  0 4&%R:PX   !(    !@    @    $          4    (     0   !,    !     "
+    "    !     3    5')Q7T)R86ME4F5G7W1R9RY&3       #@   $@    &    \"     0         !0    @    !    $P    $         $ "
+    "   !,   !4<G%?0G)A:V5296=?=')G+D92       .    2     8    (    !          %    \"     $    3     0         0    $P "
+    "  %1R<5]\"<F%K95)E9U]T<F<N4DP       X   !(    !@    @    $          4    (     0   !,    !         !     3    5')Q"
+    "7T)R86ME4F5G7W1R9RY24@      #@   $     &    \"     0         !0    @    !    #@    $         $     X   !686QV92Y&3"
+    "%]);FQE=   #@   $     &    \"     0         !0    @    !    #@    $         $     X   !686QV92Y&4E]);FQE=   #@   $"
+    "     &    \"     0         !0    @    !    #@    $         $     X   !686QV92Y23%]);FQE=   #@   $     &    \"     "
+    "0         !0    @    !    #@    $         $     X   !686QV92Y24E]);FQE=   #@   $     &    \"     0         !0    @"
+    "    !    #P    $         $     \\   !686QV92Y&3%]/=71L970 #@   $     &    \"     0         !0    @    !    #P    $"
+    "         $     \\   !686QV92Y&4E]/=71L970 #@   $     &    \"     0         !0    @    !    #P    $         $     \\"
+    "   !686QV92Y23%]/=71L970 #@   $     &    \"     0         !0    @    !    #P    $         $     \\   !686QV92Y24E]"
+    "/=71L970 #@   $     &    \"     0         !0    @    !    \"@    $         $     H   !686QV92Y05E\\Q        #@   $"
+    "     &    \"     0         !0    @    !    \"@    $         $     H   !686QV92Y05E\\R        #@   $     &    \"   "
+    "  0         !0    @    !    \"@    $         $     H   !686QV92Y35E\\Q        #@   $     &    \"     0         !0 "
+    "   @    !    \"@    $         $     H   !686QV92Y35E\\R        #@   $     &    \"     0         !0    @    !    \""
+    "0    $         $     D   !686QV92Y67S$         #@   $     &    \"     0         !0    @    !    \"0    $         $"
+    "     D   !686QV92Y67S(         #@   $     &    \"     0         !0    @    !    \"0    $         $     D   !686QV9"
+    "2Y67S,         #@   $     &    \"     0         !0    @    !    \"0    $         $     D   !686QV92Y67S0         #"
+    "@   #@    &    \"     0         !0    @    !    \"     $         $     @   !0=6UP0W1R; X   !     !@    @    $     "
+    "     4    (     0    D    !         !     )    0F]O4VEG;F%L          X   !H!0  !@    @    !          4    (     0 "
+    "  !@    !          X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"   "
+    "  0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0   "
+    "      0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     "
+    "0         !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0     "
+    "    0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0 "
+    "        !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0       "
+    "  0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0   "
+    "      !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0         "
+    "0  $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0     "
+    "    !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0         0 "
+    " $ ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0       "
+    "  !0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0         0  $"
+    " ,     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0         "
+    "!0    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0         0  $ ,"
+    "     X    P    !@    @    $          4    (     0    $    !         !   0 P    #@   #     &    \"     0         !0"
+    "    @    !     0    $         $  ! #     .    ,     8    (    !          %    \"     $    !     0         0  $ ,  "
+    "   X   \"H!@  !@    @    !          4    (     0   !@    !          X   !(    !@    @    $          4    (     0  "
+    " !,    !         !     3    8VU(>61\"<F%K94-T<FQ/=70O,0      #@   $@    &    \"     0         !0    @    !    $P  "
+    "  $         $    !,   !C;4AY9$)R86ME0W1R;$]U=\"\\R       .    2     8    (    !          %    \"     $    2     0 "
+    "        0    $@   %1R<5]\"<F%K95)E9U]T<F<O,0        X   !(    !@    @    $          4    (     0   !(    !        "
+    " !     2    5')Q7T)R86ME4F5G7W1R9R\\R        #@   $@    &    \"     0         !0    @    !    $@    $         $   "
+    " !(   !4<G%?0G)A:V5296=?=')G+S,        .    2     8    (    !          %    \"     $    2     0         0    $@   "
+    "%1R<5]\"<F%K95)E9U]T<F<O-         X    X    !@    @    $          4    (     0    <    !         !     '    5F%L=F"
+    "4O,0 .    .     8    (    !          %    \"     $    '     0         0    !P   %9A;'9E+S( #@   #@    &    \"     "
+    "0         !0    @    !    !P    $         $     <   !686QV92\\S  X    X    !@    @    $          4    (     0    <"
+    "    !         !     '    5F%L=F4O-  .    .     8    (    !          %    \"     $    '     0         0    !P   %9A"
+    ";'9E+S4 #@   #@    &    \"     0         !0    @    !    !P    $         $     <   !686QV92\\V  X    X    !@    @ "
+    "   $          4    (     0    <    !         !     '    5F%L=F4O-P .    .     8    (    !          %    \"     $  "
+    "  '     0         0    !P   %9A;'9E+S@ #@   #@    &    \"     0         !0    @    !    !P    $         $     <   "
+    "!686QV92\\Y  X    X    !@    @    $          4    (     0    @    !         !     (    5F%L=F4O,3 .    .     8    "
+    "(    !          %    \"     $    (     0         0    \"    %9A;'9E+S$Q#@   #@    &    \"     0         !0    @   "
+    " !    \"     $         $     @   !686QV92\\Q,@X    X    !@    @    $          4    (     0    @    !         !    "
+    " (    5F%L=F4O,3,.    .     8    (    !          %    \"     $    (     0         0    \"    %9A;'9E+S$T#@   #@   "
+    " &    \"     0         !0    @    !    \"     $         $     @   !686QV92\\Q-0X    X    !@    @    $          4  "
+    "  (     0    @    !         !     (    5F%L=F4O,38.    2     8    (    !          %    \"     $    3     0        "
+    " 0    $P   &-M2'ED0G)A:V5#=')L3W5T+S4       X   !(    !@    @    $          4    (     0   !,    !         !     3"
+    "    8VU(>61\"<F%K94-T<FQ/=70O-@      #@   \" #   &    \"     $         !0    @    +     0    $         #@   #@    "
+    "&    \"     0         !0    @    !    !0    $         $     4   !0961A;     X    P    !@    @    $          4    ("
+    "     0    0    !         !  ! !087)K#@   #@    &    \"     0         !0    @    !    \"     $         $     @   !0"
+    "=6UP0W1R; X   !     !@    @    $          4    (     0    X    !         !     .    5F%L=F4N1DQ?26YL970   X   !   "
+    "  !@    @    $          4    (     0    X    !         !     .    5F%L=F4N1E)?26YL970   X   !     !@    @    $    "
+    "      4    (     0    X    !         !     .    5F%L=F4N4DQ?26YL970   X   !     !@    @    $          4    (     0"
+    "    X    !         !     .    5F%L=F4N4E)?26YL970   X   !     !@    @    $          4    (     0    \\    !       "
+    "  !     /    5F%L=F4N1DQ?3W5T;&5T  X   !     !@    @    $          4    (     0    \\    !         !     /    5F%L"
+    "=F4N1E)?3W5T;&5T  X   !     !@    @    $          4    (     0    \\    !         !     /    5F%L=F4N4DQ?3W5T;&5T "
+    " X   !     !@    @    $          4    (     0    \\    !         !     /    5F%L=F4N4E)?3W5T;&5T  X   #H @  !@    "
+    "@    !          4    (     0    L    !          X    X    !@    @    &          4    (     0    $    !          D "
+    "   (            \\#\\.    .     8    (    !@         %    \"     $    !     0         )    \"             ! #@   #"
+    "@    &    \"     8         !0    @    !     0    $         \"0    @            W0 X    X    !@    @    &          "
+    "4    (     0    $    !          D    (            '$ .    .     8    (    !@         %    \"     $    !     0     "
+    "    )    \"            \"! #@   #@    &    \"     8         !0    @    !     0    $         \"0    @            B0"
+    " X    X    !@    @    &          4    (     0    $    !          D    (            )$ .    .     8    (    !@     "
+    "    %    \"     $    !     0         )    \"            \"9 #@   #@    &    \"     8         !0    @    !     0   "
+    " $         \"0    @            H0 X    X    !@    @    &          4    (     0    $    !          D    (          "
+    "  *D .    .     8    (    !@         %    \"     $    !     0         )    \"            \"Q "
+  }
+}

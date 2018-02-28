@@ -1,5 +1,5 @@
 yalmip_addpath;                     % add path to Yalmip and solver Ecos. This needs to be done once after opening Matlab.
-
+clf
 clear all;
 clc;
 %close all;

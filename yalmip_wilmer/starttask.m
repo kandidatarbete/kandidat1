@@ -14,7 +14,7 @@ task.I=intersection;
 % loop on al possible permutations of crossing orders. Note that Yalmip is not
 % meant to be called iteratively, so you may want to replace it with
 % another algorithm that is better suited for this purpose. 
-task.loopcrossorder=true;           
+task.loopcrossorder=false;           
 crossingorder=[1; 2; 3];   % fixed crossing order. Used when task.loopcrossorder=false (the first task.Nv elements are used)
 
 ss=[76; 78; 80; 75; 80; 80];        %[m] distance at which the vehicle enters the critical zone (the first task.Nv elements are used)
@@ -50,8 +50,8 @@ for j=1:size(task.crossorderperm,1)
     
     %res=QPsolveY2(task); ttot=ttot+res.time(end);
     %res=QPsolveY(task); ttot=ttot+res.time(end);
-    res=QPsolveY4(task); ttot=ttot+res.time(end);
-    
+    %res=QPsolveY4(task); ttot=ttot+res.time(end);
+    res=QPsolveY5(task);
     ax=diff(res.v)./diff(res.t); ax=[ax;ax(end,:)];
     fprintf('%s: order=%s, cost=%1.4f, vx~[%1.0f,%1.0f]km/h, ax~[%1.1f,%1.1f]m/s2, t=%1.2f ms\n', ...
         res.status, sprintf('%d',task.crossingorder), res.cost, min(res.v(:))*3.6, max(res.v(:))*3.6, ...

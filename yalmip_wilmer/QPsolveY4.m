@@ -13,6 +13,8 @@ yalmip('clear')
 vref=50;
 vstart=12;
 amin=-5;
+%bromstid
+deltat=20;
 k=1:Ns-1;
 for i=1:Nv
 t(i,:) = sdpvar(1,Ns,'full'); 
@@ -80,6 +82,25 @@ for i = 1:Nv-1
     %T(V(co(j)) = X(3*i-2);
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
+end
+%constraints för att kolla så att fordon inte kör in i varandra bakifrån
+%fungerar inte nu då vi inte kan starta bilar på samma väg utan att de är i
+%varandra
+
+for i=1:Nv-1
+    for j=1:Nv
+        if V(i).entryangle==V(j).entryangle && i~=j
+            [row1,column]=find(crossingorder==i);
+            [row2,column]=find(crossingorder==j);
+            if row1<row2
+                constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
+            else
+                constraints=[constraints, X(3*j-2,:)>=X(3*i-2,:)+deltat];
+            end
+        
+        end
+    end
+    
 end
 
 

@@ -8,14 +8,14 @@ task=struct;                        % we keep all data here
 task.ds=1;                          %[m] sampling interval
 task.s=[0:task.ds:110]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
-task.Nv=6;                          % number of vehicles (cheese within 2-4)
+task.Nv=3;                          % number of vehicles (cheese within 2-4)
 task.I=intersection;
 
 % loop on al possible permutations of crossing orders. Note that Yalmip is not
 % meant to be called iteratively, so you may want to replace it with
 % another algorithm that is better suited for this purpose. 
-task.loopcrossorder=false;           
-crossingorder=[4; 1; 2; 5; 6;  3];   % fixed crossing order. Used when task.loopcrossorder=false (the first task.Nv elements are used)
+task.loopcrossorder=true;           
+crossingorder=[1; 2; 3];   % fixed crossing order. Used when task.loopcrossorder=false (the first task.Nv elements are used)
 
 ss=[76; 78; 80; 75; 80; 80];        %[m] distance at which the vehicle enters the critical zone (the first task.Nv elements are used)
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone

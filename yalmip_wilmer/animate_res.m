@@ -116,8 +116,8 @@ for j=1:task.Nv
     end
     plot(V(j).path.x(1:end-1),V(j).path.y(1:end-1),'Color',colors(j,:));
     [figx, figy] = dsxy2figxy(gca, V(j).path.x(end-1:end), V(j).path.y(end-1:end));  %(now in figure space)
-    annotation('arrow',figx,figy,'HeadStyle','plain', ...
-        'Color',colors(j,:),'HeadWidth',6,'HeadLength',7); 
+    %annotation('arrow',figx,figy,'HeadStyle','plain', ...
+     %   'Color',colors(j,:),'HeadWidth',6,'HeadLength',7); 
 end
 
 % plot the vehicles at their initial position

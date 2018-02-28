@@ -117,7 +117,7 @@ cost1 = [cost1, Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
 cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
 cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
 end
-cost=[cost,cost1,cost2,cost3];
+cost=[cost,cost1,cost2,cost3]./Scost;
 %options     = sdpsettings('verbose',0,'solver','ecos','debug', 1); 
 options     = sdpsettings('verbose',0,'debug', 1); 
 sol         = optimize(constraints, sum(cost), options); 

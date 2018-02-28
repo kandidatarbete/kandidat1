@@ -94,8 +94,8 @@ end
 for i=1:Nv-1
     for j=1:Nv
         if V(i).entryangle==V(j).entryangle && i~=j
-            [row1,column]=find(crossingorder==i);
-            [row2,column]=find(crossingorder==j);
+            [row1,column]=find(co==i);
+            [row2,column]=find(co==j);
             if row1<row2
                 constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
             else

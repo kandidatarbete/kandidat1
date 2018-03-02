@@ -1,25 +1,29 @@
 % clear all;
 % clc;
+function [] = animate_res_new(task)
 saveobj=false; % if true, it will save a video of the animation
 res=task.res; I=task.I;
 V=task.V;
-
-%% Open a figure
+fullscreen = true;
+% Open a figure
 if exist('fig','var') && ishandle(fig)
     figure(fig);
 else
-    %fig=figure('units','normalized','outerposition',[0 0 1 1]); hold on;
-    fig=figure('units','normalized'); hold on;
+    if fullscreen
+        fig=figure('units','normalized','outerposition',[0 0 1 1]); hold on;
+    else
+        fig=figure('units','normalized'); hold on;
+    end
 end
 set(gca,'Unit','normalized','Position',[0.05 0.05 0.94 0.895],'Layer','top', ...
     'XLimMode','manual','YLimMode','manual','ZLimMode','manual');
 set(gca,'Units','pixels','Visible','Off');
 
-%% plot the intersection
+% plot the intersection
 % plot the critical zone
 c=I.criticalzone/2; d=I.lanewidth;
-fill([-d -c -c -d -d  d d c  c  d  d -d -d], ... 
-     [-d -d  d  d  c  c d d -d -d -c -c -d], ...
+fill([-d -c -c -d -d  d d c  c  d  d -d -d], ...
+    [-d -d  d  d  c  c d d -d -d -c -c -d], ...
     0.8*[1 1 1],'EdgeColor',0.7*[1 1 1]);
 
 % plot the road segments
@@ -31,7 +35,7 @@ for j=1:I.segments
     % plot the road segments. An intersection with 2 roads crossings has 4 road
     % segments.
     
-    % start position of the road segment 
+    % start position of the road segment
     if j <= task.Nv
         p=V(j).ss + I.criticalzone/2 + V(j).length/2 + 1;
     else
@@ -50,7 +54,7 @@ for j=1:I.segments
     % Outer line of second lane
     plot(cosa*[p I.lanewidth]+sina*I.lanewidth, ...
         sina*[p I.lanewidth]+cosa*I.lanewidth,'k','LineWidth',1.5);
-
+    
     % plot the line separating the lanes.
     plot(cosa*[p 0],sina*[p 0],'k--');
     
@@ -65,28 +69,28 @@ p(3)=p(4)*diff(XLIM)/diff(YLIM);    % keep realistic aspect ratio
 set(h,'Position',p);
 drawnow; % the positioning of arrow heads does not work well without this line
 
-%% plot vehicles
+% plot vehicles
 % Vehicles are positioned counter clockwise, starting from the left most
-% road segment on the intersection. 
+% road segment on the intersection.
 
 % colors=get(gca,'DefaultAxesColorOrder');
 colors=[0 0 1; 0 1 0; 1 0 0; 0.5 0 0.5; 0.5 0.5 0; 0 0.5 0.5; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1; 0 0 1];
 for j=1:task.Nv
     % initial positions
-    cosa=cos(V(j).entryangle); sina=sin(V(j).entryangle); 
+    cosa=cos(V(j).entryangle); sina=sin(V(j).entryangle);
     x0=-cosa*(I.criticalzone/2+V(j).ss) + sina*I.lanewidth/2;
     y0=-sina*(I.criticalzone/2+V(j).ss) - cosa*I.lanewidth/2;
     
     % positions at the entry of intersection
     x1=-cosa*I.lanewidth + sina*I.lanewidth/2;
     y1=-sina*I.lanewidth - cosa*I.lanewidth/2;
-
+    
     % positions at the exit of intersection
-    cosb=cos(V(j).exitangle); sinb=sin(V(j).exitangle); 
+    cosb=cos(V(j).exitangle); sinb=sin(V(j).exitangle);
     x2=cosb*I.lanewidth + sinb*I.lanewidth/2;
     y2=sinb*I.lanewidth - cosb*I.lanewidth/2;
     
-    % final positions    
+    % final positions
     x3=cosb*(task.s(end)-V(j).ss-I.criticalzone/2+10) + sinb*I.lanewidth/2;
     y3=sinb*(task.s(end)-V(j).ss-I.criticalzone/2+10) - cosb*I.lanewidth/2;
     
@@ -102,7 +106,7 @@ for j=1:task.Nv
         
         arc=linspace(0,r*abs(diff(alim)),10)'; % length of the arc within the intersection
         x12=a + r*cos(a12);
-        y12=b + r*sin(a12);       
+        y12=b + r*sin(a12);
         
         V(j).path.s=[0; s1-0.01; s1+arc; s1+arc(end)+0.01; s1+arc(end)+s2];
         V(j).path.x=[x0; x12(1); x12; x12(end); x3];
@@ -118,7 +122,7 @@ for j=1:task.Nv
     plot(V(j).path.x(1:end-1),V(j).path.y(1:end-1),'Color',colors(j,:));
     [figx, figy] = dsxy2figxy(gca, V(j).path.x(end-1:end), V(j).path.y(end-1:end));  %(now in figure space)
     %annotation('arrow',figx,figy,'HeadStyle','plain', ...
-     %   'Color',colors(j,:),'HeadWidth',6,'HeadLength',7); 
+    %   'Color',colors(j,:),'HeadWidth',6,'HeadLength',7);
 end
 
 % plot the vehicles at their initial position
@@ -127,20 +131,20 @@ txtspeed=gobjects(task.Nv);
 for j=1:task.Nv
     vehg(j)=hgtransform('Parent',h);
     veh=plotveh(V(j).path.x(1),V(j).path.y(1),V(j).path.angle(1),V(j).width,V(j).length,colors(j,:)); set(veh,'Parent',vehg(j));
-    txtspeed(j)=text(V(j).path.x(1) + 3,V(j).path.y(1)+ 3,sprintf('%1.0f km/h',res.v(1,j)*3.6),'Parent',vehg(j),'Color',colors(j,:));    
+    txtspeed(j)=text(V(j).path.x(1) + 3,V(j).path.y(1)+ 3,sprintf('%1.0f km/h',res.v(1,j)*3.6),'Parent',vehg(j),'Color',colors(j,:));
 end
 
-%% Animate
+% Animate
 % return;
 if saveobj
     disp("Saving video of animation. This could slow down the animation considerably");
     %writerObj=VideoWriter('task.mp4','MPEG-4');
-    writerObj=VideoWriter('./videos/task.avi'); 
+    writerObj=VideoWriter('./videos/task.avi');
     writerObj.FrameRate=20;
     writerObj.Quality=100;
     open(writerObj);
     
-    Nt=300; % number of time samples   
+    Nt=300; % number of time samples
 else
     Nt=600;
 end
@@ -179,12 +183,12 @@ for k=2:Nt
     end
     
     if saveobj
-%         frame = getframe(h,[-50 -50 h.Position(3)+50 h.Position(4)+50]);
+        %         frame = getframe(h,[-50 -50 h.Position(3)+50 h.Position(4)+50]);
         frame = getframe(h);
         writeVideo(writerObj,frame);
     else
         drawnow update;
-%         drawnow;
+        %         drawnow;
         pause(1e-2)
     end
 end
@@ -192,19 +196,19 @@ if saveobj
     close(writerObj);
 end
 
-function [a, b, r]=quadfunction(x,y)
-    % Computes circle parameters according to r^2=(x-a)^2 + (y-b)^2, given
-    % points x, y.
-
-    x21 = x(2)-x(1); y21 = y(2)-y(1);
-    x31 = x(3)-x(1); y31 = y(3)-y(1);
-    h21 = x21^2+y21^2; h31 = x31^2+y31^2;
-    d = 2*(x21*y31-x31*y21);
-    a = x(1)+(h21*y31-h31*y21)/d;
-    b = y(1)-(h21*x31-h31*x21)/d;
-    r = sqrt(h21*h31*((x(3)-x(2))^2+(y(3)-y(2))^2))/abs(d);
+    function [a, b, r]=quadfunction(x,y)
+        % Computes circle parameters according to r^2=(x-a)^2 + (y-b)^2, given
+        % points x, y.
+        
+        x21 = x(2)-x(1); y21 = y(2)-y(1);
+        x31 = x(3)-x(1); y31 = y(3)-y(1);
+        h21 = x21^2+y21^2; h31 = x31^2+y31^2;
+        d = 2*(x21*y31-x31*y21);
+        a = x(1)+(h21*y31-h31*y21)/d;
+        b = y(1)-(h21*x31-h31*x21)/d;
+        r = sqrt(h21*h31*((x(3)-x(2))^2+(y(3)-y(2))^2))/abs(d);
+    end
 end
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Created by Nikolce Murgovski, 2015-10.
 %   nikolce.murgovski@chalmers.se

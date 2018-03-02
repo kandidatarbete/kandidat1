@@ -9,7 +9,7 @@ St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
 Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
 yalmip('clear')
-%TODO vref ska inte vara hårdkodad
+%TODO vref ska inte vara hï¿½rdkodad
 vref=50;
 vstart=12;
 amin=-5;
@@ -65,7 +65,7 @@ for i=1:Nv
      %TODO borde vara vstart, inte vref
      constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
      constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
-     %TODO nedanstående verkar orsaka lite problem
+     %TODO nedanstï¿½ende verkar orsaka lite problem
      constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
      constraints=[constraints, X(3*i,1)==0];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
@@ -83,25 +83,25 @@ for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
 end
-%constraints för att kolla så att fordon inte kör in i varandra bakifrån
-%fungerar inte nu då vi inte kan starta bilar på samma väg utan att de är i
+%constraints fï¿½r att kolla sï¿½ att fordon inte kï¿½r in i varandra bakifrï¿½n
+%fungerar inte nu dï¿½ vi inte kan starta bilar pï¿½ samma vï¿½g utan att de ï¿½r i
 %varandra
 
-for i=1:Nv-1
-    for j=1:Nv
-        if V(i).entryangle==V(j).entryangle && i~=j
-            [row1,column]=find(crossingorder==i);
-            [row2,column]=find(crossingorder==j);
-            if row1<row2
-                constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
-            else
-                constraints=[constraints, X(3*j-2,:)>=X(3*i-2,:)+deltat];
-            end
-        
-        end
-    end
-    
-end
+% for i=1:Nv-1
+%     for j=1:Nv
+%         if V(i).entryangle==V(j).entryangle && i~=j
+%             [row1,column]=find(task.crossingorder==i);
+%             [row2,column]=find(task.crossingorder==j);
+%             if row1<row2
+%                 constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
+%             else
+%                 constraints=[constraints, X(3*j-2,:)>=X(3*i-2,:)+deltat];
+%             end
+%         
+%         end
+%     end
+%     
+% end
 
 
 cost=[];
@@ -129,7 +129,7 @@ if sol.problem == 0
 else
     res.status=sol.info;
     display(sol.info);
-    display('naj');
+    display('Optimization failed, your model is likely infeasible');
 end
 
 

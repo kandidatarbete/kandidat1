@@ -14,7 +14,8 @@ vref=50;
 vstart=12;
 amin=-5;
 %bromstid
-deltat=20;
+%deltat=20;
+deltat=1;
 k=1:Ns-1;
 for i=1:Nv
 t(i,:) = sdpvar(1,Ns,'full'); 

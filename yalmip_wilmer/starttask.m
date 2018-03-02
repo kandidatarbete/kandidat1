@@ -22,17 +22,13 @@ j = 76;
 entryangle = [];
 vref = [];
 for i = 1:task.Nv
-    entryangle = [entryangle; 0];
-    vref = [vref; 50]; 
-    ss = [ss; j]; 
+    entryangle = [entryangle; 0]; % + (random half integer) * pi mod 2 pi 
+    vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+    ss = [ss; j]; %[m] distance at which the vehicle exits the critical zone
     j = j+2;
 end
-%ss=[76; 78; 80; 75; 80; 80];        %[m] distance at which the vehicle enters the critical zone (the first task.Nv elements are used)
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
-%entryangle=[0; 0.5; 1; 1.5;0;0]*pi; %[rad] angle at which the vehicles enter the critical zone
-%exitangle=[0; 1; 1.5; 1.5; 0;0]*pi; %[rad] angle at which the vehicles exit the critical zone
-exitangle=entryangle;
-%vref=[47; 48; 50; 49; 50; 50]/3.6;  %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+exitangle=entryangle;  % + (random half integer) * pi mod 2 pi 
 
 task.V(1:task.Nv)=standardcar;
 for j=1:task.Nv

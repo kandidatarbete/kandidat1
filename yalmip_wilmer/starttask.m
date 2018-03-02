@@ -9,7 +9,7 @@ task=struct;                        % we keep all data here
 task.ds=1;                          %[m] sampling interval
 task.s=[0:task.ds:110]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
-task.Nv=10;                          % number of vehicles (cheese within 2-4)
+task.Nv=3;                          % number of vehicles (cheese within 2-4)
 task.I=intersection;
 
 % loop on al possible permutations of crossing orders. Note that Yalmip is not
@@ -28,6 +28,7 @@ for i = 1:task.Nv
     ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
     j = j+10;
 end
+entryangle(1) = entryangle(1) + pi/2; 
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
 exitangle=entryangle;  % + (random half integer) * pi mod 2 pi 
 

@@ -133,18 +133,18 @@ else
     display('Optimization failed, your model is likely infeasible');
 end
 
-
-for i=1:Nv
-    subplot(1,Nv,i)
-    plot(value(X(3*i-2,:)),1./value(X(3*i-1,:)));
-    
-    xlabel('time');
-    ylabel('velocity'); 
-
-    
-    
-    %plot(1:Ns,value(X(3*i-1,:)));
-    hold on
-end
+% 
+% for i=1:Nv
+%     subplot(1,Nv,i)
+%     plot(value(X(3*i-2,:)),1./value(X(3*i-1,:)));
+%     
+%     xlabel('time');
+%     ylabel('velocity'); 
+% 
+%     
+%     
+%     %plot(1:Ns,value(X(3*i-1,:)));
+%     hold on
+% end
 
 end

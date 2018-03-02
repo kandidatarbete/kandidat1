@@ -1,9 +1,10 @@
 function [task] = gen_task() 
 task=struct;                        % we keep all data here
 task.ds=1;                          %[m] sampling interval
-task.s=[0:task.ds:110]';            %[m] vector of traversed distance
+max_s = 330;
+task.s=[0:task.ds:max_s]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
-task.Nv=3;                          % number of vehicles
+task.Nv=30;                          % number of vehicles
 task.I=intersection;
 
 rng(0,'twister');

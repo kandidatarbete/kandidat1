@@ -1,6 +1,7 @@
 yalmip_addpath;                     % add path to Yalmip and solver Ecos. This needs to be done once after opening Matlab.
 clf
 clear all;
+close all; 
 clc;
 %close all;
 
@@ -24,8 +25,8 @@ vref = [];
 for i = 1:task.Nv
     entryangle = [entryangle; 0]; % + (random half integer) * pi mod 2 pi 
     vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
-    ss = [ss; j]; %[m] distance at which the vehicle exits the critical zone
-    j = j+2;
+    ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
+    j = j+10;
 end
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
 exitangle=entryangle;  % + (random half integer) * pi mod 2 pi 
@@ -98,18 +99,18 @@ legend(h,'Location','SouthEast');
 xlabel('Position (m)');
 ylabel('Acceleration (m/s^2)');
 
-% time
-subplot(3,1,3); 
-set(gca, 'ColorOrder', [0 0 0; colors], 'NextPlot', 'replacechildren');
-co=res.crossingorder(1:task.Nv); co=co(:);
-xix=[[task.V(co).Nzs]'; [task.V(flipud(co)).Nze]'; task.V(co(1)).Nzs]; 
-yix=[co; flipud(co); co(1)];
-x=[ss(co); se(flipud(co)); ss(co(1))]; y=res.t(sub2ind(size(res.t),xix,yix));
-h1=fill(x,y,0.8*[1 1 1],'EdgeColor',0.7*[1 1 1],'DisplayName','Critical zone');  hold on; grid on;
-h2=plot(task.s,res.t); hold on;
-legend([h1;h2],'Location','NorthWest');
-xlabel('Position (m)'); 
-ylabel('Time (s)');
+% % time
+% subplot(3,1,3); 
+% set(gca, 'ColorOrder', [0 0 0; colors], 'NextPlot', 'replacechildren');
+% co=res.crossingorder(1:task.Nv); co=co(:);
+% xix=[[task.V(co).Nzs]'; [task.V(flipud(co)).Nze]'; task.V(co(1)).Nzs]; 
+% yix=[co; flipud(co); co(1)];
+% x=[ss(co); se(flipud(co)); ss(co(1))]; y=res.t(sub2ind(size(res.t),xix,yix));
+% h1=fill(x,y,0.8*[1 1 1],'EdgeColor',0.7*[1 1 1],'DisplayName','Critical zone');  hold on; grid on;
+% h2=plot(task.s,res.t); hold on;
+% legend([h1;h2],'Location','NorthWest');
+% xlabel('Position (m)'); 
+% ylabel('Time (s)');
 
 animate_res;
 

@@ -1,6 +1,6 @@
 % clear all;
 % clc;
-saveobj=false; % if true, it will save a video of the animation
+saveobj=true; % if true, it will save a video of the animation
 res=task.res; I=task.I;
 V=task.V;
 
@@ -132,7 +132,8 @@ end
 %% Animate
 % return;
 if saveobj
-    writerObj=VideoWriter('task.mp4','MPEG-4');
+    %writerObj=VideoWriter('task.mp4','MPEG-4');
+    writerObj=VideoWriter('./videos/task.avi'); 
     writerObj.FrameRate=20;
     writerObj.Quality=100;
     open(writerObj);

@@ -11,10 +11,11 @@ disp('optimizing task');
 task = optimize_task(task);
 disp('animating task'); 
 
-looporder=1;
+looporder=2;
 for (i =1:looporder)
     animate_res_new(task);
     % rebuild task from previous task and reoptimize
+    task = remove_vehicle(1,task); 
     task = optimize_task(task);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

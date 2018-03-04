@@ -90,22 +90,22 @@ end
 %constraints för att kolla så att fordon inte kör in i varandra bakifrån
 %fungerar inte nu då vi inte kan starta bilar på samma väg utan att de är i
 %varandra
-
-for i=1:Nv-1
-    for j=1:Nv
-        if V(i).entryangle==V(j).entryangle && i~=j
-            [row1,column]=find(co==i);
-            [row2,column]=find(co==j);
-            if row1<row2
-                constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
-            else
-                constraints=[constraints, X(3*j-2,:)>=X(3*i-2,:)+deltat];
-            end
-        
-        end
-    end
-    
-end
+% 
+% for i=1:Nv-1
+%     for j=1:Nv
+%         if V(i).entryangle==V(j).entryangle && i~=j
+%             [row1,column]=find(co==i);
+%             [row2,column]=find(co==j);
+%             if row1<row2
+%                 constraints=[constraints, X(3*i-2,:)>=X(3*j-2,:)+deltat];
+%             else
+%                 constraints=[constraints, X(3*j-2,:)>=X(3*i-2,:)+deltat];
+%             end
+%         
+%         end
+%     end
+%     
+% end
 
 
 cost=[];

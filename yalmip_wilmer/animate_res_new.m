@@ -1,14 +1,15 @@
 % clear all;
 % clc;
-function [] = animate_res_new(task)
 saveobj=false; % if true, it will save a video of the animation
 res=task.res; I=task.I;
 V=task.V;
-fullscreen = true;
+fullscreen = false;
 % Open a figure
 if exist('fig','var') && ishandle(fig)
-    figure(fig);
+   figure(fig);
+   disp('figure exists, using old handle');
 else
+    disp('figure does not exist, creating new handle');
     if fullscreen
         fig=figure('units','normalized','outerposition',[0 0 1 1]); hold on;
     else
@@ -214,7 +215,7 @@ end
         b = y(1)-(h21*x31-h31*x21)/d;
         r = sqrt(h21*h31*((x(3)-x(2))^2+(y(3)-y(2))^2))/abs(d);
     end
-end
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Created by Nikolce Murgovski, 2015-10.
 %   nikolce.murgovski@chalmers.se

@@ -11,16 +11,17 @@ disp('optimizing task');
 task = optimize_task(task);
 disp('animating task'); 
 
-looporder=1;
+looporder=2;
 for (i =1:looporder)
-    animate_res_new(task);
+    %animate_res_new(task);
+    animate_res_new;
     % rebuild task from previous task and reoptimize
-    past=past_criticalzone(task,current_index);%returnar en array som säger vilka som är utanför
-    for(i=1:Nv)
-        if(past(i))
-            task=remove_vehicle(i,task);
-        end
-    end
+    %past=past_criticalzone(task,current_index);%returnar en array som sï¿½ger vilka som ï¿½r utanfï¿½r
+%     for(i=1:task.Nv)
+%         if(past(i))
+%             task=remove_vehicle(i,task);
+%         end
+%     end
     %task = remove_vehicle(1,task); 
     task = optimize_task(task);
 end

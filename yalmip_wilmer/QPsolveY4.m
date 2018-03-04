@@ -73,12 +73,7 @@ for i=1:Nv
      constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
      
 end
-% critical zone constraints
-% for j=1:Nv-1
-%     constraints =  [constraints, ...
-%         t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
-% end
-%critical zone constraint 
+
 for i = 1:Nv-1
     %T(V(co(j)) = X(3*i-2);
     constraints = [constraints, 
@@ -127,6 +122,8 @@ if sol.problem == 0
     res.cost=sum(value(cost));
     res.v=1./value(z(:,1:Ns))'/Sz; 
     res.t=value(t(:,1:Ns))'*St;
+    res.X = X;
+    res.U = U; 
 else
     res.status=sol.info;
     display(sol.info);

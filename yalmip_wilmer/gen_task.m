@@ -15,7 +15,7 @@ rng(0,'twister');
 % another algorithm that is better suited for this purpose. 
 task.loopcrossorder=false; 
 crossingorder=[1:task.Nv]'; % prototype of "first come first served"
-randomentryangleadd = randi([0 3],1,task.Nv)'*pi/2;
+randomentryangleadd = randi([1 3],1,task.Nv)'*pi/2;
 randomturnangle = randi([-2 2],1,task.Nv)'*pi/2;
 ss = []; 
 j = 76;

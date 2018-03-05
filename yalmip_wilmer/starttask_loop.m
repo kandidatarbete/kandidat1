@@ -16,13 +16,13 @@ for (i =1:looporder)
     %animate_res_new(task);
     animate_res_new;
 %     rebuild task from previous task and reoptimize
-%     past=past_criticalzone(task,current_index);%returnar en array som s�ger vilka som �r utanf�r
-%     for(i=1:task.Nv)
-%         if(past(i))
-%             task=remove_vehicle(i,task);
-%         end
-%     end
-    task = remove_vehicle(1,task); 
+     past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
+%      for j=1:task.Nv
+%          if(past(j))
+%              task=remove_vehicle(j,task);
+%          end
+%      end
+    %task = remove_vehicle(1,task); 
     task = optimize_task(task);
 end
 

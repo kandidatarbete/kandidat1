@@ -68,7 +68,27 @@ for i=1:Nv
     StartConst(3*i-1)=1/vstart/Sz;
     StartConst(3*i)=0;
 end
+SmallerThanConst=sdpvar(3*Nv,Ns);
+for i=1:Nv
+    SmallerThanConst(3*i-2,:)=inf;
+    SmallerThanConst(3*i-1,:)=1/V(i).vxmax/Sz;
+    %TODO denna jäveln blir nan
+    
+    SmallerThanConst(3*i,:)= -amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz;
+    
+end
+BiggerThanConst=sdpvar(3*Nv,Ns);
+for i=1:Nv
+ BiggerThanConst(3*i-2,:)=-inf;
+ BiggerThanConst(3*i-1,:)=1/V(i).vxmax/Sz;
+ %NAAAAAAAAAAAAAAN
+ BiggerThanConst(3*i-2,:)=-V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz;
+    
+end
+%display(SmallerThanConst)
 constraints = [constraints, X(:,1) == StartConst];
+constraints=[constraints, X <= SmallerThanConst];
+constraints = [constraints, X >= BiggerThanConst];
 for i=1:Nv
      %constraints=[constraints, X(3*i-1,:)>=0]; % lethargy > 0 
       %constraints=[constraints, 
@@ -76,12 +96,12 @@ for i=1:Nv
      %constraints=[constraints, X(3*i-2,1)==0];
      %TODO borde vara vstart, inte vref
      %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
+     %constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
      %TODO nedanstående verkar orsaka lite problem
-     constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
+     %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
      %constraints=[constraints, X(3*i,1)==0];
-     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
-     constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+     %constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
+     %constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
      
 end
 % critical zone constraints

@@ -9,6 +9,7 @@ for j=1:size(task.crossorderperm,1)
     task.crossingorder=task.crossorderperm(j,:);
     %res=QPsolveY4(task);
     res=QPsolveY5(task);
+    %res = QPsolveY6(task);
     ttot=ttot+res.time(end);
     ax=diff(res.v)./diff(res.t); ax=[ax;ax(end,:)];
     fprintf('%s: order=%s, cost=%1.4f, vx~[%1.0f,%1.0f]km/h, ax~[%1.1f,%1.1f]m/s2, t=%1.2f ms\n', ...

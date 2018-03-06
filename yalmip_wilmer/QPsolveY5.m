@@ -44,19 +44,35 @@ end
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
 for i=1:Nv
+    % equality constraints
      constraints=[constraints, X(3*i-2,1)==0];
      constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
-     constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
      constraints=[constraints, X(3*i,1)==0];
-     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
-     constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+     eq(3*i -2, 1) = 0; 
+     eq(3*i -1,1) = 1/vstart/Sz; 
+     eq(3*i,1) = 0;
+     % X == eq
      
+
+     % less than constraints
+     constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+     constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
+     ub(3*i,:) = V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz;
+     ub(3*i -1,:) = 1/V(i).vxmin/Sz;
+     % X <= ub
+     
+     % greater than constraints
+     constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
+     constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];     
+     lb(3*i -1,:) = 1/V(i).vxmax/Sz;
+     lb(3*i,:) = amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz;
+     % X >= lb
 end
 
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
+    % se över ovanstående
 end
 
 cost=[];

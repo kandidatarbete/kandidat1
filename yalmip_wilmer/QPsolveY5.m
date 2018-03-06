@@ -72,6 +72,9 @@ end
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
+    % X(i,j) <= X(i+1,k+1 <-> X(i,j) - X(i+1,k+1) = 0 
+    % <-> (Ax)x <= b, b = 0, A((i,j) = X(3*co(i)-2,V(co(i).Nze) -
+    % X(3*co(i+1:Nzs)
     % se över ovanstående
 end
 

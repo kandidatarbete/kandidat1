@@ -43,18 +43,22 @@ end
 
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
+
+eq = zeros(3*Nv,Ns);
 for i=1:Nv
     % equality constraints
-     constraints=[constraints, X(3*i-2,1)==0];
-     constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     constraints=[constraints, X(3*i,1)==0];
-     eq = zeros(3*Nv,Ns);
+     %constraints=[constraints, X(3*i-2,1)==0];
+     %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
+     %constraints=[constraints, X(3*i,1)==0];
+     
      eq(3*i -2, 1) = 0; 
      eq(3*i -1,1) = 1/vstart/Sz; 
      eq(3*i,1) = 0;
 
-     %X(1,1) = eq(1,1); 
-     % X == eq
+     %constraints = [constraints, X(3*i,1) == eq(3*i,1)]; 
+     %constraints = [constraints, X(3*i-1,1) == eq(3*i-1,1)]; 
+     %constraints = [constraints, X(3*i-2,1) == eq(3*i-2,1)]; 
+     % X == eq, hur sättta icke-constraints e.g. -inf < X(i,j) < inf
      
 
      % less than constraints
@@ -73,8 +77,11 @@ for i=1:Nv
      lb(3*i,:) = amin*(3*vref*X(3*i-1)*Sz - 2)./vref.^3/Sdz;
      % X >= lb
 end
-     constraints = [constraints, X(1,1) == eq(1,1)]; 
 
+for i = 1:3*Nv
+    constraints = [constraints, X(i,1) == eq(i,1)];
+end
+     
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 

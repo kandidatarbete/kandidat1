@@ -1,4 +1,4 @@
-function res=QPsolveY5(task)
+function res=QPsolveY7(task)
 V=task.V; Ns=task.Ns; Nv=task.Nv; ds=task.ds; 
 co=task.crossingorder(1:Nv);
 
@@ -44,21 +44,16 @@ end
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
 
-eq = zeros(3*Nv,Ns);
+Aeq=zeros(3*Nv);
+Aeq(1,:)=ones(1,3*Nv);
+beq = zeros(3*Nv,Ns);
 for i=1:Nv
     % equality constraints
-     %constraints=[constraints, X(3*i-2,1)==0];
-     %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     %constraints=[constraints, X(3*i,1)==0];
      
-     eq(3*i -2, 1) = 0; 
-     eq(3*i -1,1) = 1/vstart/Sz; 
-     eq(3*i,1) = 0;
+     beq(3*i -2,1) = 0; 
+     beq(3*i -1,1) = 1/vstart/Sz; 
+     beq(3*i,1) = 0;
 
-     %constraints = [constraints, X(3*i,1) == eq(3*i,1)]; 
-     %constraints = [constraints, X(3*i-1,1) == eq(3*i-1,1)]; 
-     %constraints = [constraints, X(3*i-2,1) == eq(3*i-2,1)]; 
-     % X == eq, hur sättta icke-constraints e.g. -inf < X(i,j) < inf
      
 
      % less than constraints
@@ -77,18 +72,22 @@ for i=1:Nv
      lb(3*i,:) = amin*(3*vref*X(3*i-1)*Sz - 2)./vref.^3/Sdz;
      % X >= lb
 end
-
-for i = 1:3*Nv
-    constraints = [constraints, X(i,1) == eq(i,1)];
-end
-     
+    
+ for i = 1:3*Nv
+     constraints = [constraints, X(i,1) == eq(i,1)];
+ end
+      
+          constraints = [constraints, Aeq*X(:,1) == beq(:,1)];   
+      
+%     %disp(size(eq))
+    %constraints = [constraints, (Aeq*X)(1) == beq(1)];
+    %constraints= [constraints, Aeq*X==beq];
+    disp(size(X(:,1)))
+    %constraints = [constraints, X(:,1)==eq];
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
-    % X(i,j) <= X(i+1,k+1 <-> X(i,j) - X(i+1,k+1) = 0 
-    % <-> (Ax)x <= b, b = 0, A((i,j) = X(3*co(i)-2,V(co(i).Nze) -
-    % X(3*co(i+1:Nzs)
-    % se över ovanstående
+
 end
 
 cost=[];

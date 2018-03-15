@@ -132,7 +132,9 @@ end
 %% Animate
 % return;
 if saveobj
-    writerObj=VideoWriter('task.mp4','MPEG-4');
+    disp("Saving video of animation. This could slow down the animation considerably");
+    %writerObj=VideoWriter('task.mp4','MPEG-4');
+    writerObj=VideoWriter('./videos/task.avi'); 
     writerObj.FrameRate=20;
     writerObj.Quality=100;
     open(writerObj);

@@ -24,6 +24,9 @@ for i=1:Nv
     U(3*i,:)=sdpvar(1,Ns);
 end
 
+
+
+
 Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle 
 
 % konstruera generaliserade A: 
@@ -31,18 +34,41 @@ for i=1:Nv
     A(3*i-2:3*i,3*i-2:3*i)=Asub;
 end
 
-% scaling factors
+% scaling factors for control signal u
 Su=zeros(3*Nv);
 SuSub=eye(3);
 SuSub(1,1)=Sz/St;
 SuSub(2,2)=Sdz/Sz;
 SuSub(3,3)=Sddz/Sdz;
 for i=1:Nv
-    Su(3*i-2:3*i,3*i-2:3*i)=SuSub;
+    Su(3*i-2:3*i,3*i-2:3*i)=SuSub; 
 end
 
+% longitudinal dynamics
 constraints  = []; 
-constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x
+constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
+
+% construct generalised control signal containing both x_k and u_k 
+% in order to write Aeq*X = Beq
+for i = 1:Nv
+   Xhat(4*i -3, :)  = X(3*i-2);
+   Xhat(4*i-2, :) = X(3*i-1);  
+   Xhat(4*i -1, :) = X(3*i);
+   Xhat(4*i,:) = U(3*i); 
+end
+
+% construct generalized submatrix A coupling both u_k and x_k
+A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds]; 
+
+
+% construct global generalized A coupling both u_k and k_k
+for i=1:Nv
+    A_gen(3*i-2:3*i,4*i-3:4*i)=A_sub_gen;
+end
+
+% longitudinal dynamics in terms of generalized A
+% X_hat_k+1 = A_gen*X_hat_k
+
 
 eq = zeros(3*Nv,Ns);
 for i=1:Nv

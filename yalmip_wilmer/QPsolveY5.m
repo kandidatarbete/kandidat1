@@ -48,23 +48,24 @@ end
 constraints  = []; 
 constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
 
-% construct generalised control signal containing both x_k and u_k 
+% construct generalised state matrix containing both x_k and u_k 
 % in order to write Aeq*X = Beq
 for i = 1:Nv
-   Xhat(4*i -3, :)  = X(3*i-2);
-   Xhat(4*i-2, :) = X(3*i-1);  
-   Xhat(4*i -1, :) = X(3*i);
-   Xhat(4*i,:) = U(3*i); 
+   Xhat(4*i -3, :)  = X(3*i-2,:);
+   Xhat(4*i-2, :) = X(3*i-1,:);  
+   Xhat(4*i -1, :) = X(3*i,:);
+   Xhat(4*i,:) = U(3*i,:); 
 end
 
 % construct generalized submatrix A coupling both u_k and x_k
-A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds]; 
-
+A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 
 % construct global generalized A coupling both u_k and k_k
 for i=1:Nv
-    A_gen(3*i-2:3*i,4*i-3:4*i)=A_sub_gen;
+    A_gen(4*i-3:4*i,4*i-3:4*i)=-A_sub_gen;
+    A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
 end
+disp(A_gen);
 
 % longitudinal dynamics in terms of generalized A
 % X_hat_k+1 = A_gen*X_hat_k

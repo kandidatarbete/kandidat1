@@ -17,15 +17,30 @@ amin=-5;
 deltat=20;
 k=1:Ns-1;
 
-X=sdpvar(3*Nv,Ns,'full');
+
+t = sdpvar(Nv,Ns,'full');
+z= sdpvar(Nv,Ns,'full');
+dz=sdpvar(Nv,Ns,'full');
+u=sdpvar(Nv,Ns,'full');
+   X(1,:)=t;
+   X(2,:)=z;
+   X(3,:)=dz;
+
+%X=sdpvar(3*Nv,Ns,'full');
 
 % control signal for acceleration
 for i=1:Nv
-    U(3*i,:)=sdpvar(1,Ns);
+    U(3*i,:)=u(i,:);
 end
 
-
-
+for i = 1:Nv
+    for j = 1:Ns
+       Xhat(j*4-3,i)= t(i,j);
+       Xhat(j*4-2,i)= z(i,j);
+       Xhat(j*4-1,i)=dz(i,j);
+       Xhat(j*4,i)=u(i,j);
+    end
+end
 
 Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle 
 
@@ -46,16 +61,16 @@ end
 
 % longitudinal dynamics
 constraints  = []; 
-constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
+%constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
 
 % construct generalised state matrix containing both x_k and u_k 
 % in order to write Aeq*X = Beq
-for i = 1:Nv
-   Xhat(4*i -3, :)  = X(3*i-2,:);
-   Xhat(4*i-2, :) = X(3*i-1,:);  
-   Xhat(4*i -1, :) = X(3*i,:);
-   Xhat(4*i,:) = U(3*i,:); 
-end
+% for i = 1:Nv
+%    Xhat(4*i -3, :)  = X(3*i-2,:);
+%    Xhat(4*i-2, :) = X(3*i-1,:);  
+%    Xhat(4*i -1, :) = X(3*i,:);
+%    Xhat(4*i,:) = U(3*i,:); 
+% end
 
 % construct generalized submatrix A coupling both u_k and x_k
 A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
@@ -70,7 +85,7 @@ A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
     
 end
 disp(A_gen(1:12,1:12));
-
+constraints =[constraints, A_gen*Xhat==0 ]
 % longitudinal dynamics in terms of generalized A
 % X_hat_k+1 = A_gen*X_hat_k
 Xhat*A_gen == 0

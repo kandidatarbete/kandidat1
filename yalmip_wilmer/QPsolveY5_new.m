@@ -1,4 +1,4 @@
-function res=QPsolveY5(task)
+function res=QPsolveY5_new(task)
 V=task.V; Ns=task.Ns; Nv=task.Nv; ds=task.ds; 
 co=task.crossingorder(1:Nv);
 
@@ -61,14 +61,19 @@ end
 A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 
 % construct global generalized A coupling both u_k and k_k
-for i=1:Nv
+for i=1:Ns
     A_gen(4*i-3:4*i,4*i-3:4*i)=-A_sub_gen;
-    A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
+    %A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
 end
-disp(A_gen);
+for i=1:Ns-1
+A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
+    
+end
+disp(A_gen(1:12,1:12));
 
 % longitudinal dynamics in terms of generalized A
 % X_hat_k+1 = A_gen*X_hat_k
+Xhat*A_gen == 0
 
 
 eq = zeros(3*Nv,Ns);

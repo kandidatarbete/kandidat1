@@ -22,9 +22,13 @@ t = sdpvar(Nv,Ns,'full');
 z= sdpvar(Nv,Ns,'full');
 dz=sdpvar(Nv,Ns,'full');
 u=sdpvar(Nv,Ns,'full');
-   X(1,:)=t;
-   X(2,:)=z;
-   X(3,:)=dz;
+
+   for i=1:Nv
+        X(3*i-2,:)=t(i,:);
+        X(3*i-1,:)=z(i,:);
+        X(3*i,:)=dz(i,:);
+   end
+   
 
 %X=sdpvar(3*Nv,Ns,'full');
 
@@ -88,7 +92,7 @@ disp(A_gen(1:12,1:12));
 constraints =[constraints, A_gen*Xhat==0 ]
 % longitudinal dynamics in terms of generalized A
 % X_hat_k+1 = A_gen*X_hat_k
-Xhat*A_gen == 0
+%Xhat*A_gen == 0
 
 
 eq = zeros(3*Nv,Ns);

@@ -76,7 +76,8 @@ end
 %A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
 
-
+A_gen = zeros(4*Ns,4*Ns); 
+A_gen2 = zeros(4*Ns,4*Ns);
 for i = 1:Nv
      A_gen2(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
 end
@@ -84,11 +85,20 @@ end
 for i=1:Ns
     A_gen(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
 end
-% for i=1:Ns-1
-%     A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);  
-% end
-disp(A_gen(1:12,1:12));
-
+A_gen2 = A_gen;
+eyesub = zeros(4*Ns,4*Ns);
+for i=1:Ns-1
+    A_gen2(4*i+1:4*i+4,4*i-3:4*i)=-eye(4);  
+    eyesub(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
+end
+%disp(A_gen2(4*Ns-12:4*Ns,4*Ns-12:4*Ns));
+%disp(A_gen2(1:12,1:12));
+%disp(eyesub(1:12,1:12)); 
+disp(eyesub(4*Ns-12:4*Ns,4*Ns-12:4*Ns));
+save 'eyesub.mat' eyesub;
+%disp(size(A_gen2)); 
+%disp(size(Xhat));
+%disp(size(eyesub)); 
 
 % longitudinal dynamics
 %constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
@@ -98,9 +108,27 @@ disp(A_gen(1:12,1:12));
 %constraints =[constraints, A_gen*Xhat==0 ];
 kprime = 4*(1:Ns-1); % 1, 5 9, 13 ... 
 Xkplusone = A_gen*Xhat; 
+eoc = 2:Nv;
+eyesub*Xhat;
+eyeX = eyesub*Xhat; 
+disp(size(eyeX));
+disp(size(Xkplusone));
 for i = 1:4*(Ns-1)
    constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)];  
+   % todo: rewrite Xhat(i+4,:) in terms of eyesub
+   eyeX = eyesub*Xhat; 
+  %constraints = [constraints, eyeX(i,:) == Xkplusone(i,:)]; % if eyesub is correct, 
+   % then this should give the same results as the first constraint
+   % equation
 end
+%kprime = 1:4*(Ns-1); 
+equ = A_gen2*Xhat; 
+disp(size(A_gen2*Xhat));
+constr = [equ(:,1) == 0]; 
+%constraints = [constraints,equ]; 
+%for i = 1:4*(Ns-1) 
+    % constraints = [constraints, A_gen2*Xhat == 0];   
+%end
 
 eq = zeros(3*Nv,Ns);
  for i=1:Nv

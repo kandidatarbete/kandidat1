@@ -76,31 +76,31 @@ end
 %A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
 
-% construct global generalized A coupling both u_k and k_k
-% for i=1:Ns
-%     A_gen(4*i-3:4*i,4*i-3:4*i)=-A_sub_gen;
-% end
+
 for i = 1:Nv
-     A_gen(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
+     A_gen2(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
+end
+%construct global generalized A coupling both u_k and x_k
+for i=1:Ns
+    A_gen(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
 end
 % for i=1:Ns-1
 %     A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);  
 % end
-%disp(A_gen(1:12,1:12));
+disp(A_gen(1:12,1:12));
 
 
 % longitudinal dynamics
 %constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
-disp(size(A)); 
-disp(size(A_gen));
-constraints = [constraints, X2(:,k+1) == A_gen*X2(:,k)];
-%save 'A_gen.mat' A_gen;
+%constraints = [constraints, X2(:,k+1) == A_gen2*X2(:,k)];
 
 % longitudinal dynamics in terms of generalized A
 %constraints =[constraints, A_gen*Xhat==0 ];
-
-
-
+kprime = 4*(1:Ns-1); % 1, 5 9, 13 ... 
+Xkplusone = A_gen*Xhat; 
+for i = 1:4*(Ns-1)
+   constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)];  
+end
 
 eq = zeros(3*Nv,Ns);
  for i=1:Nv
@@ -113,11 +113,9 @@ eq = zeros(3*Nv,Ns);
      constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
      constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
 
-     
      % greater than constraints
      constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];     
-
  end
 
 for i = 1:3*Nv

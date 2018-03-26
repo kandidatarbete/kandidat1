@@ -72,11 +72,13 @@ end
 % construct generalized submatrix A coupling both u_k and x_k one vehicle
 %A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
+A_sub_gen2 = [0 ds 0 0 ; 0 0 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
 
 A_gen = zeros(4*Ns,4*Ns); 
 A_gen2 = zeros(4*Ns,4*Ns);
 for i = 1:Nv
      A_gen2(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
+     A_gen3(4*i-3:4*i,4*i-3:4*i)=A_sub_gen2; % use this one
 end
 %construct global generalized A coupling both u_k and x_k
 for i=1:Ns
@@ -85,17 +87,15 @@ end
 A_gen2 = A_gen;
 eyesub = zeros(4*Ns,4*Ns);
 for i=1:Ns-1
-    A_gen2(4*i+1:4*i+4,4*i-3:4*i)=eye(4);  
+    A_gen2(4*i+1:4*i+4,4*i-3:4*i)=-eye(4);  
     eyesub(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
 end
-
-
 % longitudinal dynamics
 %constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
 %constraints = [constraints, X2(:,k+1) == A_gen2*X2(:,k)];
 
 % longitudinal dynamics in terms of generalized A
-kprime = 4*(1:Ns-1); % 1, 5 9, 13 ... 
+kprime = 4*(1:Ns-1);
 
 eyesub*Xhat;
 equ = A_gen2*Xhat;
@@ -105,8 +105,15 @@ disp(size(A_gen));
 disp(size(Xhat)); 
 
 Xkplusone = A_gen*Xhat; 
+eyeX = eyesub*Xhat;
+apa = (A_gen - eyesub)*Xhat;
+bepa = eyesub*A_gen*Xhat; 
+cepa = A_gen*eyesub*Xhat; 
+depa = Xhat*eyesub;
 for i = 1:4*(Ns-1)
    constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
+   constraints = [constraints, Xhat(i,:) == cepa(i,:)]; 
+ %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
 end
 
 eq = zeros(3*Nv,Ns);

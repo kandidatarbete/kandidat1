@@ -109,10 +109,10 @@ eyeX = eyesub*Xhat;
 apa = (A_gen - eyesub)*Xhat;
 bepa = eyesub*A_gen*Xhat; 
 cepa = A_gen*eyesub*Xhat; 
-depa = Xhat*eyesub;
+%depa = Xhat*eyesub;
 for i = 1:4*(Ns-1)
    constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
-   constraints = [constraints, Xhat(i,:) == cepa(i,:)]; 
+   constraints = [constraints, Xhat(i+4,:) == bepa(i+4,:)]; 
  %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
 end
 

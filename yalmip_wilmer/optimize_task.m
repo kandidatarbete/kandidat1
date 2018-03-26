@@ -8,8 +8,8 @@ resopt.cost=Inf;
 for j=1:size(task.crossorderperm,1)
     task.crossingorder=task.crossorderperm(j,:);
     %res=QPsolveY4(task);
-    %res=QPsolveY5(task);
-    res = QPsolveY6(task);
+    res=QPsolveY5_new(task);
+    %res = QPsolveY6(task);
     %res=QPsolveY8(task);
     ttot=ttot+res.time(end);
     res.ax=diff(res.v)./diff(res.t); res.ax=[res.ax;res.ax(end,:)];

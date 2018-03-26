@@ -17,21 +17,40 @@ amin=-5;
 deltat=20;
 k=1:Ns-1;
 
-X=sdpvar(3*Nv,Ns,'full');
 
-% control signal for acceleration
+t = sdpvar(Nv,Ns,'full');
+z= sdpvar(Nv,Ns,'full');
+dz=sdpvar(Nv,Ns,'full');
+u=sdpvar(Nv,Ns,'full');
+
 for i=1:Nv
-    U(3*i,:)=sdpvar(1,Ns);
+    X(3*i-2,:)=t(i,:);
+    X(3*i-1,:)=z(i,:);
+    X(3*i,:)=dz(i,:);
+end
+
+for i = 1:Nv
+    X2(4*i-3,:)=t(i,:);
+    X2(4*i-2,:)=z(i,:);
+    X2(4*i-1,:)=dz(i,:);
+    X2(4*i,:) = u(i,:); 
 end
 
 
+%X=sdpvar(3*Nv,Ns,'full');
 
-
-Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle 
-
-% konstruera generaliserade A: 
+% control signal for acceleration
 for i=1:Nv
-    A(3*i-2:3*i,3*i-2:3*i)=Asub;
+    U(3*i,:)=u(i,:);
+end
+
+for i = 1:Nv
+    for j = 1:Ns
+       Xhat(j*4-3,i)= t(i,j);
+       Xhat(j*4-2,i)= z(i,j);
+       Xhat(j*4-1,i)=dz(i,j);
+       Xhat(j*4,i)=u(i,j);
+    end
 end
 
 % scaling factors for control signal u
@@ -44,71 +63,88 @@ for i=1:Nv
     Su(3*i-2:3*i,3*i-2:3*i)=SuSub; 
 end
 
-% longitudinal dynamics
+
 constraints  = []; 
-constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
 
-% construct generalised state matrix containing both x_k and u_k 
-% in order to write Aeq*X = Beq
+Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle 
+% construct generalized A: 
+for i=1:Nv
+    A(3*i-2:3*i,3*i-2:3*i)=Asub;
+end
+
+% construct generalized submatrix A coupling both u_k and x_k one vehicle
+%A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
+A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
+
+A_gen = zeros(4*Ns,4*Ns); 
+A_gen2 = zeros(4*Ns,4*Ns);
 for i = 1:Nv
-   Xhat(4*i -3, :)  = X(3*i-2,:);
-   Xhat(4*i-2, :) = X(3*i-1,:);  
-   Xhat(4*i -1, :) = X(3*i,:);
-   Xhat(4*i,:) = U(3*i,:); 
+     A_gen2(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
 end
-
-% construct generalized submatrix A coupling both u_k and x_k
-A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0]; 
-
-% construct global generalized A coupling both u_k and k_k
+%construct global generalized A coupling both u_k and x_k
 for i=1:Ns
-    A_gen(4*i-3:4*i,4*i-3:4*i)=-A_sub_gen;
-    %A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
+    A_gen(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
 end
+A_gen2 = A_gen;
+eyesub = zeros(4*Ns,4*Ns);
 for i=1:Ns-1
-A_gen(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
-    
+    A_gen2(4*i+1:4*i+4,4*i-3:4*i)=-eye(4);  
+    eyesub(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
 end
-disp(A_gen(1:12,1:12));
+%disp(A_gen2(4*Ns-12:4*Ns,4*Ns-12:4*Ns));
+%disp(A_gen2(1:12,1:12));
+%disp(eyesub(1:12,1:12)); 
+disp(eyesub(4*Ns-12:4*Ns,4*Ns-12:4*Ns));
+save 'eyesub.mat' eyesub;
+%disp(size(A_gen2)); 
+%disp(size(Xhat));
+%disp(size(eyesub)); 
+
+% longitudinal dynamics
+%constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
+%constraints = [constraints, X2(:,k+1) == A_gen2*X2(:,k)];
 
 % longitudinal dynamics in terms of generalized A
-% X_hat_k+1 = A_gen*X_hat_k
-Xhat*A_gen == 0
-
+%constraints =[constraints, A_gen*Xhat==0 ];
+kprime = 4*(1:Ns-1); % 1, 5 9, 13 ... 
+Xkplusone = A_gen*Xhat; 
+eoc = 2:Nv;
+eyesub*Xhat;
+eyeX = eyesub*Xhat; 
+disp(size(eyeX));
+disp(size(Xkplusone));
+for i = 1:4*(Ns-1)
+   constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)];  
+   % todo: rewrite Xhat(i+4,:) in terms of eyesub
+   eyeX = eyesub*Xhat; 
+  %constraints = [constraints, eyeX(i,:) == Xkplusone(i,:)]; % if eyesub is correct, 
+   % then this should give the same results as the first constraint
+   % equation
+end
+%kprime = 1:4*(Ns-1); 
+equ = A_gen2*Xhat; 
+disp(size(A_gen2*Xhat));
+constr = [equ(:,1) == 0]; 
+%constraints = [constraints,equ]; 
+%for i = 1:4*(Ns-1) 
+    % constraints = [constraints, A_gen2*Xhat == 0];   
+%end
 
 eq = zeros(3*Nv,Ns);
-for i=1:Nv
-    % equality constraints
-     %constraints=[constraints, X(3*i-2,1)==0];
-     %constraints=[constraints, X(3*i-1,1)==1/vstart/Sz];
-     %constraints=[constraints, X(3*i,1)==0];
-     
+ for i=1:Nv
+     % equality constraints 
      eq(3*i -2, 1) = 0; 
      eq(3*i -1,1) = 1/vstart/Sz; 
      eq(3*i,1) = 0;
 
-     %constraints = [constraints, X(3*i,1) == eq(3*i,1)]; 
-     %constraints = [constraints, X(3*i-1,1) == eq(3*i-1,1)]; 
-     %constraints = [constraints, X(3*i-2,1) == eq(3*i-2,1)]; 
-     % X == eq, hur sättta icke-constraints e.g. -inf < X(i,j) < inf
-     
-
      % less than constraints
      constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
      constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
-     ub = zeros(3*Nv, Ns);
-     ub(3*i,:) = V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz;
-     ub(3*i -1,:) = 1/V(i).vxmin/Sz;
-     % X <= ub
-     
+
      % greater than constraints
      constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];     
-     lb = zeros(3*Nv,Ns);
-     lb(3*i -1,:) = 1/V(i).vxmax/Sz;
-     lb(3*i,:) = amin*(3*vref*X(3*i-1)*Sz - 2)./vref.^3/Sdz;
-     % X >= lb
-end
+ end
 
 for i = 1:3*Nv
     constraints = [constraints, X(i,1) == eq(i,1)];
@@ -117,10 +153,6 @@ end
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 
-    % X(i,j) <= X(i+1,k+1 <-> X(i,j) - X(i+1,k+1) = 0 
-    % <-> (Ax)x <= b, b = 0, A((i,j) = X(3*co(i)-2,V(co(i).Nze) -
-    % X(3*co(i+1:Nzs)
-    % se över ovanstående
 end
 
 cost=[];

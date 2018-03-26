@@ -11,7 +11,7 @@ disp('optimizing task');
 task = optimize_task(task);
 disp('animating task'); 
 
-looporder=9;
+looporder=1;
 for (i =1:looporder)
     %animate_res_new(task);
     animate_res_new;

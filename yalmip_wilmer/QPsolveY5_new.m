@@ -90,12 +90,16 @@ A_gen_final_2=A_gen_final(5:4*Ns,:);
 constraints=[constraints, A_gen_final_2*Xhat==0];
 
 eq = zeros(3*Nv,Ns);
-eq2 = zeros(4,Nv);
+Aeq2=zeros(4*Ns);
+for i=1:3
+    Aeq2(i,i)=1;
+end
+beq2 = zeros(4*Ns,Nv);
  for i=1:Nv
      % equality constraints 
-     eq2(1, i) = 0; 
-     eq2(2,i) = 1/vstart/Sz; 
-     eq2(3,i) = 0;
+     beq2(1, i) = 0; 
+     beq2(2,i) = 1/vstart/Sz; 
+     beq2(3,i) = 0;
      eq(3*i-2, 1) = 0; 
      eq(3*i-1,1) = 1/vstart/Sz; 
      eq(3*i,1) = 0;
@@ -113,11 +117,12 @@ eq2 = zeros(4,Nv);
 %     constraints=[constraints, X(i,1)==eq(i,1)];
 %     
 % end
- for i = 1:3
-     for j=1:Nv
-         constraints = [constraints, Xhat(i,j) == eq2(i,j)];
-     end
- end
+constraints=[constraints, Aeq2*Xhat==beq2];
+%  for i = 1:3
+%      for j=1:Nv
+%          constraints = [constraints, Xhat(i,j) == beq2(i,j)];
+%      end
+%  end
      
 for i = 1:Nv-1
     constraints = [constraints, 

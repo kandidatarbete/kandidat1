@@ -16,8 +16,6 @@ amin=-5;
 %bromstid
 deltat=20;
 k=1:Ns-1;
-
-
 t = sdpvar(Nv,Ns,'full');
 z= sdpvar(Nv,Ns,'full');
 dz=sdpvar(Nv,Ns,'full');
@@ -40,7 +38,6 @@ end
 for i=1:Nv
     U(3*i,:)=u(i,:);
 end
-
 for i = 1:Nv
     for j = 1:Ns
        Xhat(j*4-3,i)= t(i,j);
@@ -49,7 +46,6 @@ for i = 1:Nv
        Xhat(j*4,i)=u(i,j);
     end
 end
-
 % scaling factors for control signal u
 Su=zeros(3*Nv);
 SuSub=eye(3);
@@ -59,8 +55,6 @@ SuSub(3,3)=Sddz/Sdz;
 for i=1:Nv
     Su(3*i-2:3*i,3*i-2:3*i)=SuSub; 
 end
-
-
 constraints  = []; 
 
 Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle 
@@ -90,39 +84,10 @@ for i=1:Ns-1
     A_gen2(4*i+1:4*i+4,4*i-3:4*i)=-eye(4);  
     eyesub(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
 end
-% longitudinal dynamics
-%constraints = [constraints, X(:,k+1) == A*X(:,k) + Su*U(:,k)*ds]; % x_k+1 = Ax_k +\delta x * u
-%constraints = [constraints, X2(:,k+1) == A_gen2*X2(:,k)];
-
 % longitudinal dynamics in terms of generalized A
-kprime = 4*(1:Ns-1);
-
-%eyesub*Xhat;
-%equ = A_gen2*Xhat;
-
-disp(size(eyesub)); 
-disp(size(A_gen)); 
-disp(size(Xhat)); 
-
-Xkplusone = A_gen*Xhat; 
-eyeX = eyesub*Xhat;
-apa = (A_gen - eyesub)*Xhat;
-bepa = eyesub*A_gen*Xhat; 
-cepa = A_gen*eyesub*Xhat;
-A_gen_final = (eye(4*Ns) - eyesub*A_gen)*Xhat;
-%depa = Xhat*eyesub;
-A_gen_final_new=A_gen_final(5:4*Ns,:);
-for i = 5:4*(Ns)
-  % constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
-   %constraints = [constraints, Xhat(i+4,:) == bepa(i+4,:)];
-   %constraints=[constraints, Xhat(i+4,:)-bepa(i+4,:)==0];
-   % constraints= [constraints, A_gen_final(i,:)==0];
-   
-   %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
-end
-constraints=[constraints, A_gen_final_new==0]
-
-
+A_gen_final = (eye(4*Ns) - eyesub*A_gen);
+A_gen_final_2=A_gen_final(5:4*Ns,:);
+constraints=[constraints, A_gen_final_2*Xhat==0];
 
 eq = zeros(3*Nv,Ns);
  for i=1:Nv

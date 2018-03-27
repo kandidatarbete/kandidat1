@@ -111,14 +111,16 @@ bepa = eyesub*A_gen*Xhat;
 cepa = A_gen*eyesub*Xhat;
 A_gen_final = (eye(4*Ns) - eyesub*A_gen)*Xhat;
 %depa = Xhat*eyesub;
-for i = 1:4*(Ns-1)
+A_gen_final_new=A_gen_final(5:4*Ns,:);
+for i = 5:4*(Ns)
   % constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
    %constraints = [constraints, Xhat(i+4,:) == bepa(i+4,:)];
    %constraints=[constraints, Xhat(i+4,:)-bepa(i+4,:)==0];
-    constraints= [constraints, A_gen_final(i+4,:)==0];
+   % constraints= [constraints, A_gen_final(i,:)==0];
    
    %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
 end
+constraints=[constraints, A_gen_final_new==0]
 
 
 

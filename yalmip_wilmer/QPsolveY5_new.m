@@ -97,8 +97,8 @@ end
 % longitudinal dynamics in terms of generalized A
 kprime = 4*(1:Ns-1);
 
-eyesub*Xhat;
-equ = A_gen2*Xhat;
+%eyesub*Xhat;
+%equ = A_gen2*Xhat;
 
 disp(size(eyesub)); 
 disp(size(A_gen)); 
@@ -108,13 +108,19 @@ Xkplusone = A_gen*Xhat;
 eyeX = eyesub*Xhat;
 apa = (A_gen - eyesub)*Xhat;
 bepa = eyesub*A_gen*Xhat; 
-cepa = A_gen*eyesub*Xhat; 
+cepa = A_gen*eyesub*Xhat;
+A_gen_final = (eye(4*Ns) - eyesub*A_gen)*Xhat;
 %depa = Xhat*eyesub;
 for i = 1:4*(Ns-1)
-   constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
-   constraints = [constraints, Xhat(i+4,:) == bepa(i+4,:)]; 
- %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
+  % constraints = [constraints, Xhat(i+4,:) == Xkplusone(i,:)]; 
+   %constraints = [constraints, Xhat(i+4,:) == bepa(i+4,:)];
+   %constraints=[constraints, Xhat(i+4,:)-bepa(i+4,:)==0];
+    constraints= [constraints, A_gen_final(i+4,:)==0];
+   
+   %constraints == [constraints, depa(i,:) == Xkplusone(i,:)]; 
 end
+
+
 
 eq = zeros(3*Nv,Ns);
  for i=1:Nv

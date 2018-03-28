@@ -83,33 +83,32 @@ for i = 1:task.Nv
     r = randi([1 task.Nv],1,1);
     colors=[colors; [cmap(r,:)]];
 end
-for j=1:task.Nv
-    % initial positions
-    cosa=cos(V(j).entryangle); sina=sin(V(j).entryangle);
+for j=1:task.Nv    % initial positions
+    cosa=cos(-V(j).entryangle); sina=sin(-V(j).entryangle); 
     x0=-cosa*(I.criticalzone/2+V(j).ss) + sina*I.lanewidth/2;
     y0=-sina*(I.criticalzone/2+V(j).ss) - cosa*I.lanewidth/2;
     
     % positions at the entry of intersection
     x1=-cosa*I.lanewidth + sina*I.lanewidth/2;
     y1=-sina*I.lanewidth - cosa*I.lanewidth/2;
-    
+
     % positions at the exit of intersection
-    cosb=cos(V(j).exitangle); sinb=sin(V(j).exitangle);
-    x2=-cosb*I.lanewidth + sinb*I.lanewidth/2;
-    y2=-sinb*I.lanewidth + cosb*I.lanewidth/2;
+    cosb=cos(-angleConverter(V(j).entryangle,V(j).exitangle)); sinb=-sin(angleConverter(V(j).entryangle,V(j).exitangle)); 
+    x2=cosb*I.lanewidth + sinb*I.lanewidth/2;
+    y2=sinb*I.lanewidth - cosb*I.lanewidth/2;
     
-    % final positions
-    x3=-cosb*(task.s(end)-V(j).ss-I.criticalzone/2+10) + sinb*I.lanewidth/2;
-    y3=-sinb*(task.s(end)-V(j).ss-I.criticalzone/2+10) - cosb*I.lanewidth/2;
+    % final positions    
+    x3=cosb*(task.s(end)-V(j).ss-I.criticalzone/2+10) + sinb*I.lanewidth/2;
+    y3=sinb*(task.s(end)-V(j).ss-I.criticalzone/2+10) - cosb*I.lanewidth/2;
     
     s1=sqrt((x1-x0)^2+(y1-y0)^2); % length of path segment from start position to the entry of intersection
     s2=sqrt((x3-x2)^2+(y3-y2)^2); % length of path segment from exit of intersection to final position
     
     % length of path within the intersection
-    if abs(cos(V(j).exitangle-V(j).entryangle)) < 1e-3
+    if abs(cos(angleConverter(V(j).entryangle,V(j).exitangle)-V(j).entryangle)) < 1e-3
         % find circular path for vehicles that turn: r^2=(x-a)^2+(y-b)^2
         [a, b, r]=quadfunction([x1,0 ,x2],[y1,0,y2]);
-        alim=acos(([x1; x2]-a)/r);          % angles at the entry and exit of intersection
+        alim=-acos(([x1; x2]-a)/r);          % angles at the entry and exit of intersection
         a12=linspace(-alim(1),-alim(2),10)';  % several grid poins
         
         arc=linspace(0,r*abs(diff(alim)),10)'; % length of the arc within the intersection
@@ -119,13 +118,13 @@ for j=1:task.Nv
         V(j).path.s=[0; s1-0.01; s1+arc; s1+arc(end)+0.01; s1+arc(end)+s2];
         V(j).path.x=[x0; x12(1); x12; x12(end); x3];
         V(j).path.y=[y0; y12(1); y12; y12(end); y3];
-        V(j).path.angle=[V(j).entryangle; V(j).entryangle; a12 + pi/2; V(j).exitangle; V(j).exitangle];
+        V(j).path.angle=[V(j).entryangle; V(j).entryangle; a12 + pi/2; angleConverter(V(j).entryangle,V(j).exitangle); angleConverter(V(j).entryangle,V(j).exitangle)];
     else
         % paths are straight lines
         V(j).path.s=[0;s1+s2+2*I.lanewidth];
         V(j).path.x=[x0; x3];
         V(j).path.y=[y0; y3];
-        V(j).path.angle=[V(j).entryangle; V(j).exitangle];
+        V(j).path.angle=[V(j).entryangle; angleConverter(V(j).entryangle,V(j).exitangle)];
     end
     plot(V(j).path.x(1:end-1),V(j).path.y(1:end-1),'Color',colors(j,:));
     [figx, figy] = dsxy2figxy(gca, V(j).path.x(end-1:end), V(j).path.y(end-1:end));  %(now in figure space)

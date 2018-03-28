@@ -12,9 +12,9 @@ task = optimize_task(task);
 disp('animating task'); 
 
 looporder=1;
-for (i =1:looporder)
+for i =1:looporder
     %animate_res_new(task);
-    animate_res_new;
+    animate_res_new(task);
 %     rebuild task from previous task and reoptimize
      past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
 %      for j=1:task.Nv

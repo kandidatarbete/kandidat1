@@ -15,30 +15,32 @@ rng(0,'twister');
 % another algorithm that is better suited for this purpose. 
 task.loopcrossorder=false; 
 crossingorder=[1:task.Nv]'; % prototype of "first come first served"
-randomentryangleadd = randi([1 3],1,task.Nv)'*pi/2;
-randomturnangle = randi([-2 2],1,task.Nv)'*pi/2;
+randomentryangleadd = randi([0 3],1,task.Nv)'*pi/2;
+
+for i=1:task.Nv
+    randomturnangle(i)=randsample(setdiff(0:3, randomentryangleadd(i)/(pi/2)), 1)*pi/2;
+end
 ss = []; 
 j = 76;
 entryangle = [];
 vref = [];
 for i = 1:task.Nv
-    entryangle = [entryangle; 0]; % + (random half integer) * pi mod 2 pi 
     vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
     ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
     j = j+10;
 end
-entryangle = entryangle + randomentryangleadd; %+ randomentryangleadd;
+%entryangle = entryangle + randomentryangleadd; %+ randomentryangleadd;
 se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
 %exitangle=mod(entryangle - pi/2,2*pi);  % + (random half integer) * pi mod 2 pi 
-exitangle = entryangle;
+%exitangle = entryangle;
 
 task.V(1:task.Nv)=standardcar;
 for j=1:task.Nv
     task.V(j).s=task.s; % (initial) distance for vehicle j
     task.V(j).ss=ss(j); % distance at which vehicle j enters (starts) the critical zone
     task.V(j).se=se(j); % distance at which vehicle j exits the critical zone
-    task.V(j).entryangle=entryangle(j); % entry angle for vehicle j
-    task.V(j).exitangle=exitangle(j); % exit angle for vehicle j
+    task.V(j).entryangle=randomentryangleadd(j); % entry angle for vehicle j
+    task.V(j).exitangle=randomturnangle(j); % exit angle for vehicle j
     task.V(j).vref=vref(j)*ones(task.Ns,1);  % reference speed for vehicle j
 end
 %se �ver denna delen f�r att kunna best�mma crossing order

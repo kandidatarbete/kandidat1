@@ -1,3 +1,4 @@
+function animate_res_new(task)
 % clear all;
 % clc;
 saveobj=false; % if true, it will save a video of the animation
@@ -94,12 +95,12 @@ for j=1:task.Nv
     
     % positions at the exit of intersection
     cosb=cos(V(j).exitangle); sinb=sin(V(j).exitangle);
-    x2=cosb*I.lanewidth + sinb*I.lanewidth/2;
-    y2=sinb*I.lanewidth - cosb*I.lanewidth/2;
+    x2=-cosb*I.lanewidth + sinb*I.lanewidth/2;
+    y2=-sinb*I.lanewidth + cosb*I.lanewidth/2;
     
     % final positions
-    x3=cosb*(task.s(end)-V(j).ss-I.criticalzone/2+10) + sinb*I.lanewidth/2;
-    y3=sinb*(task.s(end)-V(j).ss-I.criticalzone/2+10) - cosb*I.lanewidth/2;
+    x3=-cosb*(task.s(end)-V(j).ss-I.criticalzone/2+10) + sinb*I.lanewidth/2;
+    y3=-sinb*(task.s(end)-V(j).ss-I.criticalzone/2+10) - cosb*I.lanewidth/2;
     
     s1=sqrt((x1-x0)^2+(y1-y0)^2); % length of path segment from start position to the entry of intersection
     s2=sqrt((x3-x2)^2+(y3-y2)^2); % length of path segment from exit of intersection to final position
@@ -109,7 +110,7 @@ for j=1:task.Nv
         % find circular path for vehicles that turn: r^2=(x-a)^2+(y-b)^2
         [a, b, r]=quadfunction([x1,0 ,x2],[y1,0,y2]);
         alim=acos(([x1; x2]-a)/r);          % angles at the entry and exit of intersection
-        a12=linspace(alim(1),alim(2),10)';  % several grid poins
+        a12=linspace(-alim(1),-alim(2),10)';  % several grid poins
         
         arc=linspace(0,r*abs(diff(alim)),10)'; % length of the arc within the intersection
         x12=a + r*cos(a12);
@@ -219,3 +220,4 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Created by Nikolce Murgovski, 2015-10.
 %   nikolce.murgovski@chalmers.se
+end

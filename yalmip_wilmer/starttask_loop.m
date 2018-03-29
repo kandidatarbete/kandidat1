@@ -4,16 +4,16 @@ clear all;
 close all; 
 clc;
 
-disp('generating task');
-task=gen_task();
-init;
-disp('optimizing task');
-task = optimize_task(task);
-disp('animating task'); 
+%disp('generating task');
 
-looporder=2;
+%disp('optimizing task');
+%disp('animating task'); 
+
+looporder=9;
 for i =1:looporder
     %animate_res_new(task);
+    task=gen_task();
+    task = optimize_task(task);
     animate_res_new(task);
 %     rebuild task from previous task and reoptimize
      past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
@@ -23,6 +23,6 @@ for i =1:looporder
 %          end
 %      end
     %task = remove_vehicle(1,task); 
-    task = optimize_task(task);
+    %task = optimize_task(task);
 end
 

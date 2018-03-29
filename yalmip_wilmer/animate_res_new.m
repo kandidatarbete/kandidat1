@@ -1,4 +1,4 @@
-function animate_res_new(task)
+function   animate_res_new(task)
 % clear all;
 % clc;
 saveobj=false; % if true, it will save a video of the animation

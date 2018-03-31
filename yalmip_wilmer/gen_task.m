@@ -1,11 +1,11 @@
-function task = gen_task() 
+function task = gen_task(random) 
 task=struct;                        % we keep all data here
 task.ds=1;                          %[m] sampling interval
 %max_s = 110;
 max_s = 220;
 task.s=[0:task.ds:max_s]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
-task.Nv=3;                          % number of vehicles
+task.Nv=10;                          % number of vehicles
 task.I=intersection;
 
 task.V(1:task.Nv)=standardcar;
@@ -17,13 +17,20 @@ task.V(1:task.Nv)=standardcar;
 task.loopcrossorder=false; 
 crossingorder=[1:task.Nv]'; % prototype of "first come first served"
 randomentryangleadd = randi([0 3],1,task.Nv)'*pi/2;
-randomentryangleadd
+if(random)
 for i=1:task.Nv
     task.V(i).entryangle=randomentryangleadd(i);
     task.V(i).exitangle=randsample(setdiff(0:3, randomentryangleadd(i)/(pi/2)), 1)'*pi/2;
 end
-for i=1:task.Nv
-    task.V(i).entryangle
+else
+    for i=1:task.Nv/2
+        task.V(2*i).entryangle=0;       
+        task.V(2*i).exitangle=pi;
+ 
+        task.V(2*i-1).entryangle=pi/2;
+        task.V(2*i-1).exitangle=3/2*pi;
+    end
+
 end
 ss = []; 
 j = 76;

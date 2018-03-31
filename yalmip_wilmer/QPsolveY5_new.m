@@ -142,14 +142,24 @@ end
 
 
 constraints=[constraints, Aeq2*Xhat==beq2];
-for j=1:Ns
+%attempt at writing critical constraint onf form A*X<=0,
+% A1=zeros(Nv,4*Ns);
+% A2=zeros(Nv,4*Ns);
+% for i=1:Nv
+%     A1(i,4*V(i).Nze-3)=1;
+%     A2(i,4*V(i).Nze-3)=1;
+% end
+% for j=1:Ns-1
+%     constraints=[constraints, (A*X)()]
+% end
+
     for i = 1:Nv-1
         %constraints = [constraints,
          %   X(3*co(i)-2,V(co(i)).Nze)-X(3*co(i+1)-2,V(co(i+1)).Nzs) <=0 ];
-
+        
         constraints = [constraints, Xhat(4*V(co(i)).Nze-3,co(i))-Xhat(4*V(co(i+1)).Nzs-3,co(i+1))<=0];
     end
-end
+
 cost=[];
 cost1=[];
 cost2=[];

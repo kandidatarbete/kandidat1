@@ -12,7 +12,7 @@ clc;
 looporder=9;
 for i =1:looporder
     %animate_res_new(task);
-    task=gen_task();
+    task=gen_task(false);
     task = optimize_task(task);
     animate_res_new(task);
 %     rebuild task from previous task and reoptimize

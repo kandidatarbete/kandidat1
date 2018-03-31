@@ -89,21 +89,18 @@ A_gen_final = (eye(4*Ns) - eyesub*A_gen);
 A_gen_final_2=A_gen_final(5:4*Ns,:);
 constraints=[constraints, A_gen_final_2*Xhat==0];
 
-eq = zeros(3*Nv,Ns);
 Aeq2=zeros(4*Ns);
 for i=1:3
     Aeq2(i,i)=1;
 end
+
+
 beq2 = zeros(4*Ns,Nv);
  for i=1:Nv
      % equality constraints 
      beq2(1, i) = 0; 
      beq2(2,i) = 1/vstart/Sz; 
      beq2(3,i) = 0;
-     eq(3*i-2, 1) = 0; 
-     eq(3*i-1,1) = 1/vstart/Sz; 
-     eq(3*i,1) = 0;
-     
 
      % less than constraints
      constraints=[constraints, -X(3*i,:) <= V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
@@ -113,17 +110,9 @@ beq2 = zeros(4*Ns,Nv);
      constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
      constraints=[constraints, -X(3*i,:)>=amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];     
  end
-% for i=1:3*Nv
-%     constraints=[constraints, X(i,1)==eq(i,1)];
-%     
-% end
+
 constraints=[constraints, Aeq2*Xhat==beq2];
-%  for i = 1:3
-%      for j=1:Nv
-%          constraints = [constraints, Xhat(i,j) == beq2(i,j)];
-%      end
-%  end
-     
+    
 for i = 1:Nv-1
     constraints = [constraints, 
     X(3*co(i)-2,V(co(i)).Nze) <= X(3*co(i+1)-2,V(co(i+1)).Nzs)]; 

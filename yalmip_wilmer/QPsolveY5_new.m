@@ -90,28 +90,42 @@ end
 
 beq2 = zeros(4*Ns,Nv);
 for i=1:Nv
-    % equality constraints
-    beq2(1, i) = 0;
-    beq2(2,i) = 1/vstart/Sz;
-    beq2(3,i) = 0;
-    
-    % less than constraints
-    c1 = -amin*3*vref*Sz/(vref^3)/Sdz; 
-    c2 = 2*amin/vref^3/Sdz; 
-    %constraints=[constraints, X(3*i,:)<=-amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
-    %constraints = [constraints, X(3*i,:) <= c1*X(3*i-1,:)  + c2]; 
-    constraints = [constraints, X(3*i,:) - c1*X(3*i-1,:) - c2 <= 0]; 
-    %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
-    
-    % greater than constraints
-    c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
-    c4 = V(i).axmax*2/vref^3/Sdz; 
-    %constraints=[constraints, X(3*i,:) >= -V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
-    %constraints = [constraints,X(3*i,:) >= c3*X(3*i-1,:) - c4];
-    constraints = [constraints, X(3*i,:) - c3*X(3*i-1,:) + c4 >= 0]; 
-    %constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
-    
+    for j = 1:Ns
+        % equality constraints
+        beq2(1, i) = 0;
+        beq2(2,i) = 1/vstart/Sz;
+        beq2(3,i) = 0;
+        
+        % less than constraints
+        c1 = -amin*3*vref*Sz/(vref^3)/Sdz;
+        c2 = 2*amin/vref^3/Sdz;
+        %constraints = [constraints, X(3*i,j) - c1*X(3*i-1,j)  <= c2];
+        %equation 1
+        %A1(3*i,j) = 1; 
+        %A2(3*i-1,j) = -c1; 
+        %b1(j) = c2; 
+        %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
+        
+        % greater than constraints
+        c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
+        c4 = V(i).axmax*2/vref^3/Sdz;
+        constraints = [constraints, -X(3*i,j) + c3*X(3*i-1,j) <= c4];
+        % equation 2
+    end
 end
+% box constraints
+% Xhat \in R^(3*Ns,Nv) -> A \in R^(x, 3*Ns), b \in R^(x, Nv), x = 1
+% equation 1
+Apa = zeros(1,4*Ns); 
+for i = 1:Ns
+    for j = 1:Nv
+       Apa(4*i-1) = 1;
+       Apa(4*i-2) = -c1;
+       b(1,Nv) = c2;
+    end
+end
+constraints = [constraints, Apa*Xhat <= c2]; 
+
 
 
 %lowerbound constraints

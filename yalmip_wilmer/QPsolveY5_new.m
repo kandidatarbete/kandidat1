@@ -96,12 +96,19 @@ for i=1:Nv
     beq2(3,i) = 0;
     
     % less than constraints
-    constraints=[constraints, X(3*i,:)<=-amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
+    c1 = -amin*3*vref*Sz/(vref^3)/Sdz; 
+    c2 = 2*amin/vref^3/Sdz; 
+    %constraints=[constraints, X(3*i,:)<=-amin*(3*vref*X(3*i-1,:)*Sz - 2)./vref.^3/Sdz];
+    %constraints = [constraints, X(3*i,:) <= c1*X(3*i-1,:)  + c2]; 
+    constraints = [constraints, X(3*i,:) - c1*X(3*i-1,:) - c2 <= 0]; 
     %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
     
     % greater than constraints
-    
-    constraints=[constraints, X(3*i,:) >= -V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+    c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
+    c4 = V(i).axmax*2/vref^3/Sdz; 
+    %constraints=[constraints, X(3*i,:) >= -V(i).axmax*(3*vref*X(3*i-1,:)*Sz - 2)./vref^3/Sdz];
+    %constraints = [constraints,X(3*i,:) >= c3*X(3*i-1,:) - c4];
+    constraints = [constraints, X(3*i,:) - c3*X(3*i-1,:) + c4 >= 0]; 
     %constraints=[constraints, X(3*i-1,:)>= 1/V(i).vxmax/Sz];
     
 end

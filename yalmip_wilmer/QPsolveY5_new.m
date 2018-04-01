@@ -101,15 +101,12 @@ for i=1:Nv
         c2 = 2*amin/vref^3/Sdz;
         %constraints = [constraints, X(3*i,j) - c1*X(3*i-1,j)  <= c2];
         %equation 1
-        %A1(3*i,j) = 1; 
-        %A2(3*i-1,j) = -c1; 
-        %b1(j) = c2; 
         %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
         
         % greater than constraints
         c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
         c4 = V(i).axmax*2/vref^3/Sdz;
-        constraints = [constraints, -X(3*i,j) + c3*X(3*i-1,j) <= c4];
+        %constraints = [constraints, -X(3*i,j) + c3*X(3*i-1,j) <= c4];
         % equation 2
     end
 end
@@ -121,11 +118,25 @@ for i = 1:Ns
     for j = 1:Nv
        Apa(4*i-1) = 1;
        Apa(4*i-2) = -c1;
-       b(1,Nv) = c2;
+       b1(1,j) = c2;
     end
 end
-constraints = [constraints, Apa*Xhat <= c2]; 
+%constraints = [constraints, Apa*Xhat <= b1]; 
 
+% equation 2
+Bepa = zeros(1,4*Ns);
+for i = 1:Ns
+   for j = 1:Nv
+       Bepa(4*i -1) = -1; 
+       Bepa(4*i -2) = c3;
+       b2(1,j) = c4;
+   end
+end
+%constraints = [constraints, Bepa*Xhat <= b2];
+cepa = [Apa;Bepa];
+depa = [b1;b2]
+[Apa;Bepa]*Xhat == [b1;b2]
+constraints = [constraints, cepa*Xhat <= depa]; 
 
 
 %lowerbound constraints

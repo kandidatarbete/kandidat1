@@ -174,22 +174,39 @@ constraints=[constraints, Aeq2*Xhat==beq2];
 %Aoc = zeros(4*Ns,4*Ns);
 % Xhat \in R^(4*Ns,Nv), Aoc*Xhat = y -> Aoc \in R^(x,4*Ns),x = Nv
 for i = 1:Nv-1
+    Aoc = zeros(Nv,4*Ns);
     ind1 = 4*V(co(i)).Nze-3; % ind1 \in [365, 405] = [1, 4*Ns]
     ind2 = co(i); % ind2 \in [1,3] = [1 ,Nv]
     ind3 = 4*V(co(i+1)).Nzs-3; % ind3 \in [346 425] = [1, 4*Ns]
     ind4 = co(i+1); % ind4 \in [1,4] = [1, Nv];
-    Aoc(ind2,ind1) = 1; 
-    Aoc(ind4,ind3) = -1;
-    constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
+    Aoc(ind2,ind1) = -1; 
+    Aoc(ind4,ind3) = 1;
+    %constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
+    %constraints = [constraints, Aoc*Xhat <= 0]; 
     indmat = [ind1 ind2 ; ind3 ind4]
     %constraints = [constraints, Aoc*Xhat <= 0]
 end
-constraints = [constraints, Xhat(365,1) -Xhat(345,2) <= 0];
-constraints = [constraints, Xhat(405,2) -Xhat(385,3) <= 0];
-constraints = [constraints, Xhat(445,3) -Xhat(425,4) <= 0];
-Aoc3 = zeros(Nv,4*Ns);
-Aoc3(1,365) = 1; Aoc3(2,345) = -1; 
+% constraints = [constraints, Xhat(365,1) -Xhat(345,2) <= 0];
+% constraints = [constraints, Xhat(405,2) -Xhat(385,3) <= 0];
+% constraints = [constraints, Xhat(445,3) -Xhat(425,4) <= 0];
 
+for i = 1:Nv-1
+    ind1 = 4*V(co(i)).Nze-3; % ind1 \in [365, 405] = [1, 4*Ns]
+    %ind2 = co(i); % ind2 \in [1,3] = [1 ,Nv]
+    ind3 = 4*V(co(i+1)).Nzs-3; % ind3 \in [346 425] = [1, 4*Ns]
+    %ind4 = co(i+1); % ind4 \in [1,4] = [1, Nv];
+   %constraints = [constraints, Xhat(ind1,i) - Xhat(ind3,i+1) <= 0]; 
+   Epa = zeros(Nv,4*Ns);
+   Epa(i,ind1) = 1; 
+   Epa(i,ind3) = -1; 
+   constraints = [constraints, Epa*Xhat]; 
+end
+
+Aoc3 = zeros(Nv,4*Ns);
+Aoc3(1,365) = -1; Aoc3(2,345) = 1; 
+%Aoc3(2,405) =1; Aoc3(3,385) = -1;
+%constraints=[constraints, Aoc3*Xhat <= 0];
+Aoc3*Xhat
 cost=[];
 cost1=[];
 cost2=[];

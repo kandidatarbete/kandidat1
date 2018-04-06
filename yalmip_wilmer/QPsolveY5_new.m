@@ -39,6 +39,22 @@ for i = 1:Nv
         Xhat(j*4,i)=u(i,j);
     end
 end
+Xhat2 = zeros(4*Nv*Ns,1); 
+for i =1:Nv
+    for j = 1:Ns
+       Xhat2(4*i*j-3,1) = t(i,j);
+       Xhat2(4*i*j-2,1) = z(i,j); 
+       Xhat2(4*i*j-1,1) = dz(i,j); 
+       Xhat2(4*i*j,1) = u(i,j);
+    end
+end
+
+
+tind = @(i,j) 4*i*j-3;
+zind = @(i,j) 4*i*j-2;
+dzind = @(i,j) 4*i*j-1; 
+uind = @(i,j) 4*i*j;
+
 % scaling factors for control signal u
 Su=zeros(3*Nv);
 SuSub=eye(3);
@@ -82,11 +98,16 @@ A_gen_final = (eye(4*Ns) - eyesub*A_gen);
 A_gen_final_2=A_gen_final(5:4*Ns,:);
 constraints=[constraints, A_gen_final_2*Xhat==0];
 
+for i = 1:Nv
+   for j = 1:Ns-1
+     constraints=[constraints, Xhat2(tind(i,j)+4) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j)) == 0]; 
+   end
+end
+ 
 Aeq2=zeros(4*Ns);
 for i=1:3
     Aeq2(i,i)=1;
 end
-
 
 beq2 = zeros(4*Ns,Nv);
 for i=1:Nv
@@ -114,24 +135,19 @@ end
 % Xhat \in R^(3*Ns,Nv) -> A \in R^(x, 3*Ns), b \in R^(x, Nv), x = 1
 % equation 1
 Apa = zeros(1,4*Ns); 
+Bepa = zeros(1,4*Ns);
 for i = 1:Ns
     for j = 1:Nv
        Apa(4*i-1) = 1;
        Apa(4*i-2) = -c1;
        b1(1,j) = c2;
-    end
-end
-%constraints = [constraints, Apa*Xhat <= b1]; 
-
-% equation 2
-Bepa = zeros(1,4*Ns);
-for i = 1:Ns
-   for j = 1:Nv
+       
        Bepa(4*i -1) = -1; 
        Bepa(4*i -2) = c3;
        b2(1,j) = c4;
-   end
+    end
 end
+
 %constraints = [constraints, Bepa*Xhat <= b2];
 cepa = [Apa;Bepa];
 depa = [b1;b2];
@@ -145,8 +161,7 @@ for i=1:Ns
     for j=1:Nv
         lb(4*i-2,j)=1/V(j).vxmin/Sz;
     end
-    
-    
+     
 end
 for i=1:Ns
     for j=Nv
@@ -160,14 +175,12 @@ for i=1:Ns
     for j=1:Nv
         ub(4*i-2,j)=1/V(j).vxmax/Sz;
     end
-    
-    
+      
 end
 for i=1:Ns
     for j=Nv
         constraints=[constraints, Xhat(4*i-2,j)>=ub(4*i-2,j)];
-    end
-    
+    end  
 end
 constraints=[constraints, Aeq2*Xhat==beq2];
 
@@ -179,34 +192,13 @@ for i = 1:Nv-1
     ind2 = co(i); % ind2 \in [1,3] = [1 ,Nv]
     ind3 = 4*V(co(i+1)).Nzs-3; % ind3 \in [346 425] = [1, 4*Ns]
     ind4 = co(i+1); % ind4 \in [1,4] = [1, Nv];
-    Aoc(ind2,ind1) = -1; 
-    Aoc(ind4,ind3) = 1;
-    %constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
-    %constraints = [constraints, Aoc*Xhat <= 0]; 
+    constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
     indmat = [ind1 ind2 ; ind3 ind4]
-    %constraints = [constraints, Aoc*Xhat <= 0]
 end
-% constraints = [constraints, Xhat(365,1) -Xhat(345,2) <= 0];
-% constraints = [constraints, Xhat(405,2) -Xhat(385,3) <= 0];
-% constraints = [constraints, Xhat(445,3) -Xhat(425,4) <= 0];
 
 for i = 1:Nv-1
-    ind1 = 4*V(co(i)).Nze-3; % ind1 \in [365, 405] = [1, 4*Ns]
-    %ind2 = co(i); % ind2 \in [1,3] = [1 ,Nv]
-    ind3 = 4*V(co(i+1)).Nzs-3; % ind3 \in [346 425] = [1, 4*Ns]
-    %ind4 = co(i+1); % ind4 \in [1,4] = [1, Nv];
-   %constraints = [constraints, Xhat(ind1,i) - Xhat(ind3,i+1) <= 0]; 
-   Epa = zeros(Nv,4*Ns);
-   Epa(i,ind1) = 1; 
-   Epa(i,ind3) = -1; 
-   constraints = [constraints, Epa*Xhat]; 
-end
 
-Aoc3 = zeros(Nv,4*Ns);
-Aoc3(1,365) = -1; Aoc3(2,345) = 1; 
-%Aoc3(2,405) =1; Aoc3(3,385) = -1;
-%constraints=[constraints, Aoc3*Xhat <= 0];
-Aoc3*Xhat
+end 
 cost=[];
 cost1=[];
 cost2=[];

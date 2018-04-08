@@ -39,18 +39,12 @@ for i = 1:Nv
         Xhat(j*4,i)=u(i,j);
     end
 end
-%Xhat2 = zeros(4*Nv*Ns,1); 
-Xhat2(1:4*Ns,1) = Xhat(:,1); 
-disp(size(Xhat2));
 
-% for i = 1
-%     for j = 1:Ns
-%         Xhat2((j*4-3) + 4*Ns*(i-1),1)= t(i,j);
-%         Xhat2((j*4-2) + 4*Ns*(i-1),1)= z(i,j);
-%         Xhat2((j*4-1) + 4*Ns*(i-1),1)=dz(i,j);
-%         Xhat2((j*4) + 4*Ns*(i-1),1)=u(i,j);
-%     end
-% end
+Xhat2 = zeros(4*Nv*Ns,1); 
+for i = 0:Nv-1
+    Xhat2 = [Xhat2; Xhat(:,i+1)]; 
+end
+
 
 
 tind = @(i,j) 4*i*j-3;
@@ -107,6 +101,11 @@ for i = 1:Nv
      %constraints=[constraints, Xhat2(zind(i,j) +4) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))];
    end
 end
+
+for i = 1:Ns
+  % constraints = [constraints, Xhat(4*i+1,1) + Xhat(4*i-3,1) + ds*Xhat2(4*i-2,1)];  
+end
+
 constraints = [constraints, Xhat2(5,1) == Xhat2(1,1) + ds*Xhat2(2,1)];
  
 Aeq2=zeros(4*Ns);

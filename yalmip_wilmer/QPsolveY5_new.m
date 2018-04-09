@@ -40,16 +40,6 @@ for i = 1:Nv
     end
 end
 
-Xhat2 = zeros(4*Nv*Ns,1); 
-for i = 0:Nv-1
-    Xhat2 = [Xhat2; Xhat(:,i+1)]; 
-end
-% vehicle j, sample i
-tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-zind = @(i,j) 4*i*j-2 + 4*Ns*(j-1);
-dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
-uind = @(i,j) 4*i + 4*Ns*(j-1);
-
 % scaling factors for control signal u
 Su=zeros(3*Nv);
 SuSub=eye(3);
@@ -68,12 +58,9 @@ for i=1:Nv
 end
 
 % construct generalized submatrix A coupling both u_k and x_k one vehicle
-%A_sub_gen = [1 ds 0 Sz/St*ds ; 0 1 ds Sdz/Sz*ds; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
 A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
-%A_sub_gen2 = [0 ds 0 0 ; 0 0 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
 
 A_gen = zeros(4*Ns,4*Ns);
-%A_gen2 = zeros(4*Ns,4*Ns);
 
 %construct global generalized A coupling both u_k and x_k
 for i=1:Ns
@@ -88,14 +75,31 @@ A_gen_final = (eye(4*Ns) - eyesub*A_gen);
 A_gen_final_2=A_gen_final(5:4*Ns,:);
 constraints=[constraints, A_gen_final_2*Xhat==0];
 
-for i = 1:40
+%Xhat2 = zeros(4*Nv*Ns,1); 
+Xhat2=[];
+for i = 0:Nv-1
+    Xhat2 = [Xhat2; Xhat(:,i+1)]; 
+end
+
+%disp(size(Xhat,1)*size(Xhat,2)); 
+%disp(max(size(Xhat2))); 
+disp(size(Xhat)); 
+disp(size(Xhat2));
+
+% vehicle j, sample i
+tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
+zind = @(i,j) 4*i*j-2 + 4*Ns*(j-1);
+dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
+uind = @(i,j) 4*i + 4*Ns*(j-1);
+for i = 1:10
     for j = 1:Nv
         constraints = [constraints, Xhat2(tind(i+1,j)) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j))];
         constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
-        %constraints = [constraints, Xhat2(dzind(i+1,j)) == Xhat2(dzind(i,j)) + ds*Xhat(uind(i,j))]; 
+         constraints = [constraints, Xhat2(dzind(i+2,j)) == Xhat2(dzind(i+1,j)) + Sddz/Sdz*ds*Xhat(uind(i+1,j))];
     end
 end
- 
+constraints = [constraints, Xhat2(dzind(3,1)) == Xhat2(dzind(2,1)) + Sddz/Sdz*ds*Xhat(uind(2,1))];
+
 Aeq2=zeros(4*Ns);
 for i=1:3
     Aeq2(i,i)=1;

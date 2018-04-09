@@ -44,13 +44,11 @@ Xhat2 = zeros(4*Nv*Ns,1);
 for i = 0:Nv-1
     Xhat2 = [Xhat2; Xhat(:,i+1)]; 
 end
-
-
-
-tind = @(i,j) 4*i*j-3;
-zind = @(i,j) 4*i*j-2;
-dzind = @(i,j) 4*i*j-1; 
-uind = @(i,j) 4*i*j;
+% vehicle j, sample i
+tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
+zind = @(i,j) 4*i*j-2 + 4*Ns*(j-1);
+dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
+uind = @(i,j) 4*i + 4*Ns*(j-1);
 
 % scaling factors for control signal u
 Su=zeros(3*Nv);
@@ -102,10 +100,12 @@ for i = 1:Nv
    end
 end
 
-for i = 1:Ns
-  % constraints = [constraints, Xhat(4*i+1,1) + Xhat(4*i-3,1) + ds*Xhat2(4*i-2,1)];  
+for i = 1:Nv
+    constraints = [constraints, Xhat2(tind(2,Nv)) == Xhat2(tind(1,Nv)) + ds*Xhat2(zind(1,Nv))]; 
 end
-
+disp(tind(2,1)); 
+disp(tind(1,1)); 
+disp(zind(1,1)); 
 constraints = [constraints, Xhat2(5,1) == Xhat2(1,1) + ds*Xhat2(2,1)];
  
 Aeq2=zeros(4*Ns);

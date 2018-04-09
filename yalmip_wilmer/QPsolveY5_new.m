@@ -83,22 +83,26 @@ end
 
 %disp(size(Xhat,1)*size(Xhat,2)); 
 %disp(max(size(Xhat2))); 
-disp(size(Xhat)); 
-disp(size(Xhat2));
+%disp(size(Xhat)); 
+%disp(size(Xhat2));
 
 % vehicle j, sample i
 tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-zind = @(i,j) 4*i*j-2 + 4*Ns*(j-1);
+zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
 dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
 uind = @(i,j) 4*i + 4*Ns*(j-1);
-for i = 1:10
+disp(size(Xhat2));
+%disp(dzind(Ns-1,Nv)); 
+disp(zind(Ns,Nv)); 
+for i = 1:Ns-1
     for j = 1:Nv
         constraints = [constraints, Xhat2(tind(i+1,j)) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j))];
         constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
-         constraints = [constraints, Xhat2(dzind(i+2,j)) == Xhat2(dzind(i+1,j)) + Sddz/Sdz*ds*Xhat(uind(i+1,j))];
+        %constraints = [constraints, Xhat2(dzind(i+2,j)) == Xhat2(dzind(i+1,j)) + Sddz/Sdz*ds*Xhat(uind(i+1,j))];
     end
 end
-constraints = [constraints, Xhat2(dzind(3,1)) == Xhat2(dzind(2,1)) + Sddz/Sdz*ds*Xhat(uind(2,1))];
+
+%constraints = [constraints, Xhat2(dzind(3,1)) == Xhat2(dzind(2,1)) + Sddz/Sdz*ds*Xhat(uind(2,1))];
 
 Aeq2=zeros(4*Ns);
 for i=1:3

@@ -73,7 +73,7 @@ end
 % longitudinal dynamics in terms of generalized A
 A_gen_final = (eye(4*Ns) - eyesub*A_gen);
 A_gen_final_2=A_gen_final(5:4*Ns,:);
-constraints=[constraints, A_gen_final_2*Xhat==0];
+%constraints=[constraints, A_gen_final_2*Xhat==0];
 
 %Xhat2 = zeros(4*Nv*Ns,1); 
 Xhat2=[];
@@ -93,14 +93,35 @@ dzind = @(i,j) 4*i-1 + 4*Ns*(j-1);
 uind = @(i,j) 4*i + 4*Ns*(j-1);
 disp(size(Xhat2));
 %disp(dzind(Ns-1,Nv)); 
+
+%Acol = zeros(4*Ns*Nv,4*Ns*Nv); 
+Acol = []; 
 for i = 1:Ns-1
     for j = 1:Nv
-        constraints = [constraints, Xhat2(tind(i+1,j)) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j))];
-        constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
-        constraints = [constraints, Xhat2(dzind(i+1,j)) == Xhat2(dzind(i,j)) + Sddz/Sdz*ds*Xhat(uind(i,j))];
+%         constraints = [constraints, Xhat2(tind(i+1,j)) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j))];
+%         constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
+%         constraints = [constraints, Xhat2(dzind(i+1,j)) == Xhat2(dzind(i,j)) + Sddz/Sdz*ds*Xhat(uind(i,j))];
+
+        constraints = [constraints, Xhat2(tind(i+1,j)) - Xhat2(tind(i,j)) - ds*Xhat2(zind(i,j)) == 0];
+        constraints = [constraints, Xhat2(zind(i+1,j)) - Xhat2(zind(i,j)) - ds*Xhat2(dzind(i,j)) == 0]; 
+        constraints = [constraints, Xhat2(dzind(i+1,j)) - Xhat2(dzind(i,j)) - Sddz/Sdz*ds*Xhat(uind(i,j)) == 0];
+        
+        cond = zeros(1,4*Ns*Nv);
+        cond(1,tind(i+1,j)) = 1;
+        cond(1,tind(i,j)) = -1;
+        cond(1,zind(i,j)) = - ds;
+        Acol = [Acol; cond]; 
     end
 end
+% Acol = zeros(1,4*Nv*Ns); 
+%         Acol(1,tind(i+1,j)) = 1; 
+%         Acol(1,tind(i,j)) = -1; 
+%         Acol(1,zind(i,j)) = - ds; 
 
+disp(size(Xhat2)); 
+disp(size(Acol)); 
+
+constraints=[constraints; Acol*Xhat2 == 0]; 
 %constraints = [constraints, Xhat2(dzind(3,1)) == Xhat2(dzind(2,1)) + Sddz/Sdz*ds*Xhat(uind(2,1))];
 
 Aeq2=zeros(4*Ns);

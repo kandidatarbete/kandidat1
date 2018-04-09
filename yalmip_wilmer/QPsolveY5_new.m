@@ -93,12 +93,11 @@ dzind = @(i,j) 4*i-1 + 4*Ns*(j-1);
 uind = @(i,j) 4*i + 4*Ns*(j-1);
 disp(size(Xhat2));
 %disp(dzind(Ns-1,Nv)); 
-disp(zind(Ns,Nv)); 
 for i = 1:Ns-1
     for j = 1:Nv
         constraints = [constraints, Xhat2(tind(i+1,j)) == Xhat2(tind(i,j)) + ds*Xhat2(zind(i,j))];
         constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
-        %constraints = [constraints, Xhat2(dzind(i+2,j)) == Xhat2(dzind(i+1,j)) + Sddz/Sdz*ds*Xhat(uind(i+1,j))];
+        constraints = [constraints, Xhat2(dzind(i+1,j)) == Xhat2(dzind(i,j)) + Sddz/Sdz*ds*Xhat(uind(i,j))];
     end
 end
 

@@ -1,0 +1,31 @@
+FIRST_INIT	(internal default used)	2018-03-21 11:37:12
+TIME	0.000
+IDLE	11:37:12
+SIM_START	myeight.txt	2018-03-21 11:37:13
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	99.530
+SIM_END		myeight.txt	99.515s	1300.01m
+SIM_START	myeight.txt	2018-03-21 11:37:40
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	47.656
+SIM_END		myeight.txt	47.647s	1300.08m
+TIME	0.001
+SIM_START	myeight.txt	2018-03-21 11:38:02
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	47.656
+SIM_END		myeight.txt	47.647s	1300.08m
+SIM_START	myeight.txt	2018-03-21 11:38:15
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	47.656
+SIM_END		myeight.txt	47.647s	1300.08m
+TIME	180.825
+SHUTDOWN	CarMaker quick shutdown initiated
+

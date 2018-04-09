@@ -1,0 +1,15 @@
+FIRST_INIT	(internal default used)	2018-04-06 10:00:50
+FIRST_INIT	(internal default used)	2018-04-06 10:00:50
+TIME	0.000
+IDLE	10:00:51
+TIME	0.000
+IDLE	10:00:51
+SIM_START	test	2018-04-06 10:01:08
+TIME	0.000
+SIMULATE	test
+
+TIME	28.825
+SIM_END		test	28.816s	290.754m
+TIME	367.808
+SHUTDOWN	CarMaker quick shutdown initiated
+

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MySuspExtForces_FMU"
+  modelIdentifier="MySuspExtForces_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90801}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="l0Spring_FL" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Real start="0.33" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="l0Spring_FR" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="0.33" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="l0Spring_RL" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="0.11" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0Spring_RR" valueReference="3" description="" causality = "internal" variability="parameter">
+      <Real start="0.11" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Frc0Spring_FL" valueReference="4" description="" causality = "internal" variability="parameter">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Frc0Spring_FR" valueReference="5" description="" causality = "internal" variability="parameter">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Frc0Spring_RL" valueReference="6" description="" causality = "internal" variability="parameter">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Frc0Spring_RR" valueReference="7" description="" causality = "internal" variability="parameter">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlSpring_FL" valueReference="8" description="" causality = "internal" variability="parameter">
+      <Real start="14000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlSpring_FR" valueReference="9" description="" causality = "internal" variability="parameter">
+      <Real start="14000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlSpring_RL" valueReference="10" description="" causality = "internal" variability="parameter">
+      <Real start="20000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlSpring_RR" valueReference="11" description="" causality = "internal" variability="parameter">
+      <Real start="20000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PullDamp_FL" valueReference="12" description="" causality = "internal" variability="parameter">
+      <Real start="23000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PullDamp_FR" valueReference="13" description="" causality = "internal" variability="parameter">
+      <Real start="23000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PullDamp_RL" valueReference="14" description="" causality = "internal" variability="parameter">
+      <Real start="55000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PullDamp_RR" valueReference="15" description="" causality = "internal" variability="parameter">
+      <Real start="55000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PushDamp_FL" valueReference="16" description="" causality = "internal" variability="parameter">
+      <Real start="16000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PushDamp_FR" valueReference="17" description="" causality = "internal" variability="parameter">
+      <Real start="16000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PushDamp_RL" valueReference="18" description="" causality = "internal" variability="parameter">
+      <Real start="20000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="PushDamp_RR" valueReference="19" description="" causality = "internal" variability="parameter">
+      <Real start="20000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPush_FL" valueReference="20" description="" causality = "internal" variability="parameter">
+      <Real start="-0.55" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPush_FR" valueReference="21" description="" causality = "internal" variability="parameter">
+      <Real start="-0.55" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPush_RL" valueReference="22" description="" causality = "internal" variability="parameter">
+      <Real start="-0.08" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPush_RR" valueReference="23" description="" causality = "internal" variability="parameter">
+      <Real start="-0.08" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPush_FL" valueReference="24" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPush_FR" valueReference="25" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPush_RL" valueReference="26" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPush_RR" valueReference="27" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPull_FL" valueReference="28" description="" causality = "internal" variability="parameter">
+      <Real start="0.09" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPull_FR" valueReference="29" description="" causality = "internal" variability="parameter">
+      <Real start="0.09" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPull_RL" valueReference="30" description="" causality = "internal" variability="parameter">
+      <Real start="0.065" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="l0BufPull_RR" valueReference="31" description="" causality = "internal" variability="parameter">
+      <Real start="0.065" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPull_FL" valueReference="32" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPull_FR" valueReference="33" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPull_RL" valueReference="34" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlBufPull_RR" valueReference="35" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlStabi_F" valueReference="36" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="dFrc_dlStabi_R" valueReference="37" description="" causality = "internal" variability="parameter">
+      <Real start="30000" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lSpring_FL"  valueReference="38" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="lSpring_FR"  valueReference="39" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="lSpring_RL"  valueReference="40" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="lSpring_RR"  valueReference="41" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ .
+  <ScalarVariable name="vDamp_FL"  valueReference="42" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="vDamp_FR"  valueReference="43" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="vDamp_RL"  valueReference="44" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="vDamp_RR"  valueReference="45" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lBuf_FL"  valueReference="46" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lBuf_FR"  valueReference="47" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lBuf_RL"  valueReference="48" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lBuf_RR"  valueReference="49" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lStabi_FL"  valueReference="50" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lStabi_FR"  valueReference="51" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lStabi_RL"  valueReference="52" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="lStabi_RR"  valueReference="53" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcSpring_FL" valueReference="54" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcSpring_FR" valueReference="55" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcSpring_RL" valueReference="56" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcSpring_RR" valueReference="57" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcDamp_FL" valueReference="58" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcDamp_FR" valueReference="59" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcDamp_RL" valueReference="60" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcDamp_RR" valueReference="61" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcBuf_FL" valueReference="62" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcBuf_FR" valueReference="63" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcBuf_RL" valueReference="64" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcBuf_RR" valueReference="65" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcStabi_FL" valueReference="66" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcStabi_FR" valueReference="67" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcStabi_RL" valueReference="68" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="FrcStabi_RR" valueReference="69" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+    <CoSimulation_StandAlone>
+	<Capabilities
+		     canHandleVariableCommunicationStepSize="true"
+		     canHandleEvents="true"/>
+    </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>
+

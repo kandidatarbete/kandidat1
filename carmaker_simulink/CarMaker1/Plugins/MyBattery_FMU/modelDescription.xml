@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyBattery_FMU"
+  modelIdentifier="MyBattery_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f012}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="Current" valueReference="0" description="Current" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="AOC" valueReference="1" description="Amount of Charge" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Energy" valueReference="2" description="Energy" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Pwr_max" valueReference="3" description="maximum Power" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Voltage" valueReference="4" description="Voltage" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ 
+ <ScalarVariable name="Capacity" valueReference="5" description="Capacity" causality = "internal" variability="parameter">
+     <Real start="6.0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Volt_oc0" valueReference="6" description="Voltage oc0" causality = "internal" variability="parameter">
+     <Real start="100.0" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

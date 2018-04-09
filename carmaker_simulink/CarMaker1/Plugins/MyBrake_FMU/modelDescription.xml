@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyBrake_FMU"
+  modelIdentifier="MyBrake_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f008}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="Pedal2Trq_FL" valueReference="0" description="Pedal2Trq FL" causality = "internal" variability="parameter">
+     <Real start="1000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Pedal2Trq_FR" valueReference="1" description="Pedal2Trq FR" causality = "internal" variability="parameter">
+     <Real start="1000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Pedal2Trq_RL" valueReference="2" description="Pedal2Trq RL" causality = "internal" variability="parameter">
+     <Real start="800" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Pedal2Trq_RR" valueReference="3" description="Pedal2Trq RR" causality = "internal" variability="parameter">
+     <Real start="800" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="Pedal"        valueReference="4" description="Pedal" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="Trq_WB_FL" valueReference="5" description="Trq_WB FL" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Trq_WB_FR" valueReference="6" description="Trq_WB FR" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Trq_WB_RL" valueReference="7" description="Trq_WB RL" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Trq_WB_RR" valueReference="8" description="Trq_WB RR" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

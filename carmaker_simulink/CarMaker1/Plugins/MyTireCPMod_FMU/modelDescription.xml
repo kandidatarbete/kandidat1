@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyTireCPMod_FMU"
+  modelIdentifier="MyTireCPMod_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c91607}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="HitTime" valueReference="0" description="" causality = "internal" variability="parameter">
+      <Real start="10.0" fixed="true"/>
+  </ScalarVariable>  
+  <ScalarVariable name="HitDuration" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="0.01" fixed="true"/>
+  </ScalarVariable>  
+  <ScalarVariable name="z_Offset" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="0.2" fixed="true"/>
+  </ScalarVariable>
+ .
+  <ScalarVariable name="Time"  valueReference="3" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>  
+  <ScalarVariable name="TireNo"  valueReference="4" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  <ScalarVariable name="CP_0_z_In" valueReference="5" description="" causality = "input">
+      <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="CP_0_z" valueReference="6"  description="" causality = "output">
+      <Real/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+    <CoSimulation_StandAlone>
+	<Capabilities
+		     canHandleVariableCommunicationStepSize="true"
+		     canHandleEvents="true"/>
+    </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>
+

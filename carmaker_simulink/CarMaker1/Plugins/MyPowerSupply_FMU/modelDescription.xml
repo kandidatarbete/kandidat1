@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyPowerSupply_FMU"
+  modelIdentifier="MyPowerSupply_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f803}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Pwr_LV" valueReference="0" causality = "input">
+     <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Voltage_LV" valueReference="1" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="BattLV_Current" valueReference="2" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="BattLV_Pwr_max" valueReference="3" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="BattLV_AOC" valueReference="4" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="BattLV_Energy" valueReference="5" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ 
+ <ScalarVariable name="Current" valueReference="6" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="AOC" valueReference="7" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="SOC" valueReference="8" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="SOC_init" valueReference="9" causality = "internal" variability = "parameter">
+     <Real start="70" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Volt_oc" valueReference="10" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Volt_oc0" valueReference="11" causality = "internal" variability = "parameter">
+     <Real start="12" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Volt0" valueReference="12" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Voltage" valueReference="13" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Capacity" valueReference="14" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Energy" valueReference="15" causality = "internal">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="R0" valueReference="16" causality = "internal" variability = "parameter">
+     <Real start="0.0012" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Pwr_max" valueReference="17" causality = "internal" variability = "parameter">
+     <Real start="1e5" fixed="true"/>
+ </ScalarVariable>
+
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

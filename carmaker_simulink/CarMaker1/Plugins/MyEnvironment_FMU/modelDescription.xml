@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyEnvironment_FMU"
+  modelIdentifier="MyEnvironment_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90820}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="MyTemperature" valueReference="0" description="Temperatur in Kelvin" causality = "internal" variability="parameter">
+     <Real start="293.15" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="MyAirPressure" valueReference="1" description="" causality = "internal" variability="parameter">
+     <Real start="1.013" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="Temperature_out" valueReference="2" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="AirPressure_out" valueReference="3" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

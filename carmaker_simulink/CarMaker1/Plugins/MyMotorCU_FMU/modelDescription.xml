@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyMotorCU_FMU"
+  modelIdentifier="MyMotorCU_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f943}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Trg_trg" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv" valueReference="1" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_trg" valueReference="2" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Ignition" valueReference="3" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="LoadIn" valueReference="4" causality = "input">
+     <Real/>
+ </ScalarVariable>
+
+ <ScalarVariable name="LoadOut" valueReference="4" alias="alias" causality = "output">
+     <Real />
+ </ScalarVariable>
+
+ <ScalarVariable name="limrotv" valueReference="5" causality = "internal" variability="parameter">
+     <Real start="0.5" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_Mot_max" valueReference="6" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="rotv_Gen_max" valueReference="7" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

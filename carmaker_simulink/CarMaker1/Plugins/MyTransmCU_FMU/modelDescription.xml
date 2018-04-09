@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyTransmCU_FMU"
+  modelIdentifier="MyTransmCU_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90803}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>  
+  <ScalarVariable name="Ignition"  valueReference="1" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable>
+  <ScalarVariable name="SelectorCtrl"  valueReference="2" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable>
+  <ScalarVariable name="GearNo"  valueReference="3" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable>
+  <ScalarVariable name="nFGears"  valueReference="4" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable>
+  <ScalarVariable name="nBGears"  valueReference="5" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable>
+  <ScalarVariable name="GearNoTrg"  valueReference="6" description=""  causality = "input">
+      <Integer/>
+  </ScalarVariable> 
+  <ScalarVariable name="GearBox.Clutch.rotv_out"  valueReference="10" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="ClutchPos" valueReference="11" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="set_ParkBrake" valueReference="7" description="" causality = "output">
+      <Integer start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="GearNoTrgOut" valueReference="6" description="" causality = "output">
+      <Integer start="0" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="nUpGear1" valueReference="0" description="" causality = "internal" variability="parameter">
+      <Real start="4500" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nUpGear2" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="4500" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nUpGear3" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="4500" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nUpGear4" valueReference="3" description="" causality = "internal" variability="parameter">
+      <Real start="4500" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nUpGear5" valueReference="4" description="" causality = "internal" variability="parameter">
+      <Real start="4500" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nDownGear1" valueReference="5" description="" causality = "internal" variability="parameter">
+      <Real start="2000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nDownGear2" valueReference="6" description="" causality = "internal" variability="parameter">
+      <Real start="2000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nDownGear3" valueReference="7" description="" causality = "internal" variability="parameter">
+      <Real start="2000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nDownGear4" valueReference="8" description="" causality = "internal" variability="parameter">
+      <Real start="2000" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="nDownGear5" valueReference="9" description="" causality = "internal" variability="parameter">
+      <Real start="2000" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+    <CoSimulation_StandAlone>
+	<Capabilities
+		     canHandleVariableCommunicationStepSize="true"
+		     canHandleEvents="true"/>
+    </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>
+

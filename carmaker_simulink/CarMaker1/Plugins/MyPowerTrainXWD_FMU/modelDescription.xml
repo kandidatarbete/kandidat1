@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyPowerTrainXWD_FMU"
+  modelIdentifier="MyPowerTrainXWD_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f911}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Gas" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_FL" valueReference="1" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_FR" valueReference="2" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_RL" valueReference="3" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_RR" valueReference="4" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_FL" valueReference="5" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_FR" valueReference="6" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_RL" valueReference="7" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_RR" valueReference="8" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2Bdy1_y_" valueReference="9" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2Bdy1B_y_" valueReference="10" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+
+ <ScalarVariable name="Gas2Trq" valueReference="11" causality = "internal" variability="parameter">
+     <Real start="400" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

@@ -1,0 +1,31 @@
+SIM_START	test	2018-04-06 10:58:34
+TIME	0.000
+SIMULATE	test
+
+TIME	173.489
+ERROR		Vehicle leaves road at about x=1505.96, y=1503 TireNo=1
+SIM_ABORT	test	173.491s	1490.87m
+SIM_START	test	2018-04-06 11:28:30
+TIME	0.000
+SIMULATE	test
+
+TIME	173.488
+ERROR		Vehicle leaves road at about x=1505.97, y=1503 TireNo=1
+SIM_ABORT	test	173.49s	1490.86m
+SIM_START	test	2018-04-06 11:29:34
+TIME	0.000
+SIMULATE	test
+
+TIME	300.005
+SIM_END		test	300.004s	1290.39m
+SIM_START	test	2018-04-06 11:37:23
+TIME	0.000
+SIMULATE	test
+
+TIME	300.005
+SIM_END		test	300.004s	1290.39m
+SIM_START	DCP_Final	2018-04-06 11:39:47
+TIME	0.001
+ERROR		Traffic 0: failed to select route 4
+ERROR		CM_Main.c: Initialization failed (CM_Main_Begin()=-3)
+SIM_ABORT	DCP_Final	0s	0m

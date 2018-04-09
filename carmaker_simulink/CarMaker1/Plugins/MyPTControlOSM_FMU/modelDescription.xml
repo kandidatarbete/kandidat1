@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyPTControlOSM_FMU"
+  modelIdentifier="MyPTControlOSM_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90932}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+    <ModelVariables>
+	<ScalarVariable name="GearNoTrg" valueReference="0" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Clutch" valueReference="1" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="SelectorCtrl" valueReference="2" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Key" valueReference="3" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="FuncReturn" valueReference="4" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Brake" valueReference="15" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="GBKind" valueReference="5" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_Absent" valueReference="6" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_PowerOff" valueReference="7" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_PowerAcc" valueReference="8" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_PowerOn" valueReference="9" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_Start" valueReference="10" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_SkipStart" valueReference="11" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Func_used_Drive" valueReference="12" causality = "input" variability="parameter">
+	    <Real/>
+	</ScalarVariable>
+	
+	<ScalarVariable name="OSMFunc" valueReference="13" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="OperationState" valueReference="14" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+    </ModelVariables>
+    
+    <Implementation>
+	<CoSimulation_StandAlone>
+	    <Capabilities
+			 canHandleVariableCommunicationStepSize="true"
+			 canHandleEvents="true"/>
+	</CoSimulation_StandAlone>
+    </Implementation>
+    
+</fmiModelDescription>

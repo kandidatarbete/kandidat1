@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyClutch_FMU"
+  modelIdentifier="MyClutch_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f018}"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="rotv_out" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_in" valueReference="1" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Inert_in" valueReference="2" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Pos" valueReference="3" causality = "input">
+     <Real/>
+ </ScalarVariable>
+
+ <ScalarVariable name="rot_in" valueReference="4" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_in" valueReference="5" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rota_in" valueReference="6" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_out" valueReference="7" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_SuppInert" valueReference="8" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="i_TrqIn2Out" valueReference="9" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Inert_out" valueReference="10" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+
+ <ScalarVariable name="I_in" valueReference="11" causality = "internal" variability="parameter">
+     <Real start="1e-4" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="I_out" valueReference="12" causality = "internal" variability="parameter">
+     <Real start="1e-4" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_max" valueReference="13" causality = "internal" variability="parameter">
+     <Real start="500" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="c" valueReference="14" causality = "internal" variability="parameter">
+     <Real start="50" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

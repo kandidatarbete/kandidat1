@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyPTGenCoupling_FMU"
+  modelIdentifier="MyPTGenCoupling_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f532}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="drotv_A2B" valueReference="0" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="Trq_A2B" valueReference="1" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+
+ <ScalarVariable name="rotv2Trq" valueReference="2" causality = "internal" variability="parameter">
+     <Real start="10" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

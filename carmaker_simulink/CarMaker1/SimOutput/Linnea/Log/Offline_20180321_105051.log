@@ -1,0 +1,167 @@
+SIM_START	myeight.txt	2018-03-21 10:52:16
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 10:58:19
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 10:58:40
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 10:58:56
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 10:59:14
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:01:38
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:03:49
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:04:05
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:04:47
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:05:07
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:05:28
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:06:18
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:06:39
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-21 11:07:27
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	158.160
+SIM_END		myeight.txt	158.156s	4231.56m
+SIM_START	myeight.txt	2018-03-21 11:08:19
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	118.166
+SIM_END		myeight.txt	118.162s	3120.66m
+SIM_START	myeight.txt	2018-03-21 11:08:49
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	329.161
+SIM_END		myeight.txt	329.157s	8981.63m
+SIM_START	myeight.txt	2018-03-21 11:09:34
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	323.975
+SIM_END		myeight.txt	323.971s	8854.71m
+SIM_START	myeight.txt	2018-03-21 11:10:41
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	320.079
+SIM_END		myeight.txt	320.075s	8746.48m
+SIM_START	myeight.txt	2018-03-21 11:11:24
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	192.245
+SIM_END		myeight.txt	192.241s	5195.54m
+SIM_START	myeight.txt	2018-03-21 11:16:54
+TIME	0.000
+SIMULATE	myeight.txt
+
+SIM_END		myeight.txt	0s	0m
+SIM_START	myeight.txt	2018-03-21 11:17:33
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	130.854
+SIM_END		myeight.txt	130.85s	3490.23m
+SIM_START	myeight.txt	2018-03-21 11:17:55
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	336.455
+SIM_END		myeight.txt	336.451s	9201.37m
+SIM_START	myeight.txt	2018-03-21 11:19:22
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.007
+SIM_END		myeight.txt	52.006s	1300.04m
+SIM_START	myeight.txt	2018-03-21 11:26:33
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.007
+SIM_END		myeight.txt	52.006s	1300.04m
+SIM_START	myeight.txt	2018-03-21 11:27:42
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.007
+SIM_END		myeight.txt	52.006s	1300.04m
+SIM_START	myeight.txt	2018-03-21 11:28:03
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.007
+SIM_END		myeight.txt	52.006s	1300.04m
+SIM_START	myeight.txt	2018-03-21 11:29:51
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	10.624
+SIM_END		myeight.txt	10.62s	163.592m
+SIM_START	myeight.txt	2018-03-21 11:30:07
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	57.582
+SIM_END		myeight.txt	57.581s	1300.04m

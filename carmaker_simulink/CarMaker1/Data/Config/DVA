@@ -1,0 +1,16 @@
+#INFOFILE1.1 - Do not remove this line!
+FileIdent = CarMaker-DVA 4.0
+nDialogQu = 10
+Qu.0.Name = Traffic.T00.LatAcc
+Qu.0.Mode = - value
+Qu.0.Count = 1
+Qu.0.Unit = m/s²
+Qu.1.Name = Traffic.T00.sRoad
+Qu.1.Mode = - value
+Qu.1.Count = 1
+Qu.1.Unit = m
+Qu.2.Name = Traffic.T00.LongAcc
+Qu.2.Mode = - value
+Qu.2.Count = 1
+Qu.2.Unit = m/s²
+nQu = 3

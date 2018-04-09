@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyPTControl_FMU"
+  modelIdentifier="MyPTControl_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90855}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+    
+    <ModelVariables>
+	<ScalarVariable name="Key" valueReference="0" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="GearNoTrg" valueReference="1" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Clutch" valueReference="2" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="SelectorCtrl" valueReference="3" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Brake" valueReference="4" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Engine_on" valueReference="5" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	<ScalarVariable name="Gas" valueReference="6" causality = "input">
+	    <Real/>
+	</ScalarVariable>
+	
+	<ScalarVariable name="OperationError" valueReference="7" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="StrategyMode" valueReference="8" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="OperationState" valueReference="9" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="Ignition" valueReference="10" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="ISGOut_Load" valueReference="11" causality = "output">
+	    <Real start="-99999" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="set_ISC" valueReference="12" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="EngineOut_Load" valueReference="13" causality = "output">
+	    <Real start="-99999" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="Clutch_Pos" valueReference="14" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	<ScalarVariable name="GearBoxOut_GearNoTrg" valueReference="15" causality = "output">
+	    <Real start="0" fixed="true"/>
+	</ScalarVariable>
+	
+	<ScalarVariable name="GB_Kind" valueReference="16" causality = "input" variability="parameter">
+	    <Real />
+	</ScalarVariable>
+    </ModelVariables>
+    
+    <Implementation>
+	<CoSimulation_StandAlone>
+	    <Capabilities
+			 canHandleVariableCommunicationStepSize="true"
+			 canHandleEvents="true"/>
+	</CoSimulation_StandAlone>
+    </Implementation>
+    
+</fmiModelDescription>

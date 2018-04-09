@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyVhclOperator_FMU"
+  modelIdentifier="MyVhclOperator_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c91150}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+    <ScalarVariable name="OperationState_last" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Real start="0" />
+ </ScalarVariable>
+ <ScalarVariable name="OperationState_trg_last" valueReference="1" description="" causality = "internal" variability="parameter">
+     <Real start="0"/>
+ </ScalarVariable>
+ <ScalarVariable name="Phase" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Integer start="0"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="GearBoxKind"  valueReference="2" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Velocity"  valueReference="3" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="OperationState"  valueReference="1" description=""  causality = "input">
+     <Integer/>
+ </ScalarVariable>
+ <ScalarVariable name="OperationState_trg"  valueReference="2" description=""  causality = "input">
+     <Integer/>
+ </ScalarVariable>
+ <ScalarVariable name="GearNo_In" valueReference="5" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Clutch_In" valueReference="6" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="SelectorCtrl_In" valueReference="7" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Key_In" valueReference="8" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Gas_In" valueReference="9" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Brake_In" valueReference="10" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="BrakePark_In" valueReference="11" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="SteeringAng_In" valueReference="12" description="" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="OperationFinished" valueReference="4" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="GearNo" valueReference="5" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Clutch" valueReference="6" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="SelectorCtrl" valueReference="7" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Key" valueReference="8" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Gas" valueReference="9" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Brake" valueReference="10" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="BrakePark" valueReference="11" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="SteeringAng" valueReference="12" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyTire_FMU"
+  modelIdentifier="MyTire_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c91339}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="WhlRadius" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Real start="0.3" fixed="true"/>
+  </ScalarVariable>  
+  <ScalarVariable name="cMy" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="0.001" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="rlen" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="0.2" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fx_c1" valueReference="3" description="" causality = "internal" variability="parameter">
+      <Real start="0.9" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fx_c2" valueReference="4" description="" causality = "internal" variability="parameter">
+      <Real start="33" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fx_c3" valueReference="5" description="" causality = "internal" variability="parameter">
+      <Real start="0.1" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fy_c1" valueReference="6" description="" causality = "internal" variability="parameter">
+      <Real start="1.05" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fy_c2" valueReference="7" description="" causality = "internal" variability="parameter">
+      <Real start="35" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Fy_c3" valueReference="8" description="" causality = "internal" variability="parameter">
+      <Real start="0.4" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="KinRollRadius" valueReference="12" description="" causality = "internal" variability="parameter">
+      <Real start="0.3" fixed="true"/>
+  </ScalarVariable>
+  
+ <ScalarVariable name="muRoad"  valueReference="20" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="P_v0_W_x"  valueReference="21" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="P_v0_W_y"  valueReference="22" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Frc_W_x_In" valueReference="40" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Frc_W_y_In" valueReference="41" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Frc_W_z_In" valueReference="42" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_w_x_In" valueReference="43" description="" causality = "input">
+     <Real/>
+  </ScalarVariable>
+ <ScalarVariable name="Trq_w_y_In" valueReference="44" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_w_z_In" valueReference="45" description="" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Rim_rotv" valueReference="23" description="" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="vBelt" valueReference="31" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rBelt_eff" valueReference="32" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Alpha" valueReference="35" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Slp" valueReference="36" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+  <ScalarVariable name="Frc_W_x" valueReference="40" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="Frc_W_y" valueReference="41" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Frc_W_z" valueReference="42" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="Trq_w_x" valueReference="43" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_w_y" valueReference="44" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="Trq_w_z" valueReference="45" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

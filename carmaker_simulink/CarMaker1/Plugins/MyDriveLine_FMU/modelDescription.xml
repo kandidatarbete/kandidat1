@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyDriveLine_FMU"
+  modelIdentifier="MyDriveLine_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f025}"
+  numberOfContinuousStates="8"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Trq_in" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Inert_in" valueReference="1" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Brake_FL" valueReference="2" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Brake_FR" valueReference="3" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Brake_RL" valueReference="4" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Brake_RR" valueReference="5" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_T2W_FL" valueReference="6" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_T2W_FR" valueReference="7" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_T2W_RL" valueReference="8" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_T2W_RR" valueReference="9" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_WhlBearing_FL" valueReference="10" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_WhlBearing_FR" valueReference="11" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_WhlBearing_RL" valueReference="12" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_WhlBearing_RR" valueReference="13" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="SimCore_State" valueReference="44" causality = "input">
+     <Real/>
+ </ScalarVariable>
+
+ <ScalarVariable name="Trq_Drive_FL" valueReference="14" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_FR" valueReference="15" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_RL" valueReference="16" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Drive_RR" valueReference="17" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rot_FL" valueReference="18" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rot_FR" valueReference="21" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rot_RL" valueReference="24" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rot_RR" valueReference="27" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_FL" valueReference="19" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_FR" valueReference="22" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_RL" valueReference="25" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_RR" valueReference="28" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rota_FL" valueReference="20" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rota_FR" valueReference="23" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rota_RL" valueReference="26" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rota_RR" valueReference="29" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_FL" valueReference="30" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_FR" valueReference="31" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_RL" valueReference="32" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_Supp2WC_RR" valueReference="33" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_B2W_FL" valueReference="34" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_B2W_FR" valueReference="35" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_B2W_RL" valueReference="36" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_B2W_RR" valueReference="37" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv_in" valueReference="38" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+
+ <ScalarVariable name="iDiff_mean" valueReference="39" causality = "internal" variability="parameter">
+     <Real start="4.0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Irot_FL" valueReference="40" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Irot_FR" valueReference="41" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Irot_RL" valueReference="42" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="Irot_RR" valueReference="43" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

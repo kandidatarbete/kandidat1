@@ -1,0 +1,288 @@
+#INFOFILE1.1 - Do not remove this line!
+FileIdent = IPGRoad 5.0
+FileCreator = roadutil 5.0.2, 2015-09-09 16:27:07 TEMPLATE
+
+nLinks = 5
+nJunctions = 2
+nRoutes = 5
+RoadNetworkLength = 888.124
+BBox = -71.118 430.985 -120.070 221.310 -0.060 25.913
+Route.0.Length = 637.349
+Route.1.Length = 660.910
+Route.2.Length = 660.910
+Route.3.Length = 195.724
+Route.4.Length = 195.724
+
+RST = 13.8889 27.7778 -1 8.33333 19.4444 2.777 -1 -1
+
+Junction.0.Knot = 0.0000 0.0000 5.0000
+Junction.0.ArmAlpha = 342.0000 162.0000 278.0000
+Junction.0.ArmRadius = 2 10 2
+Junction.0.MainArms = 0 1
+Junction.0.RST = ramp
+Junction.0.Friction = 1
+
+Junction.1.Knot = 300.0000 120.0000 11.5000
+Junction.1.ArmAlpha = 335.0000 86.0000 155.0000
+Junction.1.ArmRadius = 2 2 2
+Junction.1.MainArms = 0 2
+Junction.1.RST = ramp
+Junction.1.Friction = 1
+
+
+Link.0.Junctions = 0 1 -1 -1
+Link.0.Node1 = -69.0053 33.4193 1.5000 152.0000
+Link.0.RST = countryroad
+Link.0.Movie = 0.2 0.2 0.02 0 0 0 0
+Link.0.Friction = 1
+Link.0.Seg.0.Type = Straight
+Link.0.Seg.0.Param = 100.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.0.ElevationProfile.Params = 0 0.000000
+Link.0.ElevationProfile:
+	0.0000 0.0000 0.0000
+	0.0000 0000 0.0000
+Link.0.SlopeProfile.Params = 0 0.000000
+Link.0.SlopeProfile:
+	0.0000 0.0000 0.0000
+	0.0000 0.0000 0.0000
+Link.0.CamberProfile.Params = 0 0.000000
+Link.0.CamberProfile:
+	0.0000 -0.0000 0.0000
+	0.0000 -0.0000 0.0000
+	0.0000 -0.0000 0.0000
+
+
+Link.0.Mount.0 = 10 2 0.5 -1 1 1 0 0 0
+Link.0.Mount.0.0 = 0 0 2.5 0 -1 1 1 PriorityRoad M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.0.Mount.0.0.Size = 0.849 0.849
+Link.0.Mount.1 = 50 2 0.5 -1 1 1 0 0 0
+Link.0.Mount.1.0 = 0 0 2.5 0 -1 1 1 EndOfLimitations M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.0.Mount.1.0.Size = 0.6 0.6
+Link.0.Mount.2 = 60 2 -0.5 1 1 1 0 0 0
+Link.0.Mount.2.0 = 0 0 2.5 0 -1 -1 1 SpeedLimit M "" 70 0 0 - - - 0 0 0 - - - 0 0 0
+Link.0.Mount.2.0.Size = 0.6 0.6
+
+
+
+Link.1.Junctions = 0 0 1 2
+Link.1.RST = countryroad
+Link.1.Movie = 0.2 0.2 0.02 0 0 0 0
+Link.1.Friction = 1
+Link.1.Seg.0.Type = Straight
+Link.1.Seg.0.Param = 100.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.1.Seg.4.Type = Connect
+Link.1.Seg.4.Param = 25 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.1.Seg.5.Type = TurnRight
+Link.1.Seg.5.Param = 50 80.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+
+
+
+
+Link.1.TrfBarrier.0 = 200 2 230 2 -0.8 -2 0.205 0.75 1 0 10 0 1 0 "GuardRail_1.jpg" "GuardRail_1.jpg"
+Link.1.TrfBarrier.1 = 170 3 140 3 0.8 3 0.205 0.75 1 0 10 0 1 0 "GuardRail_1.jpg" "GuardRail_1.jpg"
+Link.1.Mount.0 = 10 2 0.5 -1 1 1 0 0 0
+Link.1.Mount.0.0 = 0 0 2.5 0 -1 1 1 PriorityRoad M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.0.0.Size = 0.849 0.849
+Link.1.Mount.1 = 140 2 -0.5 1 1 1 0 0 0
+Link.1.Mount.1.0 = 0 0 2.5 0 -1 -1 1 SpeedLimit M "" 70 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.1.0.Size = 0.6 0.6
+Link.1.Mount.2 = 180 2 0.5 -1 2 1 0 0 0
+Link.1.Mount.2.0 = 0 0 2.8 0 -1 1 1 SCurveL M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.2.0.Size = 0.779 0.9
+Link.1.Mount.2.1 = 0 0 2.1 0 -1 1 1 SpeedLimit M "" 60 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.2.1.Size = 0.6 0.6
+Link.1.Mount.3 = 204.6 2 -2.6 -2 1 1 0 0 -20
+Link.1.Mount.3.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.3.0.Size = 0.5 0.5
+Link.1.Mount.4 = 204.7 2 -2.6 -2 1 1 0 0 -160
+Link.1.Mount.4.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.4.0.Size = 0.5 0.5
+Link.1.Mount.5 = 213.18 2 -2.6 -2 1 1 0 0 -20
+Link.1.Mount.5.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.5.0.Size = 0.5 0.5
+Link.1.Mount.6 = 213.28 2 -2.6 -2 1 1 0 0 -160
+Link.1.Mount.6.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.6.0.Size = 0.5 0.5
+Link.1.Mount.7 = 222.08 2 -2.6 -2 1 1 0 0 -20
+Link.1.Mount.7.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.7.0.Size = 0.5 0.5
+Link.1.Mount.8 = 222.18 2 -2.6 -2 1 1 0 0 -160
+Link.1.Mount.8.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.8.0.Size = 0.5 0.5
+Link.1.Mount.9 = 165.56 3 2.6 3 1 1 0 0 20
+Link.1.Mount.9.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.9.0.Size = 0.5 0.5
+Link.1.Mount.10 = 165.46 3 2.6 3 1 1 0 0 160
+Link.1.Mount.10.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.10.0.Size = 0.5 0.5
+Link.1.Mount.11 = 156.68 3 2.55 3 1 1 0 0 20
+Link.1.Mount.11.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.11.0.Size = 0.5 0.5
+Link.1.Mount.12 = 156.58 3 2.55 3 1 1 0 0 160
+Link.1.Mount.12.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.12.0.Size = 0.5 0.5
+Link.1.Mount.13 = 148.11 3 2.55 3 1 1 0 0 20
+Link.1.Mount.13.0 = 0 0 1 0 1 1 1 DirectionBoardR B20 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.13.0.Size = 0.5 0.5
+Link.1.Mount.14 = 148.01 3 2.55 3 1 1 0 0 160
+Link.1.Mount.14.0 = 0 0 1 0 1 1 1 DirectionBoardL B10 "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.14.0.Size = 0.5 0.5
+Link.1.Mount.15 = 120 3 -0.5 1 2 1 0 0 0
+Link.1.Mount.15.0 = 0 0 2.8 0 -1 -1 1 SCurveL M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.15.0.Size = 0.779 0.9
+Link.1.Mount.15.1 = 0 0 2.1 0 -1 -1 1 SpeedLimit M "" 60 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.15.1.Size = 0.6 0.6
+Link.1.Mount.16 = 80 3 0.5 -1 1 1 0 0 0
+Link.1.Mount.16.0 = 0 0 2.1 0 -1 1 1 SpeedLimit M "" 70 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.16.0.Size = 0.6 0.6
+Link.1.Mount.17 = 25 3 0.5 -1 1 1 0 0 0
+Link.1.Mount.17.0 = 0 0 2.8 0 -1 1 1 Caution M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.17.0.Size = 0.779 0.9
+Link.1.Mount.18 = 10 3 -0.5 1 1 1 0 0 0
+Link.1.Mount.18.0 = 0 0 2.5 0 -1 -1 1 PriorityRoad M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.1.Mount.18.0.Size = 0.849 0.849
+
+Link.2.Junctions = 1 0 -1 -1
+Link.2.Node1 = 427.8589 32.1250 12.0000 316.0000
+Link.2.RST = countryroad
+Link.2.Movie = 0.2 0.2 0.02 0 0 0 0
+Link.2.Friction = 1
+Link.2.Seg.0.Type = TurnRight
+Link.2.Seg.0.Param = 470 19.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.2.CamberProfile.Params = 0 0.000000
+Link.2.CamberProfile:
+	0.0000 -0.0050 0.0000
+	45.0000 -0.0150 0.0000
+Link.2.Marker.0.Type = DrvSpeed
+Link.2.Marker.0.Param = 0 2 20 2 -0.5 -1 1 1 70 kmh
+Link.2.Mount.0 = 10 2 0.5 -1 1 1 0 0 0
+Link.2.Mount.0.0 = 0 0 2.5 0 -1 1 1 PriorityRoad M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.2.Mount.0.0.Size = 0.849 0.849
+Link.2.Mount.1 = 20 2 0.5 -1 1 1 0 0 0
+Link.2.Mount.1.0 = 0 0 2.5 0 -1 1 1 EndOfLimitations M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.2.Mount.1.0.Size = 0.6 0.6
+Link.2.Mount.2 = 25 2 -0.5 1 1 1 0 0 0
+Link.2.Mount.2.0 = 0 0 2.5 0 -1 -1 1 Caution M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.2.Mount.2.0.Size = 0.779 0.9
+
+Link.3.Junctions = 0 2 -1 -1
+Link.3.Node1 = -2.0000 -120.0000 1.0000 269.0000
+Link.3.RST = ramp
+Link.3.Movie = 0.2 0.2 0.02 0 0 0 0
+Link.3.Friction = 1
+Link.3.Seg.0.Type = TurnLeft
+Link.3.Seg.0.Param = 140 12.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.3.Seg.1.Type = Connect
+Link.3.Seg.1.Param = 15 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+
+Link.3.CamberProfile.Params = 0 0.000000
+Link.3.CamberProfile:
+	0.0000 -0.0000 0.0000
+	30.0000 -0.0150 0.0000
+	111.0000 -0.0150 0.0000
+Link.3.Mount.0 = 3 2 -0.5 1 1 1 0 0 0
+Link.3.Mount.0.0 = 0 0 2.5 0 -1 -1 1 GiveWay M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.3.Mount.0.0.Size = 0.666 0.666
+Link.3.Mount.1 = 7 2 0.5 -1 1 1 0 0 0
+Link.3.Mount.1.0 = 0 0 2.5 0 -1 1 1 SpeedLimit M "" 70 0 0 - - - 0 0 0 - - - 0 0 0
+Link.3.Mount.1.0.Size = 0.6 0.6
+
+Link.4.Junctions = 1 1 -1 -1
+Link.4.Node1 = 311.9077 219.8939 25.0000 52.0000
+Link.4.RST = countryroad
+Link.4.Movie = 0.1 0.3 0.005 0 0 0 0
+Link.4.Friction = 1
+Link.4.Seg.0.Type = Straight
+Link.4.Seg.0.Param = 100.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+Link.4.CamberProfile.Params = 0 0.000000
+Link.4.CamberProfile:
+	0.0000 -0.0200 0.0000
+	35.0000 0.0100 0.0000
+	71.0000 -0.0200 0.0000
+
+
+Link.4.Mount.0 = 0.1 2 0.2 1 1 1 0 0 0
+Link.4.Mount.0.0 = 0 0 2.5 0 -1 -1 1 Stop M "" 0 0 0 - - - 0 0 0 - - - 0 0 0
+Link.4.Mount.0.0.Size = 0.9 0.9
+Link.4.Mount.1 = 3 2 -0.2 -1 2 1 0 0 0
+Link.4.Mount.1.0 = 0 0 2.8 0 -1 1 1 GradeUp M "" 20 0 0 - - - 0 0 0 - - - 0 0 0
+Link.4.Mount.1.0.Size = 0.779 0.9
+Link.4.Mount.1.1 = 0 0 2.1 0 -1 1 1 SpeedLimit M "" 30 0 0 - - - 0 0 0 - - - 0 0 0
+Link.4.Mount.1.1.Size = 0.6 0.6
+
+
+Route.0:
+	4
+	1
+	3
+
+Route.0.Sec.0.SVecFac = 1.3 2
+
+Route.0.Path.0:
+	0.0000 0 0
+	45.0000 0 0.5
+	85.0000 0 -0.3
+	95.0000 0 0
+Route.0.Path.1:
+	0.0000 -3 0
+	350.0000 -3 0
+	372.0000 -3 0
+	392.0000 -2 0
+	408.0000 -2 0
+Route.0.Path.2:
+	0.0000 -2 0
+
+Route.1:
+	0
+	1
+	2
+
+Route.1.Path.0:
+	0.0000 -2 0
+Route.1.Path.1:
+	0.0000 -2 0
+Route.1.Path.2:
+	0.0000 -2 0
+
+Route.2:
+	2
+	1
+	0
+
+Route.2.Path.0:
+	0.0000 -2 0
+Route.2.Path.1:
+	0.0000 -3 0
+	355.0000 -3 0
+	408.0000 -3 0
+Route.2.Path.2:
+	0.0000 -3 0
+	6.0000 -3 0
+	28.0000 -3 0
+	45.0000 -3 0
+
+Route.3:
+	0
+	3
+
+Route.3.Path.0:
+	0.0000 -2 0
+Route.3.Path.1:
+	0.0000 -2 0
+
+Route.4:
+	3
+	0
+
+Route.4.Path.0:
+	0.0000  -3 0
+	30.0000 -3 0
+	60.0000 -3 0
+	75.0000 -3 0
+	101.0000 -2 0
+	108.5000 -2 0
+Route.4.Path.1:
+	0.0000 -3 0
+	6.0000 -3 0
+	28.0000 -3 0
+	45.0000 -3 0

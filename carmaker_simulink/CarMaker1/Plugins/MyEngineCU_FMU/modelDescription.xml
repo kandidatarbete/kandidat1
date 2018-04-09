@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyEngineCU_FMU"
+  modelIdentifier="MyEngineCU_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f831}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Ignition" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="rotv" valueReference="1" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="set_ISC" valueReference="2" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="LoadIn" valueReference="3" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="FuelCutOffIn" valueReference="4" causality = "input">
+     <Real/>
+ </ScalarVariable>
+
+ <ScalarVariable name="Engine_on" valueReference="5" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="LoadOut" valueReference="3" alias="alias" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="FuelCutOffOut" valueReference="4" alias="alias" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+
+ <ScalarVariable name="rotv_idle" valueReference="6" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="rotv_off" valueReference="7" causality = "input" variability="parameter">
+     <Real />
+ </ScalarVariable>
+ <ScalarVariable name="nFuelCutOff" valueReference="8" causality = "internal" variability="parameter">
+     <Real start="170" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="ISCtrl_I" valueReference="10" causality = "internal" variability="parameter">
+     <Real start="0.01" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="ISCtrl_P" valueReference="12" causality = "internal" variability="parameter">
+     <Real start="0.1" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

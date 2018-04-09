@@ -1,0 +1,12 @@
+SIM_START	myeight.txt	2018-03-19 13:26:36
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m
+SIM_START	myeight.txt	2018-03-19 13:27:18
+TIME	0.000
+SIMULATE	myeight.txt
+
+TIME	52.626
+SIM_END		myeight.txt	52.625s	1300.05m

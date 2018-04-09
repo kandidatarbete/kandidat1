@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyGearBox_FMU"
+  modelIdentifier="MyGearBox_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c90812}"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="I_in" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Real start="1e-4" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="I_out" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="0.05" fixed="true"/>
+  </ScalarVariable>
+
+  <ScalarVariable name="iFGear1" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="3.4" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="iFGear2" valueReference="3" description="" causality = "internal" variability="parameter">
+      <Real start="1.9" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="iFGear3" valueReference="4" description="" causality = "internal" variability="parameter">
+      <Real start="1.35" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="iFGear4" valueReference="5" description="" causality = "internal" variability="parameter">
+      <Real start="1.05" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="iFGear5" valueReference="6" description="" causality = "internal" variability="parameter">
+      <Real start="0.8" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="iBGear" valueReference="7" description="" causality = "internal" variability="parameter">
+      <Real start="-4.0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="GearNoTrg"  valueReference="9" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="Trq_in"  valueReference="10" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="Inert_in"  valueReference="11" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+ 
+  <ScalarVariable name="rotv_out"  valueReference="12" description=""  causality = "input">
+      <Real/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="GearNo" valueReference="13" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="i" valueReference="14" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="i_TrqIn2Out" valueReference="15" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Trq_out" valueReference="16" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Inert_out" valueReference="17" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="Trq_SuppInert" valueReference="18" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="rot_in" valueReference="19" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="der(rot_in)" valueReference="20" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="rotv_in" valueReference="21" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  
+  <ScalarVariable name="rota" valueReference="22" description="" causality = "output">
+      <Real start="0" fixed="true"/>
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+    <CoSimulation_StandAlone>
+	<Capabilities
+		     canHandleVariableCommunicationStepSize="true"
+		     canHandleEvents="true"/>
+    </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>
+

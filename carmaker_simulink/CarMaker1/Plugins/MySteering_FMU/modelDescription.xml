@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MySteering_FMU"
+  modelIdentifier="MySteering_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c91308}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+  <ScalarVariable name="iRack2StrWhl" valueReference="0" description="" causality = "internal" variability="parameter">
+     <Real start="100" fixed="true"/>
+  </ScalarVariable>  
+  <ScalarVariable name="Irot" valueReference="1" description="" causality = "internal" variability="parameter">
+      <Real start="0.001" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="d" valueReference="2" description="" causality = "internal" variability="parameter">
+      <Real start="0.1" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="RackRange_0" valueReference="3" description="" causality = "internal" variability="parameter">
+      <Real start="-0.07" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="RackRange_1" valueReference="4" description="" causality = "internal" variability="parameter">
+      <Real start="0.07" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="TrqAmplify" valueReference="5" description="" causality = "internal" variability="parameter">
+      <Real start="3.0" fixed="true"/>
+  </ScalarVariable>
+  
+ <ScalarVariable name="L_Inert"  valueReference="11" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="R_Inert"  valueReference="12" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="L_Frc"  valueReference="13" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="R_Frc"  valueReference="14" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq_In"  valueReference="15" description=""  causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="PosSign" valueReference="16" description="" causality = "input">
+     <Real/>
+  </ScalarVariable>
+
+  <ScalarVariable name="TrqStatic" valueReference="20" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="L_iSteer2q" valueReference="21" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="R_iSteer2q" valueReference="22" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+  <ScalarVariable name="L_q" valueReference="23" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="L_qp" valueReference="24" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="L_qpp" valueReference="25" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="R_q" valueReference="26" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="R_qp" valueReference="27" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="R_qpp" valueReference="28" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="Ang" valueReference="29" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="AngVel" valueReference="30" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+  </ScalarVariable>
+ <ScalarVariable name="AngAcc" valueReference="31" description="" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="Trq"  valueReference="15" description=""  causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

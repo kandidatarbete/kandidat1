@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="MyBatteryCU_FMU"
+  modelIdentifier="MyBatteryCU_FMU"
+  guid="{deadbeef-3df3-4a00-8276-176fa3c9f022}"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+
+<ModelVariables>
+ <ScalarVariable name="Ignition" valueReference="0" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="BattLV.AOC" valueReference="1" causality = "input">
+     <Real/>
+ </ScalarVariable>
+ <ScalarVariable name="Pwr_HV1toLV_trg_In" valueReference="2" causality = "input">
+     <Real/>
+ </ScalarVariable>
+
+ <ScalarVariable name="Pwr_HV1toLV_trg_Out" valueReference="2" alias = "alias" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="SOC_LV" valueReference="3" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+ <ScalarVariable name="SOH_LV" valueReference="4" causality = "output">
+     <Real start="0" fixed="true"/>
+ </ScalarVariable>
+
+ <ScalarVariable name="Capacity_LV" valueReference="5" causality = "internal" variability="parameter">
+     <Real start="10.0" fixed="true"/>
+ </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+
+</fmiModelDescription>

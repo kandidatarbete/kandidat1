@@ -73,18 +73,13 @@ end
 % longitudinal dynamics in terms of generalized A
 A_gen_final = (eye(4*Ns) - eyesub*A_gen);
 A_gen_final_2=A_gen_final(5:4*Ns,:);
-%constraints=[constraints, A_gen_final_2*Xhat==0];
+constraints=[constraints, A_gen_final_2*Xhat==0];
 
 %Xhat2 = zeros(4*Nv*Ns,1); 
 Xhat2=[];
 for i = 0:Nv-1
     Xhat2 = [Xhat2; Xhat(:,i+1)]; 
 end
-
-%disp(size(Xhat,1)*size(Xhat,2)); 
-%disp(max(size(Xhat2))); 
-%disp(size(Xhat)); 
-%disp(size(Xhat2));
 
 % vehicle j, sample i
 tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
@@ -102,23 +97,37 @@ for i = 1:Ns-1
 %         constraints = [constraints, Xhat2(zind(i+1,j)) == Xhat2(zind(i,j)) + ds*Xhat2(dzind(i,j))]; 
 %         constraints = [constraints, Xhat2(dzind(i+1,j)) == Xhat2(dzind(i,j)) + Sddz/Sdz*ds*Xhat(uind(i,j))];
 
-        constraints = [constraints, Xhat2(tind(i+1,j)) - Xhat2(tind(i,j)) - ds*Xhat2(zind(i,j)) == 0];
-        constraints = [constraints, Xhat2(zind(i+1,j)) - Xhat2(zind(i,j)) - ds*Xhat2(dzind(i,j)) == 0]; 
-        constraints = [constraints, Xhat2(dzind(i+1,j)) - Xhat2(dzind(i,j)) - Sddz/Sdz*ds*Xhat(uind(i,j)) == 0];
+%         constraints = [constraints, Xhat2(tind(i+1,j)) - Xhat2(tind(i,j)) - ds*Xhat2(zind(i,j)) == 0];
+%         constraints = [constraints, Xhat2(zind(i+1,j)) - Xhat2(zind(i,j)) - ds*Xhat2(dzind(i,j)) == 0]; 
+%         constraints = [constraints, Xhat2(dzind(i+1,j)) - Xhat2(dzind(i,j)) - Sddz/Sdz*ds*Xhat(uind(i,j)) == 0];
         
-        cond = zeros(1,4*Ns*Nv);
+        cond = zeros(4,4*Ns*Nv);
         cond(1,tind(i+1,j)) = 1;
         cond(1,tind(i,j)) = -1;
         cond(1,zind(i,j)) = - ds;
-        Acol = [Acol; cond]; 
+        %Acol = [Acol; cond];
+        
+        cond = zeros(1,4*Ns*Nv);
+        cond(2,zind(i+1,j)) = 1;
+        cond(2,zind(i,j)) = -1;
+        cond(2,dzind(i,j)) = - ds;
+        %Acol = [Acol; cond];
+        
+        cond = zeros(1,4*Ns*Nv);
+        cond(3,dzind(i+1,j)) = 1;
+        cond(3,dzind(i,j)) = -1;
+        cond(3,uind(i,j)) = - Sddz/Sdz*ds;
+        
+        cond(4,:) = zeros(1,4*Ns*Nv); 
+        Acol = [Acol; cond];
+        
     end
 end
+disp('done constructing matrix'); 
 % Acol = zeros(1,4*Nv*Ns); 
 %         Acol(1,tind(i+1,j)) = 1; 
 %         Acol(1,tind(i,j)) = -1; 
 %         Acol(1,zind(i,j)) = - ds; 
-
-disp(size(Xhat2)); 
 disp(size(Acol)); 
 
 constraints=[constraints; Acol*Xhat2 == 0]; 

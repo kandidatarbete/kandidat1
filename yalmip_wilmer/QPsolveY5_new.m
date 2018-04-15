@@ -92,9 +92,10 @@ disp(size(Xhat2));
 
 %Acol = zeros(4*Ns*Nv,4*Ns*Nv); 
 Acol = []; 
+Acol = sparse(Acol);
 for i = 1:Ns-1
     for j = 1:Nv         
-        cond = zeros(4,4*Ns*Nv);
+        cond = sparse(4,4*Ns*Nv);
         cond(1,tind(i+1,j)) = 1;
         cond(1,tind(i,j)) = -1;
         cond(1,zind(i,j)) = - ds;

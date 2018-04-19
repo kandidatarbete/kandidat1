@@ -57,7 +57,7 @@ uind = @(i,j) 4*i + 4*Ns*(j-1);
 disp(size(Xhat2));
 %disp(dzind(Ns-1,Nv)); 
 
-%Acol = zeros(4*Ns*Nv,4*Ns*Nv); 
+% box constraints
 Acol = []; 
 Acol = sparse(Acol);
 for i = 1:Ns-1
@@ -104,11 +104,14 @@ for i=1:Nv
         c2 = 2*amin/vref^3/Sdz;
         c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
         c4 = V(i).axmax*2/vref^3/Sdz;
-    for j = 1:Ns
-        % equality constraints
+        
         beq2(1, i) = 0;
         beq2(2,i) = 1/vstart/Sz;
         beq2(3,i) = 0;
+        
+    for j = 1:Ns
+        % equality constraints
+
         
         % less than constraints
 
@@ -128,29 +131,52 @@ for i=1:Nv
        
        Aeq12(4*j -1) = -1; 
        Aeq12(4*j -2) = c3;
-       b2(1,i) = c4;
+       b2(1,i) = c4; % todo build this in terms of Xhat2 and append to Acol
         
     end
 end
 % box constraints
 % equation 1
-Aeq_f = [Aeq11;Aeq12];
-beq_f = [b1;b2];
-constraints = [constraints, Aeq_f*Xhat <= beq_f]; 
-
-
-
+Aineq_f = [Aeq11;Aeq12];
+bineq_f = [b1;b2];
+constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
 constraints=[constraints, Aeq2*Xhat==beq2];
 
 % critical zone constraint, todo: append constraints as a general box
 % constraint
+% sample i vehicle j 
+% tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
+% zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
+% dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
+% uind = @(i,j) 4*i + 4*Ns*(j-1);
+% disp(size(Xhat2));
+
+
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
-    ind1 = 4*V(co(i)).Nze-3;
-    ind2 = co(i);
-    ind3 = 4*V(co(i+1)).Nzs-3;
-    ind4 = co(i+1);
+    ind1 = 4*V(co(i)).Nze-3 % sample
+    ind2 = co(i) % vehicle 
+    ind3 = 4*V(co(i+1)).Nzs-3 % sample 
+    ind4 = co(i+1) % vehicle 
     constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
+    
+%     tind1 = tind(ind1,ind2)
+%     tind2 = tind(ind3,ind4)
+%     %tind1 = tind(ind2,ind1); 
+%     %tind2 = tind(ind4,ind3); 
+%     disp(size(Xhat2)); 
+%     constraints = [constraints, Xhat2(tind1) - Xhat2(tind2) <= 0]; 
+    
+         %t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
+         sample1 = V(co(i)).Nze; 
+         vehicle1 = co(i); 
+         xind1 = tind(sample1,vehicle1); 
+         
+         sample2 = V(co(i+1)).Nzs; 
+         vehicle2 = co(i+1); 
+         xind2=tind(sample2,vehicle2); 
+         constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
+    
 end
 
 vln = 100000; % very small and large numbers, used for non-constraints

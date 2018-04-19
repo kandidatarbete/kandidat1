@@ -96,7 +96,14 @@ for i=1:3
 end
 
 beq2 = zeros(4*Ns,Nv);
+Aeq11 = zeros(1,4*Ns); 
+Aeq12 = zeros(1,4*Ns);
+
 for i=1:Nv
+        c1 = -amin*3*vref*Sz/(vref^3)/Sdz;
+        c2 = 2*amin/vref^3/Sdz;
+        c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
+        c4 = V(i).axmax*2/vref^3/Sdz;
     for j = 1:Ns
         % equality constraints
         beq2(1, i) = 0;
@@ -104,39 +111,31 @@ for i=1:Nv
         beq2(3,i) = 0;
         
         % less than constraints
-        c1 = -amin*3*vref*Sz/(vref^3)/Sdz;
-        c2 = 2*amin/vref^3/Sdz;
+
         %constraints = [constraints, X(3*i,j) - c1*X(3*i-1,j)  <= c2];
         %equation 1
         %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
         
         % greater than constraints
-        c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
-        c4 = V(i).axmax*2/vref^3/Sdz;
+
         %constraints = [constraints, -X(3*i,j) + c3*X(3*i-1,j) <= c4];
         % equation 2
+        
+
+       Aeq11(4*j-1) = 1;
+       Aeq11(4*j-2) = -c1;
+       b1(1,i) = c2;
+       
+       Aeq12(4*j -1) = -1; 
+       Aeq12(4*j -2) = c3;
+       b2(1,i) = c4;
+        
     end
 end
 % box constraints
 % equation 1
-Aeq11 = zeros(1,4*Ns); 
-Aeq12 = zeros(1,4*Ns);
-for i = 1:Ns
-    for j = 1:Nv
-       Aeq11(4*i-1) = 1;
-       Aeq11(4*i-2) = -c1;
-       b1(1,j) = c2;
-       
-       Aeq12(4*i -1) = -1; 
-       Aeq12(4*i -2) = c3;
-       b2(1,j) = c4;
-    end
-end
-
-%constraints = [constraints, Bepa*Xhat <= b2];
 Aeq_f = [Aeq11;Aeq12];
 beq_f = [b1;b2];
-%[Apa;Bepa]*Xhat == [b1;b2];
 constraints = [constraints, Aeq_f*Xhat <= beq_f]; 
 
 
@@ -144,33 +143,36 @@ constraints = [constraints, Aeq_f*Xhat <= beq_f];
 lb=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
-        lb(4*i-2,j)=1/V(j).vxmin/Sz;
+        ub(4*i-2,j)=1/V(j).vxmin/Sz;
     end
      
 end
 for i=1:Ns
     for j=Nv
-        constraints=[constraints, Xhat(4*i-2,j)<=lb(4*i-2,j)];
+        constraints=[constraints, Xhat(4*i-2,j)<=ub(4*i-2,j)];
     end
     
 end
-%upperbound constraints
+
+
+%upperbound constraints % todo: set "undefined" elements to very large or
+%very small number
 ub=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
-        ub(4*i-2,j)=1/V(j).vxmax/Sz;
+        lb(4*i-2,j)=1/V(j).vxmax/Sz;
     end
       
 end
 for i=1:Ns
     for j=Nv
-        constraints=[constraints, Xhat(4*i-2,j)>=ub(4*i-2,j)];
+        constraints=[constraints, Xhat(4*i-2,j)>=lb(4*i-2,j)];
     end  
 end
 constraints=[constraints, Aeq2*Xhat==beq2];
 
-%Aoc = zeros(4*Ns,4*Ns);
-% Xhat \in R^(4*Ns,Nv), Aoc*Xhat = y -> Aoc \in R^(x,4*Ns),x = Nv
+% critical zone constraint, todo: append constraints as a general box
+% constraint
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
     ind1 = 4*V(co(i)).Nze-3; % ind1 \in [365, 405] = [1, 4*Ns]
@@ -180,9 +182,6 @@ for i = 1:Nv-1
     constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
 end
 
-for i = 1:Nv-1
-
-end 
 cost=[];
 cost1=[];
 cost2=[];

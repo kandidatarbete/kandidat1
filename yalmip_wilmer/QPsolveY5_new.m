@@ -139,17 +139,39 @@ beq_f = [b1;b2];
 constraints = [constraints, Aeq_f*Xhat <= beq_f]; 
 
 
+
+constraints=[constraints, Aeq2*Xhat==beq2];
+
+% critical zone constraint, todo: append constraints as a general box
+% constraint
+for i = 1:Nv-1
+    Aoc = zeros(Nv,4*Ns);
+    ind1 = 4*V(co(i)).Nze-3;
+    ind2 = co(i);
+    ind3 = 4*V(co(i+1)).Nzs-3;
+    ind4 = co(i+1);
+    constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
+end
+
+vln = 100000; % very small and large numbers, used for non-constraints
+vsn = - vln;
 %lowerbound constraints
 lb=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
+        ub(4*i-3,j)= vln; 
         ub(4*i-2,j)=1/V(j).vxmin/Sz;
+        ub(4*i-1,j) = vln; 
+        ub(4*i,j) = vln; 
     end
      
 end
 for i=1:Ns
     for j=Nv
+        constraints=[constraints, Xhat(4*i-3,j)<=ub(4*i-3,j)];
         constraints=[constraints, Xhat(4*i-2,j)<=ub(4*i-2,j)];
+        constraints=[constraints, Xhat(4*i-1,j)<=ub(4*i-1,j)];
+        constraints=[constraints, Xhat(4*i,j)<=ub(4*i,j)];
     end
     
 end
@@ -160,27 +182,22 @@ end
 ub=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
+        lb(4*i-3,j) = vsn; 
         lb(4*i-2,j)=1/V(j).vxmax/Sz;
+        lb(4*i-1,j) = vsn; 
+        lb(4*i,j) = vsn; 
     end
       
 end
 for i=1:Ns
     for j=Nv
+        constraints=[constraints, Xhat(4*i-3,j)>=lb(4*i-3,j)];
         constraints=[constraints, Xhat(4*i-2,j)>=lb(4*i-2,j)];
+        constraints=[constraints, Xhat(4*i-1,j)>=lb(4*i-1,j)];
+        constraints=[constraints, Xhat(4*i,j)>=lb(4*i,j)];
     end  
 end
-constraints=[constraints, Aeq2*Xhat==beq2];
 
-% critical zone constraint, todo: append constraints as a general box
-% constraint
-for i = 1:Nv-1
-    Aoc = zeros(Nv,4*Ns);
-    ind1 = 4*V(co(i)).Nze-3; % ind1 \in [365, 405] = [1, 4*Ns]
-    ind2 = co(i); % ind2 \in [1,3] = [1 ,Nv]
-    ind3 = 4*V(co(i+1)).Nzs-3; % ind3 \in [346 425] = [1, 4*Ns]
-    ind4 = co(i+1); % ind4 \in [1,4] = [1, Nv];
-    constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
-end
 
 cost=[];
 cost1=[];

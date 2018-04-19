@@ -154,18 +154,11 @@ constraints=[constraints, Aeq2*Xhat==beq2];
 
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
-    ind1 = 4*V(co(i)).Nze-3 % sample
-    ind2 = co(i) % vehicle 
-    ind3 = 4*V(co(i+1)).Nzs-3 % sample 
-    ind4 = co(i+1) % vehicle 
+    ind1 = 4*V(co(i)).Nze-3;
+    ind2 = co(i);
+    ind3 = 4*V(co(i+1)).Nzs-3;
+    ind4 = co(i+1);
     constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
-    
-%     tind1 = tind(ind1,ind2)
-%     tind2 = tind(ind3,ind4)
-%     %tind1 = tind(ind2,ind1); 
-%     %tind2 = tind(ind4,ind3); 
-%     disp(size(Xhat2)); 
-%     constraints = [constraints, Xhat2(tind1) - Xhat2(tind2) <= 0]; 
     
          %t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
          sample1 = V(co(i)).Nze; 
@@ -175,7 +168,14 @@ for i = 1:Nv-1
          sample2 = V(co(i+1)).Nzs; 
          vehicle2 = co(i+1); 
          xind2=tind(sample2,vehicle2); 
-         constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
+         constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; % append this condition to Acol, not Aineq
+         
+         cond = zeros(1,4*Nv*Ns); 
+         cond(1,xind1) = 1; 
+         cond(1,xind2) = -1; 
+         %disp(size(Acol)); 
+         %disp(size(cond)); 
+         Acol = [Acol;cond]; 
     
 end
 

@@ -39,41 +39,8 @@ for i = 1:Nv
         Xhat(j*4,i)=u(i,j);
     end
 end
-
-% scaling factors for control signal u
-Su=zeros(3*Nv);
-SuSub=eye(3);
-SuSub(1,1)=Sz/St;
-SuSub(2,2)=Sdz/Sz;
-SuSub(3,3)=Sddz/Sdz;
-for i=1:Nv
-    Su(3*i-2:3*i,3*i-2:3*i)=SuSub;
-end
 constraints  = [];
 
-Asub = [1 ds 0; 0 1 ds; 0 0 1]; % A matrix for 1 vehicle
-% construct generalized A:
-for i=1:Nv
-    A(3*i-2:3*i,3*i-2:3*i)=Asub;
-end
-
-% construct generalized submatrix A coupling both u_k and x_k one vehicle
-A_sub_gen = [1 ds 0 0 ; 0 1 ds 0; 0 0 1 Sddz/Sdz*ds; 0 0 0 0];
-
-A_gen = zeros(4*Ns,4*Ns);
-
-%construct global generalized A coupling both u_k and x_k
-for i=1:Ns
-    A_gen(4*i-3:4*i,4*i-3:4*i)=A_sub_gen;
-end
-eyesub = zeros(4*Ns,4*Ns);
-for i=1:Ns-1
-    eyesub(4*i+1:4*i+4,4*i-3:4*i)=eye(4);
-end
-% longitudinal dynamics in terms of generalized A
-A_gen_final = (eye(4*Ns) - eyesub*A_gen);
-A_gen_final_2=A_gen_final(5:4*Ns,:);
-%constraints=[constraints, A_gen_final_2*Xhat==0];
 
 %Xhat2 = zeros(4*Nv*Ns,1); 
 Xhat2=[];
@@ -120,6 +87,7 @@ end
 disp('done constructing matrix'); 
 disp(size(Acol)); 
 
+% box constraints
 constraints=[constraints; Acol*Xhat2 == 0]; 
 
 Aeq2=zeros(4*Ns);
@@ -150,27 +118,26 @@ for i=1:Nv
     end
 end
 % box constraints
-% Xhat \in R^(3*Ns,Nv) -> A \in R^(x, 3*Ns), b \in R^(x, Nv), x = 1
 % equation 1
-Apa = zeros(1,4*Ns); 
-Bepa = zeros(1,4*Ns);
+Aeq11 = zeros(1,4*Ns); 
+Aeq12 = zeros(1,4*Ns);
 for i = 1:Ns
     for j = 1:Nv
-       Apa(4*i-1) = 1;
-       Apa(4*i-2) = -c1;
+       Aeq11(4*i-1) = 1;
+       Aeq11(4*i-2) = -c1;
        b1(1,j) = c2;
        
-       Bepa(4*i -1) = -1; 
-       Bepa(4*i -2) = c3;
+       Aeq12(4*i -1) = -1; 
+       Aeq12(4*i -2) = c3;
        b2(1,j) = c4;
     end
 end
 
 %constraints = [constraints, Bepa*Xhat <= b2];
-cepa = [Apa;Bepa];
-depa = [b1;b2];
-[Apa;Bepa]*Xhat == [b1;b2];
-constraints = [constraints, cepa*Xhat <= depa]; 
+Aeq_f = [Aeq11;Aeq12];
+beq_f = [b1;b2];
+%[Apa;Bepa]*Xhat == [b1;b2];
+constraints = [constraints, Aeq_f*Xhat <= beq_f]; 
 
 
 %lowerbound constraints

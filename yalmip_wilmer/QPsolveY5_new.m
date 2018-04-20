@@ -1,6 +1,9 @@
 function res=QPsolveY5_new(task)
-V=task.V; Ns=task.Ns; Nv=task.Nv; ds=task.ds;
-co=task.crossingorder(1:Nv);
+V=task.V; 
+Ns=task.Ns;
+Nv=task.Nv; 
+ds=task.ds;
+co=[1:20];
 
 % scaling factors
 St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;

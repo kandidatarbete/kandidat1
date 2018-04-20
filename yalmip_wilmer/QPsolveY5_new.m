@@ -9,7 +9,6 @@ St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
 Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
 yalmip('clear')
-%TODO vref ska inte vara h�rdkodad
 vref=50;
 vstart=12;
 amin=-5;
@@ -49,7 +48,7 @@ for i = 0:Nv-1
 end
 disp('done constructing Xhat2'); 
 
-% vehicle j, sample i
+% sample i, vehicle j
 tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
 zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
 dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
@@ -60,6 +59,7 @@ disp(size(Xhat2));
 % box constraints
 Acol = []; 
 Acol = sparse(Acol);
+bcol = []; 
 for i = 1:Ns-1
     for j = 1:Nv         
         cond = sparse(4,4*Ns*Nv);
@@ -81,6 +81,7 @@ for i = 1:Ns-1
         
         cond(4,:) = zeros(1,4*Ns*Nv); 
         Acol = [Acol; cond];
+        bcol = [bcol; [0 0 0 0]']; 
         
     end
 end
@@ -132,6 +133,14 @@ for i=1:Nv
        Aeq12(4*j -1) = -1; 
        Aeq12(4*j -2) = c3;
        b2(1,i) = c4; % todo build this in terms of Xhat2 and append to Acol
+       
+       %cond = zeros(2,4*Ns*Nv); 
+       %cond(1,ddzind(j,i)) = 1; 
+       %cond(1,zind(j,i)) = -c1; 
+       
+       %Acol = [Acol; cond];
+       % do not forget appending to bcol 
+       % also move counstraints appending to below this loop
         
     end
 end

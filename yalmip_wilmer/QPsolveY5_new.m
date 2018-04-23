@@ -13,7 +13,9 @@ Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
 yalmip('clear')
 vref=50;
-vstart=12;
+vstart=12*ones(Nv,1);
+astart=0*ones(Nv,1);
+sstart=0*ones(Nv,1);
 amin=-5;
 %bromstid
 deltat=20;
@@ -33,6 +35,7 @@ end
 for i=1:Nv
     U(3*i,:)=u(i,:);
 end
+
 for i = 1:Nv
     for j = 1:Ns
         Xhat(j*4-3,i)= t(i,j);
@@ -93,8 +96,9 @@ disp(size(Acol));
 
 % box constraints
 constraints=[constraints; Acol*Xhat2 == 0]; 
-
+%matris för vänsterled i ekvation för startvärden
 Aeq2=zeros(4*Ns);
+
 for i=1:3
     Aeq2(i,i)=1;
 end
@@ -103,14 +107,40 @@ beq2 = zeros(4*Ns,Nv);
 Aeq11 = zeros(1,4*Ns); 
 Aeq12 = zeros(1,4*Ns);
 
+%trying to create a matrix A which satisfiest AX=B for the initial valuees
+%04-22
+Asub=eye(3);
+A=zeros(3*Nv,4*Ns*Nv);
+j=1;
+i=1;
+while(j<=3*Nv)
+    A(j:j+2,i:i+2)=Asub;
+    i=i+4*Ns;
+    j=j+3;
+end
+B=zeros(3*Nv,1);
+
+for i=1:Nv
+    B(i)=0;
+    B(i+1)=1/vstart(i)/Sz;
+    B(i+2)=0;
+    
+end
+disp(size(B))
+disp(size(A))
+%disp(A)
+%constraints=[constraints, A*Xhat2==B];
+
+
+
 for i=1:Nv
         c1 = -amin*3*vref*Sz/(vref^3)/Sdz;
         c2 = 2*amin/vref^3/Sdz;
         c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
         c4 = V(i).axmax*2/vref^3/Sdz;
-        
+        %högerledet i ekvationen för startvärden
         beq2(1, i) = 0;
-        beq2(2,i) = 1/vstart/Sz;
+        beq2(2,i) = 1/vstart(i)/Sz;
         beq2(3,i) = 0;
         
     for j = 1:Ns

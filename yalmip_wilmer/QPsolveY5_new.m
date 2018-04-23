@@ -35,7 +35,7 @@ end
 for i=1:Nv
     U(3*i,:)=u(i,:);
 end
-
+Xhat=sdpvar(4*Ns,Nv);
 for i = 1:Nv
     for j = 1:Ns
         Xhat(j*4-3,i)= t(i,j);
@@ -46,10 +46,17 @@ for i = 1:Nv
 end
 constraints  = [];
 
-Xhat2=[];
-for i = 0:Nv-1
-    Xhat2 = [Xhat2; Xhat(:,i+1)]; 
-end
+ Xhat2 = sdpvar(4*Nv*Ns,1);
+ for i=1:Nv
+     Xhat2((4*Ns*(i-1))+1:(4*Ns*(i)),1)=Xhat(:,i);
+     
+ end
+
+% 
+% Xhat2=[];
+% for i = 0:Nv-1
+%     Xhat2 = [Xhat2; Xhat(:,i+1)]; 
+% end
 disp('done constructing Xhat2'); 
 
 % sample i, vehicle j

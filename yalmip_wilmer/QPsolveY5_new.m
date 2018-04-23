@@ -101,8 +101,6 @@ for i = 1:Ns-1
 end
 disp('done constructing matrix'); 
 
-% box constraints
- 
 %matris f�r v�nsterled i ekvation f�r startv�rden
 Aeq2=zeros(4*Ns);
 
@@ -239,7 +237,7 @@ end
 
 %constraints = [constraints; Xhat >= lb]; 
 %constraints = [constraints; Xhat <= ub]; 
-constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
+%constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
 constraints=[constraints, Aeq2*Xhat==beq1];
 
 constraints=[constraints; A2eq*Xhat2 == 0];

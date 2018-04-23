@@ -9,7 +9,5 @@ for i =1:looporder
     task=gen_task(false);
     task = optimize_task(task);
     animate_res_new(task);
-    % past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
-
 end
 

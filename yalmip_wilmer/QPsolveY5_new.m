@@ -70,7 +70,12 @@ disp(size(Xhat2));
 % box constraints
 A2eq = []; 
 A2eq = sparse(A2eq);
-bcol = []; 
+b2eq = []; 
+
+A2ineq = []; 
+A2ineq = sparse(A2ineq);
+b2ineq = []; 
+
 for i = 1:Ns-1
     for j = 1:Nv         
         cond = sparse(4,4*Ns*Nv);
@@ -92,7 +97,7 @@ for i = 1:Ns-1
         
         cond(4,:) = zeros(1,4*Ns*Nv); 
         A2eq = [A2eq; cond];
-        bcol = [bcol; [0 0 0 0]']; 
+        b2eq = [b2eq; [0 0 0 0]']; 
         
     end
 end
@@ -170,14 +175,16 @@ for i = 1:Nv-1
     vehicle2 = co(i+1);
     xind2=tind(sample2,vehicle2);
     constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; % append this condition to Acol, not Aineq
-%     
-%     cond = zeros(1,4*Nv*Ns);
-%     cond(xind1) = 1;
-%     cond(xind2) = -1;
-%     Acol = [Acol;cond];
-%     bcol = [bcol; 0];
+    
+    cond = zeros(1,4*Nv*Ns);
+    cond(xind1) = 1;
+    cond(xind2) = -1;
+    A2ineq = [A2ineq;cond];
+    b2ineq = [b2ineq; 0];
     
 end
+
+constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
 
 Aineq_f = [Aeq11;Aeq12];
 bineq_f = [b1;b2];

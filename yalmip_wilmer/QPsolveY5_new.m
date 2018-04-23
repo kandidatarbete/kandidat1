@@ -226,14 +226,26 @@ for i = 1:Ns
    end
 end
 
+ub2 = zeros(4*Ns*Nv,1); 
+for i = 1:Ns
+   for j = 1:Nv
+       ub2(tind(i,j)) = vln; 
+       ub2(zind(i,j)) = 1/V(j).vxmin/Sz; 
+       ub2(dzind(i,j)) = vln; 
+       ub2(uind(i,j)) = vln; 
+   end
+end
+
+
 %constraints = [constraints; Xhat >= lb]; 
-constraints = [constraints; Xhat <= ub]; 
+%constraints = [constraints; Xhat <= ub]; 
 constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
 constraints=[constraints, Aeq2*Xhat==beq1];
 
 constraints=[constraints; A2eq*Xhat2 == 0];
 constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
 constraints = [constraints; lb2 <= Xhat2];
+constraints = [constraints; Xhat2 <= ub2]; 
 
 cost=[];
 cost1=[];

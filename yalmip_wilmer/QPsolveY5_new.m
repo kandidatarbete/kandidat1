@@ -112,41 +112,13 @@ end
 for i = 1:Nv
    cond = zeros(3,4*Ns*Nv);
    cond(1,tind(1,i)) = 1; 
-   %cond(2,zind(1,i)) = 1;
-   %cond(3,dzind(1,i)) = 1;
+   cond(2,zind(1,i)) = 1;
+   cond(3,dzind(1,i)) = 1;
    A2eq = [A2eq;cond]; 
-   %b2eq = [b2eq; [0 1/vstart(i)/Sz 0]']; 
-   b2eq = [b2eq; [0 0 0]']; 
+   b2eq = [b2eq; [0 1/vstart(i)/Sz 0]']; 
+   %b2eq = [b2eq; [0 0 0]']; 
 end
 
-disp('done constructing matrix'); 
-
-
-
-
-% 
-% %trying to create a matrix A which satisfies AX=B for the initial valuees
-% %04-22
-% Asub=eye(3);
-% A=zeros(3*Nv,4*Ns*Nv);
-% j=1;
-% i=1;
-% while(j<=3*Nv)
-%     A(j:j+2,i:i+2)=Asub;
-%     i=i+4*Ns;
-%     j=j+3;
-% end
-% B=zeros(3*Nv,1);
-% 
-% for i=1:Nv
-%     B(i)=0;
-%     B(i+1)=1/vstart(i)/Sz;
-%     B(i+2)=0;
-%     
-% end
-
-% Aeq11 = zeros(1,4*Ns); 
-% Aeq12 = zeros(1,4*Ns);
 for i=1:Nv
     %rhs for initial values
     beq1(1, i) = 0;
@@ -169,7 +141,7 @@ for i = 1:Nv-1
     sample2 = V(co(i+1)).Nzs;
     vehicle2 = co(i+1);
     xind2=tind(sample2,vehicle2);
-    constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; % append this condition to Acol, not Aineq
+    constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
     
     cond = zeros(1,4*Nv*Ns);
     cond(xind1) = 1;

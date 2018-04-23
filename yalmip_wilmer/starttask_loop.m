@@ -4,25 +4,12 @@ clear all;
 close all; 
 clc;
 
-%disp('generating task');
-
-%disp('optimizing task');
-%disp('animating task'); 
-
 looporder=9;
 for i =1:looporder
-    %animate_res_new(task);
     task=gen_task(false);
     task = optimize_task(task);
     animate_res_new(task);
-%     rebuild task from previous task and reoptimize
-     past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
-%      for j=1:task.Nv
-%          if(past(j))
-%              task=remove_vehicle(j,task);
-%          end
-%      end
-    %task = remove_vehicle(1,task); 
-    %task = optimize_task(task);
+    % past=past_criticalzone(task,task.Ns);%returnar en array som s�ger vilka som �r utanf�r
+
 end
 

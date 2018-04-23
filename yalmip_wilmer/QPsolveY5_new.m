@@ -93,7 +93,7 @@ disp('done constructing matrix');
 disp(size(Acol)); 
 
 % box constraints
-constraints=[constraints; Acol*Xhat2 == 0]; 
+ 
 %matris f�r v�nsterled i ekvation f�r startv�rden
 Aeq2=zeros(4*Ns);
 
@@ -145,10 +145,7 @@ for i=1:Nv
         b2(1,i) = c4; % todo build this in terms of Xhat2 and append to Acol    
     end
 end
-Aineq_f = [Aeq11;Aeq12];
-bineq_f = [b1;b2];
-constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
-constraints=[constraints, Aeq2*Xhat==beq2];
+
 
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
@@ -167,17 +164,23 @@ for i = 1:Nv-1
     xind2=tind(sample2,vehicle2);
     constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; % append this condition to Acol, not Aineq
     
-    cond = zeros(1,4*Nv*Ns);
-    cond(1,xind1) = 1;
-    cond(1,xind2) = -1;
-    Acol = [Acol;cond];
+%     cond = zeros(1,4*Nv*Ns);
+%     cond(1,xind1) = 1;
+%     cond(1,xind2) = -1;
+%     Acol = [Acol;cond];
     
 end
+
+Aineq_f = [Aeq11;Aeq12];
+bineq_f = [b1;b2];
+constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
+constraints=[constraints, Aeq2*Xhat==beq2];
+constraints=[constraints; Acol*Xhat2 == 0];
 
 vln = 100000; % very small and large numbers, used for non-constraints
 vsn = - vln;
 %lowerbound constraints
-lb=zeros(4*Ns,Nv);
+ub=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
         ub(4*i-3,j)= vln; 
@@ -187,20 +190,12 @@ for i=1:Ns
     end
      
 end
-for i=1:Ns
-    for j=Nv
-        constraints=[constraints, Xhat(4*i-3,j)<=ub(4*i-3,j)];
-        constraints=[constraints, Xhat(4*i-2,j)<=ub(4*i-2,j)];
-        constraints=[constraints, Xhat(4*i-1,j)<=ub(4*i-1,j)];
-        constraints=[constraints, Xhat(4*i,j)<=ub(4*i,j)];
-    end
-    
-end
+
 
 
 %upperbound constraints % todo: set "undefined" elements to very large or
 %very small number
-ub=zeros(4*Ns,Nv);
+lb=zeros(4*Ns,Nv);
 for i=1:Ns
     for j=1:Nv
         lb(4*i-3,j) = vsn; 
@@ -210,14 +205,8 @@ for i=1:Ns
     end
       
 end
-for i=1:Ns
-    for j=Nv
-        constraints=[constraints, Xhat(4*i-3,j)>=lb(4*i-3,j)];
-        constraints=[constraints, Xhat(4*i-2,j)>=lb(4*i-2,j)];
-        constraints=[constraints, Xhat(4*i-1,j)>=lb(4*i-1,j)];
-        constraints=[constraints, Xhat(4*i,j)>=lb(4*i,j)];
-    end  
-end
+constraints = [constraints; Xhat >= lb]; 
+constraints = [constraints; Xhat <= ub]; 
 
 
 cost=[];

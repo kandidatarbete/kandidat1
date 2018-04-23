@@ -64,8 +64,6 @@ tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
 zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
 dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
 uind = @(i,j) 4*i + 4*Ns*(j-1);
-disp(size(Xhat2));
-%disp(dzind(Ns-1,Nv)); 
 
 % box constraints
 A2eq = []; 
@@ -102,7 +100,6 @@ for i = 1:Ns-1
     end
 end
 disp('done constructing matrix'); 
-disp(size(A2eq)); 
 
 % box constraints
  
@@ -184,7 +181,7 @@ for i = 1:Nv-1
     
 end
 
-constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
+
 
 Aineq_f = [Aeq11;Aeq12];
 bineq_f = [b1;b2];
@@ -214,11 +211,29 @@ for i=1:Ns
     end
       
 end
-constraints = [constraints; Xhat >= lb]; 
+% % sample i, vehicle j
+% tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
+% zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
+% dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
+% uind = @(i,j) 4*i + 4*Ns*(j-1);
+lb2 = zeros(4*Ns*Nv,1); 
+for i = 1:Ns
+   for j = 1:Nv
+       lb2(tind(i,j)) = vsn; 
+       lb2(zind(i,j)) = 1/V(j).vxmax/Sz; 
+       lb2(dzind(i,j)) = vsn; 
+       lb2(uind(i,j)) = vsn; 
+   end
+end
+
+%constraints = [constraints; Xhat >= lb]; 
 constraints = [constraints; Xhat <= ub]; 
 constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
 constraints=[constraints, Aeq2*Xhat==beq1];
+
 constraints=[constraints; A2eq*Xhat2 == 0];
+constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
+constraints = [constraints; lb2 <= Xhat2];
 
 cost=[];
 cost1=[];

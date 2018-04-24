@@ -1,6 +1,9 @@
 function res=QPsolveY5_new(task)
-V=task.V; Ns=task.Ns; Nv=task.Nv; ds=task.ds;
-co=task.crossingorder(1:Nv);
+V=task.V; 
+Ns=task.Ns;
+Nv=task.Nv; 
+ds=task.ds;
+co=[1:20];
 
 % scaling factors
 St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
@@ -10,7 +13,9 @@ Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
 yalmip('clear')
 vref=50;
-vstart=12;
+vstart=12*ones(Nv,1);
+astart=0*ones(Nv,1);
+sstart=0*ones(Nv,1);
 amin=-5;
 %bromstid
 deltat=20;
@@ -30,6 +35,7 @@ end
 for i=1:Nv
     U(3*i,:)=u(i,:);
 end
+Xhat=sdpvar(4*Ns,Nv);
 for i = 1:Nv
     for j = 1:Ns
         Xhat(j*4-3,i)= t(i,j);
@@ -40,12 +46,12 @@ for i = 1:Nv
 end
 constraints  = [];
 
+ Xhat2 = sdpvar(4*Nv*Ns,1);
+ for i=1:Nv
+     Xhat2((4*Ns*(i-1))+1:(4*Ns*(i)),1)=Xhat(:,i);
+     
+ end
 
-%Xhat2 = zeros(4*Nv*Ns,1); 
-Xhat2=[];
-for i = 0:Nv-1
-    Xhat2 = [Xhat2; Xhat(:,i+1)]; 
-end
 disp('done constructing Xhat2'); 
 
 % sample i, vehicle j
@@ -53,13 +59,30 @@ tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
 zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
 dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
 uind = @(i,j) 4*i + 4*Ns*(j-1);
-disp(size(Xhat2));
-%disp(dzind(Ns-1,Nv)); 
 
 % box constraints
-Acol = []; 
-Acol = sparse(Acol);
-bcol = []; 
+A2eq = []; 
+A2eq = sparse(A2eq);
+b2eq = []; 
+
+A2ineq = []; 
+A2ineq = sparse(A2ineq);
+b2ineq = []; 
+
+ub2 = zeros(4*Ns*Nv,1); 
+lb2 = zeros(4*Ns*Nv,1); 
+
+%matris f�r v�nsterled i ekvation f�r startv�rden
+Aeq2=zeros(4*Ns);
+beq1 = zeros(4*Ns,Nv);
+
+
+for i=1:3
+    Aeq2(i,i)=1;
+end
+
+
+
 for i = 1:Ns-1
     for j = 1:Nv         
         cond = sparse(4,4*Ns*Nv);
@@ -80,86 +103,28 @@ for i = 1:Ns-1
         cond(3,uind(i,j)) = - Sddz/Sdz*ds;
         
         cond(4,:) = zeros(1,4*Ns*Nv); 
-        Acol = [Acol; cond];
-        bcol = [bcol; [0 0 0 0]']; 
+        A2eq = [A2eq; cond];
+        b2eq = [b2eq; [0 0 0 0]']; 
         
     end
 end
-disp('done constructing matrix'); 
-disp(size(Acol)); 
-
-% box constraints
-constraints=[constraints; Acol*Xhat2 == 0]; 
-
-Aeq2=zeros(4*Ns);
-for i=1:3
-    Aeq2(i,i)=1;
+% initial values
+for i = 1:Nv
+   cond = zeros(3,4*Ns*Nv);
+   cond(1,tind(1,i)) = 1; 
+   cond(2,zind(1,i)) = 1;
+   cond(3,dzind(1,i)) = 1;
+   A2eq = [A2eq;cond]; 
+   b2eq = [b2eq; [0 1/vstart(i)/Sz 0]']; 
+   %b2eq = [b2eq; [0 0 0]']; 
 end
-
-beq2 = zeros(4*Ns,Nv);
-Aeq11 = zeros(1,4*Ns); 
-Aeq12 = zeros(1,4*Ns);
 
 for i=1:Nv
-        c1 = -amin*3*vref*Sz/(vref^3)/Sdz;
-        c2 = 2*amin/vref^3/Sdz;
-        c3 = -V(i).axmax*3*vref*Sz/(vref^3)/Sdz;
-        c4 = V(i).axmax*2/vref^3/Sdz;
-        
-        beq2(1, i) = 0;
-        beq2(2,i) = 1/vstart/Sz;
-        beq2(3,i) = 0;
-        
-    for j = 1:Ns
-        % equality constraints
-
-        
-        % less than constraints
-
-        %constraints = [constraints, X(3*i,j) - c1*X(3*i-1,j)  <= c2];
-        %equation 1
-        %constraints=[constraints, X(3*i-1,:)<=1/V(i).vxmin/Sz];
-        
-        % greater than constraints
-
-        %constraints = [constraints, -X(3*i,j) + c3*X(3*i-1,j) <= c4];
-        % equation 2
-        
-
-       Aeq11(4*j-1) = 1;
-       Aeq11(4*j-2) = -c1;
-       b1(1,i) = c2;
-       
-       Aeq12(4*j -1) = -1; 
-       Aeq12(4*j -2) = c3;
-       b2(1,i) = c4; % todo build this in terms of Xhat2 and append to Acol
-       
-       %cond = zeros(2,4*Ns*Nv); 
-       %cond(1,ddzind(j,i)) = 1; 
-       %cond(1,zind(j,i)) = -c1; 
-       
-       %Acol = [Acol; cond];
-       % do not forget appending to bcol 
-       % also move counstraints appending to below this loop
-        
-    end
+    %rhs for initial values
+    beq1(1, i) = 0;
+    beq1(2,i) = 1/vstart(i)/Sz;
+    beq1(3,i) = 0;
 end
-% box constraints
-% equation 1
-Aineq_f = [Aeq11;Aeq12];
-bineq_f = [b1;b2];
-constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
-constraints=[constraints, Aeq2*Xhat==beq2];
-
-% critical zone constraint, todo: append constraints as a general box
-% constraint
-% sample i vehicle j 
-% tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-% zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
-% dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
-% uind = @(i,j) 4*i + 4*Ns*(j-1);
-% disp(size(Xhat2));
-
 
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
@@ -167,72 +132,58 @@ for i = 1:Nv-1
     ind2 = co(i);
     ind3 = 4*V(co(i+1)).Nzs-3;
     ind4 = co(i+1);
-    constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0]; 
+    %constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0];
     
-         %t(V(co(j)).Nze, co(j)) <= t(V(co(j+1)).Nzs,co(j+1)) ];
-         sample1 = V(co(i)).Nze; 
-         vehicle1 = co(i); 
-         xind1 = tind(sample1,vehicle1); 
-         
-         sample2 = V(co(i+1)).Nzs; 
-         vehicle2 = co(i+1); 
-         xind2=tind(sample2,vehicle2); 
-         constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; % append this condition to Acol, not Aineq
-         
-         cond = zeros(1,4*Nv*Ns); 
-         cond(1,xind1) = 1; 
-         cond(1,xind2) = -1; 
-         %disp(size(Acol)); 
-         %disp(size(cond)); 
-         Acol = [Acol;cond]; 
+    sample1 = V(co(i)).Nze;
+    vehicle1 = co(i);
+    xind1 = tind(sample1,vehicle1);
+    
+    sample2 = V(co(i+1)).Nzs;
+    vehicle2 = co(i+1);
+    xind2=tind(sample2,vehicle2);
+    constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
+    
+    cond = zeros(1,4*Nv*Ns);
+    cond(xind1) = 1;
+    cond(xind2) = -1;
+    A2ineq = [A2ineq;cond];
+    b2ineq = [b2ineq; 0];
     
 end
 
 vln = 100000; % very small and large numbers, used for non-constraints
 vsn = - vln;
-%lowerbound constraints
-lb=zeros(4*Ns,Nv);
-for i=1:Ns
-    for j=1:Nv
-        ub(4*i-3,j)= vln; 
-        ub(4*i-2,j)=1/V(j).vxmin/Sz;
-        ub(4*i-1,j) = vln; 
-        ub(4*i,j) = vln; 
-    end
-     
-end
-for i=1:Ns
-    for j=Nv
-        constraints=[constraints, Xhat(4*i-3,j)<=ub(4*i-3,j)];
-        constraints=[constraints, Xhat(4*i-2,j)<=ub(4*i-2,j)];
-        constraints=[constraints, Xhat(4*i-1,j)<=ub(4*i-1,j)];
-        constraints=[constraints, Xhat(4*i,j)<=ub(4*i,j)];
-    end
-    
+
+
+for i = 1:Ns
+   for j = 1:Nv
+       lb2(tind(i,j)) = vsn; 
+       lb2(zind(i,j)) = 1/V(j).vxmax/Sz; 
+       lb2(dzind(i,j)) = vsn; 
+       lb2(uind(i,j)) = vsn; 
+   end
 end
 
 
-%upperbound constraints % todo: set "undefined" elements to very large or
-%very small number
-ub=zeros(4*Ns,Nv);
-for i=1:Ns
-    for j=1:Nv
-        lb(4*i-3,j) = vsn; 
-        lb(4*i-2,j)=1/V(j).vxmax/Sz;
-        lb(4*i-1,j) = vsn; 
-        lb(4*i,j) = vsn; 
-    end
-      
-end
-for i=1:Ns
-    for j=Nv
-        constraints=[constraints, Xhat(4*i-3,j)>=lb(4*i-3,j)];
-        constraints=[constraints, Xhat(4*i-2,j)>=lb(4*i-2,j)];
-        constraints=[constraints, Xhat(4*i-1,j)>=lb(4*i-1,j)];
-        constraints=[constraints, Xhat(4*i,j)>=lb(4*i,j)];
-    end  
+for i = 1:Ns
+   for j = 1:Nv
+       ub2(tind(i,j)) = vln; 
+       ub2(zind(i,j)) = 1/V(j).vxmin/Sz; 
+       ub2(dzind(i,j)) = vln; 
+       ub2(uind(i,j)) = vln; 
+   end
 end
 
+
+%constraints = [constraints; Xhat >= lb]; 
+%constraints = [constraints; Xhat <= ub]; 
+%constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
+%constraints=[constraints, Aeq2*Xhat==beq1]; 
+
+constraints=[constraints; A2eq*Xhat2 == b2eq];
+constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
+constraints = [constraints; lb2 <= Xhat2];
+constraints = [constraints; Xhat2 <= ub2]; 
 
 cost=[];
 cost1=[];
@@ -265,7 +216,7 @@ if sol.problem == 0
 else
     res.status=sol.info;
     display(sol.info);
-    display('optimization failed for some reason');
+    display('optimization failed');
 end
 
 end

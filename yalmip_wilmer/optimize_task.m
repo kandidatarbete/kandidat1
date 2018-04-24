@@ -3,12 +3,23 @@ resopt=struct;
 ttot=0;
 resopt.cost=Inf;
 
+ss = []; 
+j = 76;
+vref = [];
+for i = 1:task.Nv
+    %vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+    ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
+    j = j+10;
+end
+vstart=12*ones(task.Nv,1);
+astart=0*ones(task.Nv,1);
 %OPTIMIZE_TASK Summary of this function goes here
 %   Detailed explanation goes here
 for j=1:size(task.crossorderperm,1)
     task.crossingorder=task.crossorderperm(j,:);
     %res=QPsolveY4(task);
-    res=QPsolveY5_new(task);
+    %res=QPsolveY5_new(task);
+    res = QPsolveY_MPC(task, astart,vstart,ss);
     %res = QPsolveY6(task);
     %res=QPsolveY8(task);
     ttot=ttot+res.time(end);

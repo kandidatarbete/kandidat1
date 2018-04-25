@@ -200,6 +200,13 @@ for i= 1:Ns
       H(zind(i,j)) = Wv*vref.^3;
       f(zind(i,j),1) = -2*1/vref; 
       
+      % second
+      H(dzind(i,j)) = Wdv*vref^5; 
+      f(zind(i,j),1) = 0; 
+      
+      % third 
+      H(uind(i,j)) = Wddv*vref^7; 
+      f(uind(i,j)) = 0; 
    end
 end
 H = 0.5*H + 0.5*H'; % symmetrization

@@ -224,6 +224,8 @@ for i=1:Nv
     %cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
 end
 cost=[cost,cost1,cost2,cost3, cost12]./Scost;
+XhatOptimized=quadprog(H,f,A2ineq,b2ineq,A2eq,b2eq,lb2,ub2);
+disp(XhatOptimized)
 %options     = sdpsettings('verbose',0,'solver','ecos','debug', 1);
 options     = sdpsettings('verbose',0,'debug', 1);
 sol         = optimize(constraints, sum(cost), options);
@@ -235,12 +237,24 @@ if sol.problem == 0
     res.cost=sum(value(cost));
     res.v=[];
     res.t=[];
+    res.v2=[];
+    res.t2=[];
     for i=1:Nv
         res.v=[res.v; 1./value(X(3*i-1,:))/Sz];
         res.t=[res.t; value(X(3*i-2,:))*St];
+        for j=1:Ns
+        
+            res.v2(j,i)=1./XhatOptimized(zind(j,i),1)/Sz;
+            res.t2(j,i)=XhatOptimized(tind(j,i),1)*St;
+        end
     end
     res.v=res.v';
     res.t=res.t';
+
+    %res.v2=res.v2';
+    %res.t2=res.t2';
+    disp( res.v)
+    disp( res.v2)
     %res.v=1./value(z(:,1:Ns))'/Sz;
 else
     res.status=sol.info;

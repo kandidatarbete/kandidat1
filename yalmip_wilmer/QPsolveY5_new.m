@@ -192,7 +192,7 @@ constraints = [constraints; Xhat2 <= ub2];
 % uind = @(i,j) 4*i + 4*Ns*(j-1);
 
 % construct cost function
-H = sparse(4*Ns*Nv, 4*Ns*Nv);
+H = sparse(4*Ns*Nv, 1);
 f = sparse(4*Ns*Nv,1); 
 for i= 1:Ns
    for j = 1:Nv
@@ -209,7 +209,8 @@ for i= 1:Ns
       f(uind(i,j)) = 0; 
    end
 end
-H = 0.5*H + 0.5*H'; % symmetrization
+H=diag(H);
+%H = 0.5*H + 0.5*H'; % symmetrization
 cost12 = Xhat2'*H*Xhat2 + f'*Xhat2; 
 
 cost=[];
@@ -218,9 +219,9 @@ cost2=[];
 cost3=[];
 
 for i=1:Nv
-    cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
-    cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
-    cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
+   % cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
+   % cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
+    %cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
 end
 cost=[cost,cost1,cost2,cost3, cost12]./Scost;
 %options     = sdpsettings('verbose',0,'solver','ecos','debug', 1);

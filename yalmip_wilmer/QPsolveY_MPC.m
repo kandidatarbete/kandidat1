@@ -1,9 +1,9 @@
-function res=QPsolveY5_new(task)
+function res=QPsolveY_MPC(task,astart,vstart,ss)
 V=task.V; 
 Ns=task.Ns;
 Nv=task.Nv; 
 ds=task.ds;
-co=[1:20];
+co=1:Nv;
 
 % scaling factors
 St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
@@ -11,11 +11,37 @@ St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
 %penalties
 Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
+
+max_s = 220;
+task.s=[0:task.ds:max_s]';            %[m] vector of traversed distance
+task.Ns=numel(task.s);
+
+se=ss+task.I.criticalzone;  
+
+
+for j=1:task.Nv
+    task.V(j).s=task.s; % (initial) distance for vehicle j
+    task.V(j).ss=ss(j); % distance at which vehicle j enters (starts) the critical zone
+    task.V(j).se=se(j);
+end
+
+
+%% Critical zone
+for j=1:task.Nv
+    task.V(j).Nzs=find(task.s <= task.V(j).ss,1,'last');  % number of samples until the vehicle enters the critical zone
+    disp(task.V(j).Nzs);
+    task.V(j).Nze=find(task.s >= task.V(j).se,1,'first');   % number of samples until the vehicle leaves the critical zone
+    disp(task.V(j).Nze); 
+    task.V(j).vrmean=mean(task.V(j).vref);  % mean reference speed
+end
+disp(task.V(1).Nze)
+
+
 yalmip('clear')
 vref=50;
-vstart=12*ones(Nv,1);
-astart=0*ones(Nv,1);
-sstart=0*ones(Nv,1);
+%vstart=12*ones(Nv,1);
+%astart=0*ones(Nv,1);
+%sstart=0*ones(Nv,1);
 amin=-5;
 %bromstid
 deltat=20;
@@ -128,20 +154,20 @@ end
 
 for i = 1:Nv-1
     Aoc = zeros(Nv,4*Ns);
-    ind1 = 4*V(co(i)).Nze-3;
+    ind1 = 4*task.V(co(i)).Nze-3;
     ind2 = co(i);
-    ind3 = 4*V(co(i+1)).Nzs-3;
+    ind3 = 4*task.V(co(i+1)).Nzs-3;
     ind4 = co(i+1);
     %constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0];
     
-    sample1 = V(co(i)).Nze;
+    sample1 = task.V(co(i)).Nze;
     vehicle1 = co(i);
     xind1 = tind(sample1,vehicle1);
     
-    sample2 = V(co(i+1)).Nzs;
+    sample2 = task.V(co(i+1)).Nzs;
     vehicle2 = co(i+1);
     xind2=tind(sample2,vehicle2);
-    %constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
+    constraints = [constraints, Xhat2(xind1) <= Xhat2(xind2)]; 
     
     cond = zeros(1,4*Nv*Ns);
     cond(xind1) = 1;
@@ -151,7 +177,7 @@ for i = 1:Nv-1
     
 end
 
-vln = 100000; % very small and large numbers, used for "non-constraints"
+vln = 100000; % very small and large numbers, used for non-constraints
 vsn = - vln;
 
 
@@ -185,44 +211,16 @@ constraints = [constraints; A2ineq*Xhat2 == b2ineq];
 constraints = [constraints; lb2 <= Xhat2];
 constraints = [constraints; Xhat2 <= ub2]; 
 
-% % sample i, vehicle j
-% tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-% zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
-% dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
-% uind = @(i,j) 4*i + 4*Ns*(j-1);
-
-% construct cost function
-H = sparse(4*Ns*Nv, 4*Ns*Nv);
-f = sparse(4*Ns*Nv,1); 
-for i= 1:Ns
-   for j = 1:Nv
-      % first cost function
-      H(zind(i,j)) = Wv*vref.^3;
-      f(zind(i,j),1) = -2*1/vref; 
-      
-      % second
-      H(dzind(i,j)) = Wdv*vref^5; 
-      f(zind(i,j),1) = 0; 
-      
-      % third 
-      H(uind(i,j)) = Wddv*vref^7; 
-      f(uind(i,j)) = 0; 
-   end
-end
-H = 0.5*H + 0.5*H'; % symmetrization
-cost12 = Xhat2'*H*Xhat2 + f'*Xhat2; 
-
 cost=[];
 cost1=[];
 cost2=[];
 cost3=[];
-
 for i=1:Nv
     cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
     cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
     cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
 end
-cost=[cost,cost1,cost2,cost3, cost12]./Scost;
+cost=[cost,cost1,cost2,cost3]./Scost;
 %options     = sdpsettings('verbose',0,'solver','ecos','debug', 1);
 options     = sdpsettings('verbose',0,'debug', 1);
 sol         = optimize(constraints, sum(cost), options);

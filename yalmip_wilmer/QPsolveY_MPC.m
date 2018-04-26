@@ -62,6 +62,7 @@ for i=1:Nv
     U(3*i,:)=u(i,:);
 end
 Xhat=sdpvar(4*Ns,Nv);
+
 for i = 1:Nv
     for j = 1:Ns
         Xhat(j*4-3,i)= t(i,j);
@@ -70,6 +71,7 @@ for i = 1:Nv
         Xhat(j*4,i)=u(i,j);
     end
 end
+
 constraints  = [];
 
  Xhat2 = sdpvar(4*Nv*Ns,1);
@@ -239,6 +241,13 @@ if sol.problem == 0
     res.v=res.v';
     res.t=res.t';
     %res.v=1./value(z(:,1:Ns))'/Sz;
+    for i=1:Ns-1
+        for j=1:Nv
+            res.a(j,i)=(res.v(i+1,j)-res.v(i,j))/(res.t(i+1,j)-res.t(i,j));
+        end
+    end
+    res.a=res.a';
+    disp(res.a)
 else
     res.status=sol.info;
     display(sol.info);

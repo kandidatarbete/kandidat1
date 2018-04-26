@@ -1,11 +1,11 @@
-function task = gen_task(random) 
+function task = gen_task2(a,v,s,entryangle,exitangle,random) 
 task=struct;                        % we keep all data here
 task.ds=1;                          %[m] sampling interval
 %max_s = 110;
 max_s = 220;
 task.s=[0:task.ds:max_s]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
-task.Nv=4;                          % number of vehicles
+task.Nv=length(entryangle);                          % number of vehicles
 task.I=intersection;
 
 task.V(1:task.Nv)=standardcar;
@@ -23,33 +23,40 @@ for i=1:task.Nv
     task.V(i).exitangle=randsample(setdiff(0:3, randomentryangleadd(i)/(pi/2)), 1)'*pi/2;
 end
 else
-    for i=1:task.Nv/2
-        task.V(2*i).entryangle=0;       
-        task.V(2*i).exitangle=pi;
- 
-        task.V(2*i-1).entryangle=pi/2;
-        task.V(2*i-1).exitangle=3/2*pi;
+%     for i=1:task.Nv/2
+%         task.V(2*i).entryangle=0;       
+%         task.V(2*i).exitangle=pi;
+%  
+%         task.V(2*i-1).entryangle=pi/2;
+%         task.V(2*i-1).exitangle=3/2*pi;
+%     end
+    for i=1:task.Nv
+        task.V(i).entryangle=entryangle(i);
+        task.V(i).exitangle=exitangle(i);
     end
-
 end
 ss = []; 
-j = 76;
-vref = [];
+j=150; %distance to center of intersection
+task.I.criticalzone;
+%vref hardcoded to 50 for all vehicles TODO
+vref = ones(task.Nv)*50; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
 for i = 1:task.Nv
-    vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
-    ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
-    j = j+10;
+
+    ss(i) = j-s(i)-task.I.criticalzone/2; %[m] distance at which the vehicle enters the critical zone
+    se(i)=ss(i)+task.I.criticalzone;
 end
 %entryangle = entryangle + randomentryangleadd; %+ randomentryangleadd;
-se=ss+task.I.criticalzone;          %[m] distance at which the vehicle exits the critical zone
+          %[m] distance at which the vehicle exits the critical zone
 %exitangle=mod(entryangle - pi/2,2*pi);  % + (random half integer) * pi mod 2 pi 
 %exitangle = entryangle;
 
 for j=1:task.Nv
-    task.V(j).s=task.s; % (initial) distance for vehicle j
+    %task.V(j).s=task.s; % (initial) distance for vehicle j
     task.V(j).ss=ss(j); % distance at which vehicle j enters (starts) the critical zone
     task.V(j).se=se(j); % distance at which vehicle j exits the critical zone
-   % disp(randomentryangleadd(j))
+    task.V(j).vstart=v(j);
+    task.V(j).astart=a(j);
+    % disp(randomentryangleadd(j))
     %task.V(j).entryangle=randomentryangleadd(j); % entry angle for vehicle j
     %task.V(j).exitangle=randomturnangle(j); % exit angle for vehicle j
     task.V(j).vref=vref(j)*ones(task.Ns,1);  % reference speed for vehicle j

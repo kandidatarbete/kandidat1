@@ -36,7 +36,7 @@ ss = [];
 j = 76;
 vref = [];
 for i = 1:task.Nv
-    vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+    vref = [vref; 17]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
     ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
     j = j+10;
 end

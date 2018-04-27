@@ -132,12 +132,6 @@ end
 %constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
 %constraints = [constraints; lb2 <= Xhat2];
 %constraints = [constraints; Xhat2 <= ub2]; 
-% 
-% % % sample i, vehicle j
-%  tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-%  zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
-%  dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
-%  uind = @(i,j) 4*i + 4*Ns*(j-1);
 
 % construct cost function
 H = zeros(4*Ns*Nv, 1);
@@ -180,6 +174,25 @@ if sol.problem == 0
     end
     res.v=res.v2;
     res.t=res.t2;
+    
+    for i=1:Ns-1
+        for j=1:Nv
+            res.a(j,i)=(res.v(i+1,j)-res.v(i,j))/(res.t(i+1,j)-res.t(i,j));
+        end
+    end
+    res.a=res.a';
+    disp(res.t);
+    disp(res.a);
+    res.GI=struct;
+    for i=1:Nv
+       
+        res.GI.i=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
+    
+        
+    end
+    
+    
+    
 else
     res.status=sol.info;
     display(sol.info);

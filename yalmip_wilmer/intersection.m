@@ -9,7 +9,7 @@ I.segments=4;               % number of road segments intersecting (2 roads cros
 I.numlanes=2;               % number of lanes
 I.lanewidth=5;              %[m] lane width
 I.speedlimit=70/3.6;        %[m/s] speed limit
-I.criticalzone=15;          %[m] size of critical zone
+I.criticalzone=25;          %[m] size of critical zone
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Created by Nikolce Murgovski, 2015-10.

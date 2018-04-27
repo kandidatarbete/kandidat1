@@ -4,13 +4,17 @@ ttot=0;
 resopt.cost=Inf;
 
 ss = []; 
-j = 76;
+j = -145;
 vref = [];
-for i = 1:task.Nv
+for i = 1:task.Nv/4
     %vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
-    ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
-    j = j+10;
+    k=j+(i-1)*30
+    for i=1:4
+    ss = [ss; k]; %[m] distance at which the vehicle enters the critical zone
+    end
+    
 end
+task.crossorder=coHeuristic(ss);
 vstart=12*ones(task.Nv,1);
 astart=0*ones(task.Nv,1);
 %OPTIMIZE_TASK Summary of this function goes here

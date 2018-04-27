@@ -181,8 +181,6 @@ if sol.problem == 0
         end
     end
     res.a=res.a';
-    disp(res.t);
-    disp(res.a);
     res.GI=struct;
     for i=1:Nv
        

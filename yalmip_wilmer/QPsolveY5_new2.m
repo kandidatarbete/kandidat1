@@ -3,7 +3,7 @@ V=task.V;
 Ns=task.Ns;
 Nv=task.Nv; 
 ds=task.ds;
-co=[1:20];
+co=task.crossorder;
 
 % scaling factors
 St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;

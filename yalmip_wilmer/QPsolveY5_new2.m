@@ -181,12 +181,11 @@ if sol.problem == 0
         end
     end
     res.a=res.a';
-    res.GI=struct;
+    %res.GI=struct;
+    GI = cell(Nv,1);
     for i=1:Nv
-       
-        res.GI.i=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
-    
-        
+     GI{i}=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
+      
     end
     
     

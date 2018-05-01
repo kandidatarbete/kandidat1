@@ -1,9 +1,9 @@
-function res=QPsolveY5_new(task)
+function res=QPsolveY5_new2(task,astart,vstart,ss)
 V=task.V; 
 Ns=task.Ns;
 Nv=task.Nv; 
 ds=task.ds;
-co=[1:20];
+co=task.crossorder;
 
 % scaling factors
 St=task.St; Sz=task.Sz; Sdz=task.Sdz; Sddz=task.Sddz; Scost=task.Scost;
@@ -13,44 +13,12 @@ Wv=task.Wv; Wdv=task.Wdv; Wddv=task.Wddv;
 %%
 yalmip('clear')
 vref=50;
-vstart=12*ones(Nv,1);
-astart=0*ones(Nv,1);
-sstart=0*ones(Nv,1);
+%vstart=12*ones(Nv,1);
+%astart=0*ones(Nv,1);
+%sstart=0*ones(Nv,1);
 amin=-5;
 %bromstid
-deltat=20;
-k=1:Ns-1;
-t = sdpvar(Nv,Ns,'full');
-z= sdpvar(Nv,Ns,'full');
-dz=sdpvar(Nv,Ns,'full');
-u=sdpvar(Nv,Ns,'full');
 
-for i=1:Nv
-    X(3*i-2,:)=t(i,:);
-    X(3*i-1,:)=z(i,:);
-    X(3*i,:)=dz(i,:);
-end
-
-% control signal for acceleration
-for i=1:Nv
-    U(3*i,:)=u(i,:);
-end
-Xhat=sdpvar(4*Ns,Nv);
-for i = 1:Nv
-    for j = 1:Ns
-        Xhat(j*4-3,i)= t(i,j);
-        Xhat(j*4-2,i)= z(i,j);
-        Xhat(j*4-1,i)=dz(i,j);
-        Xhat(j*4,i)=u(i,j);
-    end
-end
-constraints  = [];
-
- Xhat2 = sdpvar(4*Nv*Ns,1);
- for i=1:Nv
-     Xhat2((4*Ns*(i-1))+1:(4*Ns*(i)),1)=Xhat(:,i);
-     
- end
 
 disp('done constructing Xhat2'); 
 
@@ -74,24 +42,18 @@ lb2 = zeros(4*Ns*Nv,1);
 
 %matris f�r v�nsterled i ekvation f�r startv�rden
 Aeq2=zeros(4*Ns);
-beq1 = zeros(4*Ns,Nv);
-
 
 for i=1:3
     Aeq2(i,i)=1;
 end
 
-
-
 for i = 1:Ns-1
     for j = 1:Nv         
-        cond = sparse(4,4*Ns*Nv);
+        cond = zeros(4,4*Ns*Nv);
         cond(1,tind(i+1,j)) = 1;
         cond(1,tind(i,j)) = -1;
         cond(1,zind(i,j)) = - ds;
-        %Acol = [Acol; cond];
-        
-        %cond = zeros(1,4*Ns*Nv);
+       
         cond(2,zind(i+1,j)) = 1;
         cond(2,zind(i,j)) = -1;
         cond(2,dzind(i,j)) = - ds;
@@ -115,24 +77,10 @@ for i = 1:Nv
    cond(2,zind(1,i)) = 1;
    cond(3,dzind(1,i)) = 1;
    A2eq = [A2eq;cond]; 
-   b2eq = [b2eq; [0 1/vstart(i)/Sz 0]']; 
-   %b2eq = [b2eq; [0 0 0]']; 
-end
-
-for i=1:Nv
-    %rhs for initial values
-    beq1(1, i) = 0;
-    beq1(2,i) = 1/vstart(i)/Sz;
-    beq1(3,i) = 0;
+   b2eq = [b2eq; [0 1/vstart(i)/Sz 0]'];  
 end
 
 for i = 1:Nv-1
-    Aoc = zeros(Nv,4*Ns);
-    ind1 = 4*V(co(i)).Nze-3;
-    ind2 = co(i);
-    ind3 = 4*V(co(i+1)).Nzs-3;
-    ind4 = co(i+1);
-    %constraints = [constraints, Xhat(ind1,ind2) - Xhat(ind3,ind4) <= 0];
     
     sample1 = V(co(i)).Nze;
     vehicle1 = co(i);
@@ -180,20 +128,14 @@ end
 %constraints = [constraints, Aineq_f*Xhat <= bineq_f]; 
 %constraints=[constraints, Aeq2*Xhat==beq1]; 
 
-constraints=[constraints; A2eq*Xhat2 == b2eq];
-constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
-constraints = [constraints; lb2 <= Xhat2];
-constraints = [constraints; Xhat2 <= ub2]; 
-
-% % sample i, vehicle j
-% tind = @(i,j) 4*i-3 + 4*Ns*(j-1);
-% zind = @(i,j) 4*i-2 + 4*Ns*(j-1);
-% dzind = @(i,j) 4*i-1 + 4*Ns*(j-1); 
-% uind = @(i,j) 4*i + 4*Ns*(j-1);
+%constraints=[constraints; A2eq*Xhat2 == b2eq];
+%constraints = [constraints; A2ineq*Xhat2 == b2ineq]; 
+%constraints = [constraints; lb2 <= Xhat2];
+%constraints = [constraints; Xhat2 <= ub2]; 
 
 % construct cost function
-H = sparse(4*Ns*Nv, 1);
-f = sparse(4*Ns*Nv,1); 
+H = zeros(4*Ns*Nv, 1);
+f = zeros(4*Ns*Nv,1); 
 for i= 1:Ns
    for j = 1:Nv
       % first cost function
@@ -210,52 +152,44 @@ for i= 1:Ns
    end
 end
 H=diag(H);
-%H = 0.5*H + 0.5*H'; % symmetrization
-cost12 = Xhat2'*H*Xhat2 + f'*Xhat2; 
+H=sparse(H);
 
-cost=[];
-cost1=[];
-cost2=[];
-cost3=[];
-
-for i=1:Nv
-   % cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
-   % cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
-    %cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
-end
-cost=[cost,cost1,cost2,cost3, cost12]./Scost;
 XhatOptimized=quadprog(H,f,A2ineq,b2ineq,A2eq,b2eq,lb2,ub2);
-disp(XhatOptimized)
-%options     = sdpsettings('verbose',0,'solver','ecos','debug', 1);
-options     = sdpsettings('verbose',0,'debug', 1);
-sol         = optimize(constraints, sum(cost), options);
-
+cost12 = XhatOptimized'*H*XhatOptimized + f'*XhatOptimized;
+sol         = struct;
+sol.problem=0;
 %%
 if sol.problem == 0
     res.status='Solved';
-    res.time=sol.solvertime;
-    res.cost=sum(value(cost));
-    res.v=[];
-    res.t=[];
+    
+    res.cost=sum(cost12);
     res.v2=[];
     res.t2=[];
     for i=1:Nv
-        res.v=[res.v; 1./value(X(3*i-1,:))/Sz];
-        res.t=[res.t; value(X(3*i-2,:))*St];
         for j=1:Ns
         
             res.v2(j,i)=1./XhatOptimized(zind(j,i),1)/Sz;
             res.t2(j,i)=XhatOptimized(tind(j,i),1)*St;
         end
     end
-    res.v=res.v';
-    res.t=res.t';
-
-    %res.v2=res.v2';
-    %res.t2=res.t2';
-    disp( res.v)
-    disp( res.v2)
-    %res.v=1./value(z(:,1:Ns))'/Sz;
+    res.v=res.v2;
+    res.t=res.t2;
+    
+    for i=1:Ns-1
+        for j=1:Nv
+            res.a(j,i)=(res.v(i+1,j)-res.v(i,j))/(res.t(i+1,j)-res.t(i,j));
+        end
+    end
+    res.a=res.a';
+    %res.GI=struct;
+    GI = cell(Nv,1);
+    for i=1:Nv
+     GI{i}=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
+      
+    end
+    
+    
+    
 else
     res.status=sol.info;
     display(sol.info);

@@ -1,4 +1,4 @@
-function [res] = fulmpc([a],[v],[s], [entryangle], [exitangle])
+function [res] = MPC([a],[v],[s], [entryangle], [exitangle])
     %FULMPC Summary of this function goes here
     %   Wrapper för optimize task samt interface mot simulink
     % v s och a kolonnvektorer

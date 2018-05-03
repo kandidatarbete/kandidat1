@@ -168,7 +168,8 @@ if sol.problem == 0
     for i=1:Nv
         for j=1:Ns
         
-            res.v2(j,i)=1./XhatOptimized(zind(j,i),1)/Sz;
+            %res.v2(j,i)=1./XhatOptimized(zind(j,i),1)/Sz;
+            res.v2(j,i)=1./XhatOptimized(zind(j,i),1)/Sz^2;
             res.t2(j,i)=XhatOptimized(tind(j,i),1)*St;
         end
     end
@@ -180,7 +181,7 @@ if sol.problem == 0
             res.a(j,i)=(res.v(i+1,j)-res.v(i,j))/(res.t(i+1,j)-res.t(i,j));
         end
     end
-    res.a=res.a';
+    %save('accel.m.','res.a');
 %     res.GI=struct;
 %     %res.GI = cell(Nv,1);
 %     %res.GI = []; 

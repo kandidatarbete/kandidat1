@@ -185,7 +185,7 @@ if sol.problem == 0
     %res.GI = cell(Nv,1);
     for i=1:Nv
         
-     res.GI.("v"+i)=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
+     res.GI.(string('v')+i)=griddedInterpolant(res.t(2:Ns,i),res.a(:,i));
       
     end
     

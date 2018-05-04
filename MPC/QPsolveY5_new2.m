@@ -181,6 +181,8 @@ if sol.problem == 0
             res.a(j,i)=(res.v(i+1,j)-res.v(i,j))/(res.t(i+1,j)-res.t(i,j));
         end
     end
+    a=a'; 
+    
     %save('accel.m.','res.a');
 %     res.GI=struct;
 %     %res.GI = cell(Nv,1);

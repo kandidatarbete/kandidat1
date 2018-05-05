@@ -6,7 +6,7 @@ function res = fulmpc(a,v,s, entryangle, exitangle, time)
 
     %task=gen_task2(a,v,s,entryangle,exitangle,false);
     %task = optimize_task(task);
-    task=gen_task(false)
+   task=gen_task(false);
    
     res = ones(1,20);
 end

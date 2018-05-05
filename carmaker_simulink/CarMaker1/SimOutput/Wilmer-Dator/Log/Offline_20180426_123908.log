@@ -1,0 +1,12 @@
+SIM_START	test	2018-04-26 13:12:18
+TIME	0.000
+SIMULATE	test
+
+TIME	17.165
+ERROR		Vehicle leaves road at about x=155.529, y=153.004 TireNo=1
+SIM_ABORT	test	17.167s	141.297m
+SIM_START	test	2018-04-26 13:14:38
+TIME	0.000
+SIMULATE	test
+
+SIM_END		test	0s	0m

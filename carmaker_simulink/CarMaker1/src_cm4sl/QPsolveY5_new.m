@@ -192,7 +192,11 @@ constraints = [constraints; Xhat2 <= ub2];
 % uind = @(i,j) 4*i + 4*Ns*(j-1);
 
 % construct cost function
+<<<<<<< HEAD
+H = sparse(4*Ns*Nv, 4*Ns*Nv);
+=======
 H = sparse(4*Ns*Nv, 1);
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
 f = sparse(4*Ns*Nv,1); 
 for i= 1:Ns
    for j = 1:Nv
@@ -209,8 +213,12 @@ for i= 1:Ns
       f(uind(i,j)) = 0; 
    end
 end
+<<<<<<< HEAD
+H = 0.5*H + 0.5*H'; % symmetrization
+=======
 H=diag(H);
 %H = 0.5*H + 0.5*H'; % symmetrization
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
 cost12 = Xhat2'*H*Xhat2 + f'*Xhat2; 
 
 cost=[];
@@ -219,6 +227,13 @@ cost2=[];
 cost3=[];
 
 for i=1:Nv
+<<<<<<< HEAD
+    cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
+    cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
+    cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
+end
+cost=[cost,cost1,cost2,cost3, cost12]./Scost;
+=======
    % cost1 = [cost1,Wv*vref^3.*sum((X(3*i-1,:)-1/vref).^2)]; % equation 4a
    % cost2 = [cost2, Wdv*vref^5.*sum((X(3*i,:).^2))]; % equation 4b
     %cost3 = [cost3, Wddv*vref^7.*sum((U(3*i,:).^2))]; % equation 4c
@@ -226,6 +241,7 @@ end
 cost=[cost,cost1,cost2,cost3, cost12]./Scost;
 XhatOptimized=quadprog(H,f,A2ineq,b2ineq,A2eq,b2eq,lb2,ub2);
 disp(XhatOptimized)
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
 %options     = sdpsettings('verbose',0,'solver','ecos','debug', 1);
 options     = sdpsettings('verbose',0,'debug', 1);
 sol         = optimize(constraints, sum(cost), options);
@@ -237,6 +253,14 @@ if sol.problem == 0
     res.cost=sum(value(cost));
     res.v=[];
     res.t=[];
+<<<<<<< HEAD
+    for i=1:Nv
+        res.v=[res.v; 1./value(X(3*i-1,:))/Sz];
+        res.t=[res.t; value(X(3*i-2,:))*St];
+    end
+    res.v=res.v';
+    res.t=res.t';
+=======
     res.v2=[];
     res.t2=[];
     for i=1:Nv
@@ -255,6 +279,7 @@ if sol.problem == 0
     %res.t2=res.t2';
     disp( res.v)
     disp( res.v2)
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
     %res.v=1./value(z(:,1:Ns))'/Sz;
 else
     res.status=sol.info;

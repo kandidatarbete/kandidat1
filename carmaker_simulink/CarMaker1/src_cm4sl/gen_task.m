@@ -5,7 +5,11 @@ task.ds=1;                          %[m] sampling interval
 max_s = 220;
 task.s=[0:task.ds:max_s]';            %[m] vector of traversed distance
 task.Ns=numel(task.s);
+<<<<<<< HEAD
+task.Nv=4;                          % number of vehicles
+=======
 task.Nv=20;                          % number of vehicles
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
 task.I=intersection;
 
 task.V(1:task.Nv)=standardcar;
@@ -36,7 +40,11 @@ ss = [];
 j = 76;
 vref = [];
 for i = 1:task.Nv
+<<<<<<< HEAD
+    vref = [vref; 50]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+=======
     vref = [vref; 17]; %[m/s] reference speed for the vehicles (the first task.Nv elements are used)
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
     ss = [ss; j]; %[m] distance at which the vehicle enters the critical zone
     j = j+10;
 end

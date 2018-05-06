@@ -33,6 +33,13 @@ function out = fulmpc(a,v,s, entryangle, exitangle, time)
     %aout(1:20)=10;
     out=vout;
     
+<<<<<<< HEAD
+
+    %task=gen_task2(a,v,s,entryangle,exitangle,false);
+    %task = optimize_task(task);
+   task=gen_task(false);
+=======
+>>>>>>> 203dc61d720575e64c767c0d7c10c048d2193576
    
 end
 

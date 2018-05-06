@@ -1,0 +1,61 @@
+#INFOFILE1.1 - Do not remove this line!
+FileIdent = CarMaker-PlugInfo 1
+FileCreator = CarMaker 5.0pre 2015-02-16 11:24 TEMPLATE
+
+FMU.Name = MyEngine_FMU
+FMU.Modelclass = PTEngine
+FMU.GUID = {deadbeef-3df3-4a00-8276-176fa3c91106}
+
+FMU.Inputs.ShowInDDict = 0
+FMU.Outputs.ShowInDDict = 0
+FMU.MakePluginfo = 0
+FMU.DebugLogging = 0
+FMU.InitParamStartValues = 1
+
+FMUIn.FuelLevel.Link = IFVar
+FMUIn.FuelLevel.Rel = FuelLevel
+FMUIn.Ignition.Link = IFVar
+FMUIn.Ignition.Rel = Ignition
+FMUIn.Load.Link = IFVar
+FMUIn.Load.Rel = Load
+FMUIn.rotv.Link = IFVar
+FMUIn.rotv.Rel = rotv
+
+IFOut.FuelFlow.Link =
+IFOut.FuelFlow.Rel =
+IFOut.Inert.Link = FMUVar
+IFOut.Inert.Rel = Inert
+IFOut.Trq.Link = FMUVar
+IFOut.Trq.Rel = Trq
+
+DDict.Links:
+
+
+# Specifies the engine idle speed.
+# Default is 800rpm
+PowerTrain.Engine.rotv_idle = 750
+# Specifies the engine off speed.
+# Default is 500rpm
+PowerTrain.Engine.rotv_off = 500
+# Specifies the engine maximum speed.
+# Default is 8000rpm
+PowerTrain.Engine.rotv_max = 7000
+# One dimensional characteristic mapping
+# for the maximum engine full torque.
+PowerTrain.Engine.TrqFull:
+	500	10
+	1000	140
+	2000	150
+	3000	160
+	4000	170
+	5000	160
+	6000	130
+	7000	0
+# One dimensional characteristic mapping
+# for the maximum engine drag torque.
+PowerTrain.Engine.TrqDrag:
+	500	-10
+	700	-10
+	750	-10
+	800	-10
+	7000	-80
